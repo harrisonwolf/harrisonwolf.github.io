@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Harrison Wolf - C++/math engineer who orchestrates and evaluates AI coding agents. Verifiable projects and a published paper.">
+<meta property="og:title" content="Harrison Wolf - Engineer Portfolio">
+<meta property="og:description" content="C++/math engineer, elite at orchestrating and evaluating AI coding agents.">
+<title>Harrison Wolf — Engineer Portfolio</title>
+<style>
+  /* standalone reset (no host reset when self-hosted) */
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0}
+  h1,h2,h3,p,ul,figure{margin:0}
+  ul{padding:0;list-style:none}
+  img{max-width:100%}
+
+  :root{
+    --ground:#EDF0F3;      /* cool off-white, chosen neutral */
+    --paper:#FBFCFD;
+    --ink:#111619;         /* cool near-black */
+    --muted:#59636D;
+    --faint:#8A939C;
+    --line:#D3DAE0;
+    --line2:#E4E9ED;
+    --blue:#163049;        /* deep ink-blue: structure + links */
+    --blue-2:#1F4E78;
+    --signal:#BC6A12;      /* amber live-signal accent */
+    --signal-2:#D07A16;
+    --signal-soft:#F3E6D0;
+    --mono: ui-monospace,"SF Mono","JetBrains Mono","Cascadia Code",Menlo,Consolas,monospace;
+    --sans: system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{ box-sizing:border-box; }
+  .wrap{
+    background:var(--ground); color:var(--ink); font-family:var(--sans);
+    line-height:1.6; -webkit-font-smoothing:antialiased; font-size:17px;
+    padding:0;
+  }
+  .col{ max-width:940px; margin:0 auto; padding:0 28px; }
+  .prose{ max-width:66ch; }
+  a{ color:var(--blue-2); text-decoration:none; border-bottom:1px solid var(--line); }
+  a:hover{ border-bottom-color:var(--blue-2); }
+  a:focus-visible{ outline:2px solid var(--signal); outline-offset:3px; border-radius:2px; }
+  .eyebrow{
+    font-family:var(--mono); font-size:12px; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--signal); font-weight:600;
+  }
+  h1,h2,h3{ font-family:var(--mono); font-weight:600; text-wrap:balance; letter-spacing:-.01em; }
+
+  /* ---- Hero ---- */
+  .hero{ padding:74px 0 40px; border-bottom:1px solid var(--line); }
+  .hero h1{ font-size:clamp(38px,7vw,66px); line-height:1.02; margin:14px 0 0; letter-spacing:-.02em; }
+  .role{ font-family:var(--mono); color:var(--muted); font-size:clamp(13px,2.3vw,16px); margin:16px 0 0; }
+  .lead{ font-size:clamp(17px,2.4vw,20px); margin:22px 0 0; max-width:60ch; color:#232B31; }
+  .chips{ display:flex; flex-wrap:wrap; gap:9px; margin:26px 0 0; }
+  .chip{
+    font-family:var(--mono); font-size:13px; padding:7px 12px; background:var(--paper);
+    border:1px solid var(--line); border-radius:2px; color:var(--ink);
+  }
+  .chip.strong{ background:var(--blue); color:#EAF1F6; border-color:var(--blue); }
+  a.chip{ border-bottom:1px solid var(--line); }
+  a.chip:hover{ border-color:var(--blue-2); }
+  .meta{ font-family:var(--mono); font-size:12.5px; color:var(--faint); margin:18px 0 0; letter-spacing:.02em; }
+
+  /* ---- Signal band (instrument readout) ---- */
+  .signal{ padding:34px 0; border-bottom:1px solid var(--line); background:var(--paper); }
+  .gauges{ display:grid; grid-template-columns:repeat(4,1fr); gap:26px; }
+  .gauge__val{ font-family:var(--mono); font-size:31px; font-weight:600; color:var(--signal); font-variant-numeric:tabular-nums; letter-spacing:-.02em; }
+  .gauge__meter{
+    height:7px; margin:11px 0 10px; border-radius:2px; overflow:hidden; position:relative;
+    background:
+      repeating-linear-gradient(90deg, var(--line) 0 1px, transparent 1px 20%),
+      var(--line2);
+  }
+  .gauge__fill{
+    position:absolute; inset:0; transform-origin:left center; transform:scaleX(var(--fill));
+    background:linear-gradient(90deg,var(--signal),var(--signal-2));
+    animation:fill 1.1s cubic-bezier(.2,.7,.2,1) both;
+  }
+  @keyframes fill{ from{ transform:scaleX(.04); } to{ transform:scaleX(var(--fill)); } }
+  .gauge__lbl{ font-size:13.5px; color:var(--muted); line-height:1.45; }
+  .gauge__lbl b{ color:var(--ink); font-weight:600; }
+
+  /* ---- Sections ---- */
+  section{ padding:52px 0; border-bottom:1px solid var(--line); }
+  .sec-head{ display:flex; align-items:baseline; gap:14px; margin:0 0 28px; }
+  .sec-head h2{ font-size:15px; text-transform:uppercase; letter-spacing:.14em; color:var(--blue); margin:0; }
+  .sec-head .rule{ flex:1; height:1px; background:var(--line); }
+
+  .thesis{ background:var(--blue); color:#E9F0F5; border:none; }
+  .thesis .col{ }
+  .thesis h2{ color:#9FC1DA; }
+  .thesis p{ font-size:clamp(19px,2.7vw,25px); line-height:1.5; max-width:30ch; font-family:var(--mono); letter-spacing:-.01em; }
+  .thesis .body{ font-family:var(--sans); font-size:17px; max-width:64ch; color:#CBD8E2; line-height:1.65; }
+  .thesis strong{ color:#fff; }
+  .firstdibs{ display:inline-block; margin-top:10px; font-family:var(--mono); font-size:13px; letter-spacing:.1em; text-transform:uppercase; color:var(--signal-2); }
+
+  /* ---- Projects ---- */
+  .proj{ padding:30px 0; border-top:1px solid var(--line2); }
+  .proj:first-of-type{ border-top:none; padding-top:4px; }
+  .proj-top{ display:flex; align-items:baseline; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+  .proj h3{ font-size:22px; margin:0; }
+  .proj .kind{ font-family:var(--mono); font-size:12.5px; color:var(--faint); }
+  .tldr{ margin:12px 0 0; font-size:16px; color:#2A333A; max-width:70ch; }
+  .tldr .k{ color:var(--signal); font-family:var(--mono); font-weight:600; }
+  .bullets{ margin:16px 0 0; padding:0; list-style:none; display:grid; gap:9px; max-width:74ch; }
+  .bullets li{ position:relative; padding-left:20px; font-size:15px; color:#333B42; line-height:1.55; }
+  .bullets li::before{ content:"▸"; position:absolute; left:0; color:var(--signal); font-size:12px; top:2px; }
+  .proj-links{ margin:16px 0 0; font-family:var(--mono); font-size:13.5px; }
+
+  /* ---- How I work / fit ---- */
+  .note{ background:var(--paper); border:1px solid var(--line); border-left:3px solid var(--signal); padding:22px 24px; border-radius:2px; max-width:74ch; }
+  .note p{ margin:0; font-size:16.5px; color:#2A333A; }
+  .note p + p{ margin-top:12px; }
+
+  .fit{ display:grid; grid-template-columns:1fr 1fr; gap:22px 34px; }
+  .fit-item h3{ font-size:14px; text-transform:uppercase; letter-spacing:.08em; color:var(--blue); margin:0 0 6px; }
+  .fit-item p{ margin:0; font-size:15px; color:#333B42; max-width:46ch; }
+
+  /* ---- Background grid ---- */
+  .bg{ display:grid; grid-template-columns:1.3fr 1fr; gap:40px; }
+  .bg h3{ font-size:13px; text-transform:uppercase; letter-spacing:.12em; color:var(--blue); margin:0 0 14px; }
+  .xp{ display:grid; gap:16px; }
+  .xp-item .r{ font-family:var(--mono); font-size:12px; color:var(--faint); }
+  .xp-item .t{ font-weight:600; font-size:15.5px; margin:2px 0 2px; }
+  .xp-item .d{ font-size:14px; color:var(--muted); max-width:52ch; }
+  .skills p{ font-size:14.5px; color:#333B42; margin:0 0 12px; max-width:44ch; }
+  .skills .lab{ font-family:var(--mono); font-size:11.5px; text-transform:uppercase; letter-spacing:.1em; color:var(--signal); display:block; margin-bottom:3px; }
+  .pub{ font-size:14.5px; color:#333B42; max-width:60ch; }
+
+  /* ---- CTA ---- */
+  .cta{ background:var(--ink); color:#E7ECEF; border:none; text-align:left; }
+  .cta h2{ font-size:clamp(26px,4vw,38px); color:#fff; margin:0 0 10px; letter-spacing:-.01em; }
+  .cta p{ color:#AEB8BF; max-width:56ch; margin:0 0 22px; }
+  .cta-links{ display:flex; flex-wrap:wrap; gap:10px; }
+  .btn{ font-family:var(--mono); font-size:14px; padding:12px 18px; border-radius:2px; border:1px solid #33404A; color:#E7ECEF; }
+  .btn.primary{ background:var(--signal); border-color:var(--signal); color:#1a1206; font-weight:600; }
+  .btn.primary:hover{ background:var(--signal-2); border-color:var(--signal-2); }
+  .btn:hover{ border-color:#5A6772; }
+  .foot{ font-family:var(--mono); font-size:12px; color:#7C858C; padding:22px 0 46px; text-align:center; }
+
+  @media (max-width:760px){
+    .gauges{ grid-template-columns:1fr 1fr; gap:22px; }
+    .fit{ grid-template-columns:1fr; }
+    .bg{ grid-template-columns:1fr; gap:30px; }
+    .hero{ padding:52px 0 34px; }
+  }
+  @media (max-width:440px){ .gauges{ grid-template-columns:1fr; } }
+  @media (prefers-reduced-motion:reduce){
+    .gauge__fill{ animation:none; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="col">
+      <div class="eyebrow">Portfolio · Research &amp; Applied-AI Engineer</div>
+      <h1>Harrison Wolf</h1>
+      <p class="role">C++/math engineer — I architect, direct &amp; evaluate fleets of AI coding agents, and hand-write the systems underneath.</p>
+      <p class="lead">Two rare, verifiable strengths in one person: I hand-write fast, correct low-level C++, and I ship large systems by orchestrating and rigorously evaluating AI coding agents. I do professional LLM evaluation full-time. For teams building agentic-coding models and evals, that's the job description — not a proxy for it.</p>
+      <div class="chips">
+        <a class="chip" href="mailto:harrisonwolf42@gmail.com">harrisonwolf42@gmail.com</a>
+        <a class="chip" href="https://github.com/harrisonwolf">github.com/harrisonwolf</a>
+        <a class="chip" href="https://linkedin.com/in/harrison-wolf-5aa216187">LinkedIn</a>
+        <a class="chip" href="https://arxiv.org/abs/2512.24320">arXiv:2512.24320</a>
+      </div>
+      <p class="meta">San Diego, CA · Available immediately · Open to relocation</p>
+    </div>
+  </header>
+
+  <div class="signal">
+    <div class="col">
+      <div class="gauges">
+        <div class="gauge">
+          <div class="gauge__val">≤50×</div>
+          <div class="gauge__meter"><div class="gauge__fill" style="--fill:.92"></div></div>
+          <div class="gauge__lbl">faster than <b>Macaulay2</b> — a hand-written C++ engine that finished searches it couldn't</div>
+        </div>
+        <div class="gauge">
+          <div class="gauge__val">≈1:1</div>
+          <div class="gauge__meter"><div class="gauge__fill" style="--fill:.85"></div></div>
+          <div class="gauge__lbl">code-to-tests on a <b>30k-line</b> pipeline — ~14.6k lines of tests, 24 modules</div>
+        </div>
+        <div class="gauge">
+          <div class="gauge__val">8&nbsp;GB</div>
+          <div class="gauge__meter"><div class="gauge__fill" style="--fill:.5"></div></div>
+          <div class="gauge__lbl">single GPU running a <b>multi-model video studio</b> with a resident LLM director agent</div>
+        </div>
+        <div class="gauge">
+          <div class="gauge__val">1&nbsp;paper</div>
+          <div class="gauge__meter"><div class="gauge__fill" style="--fill:.7"></div></div>
+          <div class="gauge__lbl">published in <b>commutative algebra</b> — I built the compute engine behind its results</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="thesis">
+    <div class="col">
+      <div class="sec-head"><h2>The thesis</h2><span class="rule"></span></div>
+      <p>An engineer the market hasn't priced yet — early, and compounding fast.</p>
+      <p class="body">At 24, the signal is already verifiable and in your hands: a <strong>published paper</strong> whose computational engine I built; a <strong>C++ engine</strong> that beats the industry-standard tool by up to ~50× and completed searches it ran out of memory on; and large, disciplined systems shipped by directing fleets of AI coding agents under my own architecture, test-first gates, and evaluation. Everything below is inspectable. The trajectory is visible in the artifacts — and it's early.</p>
+      <span class="firstdibs">// first dibs is still open</span>
+    </div>
+  </section>
+
+  <section>
+    <div class="col">
+      <div class="sec-head"><h2>Selected work</h2><span class="rule"></span></div>
+
+      <div class="proj">
+        <div class="proj-top">
+          <h3>ltx-studio</h3>
+          <span class="kind">Python · ~8,470 lines · local multi-model video studio</span>
+        </div>
+        <p class="tldr"><span class="k">TL;DR</span> — A local generative-video studio that chains short shots into long, coherent clips on a single 8&nbsp;GB GPU, driven by a resident LLM agent and held to a quantitative eval layer.</p>
+        <ul class="bullets">
+          <li>A resident <b>LLM-agent "creative director"</b> (Qwen3-VL 4-bit, a daemon over a JSON-lines protocol) turns natural language into runnable generation configs, with a system prompt encoding the models' empirical failure modes.</li>
+          <li>A shipped <b>eval layer</b>: seam-MSE / drift / token telemetry plus a blind A/B pair-comparison harness — so "did this get better?" is measured, not vibe-checked.</li>
+          <li>Latent drift control across shots (AdaIN anchoring, cited to source; overlap fusion; my own palette-lock histogram matching), behind a clean multi-backend abstraction with checkpoint/resume.</li>
+        </ul>
+        <p class="proj-links"><a href="https://github.com/harrisonwolf/ltx-studio">github.com/harrisonwolf/ltx-studio →</a></p>
+      </div>
+
+      <div class="proj">
+        <div class="proj-top">
+          <h3>boij-soderberg-engine</h3>
+          <span class="kind">C++ · ~2,700 lines · hand-written · strongest solo proof</span>
+        </div>
+        <p class="tldr"><span class="k">TL;DR</span> — A C++ engine I hand-wrote to test two Betti-number lower-bound conjectures and search for counterexamples. It ran searches Macaulay2 couldn't finish; the results fed a published paper.</p>
+        <ul class="bullets">
+          <li>Computes pure Betti tables via the Herzog–Kuhl equations and sweeps degree-sequence space with per-sequence violation diagnostics.</li>
+          <li>An <b>overflow-avoiding early-exit</b>: grows the scaling factor incrementally and bails the moment it clears a threshold, so exact-integer arithmetic never overflows mid-search.</li>
+          <li>Benchmarked honestly — ~26–46× faster end-to-end (up to ~50×), ~20× lower peak memory — with a method that also ran my algorithms inside Macaulay2 to isolate algorithm from language.</li>
+        </ul>
+        <p class="proj-links"><a href="https://github.com/harrisonwolf/boij-soderberg-engine">github.com/harrisonwolf/boij-soderberg-engine →</a> · <a href="https://arxiv.org/abs/2512.24320">arXiv:2512.24320</a></p>
+      </div>
+
+      <div class="proj">
+        <div class="proj-top">
+          <h3>geo-map-v2</h3>
+          <span class="kind">Python · ~30,000 lines (~half tests) · data pipeline</span>
+        </div>
+        <p class="tldr"><span class="k">TL;DR</span> — A county-first real-estate analytics pipeline built around a canonical ledger, immutable snapshots, and a strictly read-only serving runtime — delivered by orchestrating AI agents under a strict engineering discipline.</p>
+        <ul class="bullets">
+          <li>Three-layer, integrity-first architecture: a hashed canonical ledger with full provenance, frozen monthly snapshots, and a read-only query path that removes an entire class of mutation bugs.</li>
+          <li>~1:1 code-to-tests across 24 modules with dedicated SQL-safety, storage-integrity, and schema-version suites, run by a custom test runner.</li>
+          <li>Built by orchestrating Codex and Claude across git worktrees, governed by an <b>AGENTS.md</b> I wrote — prompt-injection defense, test-first discipline, statistical-soundness rules. The agents wrote the volume; the architecture and the gates are mine.</li>
+        </ul>
+        <p class="proj-links"><a href="https://github.com/harrisonwolf/geo-map-v2">github.com/harrisonwolf/geo-map-v2 →</a></p>
+      </div>
+
+      <div class="proj">
+        <div class="proj-top">
+          <h3>AnimateDiff studio</h3>
+          <span class="kind">Python · diffusion internals on an 8&nbsp;GB Blackwell GPU</span>
+        </div>
+        <p class="tldr"><span class="k">TL;DR</span> — A heavily upgraded local diffusion-video pipeline engineered to run where the standard acceleration kernels don't exist.</p>
+        <ul class="bullets">
+          <li>A from-scratch <b>PyTorch-SDPA attention backport with batch-chunking</b> for the RTX 50-series (no xformers kernels), plus fp16 plumbing and dynamic VRAM capping.</li>
+          <li>A from-scratch LCM scheduler, a conv-aware LoRA merge, FreeInit flicker reduction, and sliding-window denoising for long clips.</li>
+          <li>Working at the level of scheduler math, attention kernels, and live VRAM management — building the missing piece rather than waiting for it. <span style="color:var(--faint)">Code available on request.</span></li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="col">
+      <div class="sec-head"><h2>How I work</h2><span class="rule"></span></div>
+      <div class="note">
+        <p>I build large systems by architecting, directing, testing, and evaluating fleets of AI coding agents — and I hand-write the C++ that proves I know what "correct" looks like all the way down the stack.</p>
+        <p>The differentiator isn't lines shipped; it's the architecture, the test-first gates, and the eval layers that make agent-built code <b>trustworthy</b> — and keeping the attribution honest. For teams building the coding models themselves, being elite at <em>using and evaluating</em> these tools is the point.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="col">
+      <div class="sec-head"><h2>Where I fit</h2><span class="rule"></span></div>
+      <div class="fit">
+        <div class="fit-item">
+          <h3>Research Engineer · Agentic coding</h3>
+          <p>You're building the models I already live inside — I direct, test, and evaluate agent fleets daily, and hand-write the C++ to prove the fundamentals.</p>
+        </div>
+        <div class="fit-item">
+          <h3>Evals · RL environments</h3>
+          <p>I evaluate LLM reasoning professionally and ship my own quantitative eval layers — blind A/B harnesses, drift and seam telemetry. A builder who's actually graded models.</p>
+        </div>
+        <div class="fit-item">
+          <h3>Applied AI · Forward-deployed</h3>
+          <p>I turn constrained, messy targets into shipped systems — an 8&nbsp;GB GPU into a multi-model studio, natural language into runnable configs — with the integration depth to make it hold.</p>
+        </div>
+        <div class="fit-item">
+          <h3>Founding engineer</h3>
+          <p>I deliver large, disciplined, well-tested systems far above one person's throughput by directing agents under my own architecture — with hand-built proof I can go all the way down.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="col">
+      <div class="sec-head"><h2>Background</h2><span class="rule"></span></div>
+      <div class="bg">
+        <div>
+          <h3>Experience</h3>
+          <div class="xp">
+            <div class="xp-item">
+              <div class="r">Aug 2024 – Present</div>
+              <div class="t">AI Model Evaluator &amp; Reasoning Analyst — DataAnnotation</div>
+              <div class="d">Evaluate LLM reasoning across math, logic, and coding; identify hallucinations and failure modes. Selected for the quality-review team.</div>
+            </div>
+            <div class="xp-item">
+              <div class="r">Summer 2024</div>
+              <div class="t">Research Assistant, Boij–Söderberg Theory — Univ. of San Diego</div>
+              <div class="d">Designed and built the high-performance C++ engine that ran conjecture-counterexample searches Macaulay2 couldn't complete; work fed a published paper.</div>
+            </div>
+            <div class="xp-item">
+              <div class="r">Summer 2025 · AFOSR-funded</div>
+              <div class="t">Research Assistant, HoTT / Narya proof assistant — Univ. of San Diego</div>
+              <div class="d">Tested, debugged, and documented experimental proof-assistant software.</div>
+            </div>
+          </div>
+          <h3 style="margin-top:26px;">Publication</h3>
+          <p class="pub">Boocher, Huang, <b>Wolf</b>. <em>Arithmetic in the Boij–Söderberg Cone.</em> <a href="https://arxiv.org/abs/2512.24320">arXiv:2512.24320</a> (Dec 2025). Third author, undergraduate research — built the C++ engine whose large-scale searches enabled the codimension-3 results and high-codimension examples.</p>
+        </div>
+        <div>
+          <h3>Education</h3>
+          <div class="xp">
+            <div class="xp-item">
+              <div class="r">2022–2025</div>
+              <div class="t">Mathematics major coursework — Univ. of San Diego</div>
+              <div class="d">Computational topology &amp; geometry, number theory, combinatorics, graph theory, algorithms, computer systems. Capstone: lead dev for auth &amp; access control.</div>
+            </div>
+            <div class="xp-item">
+              <div class="r">2019–2021</div>
+              <div class="t">A.S. Computer Science &amp; A.S. Mathematics — Clovis CC</div>
+            </div>
+          </div>
+          <h3 style="margin-top:26px;">Skills</h3>
+          <div class="skills">
+            <p><span class="lab">Proficient</span> C/C++, Python, algorithm design, GPU / VRAM-constrained systems, AI-agent orchestration, testing &amp; evaluation, benchmarking, Git, Linux</p>
+            <p><span class="lab">Familiar</span> PyTorch &amp; diffusion internals, SQLite / data pipelines, LLM-agent &amp; JSON-protocol design, LLM eval harnesses, quantization &amp; model offloading</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="col">
+      <h2>Get first dibs.</h2>
+      <p>Best on agentic-coding, evals, applied-AI, or founding-engineer teams. Available immediately, open to relocation. A 20-minute call is a cheap bet.</p>
+      <div class="cta-links">
+        <a class="btn primary" href="mailto:harrisonwolf42@gmail.com">harrisonwolf42@gmail.com</a>
+        <a class="btn" href="https://github.com/harrisonwolf">GitHub</a>
+        <a class="btn" href="https://linkedin.com/in/harrison-wolf-5aa216187">LinkedIn</a>
+        <a class="btn" href="https://arxiv.org/abs/2512.24320">Paper</a>
+      </div>
+    </div>
+    <div class="foot col">Harrison Wolf · San Diego, CA · built to be inspected</div>
+  </section>
+
+</div>
+</body>
+</html>
