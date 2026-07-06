@@ -127,6 +127,16 @@
     </div>
 
     <div class="proj">
+      <h3>planar-geometry-engine</h3>
+      <div class="kind">C++ · ~5,600 lines · <a href="https://github.com/harrisonwolf/planar-geometry-engine">github.com/harrisonwolf/planar-geometry-engine</a></div>
+      <p>A computational-geometry workbench I built for fun: polygon construction, ear-clipping triangulation, Delaunay triangulation and Voronoi diagrams, with local SVG and Desmos-based viewers.</p>
+      <ul>
+        <li>Robustness is the hard part of geometry code, so the predicates handle the degenerate cases — collinear inputs, duplicate points, orientation — with explicit epsilon discipline.</li>
+        <li>Verified by a hand-rolled TDD harness: 14 suites covering the predicates, both triangulations, and the Voronoi output.</li>
+      </ul>
+    </div>
+
+    <div class="proj">
       <h3>AnimateDiff studio</h3>
       <div class="kind">Python · code available on request</div>
       <p>An upgraded local diffusion-video pipeline for an 8&nbsp;GB RTX 50-series GPU, where the usual acceleration kernels don't exist yet.</p>
@@ -139,6 +149,15 @@
   <section class="how">
     <div class="label">How I work</div>
     <p>Most of the larger systems above were built by directing AI coding agents, not typed by hand. What I bring is the architecture, the tests, and the evaluation that make that output reliable — and I hand-write the C++ so I know what "correct" looks like underneath. Where I've reused someone else's math or code, I say so.</p>
+  </section>
+
+  <section>
+    <div class="label">Writing</div>
+    <div class="proj">
+      <h3>The Hollow Icon</h3>
+      <div class="kind">Essay · June 2026 · <a href="hollow-icon.pdf">PDF, 9 pages</a></div>
+      <p>On reason, faith, and what the machine can and cannot counterfeit. Its technical core is the specification problem: an optimizer can aim ever more tightly at whatever target we write down, while nothing in it can see whether the target is the right one.</p>
+    </div>
   </section>
 
   <section>
