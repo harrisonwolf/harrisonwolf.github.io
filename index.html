@@ -144,6 +144,8 @@
         <li>Exact-integer arithmetic overflows silently here, so I grow the scaling factor incrementally and stop early once it clears the threshold — the search never overflows.</li>
         <li>Benchmarked against Macaulay2 on the same machine: roughly <span class="num">26–46×</span> faster (up to <span class="num">~50×</span>) and about <span class="num">20×</span> less memory. I also ran my algorithms inside Macaulay2 to separate the algorithm from the language, and it finished searches that ran Macaulay2 out of memory.</li>
       </ul>
+      <img class="shot" src="media/boij-benchmark.svg" alt="Benchmark chart: codimension-7 runtime and memory versus number of tested sequences, C++ engine against Macaulay2" loading="lazy">
+      <div class="shot-cap">From the repo's benchmark suite: codimension-7 runtime and memory vs Macaulay2, same machine.</div>
     </div>
 
     <div class="proj">
@@ -154,6 +156,8 @@
         <li>Robustness is the hard part of geometry code, so the predicates handle the degenerate cases — collinear inputs, duplicate points, orientation — with explicit epsilon discipline.</li>
         <li>Verified by a hand-rolled TDD harness: 14 suites covering the predicates, both triangulations, and the Voronoi output.</li>
       </ul>
+      <img class="shot" src="media/geometry-delaunay-voronoi.svg" alt="Delaunay triangulation and Voronoi diagram of the same 35 sites, rendered from the engine's exports" loading="lazy">
+      <div class="shot-cap">Delaunay triangulation and Voronoi diagram of the same 35 sites, rendered from the engine's own exports.</div>
     </div>
 
     <div class="proj">
@@ -163,6 +167,8 @@
       <ul>
         <li>I wrote a PyTorch-SDPA attention path with batch-chunking to keep memory bounded, plus a from-scratch LCM scheduler, a conv-aware LoRA merge, and sliding-window denoising for longer clips.</li>
       </ul>
+      <img class="shot" src="media/animatediff-corgi.gif" alt="Generated clip: a corgi sitting on a beach at sunset" loading="lazy">
+      <div class="shot-cap">"a corgi on the beach, sunset, cinematic" — generated, interpolated, and upscaled end to end on the 8&nbsp;GB GPU.</div>
     </div>
   </section>
 
