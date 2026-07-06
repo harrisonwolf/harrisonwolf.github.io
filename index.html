@@ -109,7 +109,7 @@
     <div class="proj">
       <h3>boij-soderberg-engine</h3>
       <div class="kind">C++ · ~2,700 lines · <a href="https://github.com/harrisonwolf/boij-soderberg-engine">github.com/harrisonwolf/boij-soderberg-engine</a></div>
-      <p>A C++ engine I wrote from scratch to compute pure Betti tables and search for counterexamples to two Betti-number lower-bound conjectures. The computation behind one of the three main theorems in a paper I co-authored (<a href="https://arxiv.org/abs/2512.24320">arXiv:2512.24320</a>) ran on this engine — in days; Macaulay2 would have taken years, likely decades.</p>
+      <p>A C++ engine I wrote from scratch to compute pure Betti tables and search for counterexamples to two Betti-number lower-bound conjectures. The computation behind one of the three main theorems in a paper I co-authored (<a href="https://arxiv.org/abs/2512.24320">arXiv:2512.24320</a>) ran on this engine in days — a search Macaulay2 could not complete at all.</p>
       <ul>
         <li>Exact-integer arithmetic overflows silently here, so I grow the scaling factor incrementally and stop early once it clears the threshold — the search never overflows.</li>
         <li>Benchmarked against Macaulay2 on the same machine: roughly <span class="num">26–46×</span> faster (up to <span class="num">~50×</span>) and about <span class="num">20×</span> less memory. I also ran my algorithms inside Macaulay2 to separate the algorithm from the language, and it finished searches that ran Macaulay2 out of memory.</li>
@@ -155,7 +155,7 @@
         <div class="xp-item">
           <div class="r">Summer 2024</div>
           <div class="t">Research Assistant, Boij–Söderberg theory — University of San Diego</div>
-          <div class="d">Built the from-scratch C++ engine above; its computation established one of the three main theorems in the resulting paper.</div>
+          <div class="d">Built the from-scratch C++ engine above; it produced the computation behind one of the three main theorems in the resulting paper.</div>
         </div>
         <div class="xp-item">
           <div class="r">Summer 2025 · AFOSR-funded</div>
@@ -167,7 +167,7 @@
 
     <div class="block">
       <div class="sub-label">Publication</div>
-      <p class="pub">Boocher, Huang, Wolf. <em>Arithmetic in the Boij–Söderberg Cone.</em> <a href="https://arxiv.org/abs/2512.24320">arXiv:2512.24320</a> (Dec 2025). Third author; my computations established one of the paper's three main theorems.</p>
+      <p class="pub">Boocher, Huang, Wolf. <em>Arithmetic in the Boij–Söderberg Cone.</em> <a href="https://arxiv.org/abs/2512.24320">arXiv:2512.24320</a> (Dec 2025). Third author; I produced the computation behind one of the paper's three main theorems.</p>
     </div>
 
     <div class="block edu">
