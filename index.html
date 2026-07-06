@@ -57,6 +57,8 @@
   .proj li{ position:relative; margin:6px 0; color:#37342D; font-size:16px; line-height:1.55; }
   .proj li::before{ content:"–"; position:absolute; left:-19px; color:var(--faint); }
   .repo{ font-family:var(--mono); font-size:13px; margin-top:11px; }
+  .shot{ display:block; max-width:100%; margin-top:14px; border:1px solid var(--line); border-radius:2px; }
+  .shot-cap{ font-family:var(--mono); font-size:12px; color:var(--faint); margin-top:6px; }
 
   .how p{ color:#2C2A24; }
 
@@ -104,6 +106,8 @@
         <li>I built a measurement layer to go with it — seam and drift telemetry plus a blind A/B comparison harness — so I could tell whether a change actually helped, rather than guessing.</li>
         <li>Drift control between shots uses AdaIN latent anchoring (from diffusers, cited) and a color-matching pass I wrote.</li>
       </ul>
+      <a href="https://github.com/harrisonwolf/ltx-studio#what-it-looks-like"><img class="shot" src="media/ltx-live.png" alt="LTX Studio LIVE view mid-render: last-frame preview of a bioluminescent forest, phase timings, and job controls" loading="lazy" width="1400" height="808"></a>
+      <div class="shot-cap">The LIVE tab mid-render. More screenshots and sample clips in the repo README.</div>
     </div>
 
     <div class="proj">
