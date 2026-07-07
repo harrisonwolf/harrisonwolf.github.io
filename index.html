@@ -140,15 +140,16 @@
         <img class="shot" src="media/ltx-day-fourteen.png" alt="Day fourteen: a golden-hour corgi in profile on the beach, backlit by the sunset" loading="lazy">
       </div>
       <div class="shot-cap">How far it came in two weeks: the first clip this project ever produced (June 22, the initial smoke test) beside a deliberate re-run of the same dog-on-a-beach prompt on day fourteen (July 6, Wan backend) — my go-to smoke test, same 8&nbsp;GB card. No prior video-generation experience.</div>
+      <p>ltx-studio grew out of an earlier AnimateDiff pipeline I directed onto the same unsupported 8&nbsp;GB card — a PyTorch-SDPA attention backport, a from-scratch LCM scheduler, a conv-aware LoRA merge — before modern open-weight models made the output worth watching. That earlier work is where I learned the model internals this one runs on. Code on request.</p>
     </div>
 
     <div class="proj">
       <h3>geo-map-v2</h3>
-      <div class="kind">Python · ~1:1 code-to-test · <a href="https://github.com/harrisonwolf/geo-map-v2">github.com/harrisonwolf/geo-map-v2</a></div>
+      <div class="kind">Python · ~30,000 lines, about half tests · <a href="https://github.com/harrisonwolf/geo-map-v2">github.com/harrisonwolf/geo-map-v2</a></div>
       <p>A real-estate heatmap on the surface. Underneath, the most production-grade system I've built: a general geospatial data platform. Raw sources are ingested into adapted artifacts, recorded in a hashed canonical ledger with full provenance, frozen into monthly snapshots, scored, and published to a strictly read-only serving runtime, so every number a client sees traces back to an immutable record. The county registry is the extension point: new regions, sources, and verticals are designed to bolt on without touching the core.</p>
       <ul>
         <li>On top sits a full map application and renderer: an interactive client (vendored MapLibre GL) that draws the county's official GIS layers as toggleable overlays — parcels with per-parcel detail, the road and highway network, ZIP areas and boundaries, schools by level, and school attendance zones — over the scored basemap.</li>
-        <li>24 test modules, including SQL-safety, storage-integrity, and schema-version suites.</li>
+        <li>Roughly 1:1 code to tests across 24 modules, including SQL-safety, storage-integrity, and schema-version suites.</li>
         <li>I built it by running several AI coding agents across git worktrees under a written set of rules — test-first, prompt-injection defense, and so on. The agents wrote most of the volume; the architecture and the test gates are mine.</li>
       </ul>
       <a href="media/geomap-hero.png"><img class="shot" src="media/geomap-hero.png" alt="Nexora agent workspace: Fresno County map with ZIP-level market tint, client-brief panel, and a data-lineage stamp in the footer" loading="lazy"></a>
@@ -193,17 +194,6 @@
       <div class="shot-cap">One run through the engine at a legible scale (70 sites, seed 7): the raw input, its Delaunay triangulation (125 triangles, 194 edges — Euler-exact), the Voronoi dual, and the two overlaid. Every Voronoi vertex is the circumcenter of a triangle.</div>
       <img class="shot" src="media/geometry-duality.svg" alt="Delaunay triangulation in faint lines overlaid with its Voronoi dual in ink, 300 sites" loading="lazy">
       <div class="shot-cap">And at density: 300 sites, triangulated and dualized end to end by the engine. Seed and command are embedded in the file; the counts check exactly against Euler's formula (581 triangles, 880 edges).</div>
-    </div>
-
-    <div class="proj">
-      <h3>AnimateDiff studio</h3>
-      <div class="kind">Python · code available on request</div>
-      <p>An upgraded local diffusion-video pipeline for an 8&nbsp;GB RTX 50-series GPU, where the usual acceleration kernels don't exist yet.</p>
-      <ul>
-        <li>I directed AI agents through the internals, steering each change and verifying it on the hardware: a PyTorch-SDPA attention path with batch-chunking to keep memory bounded, a from-scratch LCM scheduler, a conv-aware LoRA merge, and sliding-window denoising for longer clips.</li>
-      </ul>
-      <img class="shot" src="media/animatediff-corgi.gif" alt="Generated clip: a corgi running along the surf at sunset" loading="lazy">
-      <div class="shot-cap">"a corgi running on the beach, waves, sunset" — generated, RIFE-interpolated, and 4×-upscaled on the 8&nbsp;GB GPU.</div>
     </div>
   </section>
 
