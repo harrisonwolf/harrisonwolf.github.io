@@ -135,7 +135,7 @@
     <div class="proj">
       <h3>geo-map-v2</h3>
       <div class="kind">Python · ~30,000 lines, about half tests · <a href="https://github.com/harrisonwolf/geo-map-v2">github.com/harrisonwolf/geo-map-v2</a></div>
-      <p>The most production-grade system I've built: a real-estate data pipeline around a hashed canonical ledger, frozen monthly snapshots, and a read-only serving path, so every served number traces back to an immutable record.</p>
+      <p>A real-estate heatmap on the surface. Underneath, the most production-grade system I've built: a general geospatial data platform. Raw sources are ingested into adapted artifacts, recorded in a hashed canonical ledger with full provenance, frozen into monthly snapshots, scored, and published to a strictly read-only serving runtime, so every number a client sees traces back to an immutable record. The county registry is the extension point: new regions, sources, and verticals are designed to bolt on without touching the core.</p>
       <ul>
         <li>Roughly 1:1 code to tests across 24 modules, including SQL-safety, storage-integrity, and schema-version suites.</li>
         <li>I built it by running several AI coding agents across git worktrees under a written set of rules — test-first, prompt-injection defense, and so on. The agents wrote most of the volume; the architecture and the test gates are mine.</li>
