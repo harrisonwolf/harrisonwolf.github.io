@@ -119,7 +119,12 @@
     <div class="proj">
       <h3>ltx-studio</h3>
       <div class="kind">Python · ~8,470 lines · <a href="https://github.com/harrisonwolf/ltx-studio">github.com/harrisonwolf/ltx-studio</a></div>
-      <p>A local text-to-video studio that runs two video models on a single 8&nbsp;GB GPU and chains short shots into longer clips that stay coherent. Built from scratch in about a week and a half.</p>
+      <p>A local text-to-video studio that runs two video models on a single 8&nbsp;GB GPU and chains short shots into longer clips that stay coherent. Built from scratch in about a week and a half:</p>
+      <div class="shot-row">
+        <img class="shot" src="media/ltx-day-one.png" alt="The project's first output: a blurry, motion-smeared dog on a beach" loading="lazy">
+        <img class="shot" src="media/ltx-day-fourteen.png" alt="Day fourteen: a golden-hour corgi in profile on the beach, backlit by the sunset" loading="lazy">
+      </div>
+      <div class="shot-cap">The first clip this project ever produced (June 22, the initial smoke test) and day fourteen (July 6, Wan backend). Both dogs on beaches, coincidentally. Same 8&nbsp;GB card, no prior video-generation experience.</div>
       <ul>
         <li>A resident vision-language model (Qwen3-VL, 4-bit) runs as an agent that turns plain-language direction into runnable generation settings.</li>
         <li>I built a measurement layer to go with it: seam and drift telemetry, plus a blind A/B comparison harness, so I can tell whether a change actually helped.</li>
@@ -193,9 +198,6 @@
       </ul>
       <img class="shot" src="media/animatediff-corgi.gif" alt="Generated clip: a corgi running along the surf at sunset" loading="lazy">
       <div class="shot-cap">"a corgi running on the beach, waves, sunset" — generated, RIFE-interpolated, and 4×-upscaled on the 8&nbsp;GB GPU.</div>
-      <p>That was the most this pipeline could give, and getting it at all took the engineering above. Two weeks later, ltx-studio rendered the same subject on the same 8&nbsp;GB card, end to end, in about 15 minutes:</p>
-      <img class="shot" src="media/ltx-corgi.gif" alt="Generated clip: a corgi on a beach at golden hour, backlit by the sunset — ltx-studio, Wan backend" loading="lazy">
-      <div class="shot-cap">From ltx-studio (Wan backend): generated, 4×-upscaled, and RIFE-interpolated in about 15 minutes.</div>
     </div>
   </section>
 
