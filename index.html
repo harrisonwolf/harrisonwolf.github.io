@@ -120,11 +120,6 @@
       <h3>ltx-studio</h3>
       <div class="kind">Python · ~8,470 lines · <a href="https://github.com/harrisonwolf/ltx-studio">github.com/harrisonwolf/ltx-studio</a></div>
       <p>A local text-to-video studio that runs two video models on a single 8&nbsp;GB GPU and chains short shots into longer clips that stay coherent. Built from scratch in about a week and a half:</p>
-      <div class="shot-row">
-        <img class="shot" src="media/ltx-day-one.png" alt="The project's first output: a blurry, motion-smeared dog on a beach" loading="lazy">
-        <img class="shot" src="media/ltx-day-fourteen.png" alt="Day fourteen: a golden-hour corgi in profile on the beach, backlit by the sunset" loading="lazy">
-      </div>
-      <div class="shot-cap">The first clip this project ever produced (June 22, the initial smoke test) and day fourteen (July 6, Wan backend). Both dogs on beaches, coincidentally. Same 8&nbsp;GB card, no prior video-generation experience.</div>
       <ul>
         <li>A resident vision-language model (Qwen3-VL, 4-bit) runs as an agent that turns plain-language direction into runnable generation settings.</li>
         <li>I built a measurement layer to go with it: seam and drift telemetry, plus a blind A/B comparison harness, so I can tell whether a change actually helped.</li>
@@ -140,14 +135,20 @@
         <img class="shot" src="media/ltx-fireflies.gif" alt="Generated clip: fireflies drifting over a glowing forest stream" loading="lazy">
       </div>
       <div class="shot-cap">Left: "Bioluminescent forest at night — glowing moths, luminescent moss, a stream lit from within. Cinematic, 35&nbsp;mm." Right: fireflies over a glowing stream, 64&nbsp;fps after interpolation.</div>
+      <div class="shot-row">
+        <img class="shot" src="media/ltx-day-one.png" alt="The project's first output: a blurry, motion-smeared dog on a beach" loading="lazy">
+        <img class="shot" src="media/ltx-day-fourteen.png" alt="Day fourteen: a golden-hour corgi in profile on the beach, backlit by the sunset" loading="lazy">
+      </div>
+      <div class="shot-cap">How far it came in two weeks: the first clip this project ever produced (June 22, the initial smoke test) beside day fourteen (July 6, Wan backend). Both dogs on beaches, coincidentally. Same 8&nbsp;GB card, no prior video-generation experience.</div>
     </div>
 
     <div class="proj">
       <h3>geo-map-v2</h3>
-      <div class="kind">Python · ~30,000 lines, about half tests · <a href="https://github.com/harrisonwolf/geo-map-v2">github.com/harrisonwolf/geo-map-v2</a></div>
+      <div class="kind">Python · ~1:1 code-to-test · <a href="https://github.com/harrisonwolf/geo-map-v2">github.com/harrisonwolf/geo-map-v2</a></div>
       <p>A real-estate heatmap on the surface. Underneath, the most production-grade system I've built: a general geospatial data platform. Raw sources are ingested into adapted artifacts, recorded in a hashed canonical ledger with full provenance, frozen into monthly snapshots, scored, and published to a strictly read-only serving runtime, so every number a client sees traces back to an immutable record. The county registry is the extension point: new regions, sources, and verticals are designed to bolt on without touching the core.</p>
       <ul>
-        <li>Roughly 1:1 code to tests across 24 modules, including SQL-safety, storage-integrity, and schema-version suites.</li>
+        <li>On top sits a full map application and renderer: an interactive client (vendored MapLibre GL) that draws the county's official GIS layers as toggleable overlays — parcels with per-parcel detail, the road and highway network, ZIP areas and boundaries, schools by level, and school attendance zones — over the scored basemap.</li>
+        <li>24 test modules, including SQL-safety, storage-integrity, and schema-version suites.</li>
         <li>I built it by running several AI coding agents across git worktrees under a written set of rules — test-first, prompt-injection defense, and so on. The agents wrote most of the volume; the architecture and the test gates are mine.</li>
       </ul>
       <a href="media/geomap-hero.png"><img class="shot" src="media/geomap-hero.png" alt="Nexora agent workspace: Fresno County map with ZIP-level market tint, client-brief panel, and a data-lineage stamp in the footer" loading="lazy"></a>
@@ -176,6 +177,11 @@
         <li>Robustness is the hard part of geometry code, so the predicates handle the degenerate cases (collinear inputs, duplicate points, orientation) with explicit epsilon discipline.</li>
         <li>Verified by a hand-rolled TDD harness: 14 suites covering the predicates, both triangulations, and the Voronoi output.</li>
       </ul>
+      <div class="shot-row">
+        <img class="shot" src="media/polygon15-raw.svg" alt="A single non-convex 15-vertex polygon from the engine's random generator, filled gray" loading="lazy">
+        <img class="shot" src="media/polygon15-ears.svg" alt="The same 15-vertex polygon cut into 13 colored triangles by the ear-clipping algorithm" loading="lazy">
+      </div>
+      <div class="shot-cap">One 15-vertex polygon from the engine's random generator (left), and the same polygon cut into 13 triangles by the ear-clipper (right) — n−2, as a simple polygon must give. Each colored triangle is one clipped ear; the concave notch stays empty, since it is outside the polygon.</div>
       <div class="shot-row">
         <img class="shot" src="media/geometry70-sites.svg" alt="70 raw input sites, untriangulated" loading="lazy">
         <img class="shot" src="media/geometry70-delaunay.svg" alt="The same 70 sites, Delaunay-triangulated" loading="lazy">
