@@ -111,7 +111,7 @@
   <div class="content">
 
   <p class="intro">I write low-level systems by hand, and I build larger ones by directing and evaluating AI coding agents. My clearest solo work is a C++ engine that runs certain algebra computations much faster than the standard tool. I also review agentic coding models professionally.</p>
-  <p class="intro">I'm looking for research-engineer, applied-AI, agentic-coding, or evaluation work.</p>
+  <p class="intro">I'm looking for research-engineer, applied-AI, agentic-coding, or commissions.</p>
 
   <section>
     <div class="label">Selected work</div>
@@ -145,7 +145,7 @@
 
     <div class="proj">
       <h3>geo-map-v2</h3>
-      <div class="kind">Python · ~30,000 lines, about half tests · <a href="https://github.com/harrisonwolf/geo-map-v2">github.com/harrisonwolf/geo-map-v2</a></div>
+      <div class="kind">Python · ~30,000 lines · <a href="https://github.com/harrisonwolf/geo-map-v2">github.com/harrisonwolf/geo-map-v2</a></div>
       <p>A real-estate heatmap on the surface. Underneath, the most production-grade system I've built: a general geospatial data platform. Raw sources are ingested into adapted artifacts, recorded in a hashed canonical ledger with full provenance, frozen into monthly snapshots, scored, and published to a strictly read-only serving runtime, so every number a client sees traces back to an immutable record. The county registry is the extension point: new regions, sources, and verticals are designed to bolt on without touching the core.</p>
       <ul>
         <li>On top sits a full map application and renderer: an interactive client (vendored MapLibre GL) that draws the county's official GIS layers as toggleable overlays — parcels with per-parcel detail, the road and highway network, ZIP areas and boundaries, schools by level, and school attendance zones — over the scored basemap.</li>
@@ -161,13 +161,12 @@
     <div class="proj">
       <h3>boij-soderberg-engine</h3>
       <div class="kind">C++ · ~2,700 lines · <a href="https://github.com/harrisonwolf/boij-soderberg-engine">github.com/harrisonwolf/boij-soderberg-engine</a></div>
-      <p>A C++ engine I wrote from scratch, by hand, no AI in the loop. It computes pure Betti tables and searches for counterexamples to two Betti-number lower-bound conjectures. The computation behind one of the three main theorems in a paper I co-authored (<a href="https://arxiv.org/abs/2512.24320">arXiv:2512.24320</a>) ran on this engine in days; Macaulay2 could not complete the search at all.</p>
+      <p>A C++ engine I wrote by hand in 2024 — a ~1,200-line math core, no AI, cross-validated case-by-case against Macaulay2. It enumerates and screens candidate degree sequences for counterexamples to two Betti-number lower-bound conjectures, and independently reproduced the exact four codimension-3 counterexamples that one of the theorems in a paper I co-authored (<a href="https://arxiv.org/abs/2512.24320">arXiv:2512.24320</a>) classifies. On the same search it runs <span class="num">~70–115×</span> faster than an equivalent Macaulay2 implementation across codimensions 3–7 — a 1.2-million-sequence search takes about a second, versus a hundred in Macaulay2 — and it clears 12-to-20-million-sequence searches in seconds, at sizes where Macaulay2 runs out of memory building the candidate list. In the paper the engine was the exploratory search tool; the proof computations themselves were done in Macaulay2. I later used an AI agent to reorganize the repo, write the docs, and add a test and benchmark harness.</p>
       <ul>
-        <li>Exact-integer arithmetic overflows silently here, so I grow the scaling factor incrementally and stop early once it clears the threshold; the search never overflows.</li>
-        <li>Benchmarked against Macaulay2 on the same machine: roughly <span class="num">26–46×</span> faster (up to <span class="num">~50×</span>) and about <span class="num">20×</span> less memory. I also ran my algorithms inside Macaulay2 to separate the algorithm from the language, and it finished searches that ran Macaulay2 out of memory.</li>
+        <li>Correctness is pinned against Macaulay2's own BoijSoederberg package: the pure Betti tables the engine computes are checked case-by-case against M2's reference values.</li>
       </ul>
-      <img class="shot" src="media/boij-benchmark.svg" alt="Benchmark chart: codimension-7 runtime and memory versus number of tested sequences, C++ engine against Macaulay2" loading="lazy">
-      <div class="shot-cap">Codimension-7 searches up to n ≈ 3.4M, from the repo's benchmark data. Runtime and peak memory vs Macaulay2 on the same machine.</div>
+      <img class="shot" src="media/boij-benchmark.svg" alt="Benchmark chart: log-log runtime versus number of candidate sequences across codimensions 3 to 7; the C++ engine stays fast to 20 million sequences while Macaulay2 stops around 1 million" loading="lazy">
+      <div class="shot-cap">Runtime vs. number of candidate sequences, codimension 3–7 (log–log), C++ engine against Macaulay2 on the same machine. Macaulay2 runs out of memory past ~1M sequences; the engine runs to 20M+ in seconds.</div>
     </div>
 
     <div class="proj">
