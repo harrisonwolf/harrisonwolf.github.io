@@ -167,7 +167,7 @@
       </ul>
       <div class="shot-cap">These charts are high-resolution SVG &#8212; right-click any chart and choose &#8220;Open image in new tab&#8221; to view at full resolution.</div>
       <img class="shot" src="media/boij-runtime.svg" alt="Benchmark chart: linear-axis runtime versus number of candidate sequences across codimensions 3 to 7; the C++ engine stays fast to 20 million sequences while Macaulay2 stops around 1 million" loading="lazy">
-      <div class="shot-cap">Runtime vs. number of candidate sequences, codimension 3–7 (linear), C++ engine against Macaulay2 on the same machine. Macaulay2 runs out of memory past ~1M sequences; the engine runs to 20M+ in seconds.</div>
+      <div class="shot-cap">Runtime vs. number of candidate sequences, codimension 3–7 (linear), C++ engine against Macaulay2 on the same machine. The engine screens 20M+ sequences in seconds; Macaulay2 runs out of memory past ~1M &#8212; and even by a straight linear extrapolation of its rate (ignoring that its garbage collector would thrash), reaching 20M would take it ~20&#8211;30 minutes, if it could hold them in memory at all.</div>
       <img class="shot" src="media/boij-memory.svg" alt="Peak memory versus number of candidate sequences, codimensions 3 to 7, C++ engine versus Macaulay2" loading="lazy">
       <div class="shot-cap">Peak memory. Macaulay2 sits near a ~100&nbsp;MB interpreter floor; the C++ engine starts far lower, and the advantage narrows to ~3&#215; only at the largest sizes.</div>
       <img class="shot" src="media/boij-speedup.svg" alt="Speedup (Macaulay2 time over C++ time) versus number of sequences, colored by codimension" loading="lazy">
