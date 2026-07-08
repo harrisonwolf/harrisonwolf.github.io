@@ -60,6 +60,7 @@
   .repo{ font-family:var(--mono); font-size:13px; margin-top:11px; }
   .shot{ display:block; max-width:100%; height:auto; margin-top:14px; border:1px solid var(--line); border-radius:2px; }
   .shot-cap{ font-family:var(--mono); font-size:12px; color:var(--faint); margin-top:6px; }
+  .foot-note{ font-family:var(--mono); font-size:11px; color:var(--faint); margin-top:16px; line-height:1.5; max-width:72ch; }
   .shot-row{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:14px; }
   .shot-row .shot{ margin-top:0; }
   @media (max-width:560px){ .shot-row{ grid-template-columns:1fr; } }
@@ -189,12 +190,12 @@
         <img class="shot" src="media/polygon15-raw.svg" alt="A single non-convex 15-vertex polygon from the engine's random generator, filled gray" loading="lazy">
         <img class="shot" src="media/polygon15-ears.svg" alt="The same 15-vertex polygon cut into 13 colored triangles by the ear-clipping algorithm" loading="lazy">
       </div>
-      <div class="shot-cap">One 15-vertex polygon from the engine's random generator (left), and the same polygon cut into 13 triangles by the ear-clipper (right) — n−2, as a simple polygon must give. Each colored triangle is one clipped ear; the concave notch stays empty, since it is outside the polygon. Note the polygon is simple (not self-intersecting): near the top-right (red box), two edges pass extremely close, about 0.06 units apart, but never cross. The close-up below enlarges that box.</div>
+      <div class="shot-cap">One 15-vertex polygon from the engine's random generator (left), and the same polygon cut into 13 triangles by the ear-clipper (right) — n−2, as a simple polygon must give. Each colored triangle is one clipped ear; the concave notch stays empty, since it is outside the polygon. The red box near the top-right is magnified below.</div>
       <div class="shot-row" style="max-width:520px">
         <img class="shot" src="media/polygon15-zoom.svg" alt="Close-up of the near-touch on the raw polygon: two edges pass within about 0.06 units without crossing" loading="lazy" style="border:2px solid #B4472C">
         <img class="shot" src="media/polygon15-zoom-ears.svg" alt="The same near-touch on the triangulated polygon: the ear-clipping leaves no gap or overlap and the two edges never cross" loading="lazy" style="border:2px solid #B4472C">
       </div>
-      <div class="shot-cap">The same near-touch, magnified (red box): the raw polygon (left) and its triangulation (right). The two edges come within about 0.06 units and never cross, so the polygon is simple and the ear-clipper leaves no gap or overlap.</div>
+      <div class="shot-cap">The near-touch magnified: the raw polygon (left) and its triangulation (right).</div>
       <div class="shot-row">
         <img class="shot" src="media/geometry70-sites.svg" alt="70 raw input sites, untriangulated" loading="lazy">
         <img class="shot" src="media/geometry70-delaunay.svg" alt="The same 70 sites, Delaunay-triangulated" loading="lazy">
@@ -206,6 +207,7 @@
       <div class="shot-cap">One run through the engine at a legible scale (70 sites, seed 7): the raw input, its Delaunay triangulation (125 triangles, 194 edges — Euler-exact), the Voronoi dual, and the two overlaid. Every Voronoi vertex is the circumcenter of a triangle.</div>
       <img class="shot" src="media/geometry-duality.svg" alt="Delaunay triangulation in faint lines overlaid with its Voronoi dual in ink, 300 sites" loading="lazy">
       <div class="shot-cap">And at density: 300 sites, triangulated and dualized end to end by the engine. Seed and command are embedded in the file; the counts check exactly against Euler's formula (581 triangles, 880 edges).</div>
+      <p class="foot-note">The 15-vertex polygon is simple: even where two of its edges nearly meet (the red box), they pass about 0.06 units apart and never cross.</p>
     </div>
 
     <div class="proj">
