@@ -111,7 +111,7 @@
   <div class="content">
 
   <p class="intro">I write low-level systems by hand, and I build larger ones by directing and evaluating AI coding agents. My clearest solo work is a C++ engine that runs certain algebra computations much faster than the standard tool. I also review agentic coding models professionally.</p>
-  <p class="intro">I'm looking for research-engineer, applied-AI, agentic-coding, or commissions.</p>
+  <p class="intro">I'm looking for research-engineer, applied-AI, or agentic-coding roles, and I take commissions.</p>
 
   <section>
     <div class="label">Selected work</div>
@@ -119,10 +119,10 @@
     <div class="proj">
       <h3>ltx-studio</h3>
       <div class="kind">Python · ~8,470 lines · <a href="https://github.com/harrisonwolf/ltx-studio">github.com/harrisonwolf/ltx-studio</a></div>
-      <p>A local text-to-video studio that runs two video models on a single 8&nbsp;GB GPU and chains short shots into longer clips that stay coherent. Built from scratch in about a week and a half:</p>
+      <p>A local text-to-video studio that runs two video models on a single 8&nbsp;GB GPU and chains short shots into longer clips that stay coherent. Built from scratch in about two weeks:</p>
       <ul>
         <li>A resident vision-language model (Qwen3-VL, 4-bit) runs as an agent that turns plain-language direction into runnable generation settings.</li>
-        <li>I built a measurement layer to go with it: seam and drift telemetry, plus a blind A/B comparison harness, so I can tell whether a change actually helped.</li>
+        <li>I built a measurement layer to go with it: seam and drift telemetry, plus a blind A/B comparison harness, so I can tell whether a change helped.</li>
         <li>Drift control between shots uses AdaIN latent anchoring (from diffusers, cited) and a color-matching pass I wrote.</li>
       </ul>
       <a href="https://github.com/harrisonwolf/ltx-studio#what-it-looks-like"><img class="shot" src="media/ltx-newrun.png" alt="LTX Studio NEW RUN screen: backend schematic on a fast-to-nicer axis, contextual info panel, and readout meters predicting VRAM, quality, drift, and render time" loading="lazy" width="1400" height="697"></a>
@@ -139,8 +139,8 @@
         <video class="shot" autoplay loop muted playsinline preload="metadata" poster="media/ltx-day-one.png" aria-label="The project's first output: a blurry, motion-smeared dog wading in the surf"><source src="media/ltx-day-one.mp4" type="video/mp4"></video>
         <video class="shot" autoplay loop muted playsinline preload="metadata" poster="media/ltx-day-fourteen.png" aria-label="Day fourteen: a golden-hour corgi in profile on the beach, backlit by the sunset"><source src="media/ltx-day-fourteen.mp4" type="video/mp4"></video>
       </div>
-      <div class="shot-cap">How far it came in two weeks: the first clip this project ever produced (June 22, the initial LTX smoke test) beside a deliberate re-run of the same dog-on-a-beach prompt on day fourteen (July 6, Wan backend) — my go-to smoke test, same 8&nbsp;GB card. No prior video-generation experience.</div>
-      <p>ltx-studio grew out of an earlier AnimateDiff pipeline I directed onto the same unsupported 8&nbsp;GB card — a PyTorch-SDPA attention backport, a from-scratch LCM scheduler, a conv-aware LoRA merge — before modern open-weight models made the output worth watching. That earlier work is where I learned the model internals this one runs on. Code on request.</p>
+      <div class="shot-cap">How far it came in two weeks: the first clip this project ever produced (June 22, the initial LTX smoke test) beside a day-fourteen re-run of the same dog-on-a-beach prompt (July 6, Wan backend), same 8&nbsp;GB card.</div>
+      <p>ltx-studio grew out of an earlier AnimateDiff pipeline I directed onto the same unsupported 8&nbsp;GB card — a PyTorch-SDPA attention backport, a from-scratch LCM scheduler, a conv-aware LoRA merge — before modern open-weight models made the output worth watching. That earlier work, which I came to with no video-generation background, is where I learned the model internals this one runs on. Code on request.</p>
     </div>
 
     <div class="proj">
@@ -235,7 +235,7 @@
         <div class="xp-item">
           <div class="r">Summer 2024 · BURST research grant · PI: Dr. Adam Boocher</div>
           <div class="t">Research Assistant, Boij–Söderberg theory — University of San Diego</div>
-          <div class="d">Built the from-scratch C++ engine above; it produced the computation behind one of the three main theorems in the resulting paper. I received the mathematics department's award for outstanding research in mathematics for this work.</div>
+          <div class="d">Built the from-scratch C++ engine above; its exhaustive search surfaced the counterexample cases behind one of the paper's three main theorems, and the proof computations then ran in Macaulay2. I received the mathematics department's award for outstanding research in mathematics for this work.</div>
         </div>
       </div>
     </div>
