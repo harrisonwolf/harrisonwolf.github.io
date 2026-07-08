@@ -136,8 +136,8 @@
       </div>
       <div class="shot-cap">Left: "Bioluminescent forest at night — glowing moths, luminescent moss, a stream lit from within. Cinematic, 35&nbsp;mm." Right: fireflies over a glowing stream, 64&nbsp;fps after interpolation.</div>
       <div class="shot-row">
-        <video class="shot" autoplay loop muted playsinline preload="metadata" poster="media/ltx-day-one.png" aria-label="The project's first output: a blurry, motion-smeared dog wading in the surf"><source src="media/ltx-day-one.mp4" type="video/mp4"></video>
-        <video class="shot" autoplay loop muted playsinline preload="metadata" poster="media/ltx-day-fourteen.png" aria-label="Day fourteen: a golden-hour corgi in profile on the beach, backlit by the sunset"><source src="media/ltx-day-fourteen.mp4" type="video/mp4"></video>
+        <video class="shot" autoplay muted playsinline preload="metadata" poster="media/ltx-day-one.png" aria-label="The project's first output: a blurry, motion-smeared dog wading in the surf"><source src="media/ltx-day-one.mp4" type="video/mp4"></video>
+        <video class="shot" autoplay muted playsinline preload="metadata" poster="media/ltx-day-fourteen.png" aria-label="Day fourteen: a golden-hour corgi in profile on the beach, backlit by the sunset"><source src="media/ltx-day-fourteen.mp4" type="video/mp4"></video>
       </div>
       <div class="shot-cap">How far it came in two weeks: the first clip this project ever produced (June 22, the initial LTX smoke test) beside a day-fourteen re-run of the same dog-on-a-beach prompt (July 6, Wan backend), same 8&nbsp;GB card.</div>
       <p>ltx-studio grew out of an earlier AnimateDiff pipeline I directed onto the same unsupported 8&nbsp;GB card — a PyTorch-SDPA attention backport, a from-scratch LCM scheduler, a conv-aware LoRA merge — before modern open-weight models made the output worth watching. That earlier work, which I came to with no video-generation background, is where I learned the model internals this one runs on. Code on request.</p>
@@ -292,5 +292,21 @@
   </div>
 
 </main>
+  <script>
+  // Gentle loop for the ltx-studio clips: hold the last frame briefly, reset,
+  // hold the first frame briefly, then replay. No on-screen controls.
+  (function(){
+    var HOLD = 150; // ms
+    document.querySelectorAll('video.shot').forEach(function(v){
+      v.removeAttribute('loop');
+      v.addEventListener('ended', function(){
+        setTimeout(function(){
+          try { v.currentTime = 0; } catch (e) {}
+          setTimeout(function(){ var pr = v.play(); if (pr && pr.catch) pr.catch(function(){}); }, HOLD);
+        }, HOLD);
+      });
+    });
+  })();
+  </script>
 </body>
 </html>
