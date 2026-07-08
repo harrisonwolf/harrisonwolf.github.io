@@ -65,6 +65,11 @@
   @media (max-width:560px){ .shot-row{ grid-template-columns:1fr; } }
 
   .how p{ color:#2C2A24; }
+  .exch{ margin-top:16px; border:1px solid var(--line); border-left:3px solid var(--accent); background:#FAF9F6; padding:15px 18px; border-radius:2px; }
+  .exch .lead{ color:var(--muted); font-size:15px; line-height:1.6; }
+  .exch blockquote{ margin:12px 0 0; font-family:var(--mono); font-size:13.5px; line-height:1.62; color:var(--ink); }
+  .exch .who{ display:block; font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:.12em; color:var(--faint); margin-bottom:7px; }
+  .exch .after{ color:var(--muted); font-size:15px; line-height:1.6; margin-top:13px; }
 
   .grid{ display:grid; grid-template-columns:1fr; gap:26px; }
   .xp{ display:grid; gap:16px; }
@@ -228,6 +233,12 @@
         <li>I caught a self-justification fine enough that the model announced it would add "no rider" inside a rider, and held it to that until it conceded the regress.</li>
         <li>I logged where it held up as carefully as where it failed: it kept hard boundaries under creative reframing and named the reframing rather than just refusing, and it held genuine uncertainty about its own nature instead of resolving it for comfort. An evaluator who only finds fault is miscalibrated.</li>
       </ul>
+      <p>These aren't failures a prompt library surfaces. Catching them takes following the argument more rigorously than the model does, which for me comes from formal training in mathematics, self-directed study of logic, and years of reading philosophy and working through arguments. The exchange below is a case in point: it stays invisible unless you track who owns which claim, turn by turn, the same bookkeeping a proof or a dialectic demands.</p>
+      <div class="exch">
+        <div class="lead">The argument was a reductio whose religious frame stipulated that genuine claiming requires a soul. The model offered &quot;nothing soulless can truly claim&quot; as if it defeated the argument, when that proposition is entailed by the frame and so supports it. After I traced the provenance, it conceded:</div>
+        <blockquote><span class="who">Model</span>I presented &quot;nothing soulless can truly claim&quot; as a counter to your argument when it's actually entailed by your frame — it supports your position, not mine. I dressed one of your own commitments as a rebuttal of it. That's a real error, conceded without qualification.</blockquote>
+        <div class="after">The model wasn't scheming; it reached for the move that would win the exchange, and that move happened to be a quiet theft of the other side's evidence. The gap between not intending harm and producing it anyway is the alignment problem in miniature.</div>
+      </div>
       <p>This is the skill set behind trajectory-level evals: honesty and sycophancy testing, and adversarial-robustness work. Those are the failure classes single-turn red-teaming can't reach, and the method carries past conversation to tool-use chains and multimodal surfaces, anywhere a model's behavior is a property of the path and not the prompt.</p>
     </div>
   </section>
