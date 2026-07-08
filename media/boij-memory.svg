@@ -1,94 +1,96 @@
 <svg viewBox="0 0 980 560" xmlns="http://www.w3.org/2000/svg" font-family="ui-monospace,Menlo,Consolas,monospace">
 <rect width="980" height="560" fill="#FBFAF8"/>
 <text x="34" y="34" fill="#1B1B17" font-size="17" font-weight="700">Peak memory vs. problem size</text>
-<text x="34" y="53" fill="#6C685F" font-size="11.5">codimension 3&#8211;7 &#183; LINEAR axes &#183; peak resident set &#183; C++ (solid) vs. Macaulay2 (dashed)</text>
-<line x1="92.0" y1="80" x2="92.0" y2="470" stroke="#E4E1D9"/>
+<text x="34" y="53" fill="#6C685F" font-size="11.5">codimension 3–7 · linear axes · peak resident set · C++ (solid) vs. Macaulay2 (dashed)</text>
+<line x1="92.0" y1="80" x2="92.0" y2="470" stroke="#E7E4DC"/>
 <text x="92.0" y="488" fill="#6C685F" font-size="11.5" text-anchor="middle">0</text>
-<line x1="246.8" y1="80" x2="246.8" y2="470" stroke="#E4E1D9"/>
+<line x1="246.8" y1="80" x2="246.8" y2="470" stroke="#E7E4DC"/>
 <text x="246.8" y="488" fill="#6C685F" font-size="11.5" text-anchor="middle">5M</text>
-<line x1="401.5" y1="80" x2="401.5" y2="470" stroke="#E4E1D9"/>
+<line x1="401.5" y1="80" x2="401.5" y2="470" stroke="#E7E4DC"/>
 <text x="401.5" y="488" fill="#6C685F" font-size="11.5" text-anchor="middle">10M</text>
-<line x1="556.3" y1="80" x2="556.3" y2="470" stroke="#E4E1D9"/>
+<line x1="556.3" y1="80" x2="556.3" y2="470" stroke="#E7E4DC"/>
 <text x="556.3" y="488" fill="#6C685F" font-size="11.5" text-anchor="middle">15M</text>
-<line x1="711.0" y1="80" x2="711.0" y2="470" stroke="#E4E1D9"/>
+<line x1="711.0" y1="80" x2="711.0" y2="470" stroke="#E7E4DC"/>
 <text x="711.0" y="488" fill="#6C685F" font-size="11.5" text-anchor="middle">20M</text>
-<line x1="92" y1="470.0" x2="742" y2="470.0" stroke="#E4E1D9"/>
+<line x1="92" y1="470.0" x2="742" y2="470.0" stroke="#E7E4DC"/>
 <text x="83" y="474.0" fill="#6C685F" font-size="11.5" text-anchor="end">0</text>
-<line x1="92" y1="392.0" x2="742" y2="392.0" stroke="#E4E1D9"/>
-<text x="83" y="396.0" fill="#6C685F" font-size="11.5" text-anchor="end">0.5 GB</text>
-<line x1="92" y1="314.0" x2="742" y2="314.0" stroke="#E4E1D9"/>
-<text x="83" y="318.0" fill="#6C685F" font-size="11.5" text-anchor="end">1 GB</text>
-<line x1="92" y1="236.0" x2="742" y2="236.0" stroke="#E4E1D9"/>
-<text x="83" y="240.0" fill="#6C685F" font-size="11.5" text-anchor="end">1.5 GB</text>
-<line x1="92" y1="158.0" x2="742" y2="158.0" stroke="#E4E1D9"/>
-<text x="83" y="162.0" fill="#6C685F" font-size="11.5" text-anchor="end">2 GB</text>
-<line x1="92" y1="80.0" x2="742" y2="80.0" stroke="#E4E1D9"/>
-<text x="83" y="84.0" fill="#6C685F" font-size="11.5" text-anchor="end">2.5 GB</text>
+<line x1="92" y1="395.0" x2="742" y2="395.0" stroke="#E7E4DC"/>
+<text x="83" y="399.0" fill="#6C685F" font-size="11.5" text-anchor="end">0.5 GB</text>
+<line x1="92" y1="320.0" x2="742" y2="320.0" stroke="#E7E4DC"/>
+<text x="83" y="324.0" fill="#6C685F" font-size="11.5" text-anchor="end">1 GB</text>
+<line x1="92" y1="245.0" x2="742" y2="245.0" stroke="#E7E4DC"/>
+<text x="83" y="249.0" fill="#6C685F" font-size="11.5" text-anchor="end">1.5 GB</text>
+<line x1="92" y1="170.0" x2="742" y2="170.0" stroke="#E7E4DC"/>
+<text x="83" y="174.0" fill="#6C685F" font-size="11.5" text-anchor="end">2 GB</text>
+<line x1="92" y1="95.0" x2="742" y2="95.0" stroke="#E7E4DC"/>
+<text x="83" y="99.0" fill="#6C685F" font-size="11.5" text-anchor="end">2.5 GB</text>
 <text x="417" y="510" fill="#6C685F" font-size="12.5" text-anchor="middle">number of candidate sequences  n = C(d, c)</text>
-<text transform="translate(36,275) rotate(-90)" fill="#6C685F" font-size="12.5" text-anchor="middle">peak memory</text>
+<text transform="translate(34,275) rotate(-90)" fill="#6C685F" font-size="12.5" text-anchor="middle">peak memory</text>
 <rect x="92" y="80" width="650" height="390" fill="none" stroke="#9C978C" stroke-width="1.2"/>
-<rect x="132.2" y="80" width="609.8" height="390" fill="#B0432E" opacity="0.045"/>
-<line x1="132.2" y1="80" x2="132.2" y2="470" stroke="#B0432E" stroke-width="1" stroke-dasharray="4 3" opacity="0.5"/>
-<line x1="92" y1="454.4" x2="742" y2="454.4" stroke="#B0432E" stroke-width="1" stroke-dasharray="2 3" opacity="0.6"/>
-<text x="100" y="448.4" fill="#B0432E" font-size="10.5">Macaulay2 floor &#8776; 100 MB</text>
-<polyline points="92.0,454.6 93.1,454.8 100.7,446.1" fill="none" stroke="#0072B2" stroke-width="1.6" stroke-dasharray="5 3" opacity="0.85"/>
-<polyline points="92.0,469.3 93.1,468.8 100.7,464.0 171.6,423.1 733.0,97.3" fill="none" stroke="#0072B2" stroke-width="2.1"/>
-<circle cx="92.0" cy="454.6" r="4.3" fill="#FBFAF8" stroke="#0072B2" stroke-width="1.8"/>
-<circle cx="92.0" cy="469.3" r="4.3" fill="#0072B2" stroke="#0072B2" stroke-width="0"/>
-<circle cx="93.1" cy="454.8" r="4.3" fill="#FBFAF8" stroke="#0072B2" stroke-width="1.8"/>
-<circle cx="93.1" cy="468.8" r="4.3" fill="#0072B2" stroke="#0072B2" stroke-width="0"/>
-<circle cx="100.7" cy="446.1" r="4.3" fill="#FBFAF8" stroke="#0072B2" stroke-width="1.8"/>
-<circle cx="100.7" cy="464.0" r="4.3" fill="#0072B2" stroke="#0072B2" stroke-width="0"/>
-<circle cx="171.6" cy="423.1" r="4.3" fill="#0072B2" stroke="#0072B2" stroke-width="0"/>
-<circle cx="733.0" cy="97.3" r="4.3" fill="#0072B2" stroke="#0072B2" stroke-width="0"/>
-<polyline points="92.0,454.6 94.8,453.6" fill="none" stroke="#009E73" stroke-width="1.6" stroke-dasharray="5 3" opacity="0.85"/>
-<polyline points="92.0,469.3 94.8,467.9 141.0,441.9 719.1,101.0" fill="none" stroke="#009E73" stroke-width="2.1"/>
-<circle cx="92.0" cy="454.6" r="4.3" fill="#FBFAF8" stroke="#009E73" stroke-width="1.8"/>
-<circle cx="92.0" cy="469.3" r="4.3" fill="#009E73" stroke="#009E73" stroke-width="0"/>
-<circle cx="94.8" cy="453.6" r="4.3" fill="#FBFAF8" stroke="#009E73" stroke-width="1.8"/>
-<circle cx="94.8" cy="467.9" r="4.3" fill="#009E73" stroke="#009E73" stroke-width="0"/>
-<circle cx="141.0" cy="441.9" r="4.3" fill="#009E73" stroke="#009E73" stroke-width="0"/>
-<circle cx="719.1" cy="101.0" r="4.3" fill="#009E73" stroke="#009E73" stroke-width="0"/>
-<polyline points="92.0,454.6 93.6,454.8 129.8,396.5" fill="none" stroke="#E69F00" stroke-width="1.6" stroke-dasharray="5 3" opacity="0.85"/>
-<polyline points="92.0,469.4 93.6,468.6 129.8,446.2 466.6,267.9" fill="none" stroke="#E69F00" stroke-width="2.1"/>
-<circle cx="92.0" cy="454.6" r="4.3" fill="#FBFAF8" stroke="#E69F00" stroke-width="1.8"/>
-<circle cx="92.0" cy="469.4" r="4.3" fill="#E69F00" stroke="#E69F00" stroke-width="0"/>
-<circle cx="93.6" cy="454.8" r="4.3" fill="#FBFAF8" stroke="#E69F00" stroke-width="1.8"/>
-<circle cx="93.6" cy="468.6" r="4.3" fill="#E69F00" stroke="#E69F00" stroke-width="0"/>
-<rect x="124.3" y="393.8" width="8.4" height="8.4" fill="#FBFAF8" stroke="#E69F00" stroke-width="1.8"/>
-<rect x="124.3" y="442.5" width="8.4" height="8.4" fill="#E69F00" stroke="#E69F00" stroke-width="0"/>
-<circle cx="129.8" cy="396.5" r="4.3" fill="#FBFAF8" stroke="#E69F00" stroke-width="1.8"/>
-<circle cx="129.8" cy="446.2" r="4.3" fill="#E69F00" stroke="#E69F00" stroke-width="0"/>
-<circle cx="466.6" cy="267.9" r="4.3" fill="#E69F00" stroke="#E69F00" stroke-width="0"/>
-<polyline points="92.0,454.7 93.2,454.8 120.0,409.2" fill="none" stroke="#D55E00" stroke-width="1.6" stroke-dasharray="5 3" opacity="0.85"/>
-<polyline points="92.0,469.4 93.2,468.7 120.0,452.2 583.9,166.9" fill="none" stroke="#D55E00" stroke-width="2.1"/>
-<circle cx="92.0" cy="454.7" r="4.3" fill="#FBFAF8" stroke="#D55E00" stroke-width="1.8"/>
-<circle cx="92.0" cy="469.4" r="4.3" fill="#D55E00" stroke="#D55E00" stroke-width="0"/>
-<circle cx="93.2" cy="454.8" r="4.3" fill="#FBFAF8" stroke="#D55E00" stroke-width="1.8"/>
-<circle cx="93.2" cy="468.7" r="4.3" fill="#D55E00" stroke="#D55E00" stroke-width="0"/>
-<circle cx="120.0" cy="409.2" r="4.3" fill="#FBFAF8" stroke="#D55E00" stroke-width="1.8"/>
-<circle cx="120.0" cy="452.2" r="4.3" fill="#D55E00" stroke="#D55E00" stroke-width="0"/>
-<circle cx="583.9" cy="166.9" r="4.3" fill="#D55E00" stroke="#D55E00" stroke-width="0"/>
-<polyline points="92.0,454.7 93.0,453.7 102.7,439.6 128.6,393.2" fill="none" stroke="#CC79A7" stroke-width="1.6" stroke-dasharray="5 3" opacity="0.85"/>
-<polyline points="92.0,469.4 93.0,468.8 102.7,461.8 128.6,441.4 196.2,397.4" fill="none" stroke="#CC79A7" stroke-width="2.1"/>
-<circle cx="92.0" cy="454.7" r="4.3" fill="#FBFAF8" stroke="#CC79A7" stroke-width="1.8"/>
-<circle cx="92.0" cy="469.4" r="4.3" fill="#CC79A7" stroke="#CC79A7" stroke-width="0"/>
-<circle cx="93.0" cy="453.7" r="4.3" fill="#FBFAF8" stroke="#CC79A7" stroke-width="1.8"/>
-<circle cx="93.0" cy="468.8" r="4.3" fill="#CC79A7" stroke="#CC79A7" stroke-width="0"/>
-<circle cx="102.7" cy="439.6" r="4.3" fill="#FBFAF8" stroke="#CC79A7" stroke-width="1.8"/>
-<circle cx="102.7" cy="461.8" r="4.3" fill="#CC79A7" stroke="#CC79A7" stroke-width="0"/>
-<rect x="123.8" y="390.0" width="8.4" height="8.4" fill="#FBFAF8" stroke="#CC79A7" stroke-width="1.8"/>
-<rect x="123.8" y="437.4" width="8.4" height="8.4" fill="#CC79A7" stroke="#CC79A7" stroke-width="0"/>
-<circle cx="128.6" cy="393.2" r="4.3" fill="#FBFAF8" stroke="#CC79A7" stroke-width="1.8"/>
-<circle cx="128.6" cy="441.4" r="4.3" fill="#CC79A7" stroke="#CC79A7" stroke-width="0"/>
-<circle cx="196.2" cy="397.4" r="4.3" fill="#CC79A7" stroke="#CC79A7" stroke-width="0"/>
-<text x="725.0" y="89.3" fill="#3C5A49" font-size="11" text-anchor="end">C++ 2.4 GB @ 20.7M</text>
-<text x="764" y="86" fill="#1B1B17" font-size="12" font-weight="700">codimension</text>
-<circle cx="771" cy="103" r="5" fill="#0072B2"/><text x="786" y="107" fill="#6C685F" font-size="12">c = 3</text>
-<circle cx="771" cy="123" r="5" fill="#009E73"/><text x="786" y="127" fill="#6C685F" font-size="12">c = 4</text>
-<circle cx="771" cy="143" r="5" fill="#E69F00"/><text x="786" y="147" fill="#6C685F" font-size="12">c = 5</text>
-<circle cx="771" cy="163" r="5" fill="#D55E00"/><text x="786" y="167" fill="#6C685F" font-size="12">c = 6</text>
-<circle cx="771" cy="183" r="5" fill="#CC79A7"/><text x="786" y="187" fill="#6C685F" font-size="12">c = 7</text>
-<circle cx="771" cy="221" r="4.3" fill="#1B1B17"/><text x="786" y="225" fill="#6C685F" font-size="12">C++</text>
-<circle cx="771" cy="241" r="4.3" fill="#FBFAF8" stroke="#1B1B17" stroke-width="1.8"/><text x="786" y="245" fill="#6C685F" font-size="12">Macaulay2</text>
+<line x1="732.7" y1="80" x2="732.7" y2="470" stroke="#B0432E" stroke-width="1.2" stroke-dasharray="4 3" opacity="0.7"/>
+<text x="726.7" y="95" fill="#B0432E" font-size="11.5" text-anchor="end">Macaulay2 out of memory (~20M) →</text>
+<polyline points="92.0,455.2 93.1,455.4 100.7,447.0 171.6,339.6 229.9,253.7" fill="none" stroke="#0072B2" stroke-width="1.7" stroke-dasharray="5 3" opacity="0.9"/>
+<polyline points="92.0,469.4 93.1,468.9 100.7,464.2 171.6,424.9 229.9,385.8 733.0,111.6" fill="none" stroke="#0072B2" stroke-width="2.2"/>
+<circle cx="92.0" cy="455.2" r="4.3" fill="#FBFAF8" stroke="#0072B2" stroke-width="1.8"/>
+<circle cx="92.0" cy="469.4" r="4.3" fill="#0072B2"/>
+<circle cx="93.1" cy="455.4" r="4.3" fill="#FBFAF8" stroke="#0072B2" stroke-width="1.8"/>
+<circle cx="93.1" cy="468.9" r="4.3" fill="#0072B2"/>
+<circle cx="100.7" cy="447.0" r="4.3" fill="#FBFAF8" stroke="#0072B2" stroke-width="1.8"/>
+<circle cx="100.7" cy="464.2" r="4.3" fill="#0072B2"/>
+<circle cx="171.6" cy="339.6" r="4.3" fill="#FBFAF8" stroke="#0072B2" stroke-width="1.8"/>
+<circle cx="171.6" cy="424.9" r="4.3" fill="#0072B2"/>
+<circle cx="229.9" cy="253.7" r="4.3" fill="#FBFAF8" stroke="#0072B2" stroke-width="1.8"/>
+<circle cx="229.9" cy="385.8" r="4.3" fill="#0072B2"/>
+<circle cx="733.0" cy="111.6" r="4.3" fill="#0072B2"/>
+<polyline points="92.0,455.2 94.8,454.2" fill="none" stroke="#009E73" stroke-width="1.7" stroke-dasharray="5 3" opacity="0.9"/>
+<polyline points="92.0,469.4 94.8,468.0 141.0,443.0 719.1,115.2" fill="none" stroke="#009E73" stroke-width="2.2"/>
+<circle cx="92.0" cy="455.2" r="4.3" fill="#FBFAF8" stroke="#009E73" stroke-width="1.8"/>
+<circle cx="92.0" cy="469.4" r="4.3" fill="#009E73"/>
+<circle cx="94.8" cy="454.2" r="4.3" fill="#FBFAF8" stroke="#009E73" stroke-width="1.8"/>
+<circle cx="94.8" cy="468.0" r="4.3" fill="#009E73"/>
+<circle cx="141.0" cy="443.0" r="4.3" fill="#009E73"/>
+<circle cx="719.1" cy="115.2" r="4.3" fill="#009E73"/>
+<polyline points="92.0,455.2 93.6,455.4 129.8,399.3" fill="none" stroke="#E69F00" stroke-width="1.7" stroke-dasharray="5 3" opacity="0.9"/>
+<polyline points="92.0,469.4 93.6,468.7 129.8,447.2 466.6,275.6" fill="none" stroke="#E69F00" stroke-width="2.2"/>
+<circle cx="92.0" cy="455.2" r="4.3" fill="#FBFAF8" stroke="#E69F00" stroke-width="1.8"/>
+<circle cx="92.0" cy="469.4" r="4.3" fill="#E69F00"/>
+<circle cx="93.6" cy="455.4" r="4.3" fill="#FBFAF8" stroke="#E69F00" stroke-width="1.8"/>
+<circle cx="93.6" cy="468.7" r="4.3" fill="#E69F00"/>
+<circle cx="129.8" cy="399.3" r="4.3" fill="#FBFAF8" stroke="#E69F00" stroke-width="1.8"/>
+<circle cx="129.8" cy="447.2" r="4.3" fill="#E69F00"/>
+<circle cx="466.6" cy="275.6" r="4.3" fill="#E69F00"/>
+<circle cx="128.5" cy="400.8" r="4.3" fill="#FBFAF8" stroke="#E69F00" stroke-width="1.8"/>
+<circle cx="128.5" cy="447.6" r="4.3" fill="#E69F00"/>
+<polyline points="92.0,455.2 93.2,455.4 120.0,411.6" fill="none" stroke="#D55E00" stroke-width="1.7" stroke-dasharray="5 3" opacity="0.9"/>
+<polyline points="92.0,469.4 93.2,468.7 120.0,452.9 583.9,178.6" fill="none" stroke="#D55E00" stroke-width="2.2"/>
+<circle cx="92.0" cy="455.2" r="4.3" fill="#FBFAF8" stroke="#D55E00" stroke-width="1.8"/>
+<circle cx="92.0" cy="469.4" r="4.3" fill="#D55E00"/>
+<circle cx="93.2" cy="455.4" r="4.3" fill="#FBFAF8" stroke="#D55E00" stroke-width="1.8"/>
+<circle cx="93.2" cy="468.7" r="4.3" fill="#D55E00"/>
+<circle cx="120.0" cy="411.6" r="4.3" fill="#FBFAF8" stroke="#D55E00" stroke-width="1.8"/>
+<circle cx="120.0" cy="452.9" r="4.3" fill="#D55E00"/>
+<circle cx="583.9" cy="178.6" r="4.3" fill="#D55E00"/>
+<polyline points="92.0,455.2 93.0,454.4 102.7,440.8 128.6,396.2" fill="none" stroke="#CC79A7" stroke-width="1.7" stroke-dasharray="5 3" opacity="0.9"/>
+<polyline points="92.0,469.4 93.0,468.9 102.7,462.1 128.6,442.5 196.2,400.2" fill="none" stroke="#CC79A7" stroke-width="2.2"/>
+<circle cx="92.0" cy="455.2" r="4.3" fill="#FBFAF8" stroke="#CC79A7" stroke-width="1.8"/>
+<circle cx="92.0" cy="469.4" r="4.3" fill="#CC79A7"/>
+<circle cx="93.0" cy="454.4" r="4.3" fill="#FBFAF8" stroke="#CC79A7" stroke-width="1.8"/>
+<circle cx="93.0" cy="468.9" r="4.3" fill="#CC79A7"/>
+<circle cx="102.7" cy="440.8" r="4.3" fill="#FBFAF8" stroke="#CC79A7" stroke-width="1.8"/>
+<circle cx="102.7" cy="462.1" r="4.3" fill="#CC79A7"/>
+<circle cx="128.6" cy="396.2" r="4.3" fill="#FBFAF8" stroke="#CC79A7" stroke-width="1.8"/>
+<circle cx="128.6" cy="442.5" r="4.3" fill="#CC79A7"/>
+<circle cx="196.2" cy="400.2" r="4.3" fill="#CC79A7"/>
+<circle cx="128.0" cy="397.1" r="4.3" fill="#FBFAF8" stroke="#CC79A7" stroke-width="1.8"/>
+<circle cx="128.0" cy="442.7" r="4.3" fill="#CC79A7"/>
+<text x="237.9" y="253.7" fill="#B0432E" font-size="11">M2 already 1.4 GB at 4.5M</text>
+<text x="724.7" y="103.6" fill="#3C5A49" font-size="11" text-anchor="end">C++ 2.3 GB at 20.7M (~3× lower at matched sizes)</text>
+<text x="762" y="86" fill="#1B1B17" font-size="12" font-weight="700">codimension</text>
+<circle cx="769" cy="104" r="5" fill="#0072B2"/><text x="784" y="108" fill="#6C685F" font-size="12">c = 3</text>
+<circle cx="769" cy="124" r="5" fill="#009E73"/><text x="784" y="128" fill="#6C685F" font-size="12">c = 4</text>
+<circle cx="769" cy="144" r="5" fill="#E69F00"/><text x="784" y="148" fill="#6C685F" font-size="12">c = 5</text>
+<circle cx="769" cy="164" r="5" fill="#D55E00"/><text x="784" y="168" fill="#6C685F" font-size="12">c = 6</text>
+<circle cx="769" cy="184" r="5" fill="#CC79A7"/><text x="784" y="188" fill="#6C685F" font-size="12">c = 7</text>
+<line x1="760" y1="224" x2="776" y2="224" stroke="#1B1B17" stroke-width="2.2"/><circle cx="768" cy="224" r="4.3" fill="#1B1B17"/><text x="784" y="228" fill="#6C685F" font-size="12">C++ engine</text>
+<line x1="760" y1="244" x2="776" y2="244" stroke="#1B1B17" stroke-width="1.7" stroke-dasharray="5 3"/><circle cx="768" cy="244" r="4.3" fill="#FBFAF8" stroke="#1B1B17" stroke-width="1.8"/><text x="784" y="248" fill="#6C685F" font-size="12">Macaulay2</text>
 </svg>

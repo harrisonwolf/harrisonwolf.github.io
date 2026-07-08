@@ -1,57 +1,61 @@
-<svg viewBox="0 0 980 480" xmlns="http://www.w3.org/2000/svg" font-family="ui-monospace,Menlo,Consolas,monospace">
-<rect width="980" height="480" fill="#FBFAF8"/>
+<svg viewBox="0 0 980 500" xmlns="http://www.w3.org/2000/svg" font-family="ui-monospace,Menlo,Consolas,monospace">
+<rect width="980" height="500" fill="#FBFAF8"/>
 <text x="34" y="34" fill="#1B1B17" font-size="17" font-weight="700">Speedup: how many times faster than Macaulay2</text>
-<text x="34" y="53" fill="#6C685F" font-size="11.5">speedup = M2 CPU time &#247; C++ CPU time &#183; LINEAR axes &#183; colored by codimension</text>
-<rect x="92" y="144.6" width="650" height="96.8" fill="#3C5A49" opacity="0.08"/>
-<text x="736" y="197.0" fill="#3C5A49" font-size="11" text-anchor="end">typical 70&#8211;115&#215;</text>
-<line x1="92.0" y1="80" x2="92.0" y2="392" stroke="#E4E1D9"/>
-<text x="92.0" y="410" fill="#6C685F" font-size="11.5" text-anchor="middle">0</text>
-<line x1="217.0" y1="80" x2="217.0" y2="392" stroke="#E4E1D9"/>
-<text x="217.0" y="410" fill="#6C685F" font-size="11.5" text-anchor="middle">250K</text>
-<line x1="342.0" y1="80" x2="342.0" y2="392" stroke="#E4E1D9"/>
-<text x="342.0" y="410" fill="#6C685F" font-size="11.5" text-anchor="middle">500K</text>
-<line x1="467.0" y1="80" x2="467.0" y2="392" stroke="#E4E1D9"/>
-<text x="467.0" y="410" fill="#6C685F" font-size="11.5" text-anchor="middle">750K</text>
-<line x1="592.0" y1="80" x2="592.0" y2="392" stroke="#E4E1D9"/>
-<text x="592.0" y="410" fill="#6C685F" font-size="11.5" text-anchor="middle">1M</text>
-<line x1="717.0" y1="80" x2="717.0" y2="392" stroke="#E4E1D9"/>
-<text x="717.0" y="410" fill="#6C685F" font-size="11.5" text-anchor="middle">1.25M</text>
-<line x1="92" y1="392.0" x2="742" y2="392.0" stroke="#E4E1D9"/>
-<text x="83" y="396.0" fill="#6C685F" font-size="11.5" text-anchor="end">0</text>
-<line x1="92" y1="338.2" x2="742" y2="338.2" stroke="#E4E1D9"/>
-<text x="83" y="342.2" fill="#6C685F" font-size="11.5" text-anchor="end">25&#215;</text>
-<line x1="92" y1="284.4" x2="742" y2="284.4" stroke="#E4E1D9"/>
-<text x="83" y="288.4" fill="#6C685F" font-size="11.5" text-anchor="end">50&#215;</text>
-<line x1="92" y1="230.6" x2="742" y2="230.6" stroke="#E4E1D9"/>
-<text x="83" y="234.6" fill="#6C685F" font-size="11.5" text-anchor="end">75&#215;</text>
-<line x1="92" y1="176.8" x2="742" y2="176.8" stroke="#E4E1D9"/>
-<text x="83" y="180.8" fill="#6C685F" font-size="11.5" text-anchor="end">100&#215;</text>
-<line x1="92" y1="123.0" x2="742" y2="123.0" stroke="#E4E1D9"/>
-<text x="83" y="127.0" fill="#6C685F" font-size="11.5" text-anchor="end">125&#215;</text>
-<text x="417" y="432" fill="#6C685F" font-size="12.5" text-anchor="middle">number of candidate sequences  n = C(d, c)</text>
-<text transform="translate(36,236) rotate(-90)" fill="#6C685F" font-size="12.5" text-anchor="middle">speedup</text>
-<rect x="92" y="80" width="650" height="312" fill="none" stroke="#9C978C" stroke-width="1.2"/>
-<circle cx="92.6" cy="259.0" r="3.6" fill="#0072B2" opacity="0.35"/>
-<circle cx="109.1" cy="175.3" r="4.3" fill="#0072B2" stroke="#0072B2" stroke-width="0"/>
-<circle cx="232.4" cy="161.9" r="4.3" fill="#0072B2" stroke="#0072B2" stroke-width="0"/>
-<circle cx="92.7" cy="104.2" r="3.6" fill="#009E73" opacity="0.35"/>
-<circle cx="137.7" cy="142.6" r="4.3" fill="#009E73" stroke="#009E73" stroke-width="0"/>
-<circle cx="92.4" cy="108.5" r="3.6" fill="#E69F00" opacity="0.35"/>
-<circle cx="118.6" cy="145.3" r="4.3" fill="#E69F00" stroke="#E69F00" stroke-width="0"/>
-<rect x="677.4" y="230.1" width="8.4" height="8.4" fill="#E69F00" stroke="#E69F00" stroke-width="0"/>
-<circle cx="702.9" cy="145.7" r="4.3" fill="#E69F00" stroke="#E69F00" stroke-width="0"/>
-<circle cx="92.5" cy="121.6" r="3.6" fill="#D55E00" opacity="0.35"/>
-<circle cx="111.4" cy="231.4" r="4.3" fill="#D55E00" stroke="#D55E00" stroke-width="0"/>
-<circle cx="545.1" cy="143.5" r="4.3" fill="#D55E00" stroke="#D55E00" stroke-width="0"/>
-<circle cx="92.4" cy="252.4" r="3.6" fill="#CC79A7" opacity="0.35"/>
-<circle cx="107.9" cy="244.1" r="4.3" fill="#CC79A7" stroke="#CC79A7" stroke-width="0"/>
-<circle cx="265.1" cy="203.3" r="4.3" fill="#CC79A7" stroke="#CC79A7" stroke-width="0"/>
-<rect x="670.1" y="186.3" width="8.4" height="8.4" fill="#CC79A7" stroke="#CC79A7" stroke-width="0"/>
-<circle cx="684.0" cy="203.8" r="4.3" fill="#CC79A7" stroke="#CC79A7" stroke-width="0"/>
-<text x="764" y="86" fill="#1B1B17" font-size="12" font-weight="700">codimension</text>
-<circle cx="771" cy="103" r="5" fill="#0072B2"/><text x="786" y="107" fill="#6C685F" font-size="12">c = 3</text>
-<circle cx="771" cy="123" r="5" fill="#009E73"/><text x="786" y="127" fill="#6C685F" font-size="12">c = 4</text>
-<circle cx="771" cy="143" r="5" fill="#E69F00"/><text x="786" y="147" fill="#6C685F" font-size="12">c = 5</text>
-<circle cx="771" cy="163" r="5" fill="#D55E00"/><text x="786" y="167" fill="#6C685F" font-size="12">c = 6</text>
-<circle cx="771" cy="183" r="5" fill="#CC79A7"/><text x="786" y="187" fill="#6C685F" font-size="12">c = 7</text>
+<text x="34" y="53" fill="#6C685F" font-size="11.5">speedup = M2 CPU time ÷ C++ CPU time · linear axes · colored by codimension</text>
+<rect x="92" y="204.9" width="650" height="80.3" fill="#3C5A49" opacity="0.07"/>
+<text x="100" y="249.0" fill="#3C5A49" font-size="11">70–115× band (sub-million)</text>
+<line x1="92.0" y1="80" x2="92.0" y2="410" stroke="#E7E4DC"/>
+<text x="92.0" y="428" fill="#6C685F" font-size="11.5" text-anchor="middle">0</text>
+<line x1="222.0" y1="80" x2="222.0" y2="410" stroke="#E7E4DC"/>
+<text x="222.0" y="428" fill="#6C685F" font-size="11.5" text-anchor="middle">1M</text>
+<line x1="352.0" y1="80" x2="352.0" y2="410" stroke="#E7E4DC"/>
+<text x="352.0" y="428" fill="#6C685F" font-size="11.5" text-anchor="middle">2M</text>
+<line x1="482.0" y1="80" x2="482.0" y2="410" stroke="#E7E4DC"/>
+<text x="482.0" y="428" fill="#6C685F" font-size="11.5" text-anchor="middle">3M</text>
+<line x1="612.0" y1="80" x2="612.0" y2="410" stroke="#E7E4DC"/>
+<text x="612.0" y="428" fill="#6C685F" font-size="11.5" text-anchor="middle">4M</text>
+<line x1="742.0" y1="80" x2="742.0" y2="410" stroke="#E7E4DC"/>
+<text x="742.0" y="428" fill="#6C685F" font-size="11.5" text-anchor="middle">5M</text>
+<line x1="92" y1="410.0" x2="742" y2="410.0" stroke="#E7E4DC"/>
+<text x="83" y="414.0" fill="#6C685F" font-size="11.5" text-anchor="end">0</text>
+<line x1="92" y1="320.8" x2="742" y2="320.8" stroke="#E7E4DC"/>
+<text x="83" y="324.8" fill="#6C685F" font-size="11.5" text-anchor="end">50×</text>
+<line x1="92" y1="231.6" x2="742" y2="231.6" stroke="#E7E4DC"/>
+<text x="83" y="235.6" fill="#6C685F" font-size="11.5" text-anchor="end">100×</text>
+<line x1="92" y1="142.4" x2="742" y2="142.4" stroke="#E7E4DC"/>
+<text x="83" y="146.4" fill="#6C685F" font-size="11.5" text-anchor="end">150×</text>
+<text x="417" y="450" fill="#6C685F" font-size="12.5" text-anchor="middle">number of candidate sequences  n = C(d, c)</text>
+<text transform="translate(34,245) rotate(-90)" fill="#6C685F" font-size="12.5" text-anchor="middle">speedup</text>
+<rect x="92" y="80" width="650" height="330" fill="none" stroke="#9C978C" stroke-width="1.2"/>
+<polyline points="92.1,299.7 96.4,230.4 128.5,219.2 426.5,111.4 671.2,135.4" fill="none" stroke="#0072B2" stroke-width="1.7" opacity="0.55"/>
+<circle cx="92.1" cy="299.7" r="3.4" fill="#0072B2" opacity="0.4"/>
+<circle cx="96.4" cy="230.4" r="4.3" fill="#0072B2"/>
+<circle cx="128.5" cy="219.2" r="4.3" fill="#0072B2"/>
+<circle cx="426.5" cy="111.4" r="4.3" fill="#0072B2"/>
+<circle cx="671.2" cy="135.4" r="4.3" fill="#0072B2"/>
+<polyline points="92.2,171.4 103.9,203.2" fill="none" stroke="#009E73" stroke-width="1.7" opacity="0.55"/>
+<circle cx="92.2" cy="171.4" r="3.4" fill="#009E73" opacity="0.4"/>
+<circle cx="103.9" cy="203.2" r="4.3" fill="#009E73"/>
+<polyline points="92.1,174.9 98.9,205.5 245.3,279.2 250.8,205.9" fill="none" stroke="#E69F00" stroke-width="1.7" opacity="0.55"/>
+<circle cx="92.1" cy="174.9" r="3.4" fill="#E69F00" opacity="0.4"/>
+<circle cx="98.9" cy="205.5" r="4.3" fill="#E69F00"/>
+<circle cx="245.3" cy="279.2" r="4.3" fill="#E69F00"/>
+<circle cx="250.8" cy="205.9" r="4.3" fill="#E69F00"/>
+<polyline points="92.1,185.9 97.0,276.9 209.8,204.0" fill="none" stroke="#D55E00" stroke-width="1.7" opacity="0.55"/>
+<circle cx="92.1" cy="185.9" r="3.4" fill="#D55E00" opacity="0.4"/>
+<circle cx="97.0" cy="276.9" r="4.3" fill="#D55E00"/>
+<circle cx="209.8" cy="204.0" r="4.3" fill="#D55E00"/>
+<polyline points="92.1,294.3 96.1,287.4 137.0,253.5 243.4,242.9 245.9,254.0" fill="none" stroke="#CC79A7" stroke-width="1.7" opacity="0.55"/>
+<circle cx="92.1" cy="294.3" r="3.4" fill="#CC79A7" opacity="0.4"/>
+<circle cx="96.1" cy="287.4" r="4.3" fill="#CC79A7"/>
+<circle cx="137.0" cy="253.5" r="4.3" fill="#CC79A7"/>
+<circle cx="243.4" cy="242.9" r="4.3" fill="#CC79A7"/>
+<circle cx="245.9" cy="254.0" r="4.3" fill="#CC79A7"/>
+<text x="434.5" y="113.3" fill="#0072B2" font-size="11">codim 3 climbs to ~168× as M2 slows</text>
+<text x="762" y="86" fill="#1B1B17" font-size="12" font-weight="700">codimension</text>
+<circle cx="769" cy="104" r="5" fill="#0072B2"/><text x="784" y="108" fill="#6C685F" font-size="12">c = 3</text>
+<circle cx="769" cy="124" r="5" fill="#009E73"/><text x="784" y="128" fill="#6C685F" font-size="12">c = 4</text>
+<circle cx="769" cy="144" r="5" fill="#E69F00"/><text x="784" y="148" fill="#6C685F" font-size="12">c = 5</text>
+<circle cx="769" cy="164" r="5" fill="#D55E00"/><text x="784" y="168" fill="#6C685F" font-size="12">c = 6</text>
+<circle cx="769" cy="184" r="5" fill="#CC79A7"/><text x="784" y="188" fill="#6C685F" font-size="12">c = 7</text>
 </svg>
