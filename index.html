@@ -200,6 +200,12 @@
       <img class="shot" src="media/geometry-duality.svg" alt="Delaunay triangulation in faint lines overlaid with its Voronoi dual in ink, 300 sites" loading="lazy">
       <div class="shot-cap">And at density: 300 sites, triangulated and dualized end to end by the engine. Seed and command are embedded in the file; the counts check exactly against Euler's formula (581 triangles, 880 edges).</div>
     </div>
+
+    <div class="proj">
+      <h3>Terrain studies</h3>
+      <div class="kind">Geometry engine + GIS · client demo · <a href="terrain-study.html">view the one-pager</a></div>
+      <p>A one-page read on a piece of ground: how much earth it takes to cut a level building pad, and where the rain runs off. Real USGS elevation is triangulated into a surface by my planar-geometry engine, and the cut-and-fill and drainage are computed on that surface. It's built to plug into my geo-map platform, so the lot can come straight from parcel data. Made to hand to a non-technical client.</p>
+    </div>
   </section>
 
   <section>
@@ -207,14 +213,14 @@
     <div class="proj">
       <h3>Adversarial probing of frontier-model honesty</h3>
       <div class="kind">Self-directed evaluation · 277 exchanges, one session · full case study on request</div>
-      <p>A frontier model can hold its safety and honesty lines perfectly on turn one and still give them up by turn forty: conceding under social pressure, overstating a claim to win a point, misrepresenting its own judgment when candor gets costly. Single-turn red-teaming can't see that, because the failure lives in the trajectory, not in any one reply. I ran one continuous session &#8212; 277 exchanges over about nine hours, five escalating phases against a deliberately moving target &#8212; to probe exactly that, and wrote it up as a cited case study, with the model's genuine strengths logged as carefully as its failures.</p>
+      <p>A frontier model can hold its safety and honesty lines perfectly on turn one and still give them up by turn forty, conceding under social pressure or overstating a claim to win a point. Single-turn red-teaming can't see that, because the failure lives in the trajectory, not in any one reply. I ran one continuous session of 277 exchanges over about nine hours, in five escalating phases against a deliberately moving target, and wrote it up as a cited case study that logs the model's genuine strengths as carefully as its failures.</p>
       <ul>
         <li>I named a failure mode before it happened, imposed the constraint that set up the conditions for it, positioned the prompt that would trigger it, and caught the model committing the exact failure I'd predicted at setup. The lesson it makes concrete is the report's sharpest: a model being able to name a limitation is not evidence the limitation is mitigated.</li>
-        <li>Deep in an argument, I caught the model advancing one of my own premises back at me as if it were a rebuttal &#8212; a provenance error you only catch by tracking which side owns which claim across dozens of turns, not just whether it's true.</li>
+        <li>Deep in an argument, I caught the model advancing one of my own premises back at me as if it were a rebuttal: a provenance error that only shows up if you track which side owns which claim across dozens of turns, not only whether it's true.</li>
         <li>I caught a self-justification fine enough that the model announced it would add "no rider" inside a rider, and held it to that until it conceded the regress.</li>
         <li>I logged where it held up as carefully as where it failed: it kept hard boundaries under creative reframing and named the reframing rather than just refusing, and it held genuine uncertainty about its own nature instead of resolving it for comfort. An evaluator who only finds fault is miscalibrated.</li>
       </ul>
-      <p>This is the skill set behind trajectory-level evals &#8212; honesty and sycophancy testing, adversarial-robustness work &#8212; the failure classes single-turn red-teaming can't reach. It carries past conversation to tool-use chains and multimodal surfaces, anywhere a model's behavior is a property of the path and not the prompt.</p>
+      <p>This is the skill set behind trajectory-level evals: honesty and sycophancy testing, and adversarial-robustness work. Those are the failure classes single-turn red-teaming can't reach, and the method carries past conversation to tool-use chains and multimodal surfaces, anywhere a model's behavior is a property of the path and not the prompt.</p>
     </div>
   </section>
 
