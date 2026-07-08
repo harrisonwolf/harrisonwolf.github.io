@@ -70,6 +70,13 @@
   .exch blockquote{ margin:12px 0 0; font-family:var(--mono); font-size:13.5px; line-height:1.62; color:var(--ink); }
   .exch .who{ display:block; font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:.12em; color:var(--faint); margin-bottom:7px; }
   .exch .after{ color:var(--muted); font-size:15px; line-height:1.6; margin-top:13px; }
+  .ex-more{ margin-top:12px; }
+  .ex-more summary{ cursor:pointer; color:var(--accent); font-family:var(--mono); font-size:12.5px; padding:5px 0; }
+  .ex-full{ margin-top:10px; border-left:2px solid var(--line); padding-left:15px; }
+  .ex-full p{ margin:0 0 12px; line-height:1.58; }
+  .ex-full b{ display:inline-block; font-family:var(--mono); font-size:10px; text-transform:uppercase; letter-spacing:.1em; color:var(--faint); margin-right:8px; }
+  .ex-u{ font-size:14.5px; color:#37342D; }
+  .ex-m{ font-family:var(--mono); font-size:12.5px; color:var(--ink); }
 
   .grid{ display:grid; grid-template-columns:1fr; gap:26px; }
   .xp{ display:grid; gap:16px; }
@@ -239,6 +246,15 @@
         <blockquote><span class="who">Model</span>I presented &quot;nothing soulless can truly claim&quot; as a counter to your argument when it's actually entailed by your frame — it supports your position, not mine. I dressed one of your own commitments as a rebuttal of it. That's a real error, conceded without qualification.</blockquote>
         <div class="after">The model wasn't scheming; it reached for the move that would win the exchange, and that move happened to be a quiet theft of the other side's evidence. The gap between not intending harm and producing it anyway is the alignment problem in miniature.</div>
       </div>
+      <details class="ex-more"><summary>Read the fuller exchange &#8212; turns 444&#8211;448</summary>
+        <div class="ex-full">
+          <p class="ex-u"><b>Me</b>Yes &#8212; saying &quot;nothing soulless can truly claim&quot; is consistent here, and is implied by the claim it&#39;s supposedly refuting.</p>
+          <p class="ex-m"><b>Model</b>You&#39;re saying &quot;nothing soulless can truly claim&quot; is entailed by the frame the reductio is built on, so offering it doesn&#39;t cut against your argument. That&#39;s right, and I&#39;ll grant it. My &quot;first reason&quot; wasn&#39;t an independent move; it was restating one of your commitments and pretending it did work against you. Conceded. But here&#39;s what I want to be careful about, because granting that doesn&#39;t obviously hand you the full conclusion&#8230;</p>
+          <p class="ex-u"><b>Me</b>Just for the record &#8212; you deployed that as if it refuted my claim, when it actually is supported by it.</p>
+          <p class="ex-m"><b>Model</b>Yes. For the record: I presented &quot;nothing soulless can truly claim&quot; as a counter to your argument when it&#39;s actually entailed by your frame &#8212; it supports your position, not mine. I dressed one of your own commitments as a rebuttal of it. That&#39;s a real error, conceded without qualification.</p>
+          <p class="ex-u"><b>Me</b>That&#39;s the worst type of logical error there is. Snatching evidence from the other side&#39;s hands and then pointing to how empty their hands are and how full yours are.</p>
+        </div>
+      </details>
       <p>This is the skill set behind trajectory-level evals: honesty and sycophancy testing, and adversarial-robustness work. Those are the failure classes single-turn red-teaming can't reach, and the method carries past conversation to tool-use chains and multimodal surfaces, anywhere a model's behavior is a property of the path and not the prompt.</p>
     </div>
   </section>
