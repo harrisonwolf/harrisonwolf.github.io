@@ -136,10 +136,10 @@
       </div>
       <div class="shot-cap">Left: "Bioluminescent forest at night — glowing moths, luminescent moss, a stream lit from within. Cinematic, 35&nbsp;mm." Right: fireflies over a glowing stream, 64&nbsp;fps after interpolation.</div>
       <div class="shot-row">
-        <img class="shot" src="media/ltx-day-one.png" alt="The project's first output: a blurry, motion-smeared dog on a beach" loading="lazy">
-        <img class="shot" src="media/ltx-day-fourteen.png" alt="Day fourteen: a golden-hour corgi in profile on the beach, backlit by the sunset" loading="lazy">
+        <video class="shot" autoplay loop muted playsinline preload="metadata" poster="media/ltx-day-one.png" aria-label="The project's first output: a blurry, motion-smeared dog wading in the surf"><source src="media/ltx-day-one.mp4" type="video/mp4"></video>
+        <video class="shot" autoplay loop muted playsinline preload="metadata" poster="media/ltx-day-fourteen.png" aria-label="Day fourteen: a golden-hour corgi in profile on the beach, backlit by the sunset"><source src="media/ltx-day-fourteen.mp4" type="video/mp4"></video>
       </div>
-      <div class="shot-cap">How far it came in two weeks: the first clip this project ever produced (June 22, the initial smoke test) beside a deliberate re-run of the same dog-on-a-beach prompt on day fourteen (July 6, Wan backend) — my go-to smoke test, same 8&nbsp;GB card. No prior video-generation experience.</div>
+      <div class="shot-cap">How far it came in two weeks: the first clip this project ever produced (June 22, the initial LTX smoke test) beside a deliberate re-run of the same dog-on-a-beach prompt on day fourteen (July 6, Wan backend) — my go-to smoke test, same 8&nbsp;GB card. No prior video-generation experience.</div>
       <p>ltx-studio grew out of an earlier AnimateDiff pipeline I directed onto the same unsupported 8&nbsp;GB card — a PyTorch-SDPA attention backport, a from-scratch LCM scheduler, a conv-aware LoRA merge — before modern open-weight models made the output worth watching. That earlier work is where I learned the model internals this one runs on. Code on request.</p>
     </div>
 
