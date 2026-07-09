@@ -135,7 +135,7 @@
 
     <div class="proj">
       <h3>ltx-studio</h3>
-      <div class="kind">Python · ~8,470 lines · <a href="https://github.com/harrisonwolf/ltx-studio">github.com/harrisonwolf/ltx-studio</a></div>
+      <div class="kind">Python · ~11,400 lines · <a href="https://github.com/harrisonwolf/ltx-studio">github.com/harrisonwolf/ltx-studio</a></div>
       <p>It turns a typed description of a scene into a short video, and it runs entirely on one ordinary gaming graphics card. That kind of card is normally far too small for the job, which usually takes a rented data-center machine or a paid cloud service. A local text-to-video studio that runs two video models on a single 8&nbsp;GB GPU and chains short shots into longer clips that stay coherent. Built from scratch in about two weeks:</p>
       <ul>
         <li>A resident vision-language model (Qwen3-VL, 4-bit) runs as an agent that turns plain-language direction into runnable generation settings.</li>
@@ -162,7 +162,7 @@
 
     <div class="proj">
       <h3>geo-map-v2</h3>
-      <div class="kind">Python · ~30,000 lines · <a href="https://github.com/harrisonwolf/geo-map-v2">github.com/harrisonwolf/geo-map-v2</a></div>
+      <div class="kind">Python · ~55,000 lines · <a href="https://github.com/harrisonwolf/geo-map-v2">github.com/harrisonwolf/geo-map-v2</a></div>
       <p>On screen it looks like an ordinary map of property values. Behind it runs a full data system that keeps a permanent, tamper-evident record of where every figure came from, so nothing shown is unaccounted for.</p>
       <p>A real-estate heatmap on the surface. Underneath, the most production-grade system I've built: a general geospatial data platform. Raw sources are ingested into adapted artifacts, recorded in a hashed canonical ledger with full provenance, frozen into monthly snapshots, scored, and published to a strictly read-only serving runtime, so every number a client sees traces back to an immutable record. The county registry is the extension point: new regions, sources, and verticals are designed to bolt on without touching the core.</p>
       <ul>
@@ -184,7 +184,7 @@
         <li>Correctness is pinned against Macaulay2's own BoijSoederberg package: the pure Betti tables the engine computes are checked case-by-case against M2's reference values.</li>
       </ul>
       <div class="shot-cap">These charts are high-resolution SVG &#8212; right-click any chart and choose &#8220;Open image in new tab&#8221; to view at full resolution.</div>
-      <img class="shot" src="media/boij-runtime.svg" alt="Benchmark chart: linear-axis runtime versus number of candidate sequences across codimensions 3 to 7; the C++ engine stays fast to 20 million sequences while Macaulay2 climbs steeply and runs out of memory near 20 million" loading="lazy">
+      <img class="shot" src="media/boij-runtime.svg" alt="Benchmark chart: linear-axis runtime versus number of candidate sequences across codimensions 3 to 7; the C++ engine stays fast to 20 million sequences while Macaulay2 climbs steeply, taking ~17 minutes at 20.7M where the engine takes ~11 seconds" loading="lazy">
       <div class="shot-cap">Runtime vs. number of candidate sequences, codimension 3–7 (linear), C++ engine against Macaulay2 on the same machine. The engine screens 20M+ sequences in seconds; Macaulay2 climbs steeply instead &#8212; about 100 s at a million sequences, ~5 minutes at 4.5M, ~17 minutes at 20.7M &#8212; versus 11 seconds for the engine. And 20M is only the chart&#8217;s ceiling: the actual 2024 campaign swept tens of billions of sequences &#8212; codimension 3 out to degree 7,100, in a handful of overnight runs &#8212; Macaulay2 can&#8217;t approach that: it would have to be chopped into thousands of separate batches (it must materialize the whole candidate list, and runs out of memory only once that outgrows RAM) and would run for months of CPU time even in the best case.</div>
       <img class="shot" src="media/boij-memory.svg" alt="Peak memory versus number of candidate sequences, codimensions 3 to 7, C++ engine versus Macaulay2" loading="lazy">
       <div class="shot-cap">Peak memory. Macaulay2 starts at a ~100&nbsp;MB interpreter floor but climbs steeply as it materializes the candidate list &#8212; 1.4&nbsp;GB by 4.5M &#8212; and out of memory only once that list outgrows RAM (as it did on the lighter 2024 hardware). The C++ engine&#8217;s compact representation keeps it ~3&#215; lower at matched sizes, and let it sweep tens of billions of sequences on the same hardware.</div>
