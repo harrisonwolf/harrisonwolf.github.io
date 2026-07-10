@@ -57,16 +57,18 @@
   .solo{ font-size:14.5px; color:var(--muted); margin-top:20px; line-height:1.55; max-width:66ch; border-left:2px solid var(--accent); padding-left:14px; }
   .note{ font-size:12.5px; color:var(--faint); margin-top:18px; line-height:1.55; max-width:66ch; }
 
-  section{ margin-top:46px; }
+  section{ margin-top:68px; }
   .label{
     font-family:var(--mono); font-size:12px; text-transform:uppercase; letter-spacing:.15em;
-    color:var(--faint); border-top:1px solid var(--line); padding-top:15px; margin-bottom:22px;
-    font-weight:400;
+    color:var(--faint); border-top:2px solid #CFCBC0; padding-top:16px; margin-bottom:22px;
+    font-weight:400; display:flex; align-items:baseline; gap:13px;
   }
+  .label .sno{ font-family:var(--sans); font-size:21px; font-weight:650; line-height:1; color:var(--ink); opacity:.22; letter-spacing:-.01em; font-variant-numeric:tabular-nums; }
   .sec-lede{ font-size:15px; color:var(--muted); margin:-12px 0 24px; max-width:60ch; }
 
-  .proj{ margin-bottom:34px; }
+  .proj{ margin-bottom:40px; }
   .proj:last-child{ margin-bottom:0; }
+  .proj + .proj{ border-top:1px solid var(--line); padding-top:34px; }
   .proj h3{ font-size:19px; font-weight:650; letter-spacing:-.01em; }
   .proj .proj-sub{ font-size:15px; line-height:1.45; color:var(--muted); margin-top:4px; font-weight:540; }
   .proj .kind{ font-family:var(--mono); font-size:12.5px; color:var(--faint); margin-top:5px; }
@@ -125,7 +127,7 @@
     .rail-nav a:hover{ color:var(--accent); text-decoration:underline; text-underline-offset:2px; }
     .content{ min-width:0; }
     .content .intro:first-child{ margin-top:6px; }
-    section{ margin-top:54px; }
+    section{ margin-top:80px; }
     footer .links{ flex-direction:row; gap:6px 16px; }
   }
 </style>
@@ -160,7 +162,7 @@
   <p class="note">This page is a growing, continuously-updated showcase of some of the cooler, more full-scale systems I&#39;ve built.</p>
 
   <section id="engines">
-    <h2 class="label">The engines</h2>
+    <h2 class="label"><span class="sno">01</span>The engines</h2>
     <p class="sec-lede">Three engines I own outright. Most of what follows runs on them.</p>
 
     <div class="proj" id="boij">
@@ -242,7 +244,7 @@
   </section>
 
   <section id="applied">
-    <h2 class="label">Pointed at something real</h2>
+    <h2 class="label"><span class="sno">02</span>Pointed at something real</h2>
     <p class="sec-lede">What happens when the engines meet real ground.</p>
 
     <div class="proj">
@@ -289,7 +291,7 @@
   </section>
 
   <section id="evaluation">
-    <h2 class="label">Evaluation</h2>
+    <h2 class="label"><span class="sno">03</span>Evaluation</h2>
     <div class="proj">
       <h3>Adversarial probing of frontier-model honesty</h3>
       <div class="kind">Self-directed evaluation · Claude Opus 4.8, high reasoning · 277 exchanges, one session · case study on request</div>
@@ -327,12 +329,12 @@
   </section>
 
   <section class="how">
-    <h2 class="label">How I work</h2>
+    <h2 class="label"><span class="sno">04</span>How I work</h2>
     <p>Most of the larger systems above were built by directing AI coding agents, not typed by hand. What I bring is the architecture, the tests, and the evaluation that make that output reliable. I hand-write the C++ so I know what "correct" looks like underneath, and where I've reused someone else's math or code, I say so.</p>
   </section>
 
   <section>
-    <h2 class="label">Writing</h2>
+    <h2 class="label"><span class="sno">05</span>Writing</h2>
     <div class="proj">
       <h3>The Hollow Icon</h3>
       <div class="kind">Essay &#183; June 2026 &#183; withheld pending publication</div>
@@ -341,7 +343,7 @@
   </section>
 
   <section id="background">
-    <h2 class="label">Background</h2>
+    <h2 class="label"><span class="sno">06</span>Background</h2>
 
     <div class="block">
       <div class="sub-label">Experience</div>
@@ -384,7 +386,7 @@
   </section>
 
   <section class="how">
-    <h2 class="label">Off the clock</h2>
+    <h2 class="label"><span class="sno">07</span>Off the clock</h2>
     <p>A brown belt in judo, earned in three years, and my club's 2025 Judoka of the Year. A lector, acolyte, and chanter at my Greek Orthodox parish.</p>
   </section>
 
