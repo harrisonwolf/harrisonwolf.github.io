@@ -54,8 +54,6 @@
 
   .intro{ margin-top:30px; font-size:18px; line-height:1.62; }
   .intro + .intro{ margin-top:14px; }
-  .fast{ font-family:var(--mono); font-size:13px; color:var(--faint); margin-top:22px; padding:11px 0 12px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); line-height:2; }
-  .fast .fl{ text-transform:uppercase; font-size:11px; letter-spacing:.14em; color:var(--muted); margin-right:10px; }
   .solo{ font-size:14.5px; color:var(--muted); margin-top:20px; line-height:1.55; max-width:66ch; border-left:2px solid var(--accent); padding-left:14px; }
   .note{ font-size:12.5px; color:var(--faint); margin-top:18px; line-height:1.55; max-width:66ch; }
 
@@ -158,7 +156,6 @@
   <p class="intro">I write low-level systems by hand, and I build larger ones by directing and evaluating AI coding agents. My clearest solo work is a C++ engine that runs certain algebra computations much faster than the standard tool. I also review agentic coding models professionally.</p>
   <p class="intro">When the tool I need doesn't exist, I build it &#8212; and because I own the engines, wiring them onto a new problem is fast. The terrain studies below took about an afternoon, on engines never built for terrain.</p>
   <p class="intro">I'm looking for research-engineer, applied-AI, or agentic-coding roles.</p>
-  <div class="fast"><span class="fl">In a hurry</span><a href="#boij">the 70&#8211;115&#215; engine</a> &#183; <a href="https://arxiv.org/abs/2512.24320">the paper</a> &#183; <a href="terrain-study.html">the terrain demo</a> &#183; <a href="#evaluation">the eval case study</a></div>
   <p class="solo">Everything in this portfolio is solo work &#8212; the design and the engineering are mine, start to finish. The one exception is a co-authored research paper, and even its engine was entirely mine.</p>
   <p class="note">This page is a growing, continuously-updated showcase of some of the cooler, more full-scale systems I&#39;ve built.</p>
 
@@ -170,8 +167,8 @@
       <h3>boij-soderberg-engine</h3>
       <p class="proj-sub">Algebra searches 70&#8211;115&#215; faster than Macaulay2</p>
       <div class="kind">C++ · core in ~1 month · <a href="https://github.com/harrisonwolf/boij-soderberg-engine">github.com/harrisonwolf/boij-soderberg-engine</a></div>
-      <p>The engine sifts tens of billions of algebraic structures for the rare ones that break a proposed mathematical rule.</p>
-      <p>I wrote it by hand in 2024: a ~1,200-line C++ math core, no AI, cross-validated case-by-case against Macaulay2, the standard software mathematicians use for this. Its exhaustive search surfaced the exceptional cases behind one of the three main results of a paper I co-authored (<a href="https://arxiv.org/abs/2512.24320">arXiv:2512.24320</a>); the proof computations themselves ran in Macaulay2. The search supporting the proof took a few nights on my laptop; in Macaulay2 it would have taken months at best, likely years. I later used an AI agent to reorganize the repo, write the docs, and add a test and benchmark harness.</p>
+      <p>The engine sifts tens of billions of algebraic structures for the rare ones that break a proposed mathematical rule. I wrote it by hand in 2024: a ~1,200-line C++ math core, no AI, cross-validated case-by-case against Macaulay2, the standard software mathematicians use for this.</p>
+      <p>Its exhaustive search surfaced the exceptional cases behind one of the three main results of a paper I co-authored (<a href="https://arxiv.org/abs/2512.24320">arXiv:2512.24320</a>); the proof computations themselves ran in Macaulay2. The search supporting the proof took a few nights on my laptop; in Macaulay2 it would have taken months at best, likely years. I later used an AI agent to reorganize the repo, write the docs, and add a test and benchmark harness.</p>
       <p>On matched searches it runs <span class="num">~70&#8211;115&#215;</span> faster than an equivalent Macaulay2 implementation across codimensions 3&#8211;7: a 1.2-million-sequence search in about a second versus a hundred, 20.7 million in 11 seconds versus ~17 minutes. Past that Macaulay2 runs out of memory, since it has to hold the whole candidate list at once. The 2024 campaign swept tens of billions of sequences, codimension 3 out to degree 7,100, in a handful of overnight runs.</p>
       <ul>
         <li>Correctness is pinned against Macaulay2's own BoijSoederberg package: the pure Betti tables the engine computes are checked case-by-case against M2's reference values.</li>
@@ -189,7 +186,7 @@
       <h3>planar-geometry-engine</h3>
       <p class="proj-sub">A computational geometry engine from first principles</p>
       <div class="kind">C++ · core in ~4–6 weeks · <a href="https://github.com/harrisonwolf/planar-geometry-engine">github.com/harrisonwolf/planar-geometry-engine</a></div>
-      <p>Geometry&#39;s classic hard problems: cutting complicated shapes into triangles, and turning a scatter of points into the mesh and region structures that games and mapping software rely on.</p>
+      <p>It solves geometry&#39;s classic hard problems: cutting complicated shapes into triangles, and turning a scatter of points into the mesh and region structures that games and mapping software rely on.</p>
       <p>I built it for fun, from a bare terminal in vim and make, with nothing beyond the C++ standard library: geometric predicates, polygon construction and random generation, point-in-polygon and collision queries, ear-clipping and Delaunay triangulation, Voronoi diagrams, and local SVG and Desmos viewers for the output. The core predates my AI-agent workflow and is entirely hand-written; later upgrades used agents. Building it took about four to six weeks; implementing the ear-clipping algorithm from the paper onto it took another week.</p>
       <ul>
         <li><span class="num">1,500</span> random points &#8594; <span class="num">2,976</span> Delaunay triangles and the full Voronoi dual, validated, in <span class="num">0.09&nbsp;s</span>.</li>
@@ -223,8 +220,8 @@
       <h3>geo-map-v2</h3>
       <p class="proj-sub">An auditable geospatial data platform</p>
       <div class="kind">Python · core in ~3 months · <a href="https://github.com/harrisonwolf/geo-map-v2">github.com/harrisonwolf/geo-map-v2</a></div>
-      <p>On screen it&#39;s an ordinary-looking map of property values. The system behind it is the real work: it keeps a permanent, tamper-evident record of where every figure came from, so nothing on the map is unaccounted for.</p>
-      <p>Underneath is the most production-grade system I&#39;ve built, a general geospatial data platform. Raw sources are adapted, recorded in a hashed canonical ledger with full provenance, frozen into monthly snapshots, scored, and published to a strictly read-only serving runtime: every number a client sees traces back to an immutable record. New regions, sources, and verticals bolt on through the county registry without touching the core; Fresno County is the region built out so far.</p>
+      <p>On screen it&#39;s an ordinary-looking map of property values. The system behind it is the real work, and it&#39;s the most production-grade thing I&#39;ve built: a general geospatial data platform where nothing on the map is unaccounted for.</p>
+      <p>Raw sources are adapted, recorded in a hashed canonical ledger with full provenance, frozen into monthly snapshots, scored, and published to a strictly read-only serving runtime, so every number a client sees traces back to a permanent, tamper-evident record. New regions, sources, and verticals bolt on through the county registry without touching the core; Fresno County is the region built out so far.</p>
       <ul>
         <li>On top sits a full map application and renderer: an interactive client (vendored MapLibre GL) that draws the county's official GIS layers as toggleable overlays — parcels with per-parcel detail, the road and highway network, ZIP areas and boundaries, schools by level, and school attendance zones — over the scored basemap.</li>
         <li>Roughly 1:1 code to tests across 24 modules, including SQL-safety, storage-integrity, and schema-version suites.</li>
@@ -245,7 +242,7 @@
       <h3>Terrain studies</h3>
       <div class="kind">Geometry engine + GIS platform · client demo · <a href="terrain-study.html">view the one-pager</a></div>
       <p>A landowner or a public agency normally pays a survey crew and a consultant for this kind of study. I get a first pass from free public data, before anyone surveys a thing.</p>
-      <p>Three studies on real Sierra ground, each computed on a surface my geometry engine triangulates from public USGS elevation, with the parcel side handled by the geo-map platform. Neither engine was built for terrain, which is the point.</p>
+      <p>The page holds three studies on real Sierra ground, each computed on a surface my geometry engine triangulates from public USGS elevation, with the parcel side handled by the geo-map platform. Neither engine was built for terrain, which is the point.</p>
       <ul>
         <li>A level building pad on a sloped lot, cut balancing fill: <span class="num">9,160</span> cubic yards moved.</li>
         <li>A 22-acre bluff&#39;s rainfall, routed: which slopes shed, where the water collects, and where it leaves the property.</li>
@@ -258,8 +255,8 @@
       <h3>ltx-studio</h3>
       <p class="proj-sub">Video generation on an 8&nbsp;GB GPU</p>
       <div class="kind">Python · core in ~2 weeks · <a href="https://github.com/harrisonwolf/ltx-studio">github.com/harrisonwolf/ltx-studio</a></div>
-      <p>It makes short videos from typed descriptions, and the whole job runs on one ordinary gaming graphics card, hardware normally far too small for the job. Work like this usually takes a rented data-center machine or a paid cloud service.</p>
-      <p>A local text-to-video studio: two open-weight video models on a single 8&nbsp;GB GPU, short shots chained into longer clips that stay coherent, all driven from a terminal UI. The studio itself (the orchestration, the terminal UI, the measurement layer) is mine, built in about two weeks; the models are not. Most of the interesting engineering falls out of taking the 8&nbsp;GB constraint seriously.</p>
+      <p>It makes short videos from typed descriptions, and the whole job runs on one ordinary gaming graphics card, hardware normally far too small for this. Work like this usually takes a rented data-center machine or a paid cloud service.</p>
+      <p>It runs two open-weight video models on a single 8&nbsp;GB GPU and chains short shots into longer clips that stay coherent, all driven from a terminal UI. The studio itself (the orchestration, the UI, the measurement layer) is mine, built in about two weeks; the models are not. Most of the interesting engineering falls out of taking the 8&nbsp;GB constraint seriously.</p>
       <ul>
         <li>A resident vision-language model (Qwen3-VL, 4-bit) runs as an agent that turns plain-language direction into runnable generation settings.</li>
         <li>I built a measurement layer to go with it: seam and drift telemetry, plus a blind A/B comparison harness, so I can tell whether a change helped.</li>
