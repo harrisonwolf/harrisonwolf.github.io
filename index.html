@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Harrison Wolf — C++/math engineer. Projects, a published paper, and how to reach me.">
+<meta name="description" content="Harrison Wolf — C++/math engineer. Engines built from scratch, pointed at real problems. Projects, a published paper, and how to reach me.">
 <title>Harrison Wolf — Software &amp; AI Engineer</title>
 <style>
   *,*::before,*::after{ box-sizing:border-box; }
@@ -49,6 +49,7 @@
     font-family:var(--mono); font-size:12px; text-transform:uppercase; letter-spacing:.15em;
     color:var(--faint); border-top:1px solid var(--line); padding-top:15px; margin-bottom:22px;
   }
+  .sec-lede{ font-size:15px; color:var(--muted); margin:-12px 0 24px; max-width:60ch; }
 
   .proj{ margin-bottom:34px; }
   .proj:last-child{ margin-bottom:0; }
@@ -126,79 +127,22 @@
   <div class="content">
 
   <p class="intro">I write low-level systems by hand, and I build larger ones by directing and evaluating AI coding agents. My clearest solo work is a C++ engine that runs certain algebra computations much faster than the standard tool. I also review agentic coding models professionally.</p>
+  <p class="intro">When the tool I need doesn't exist, I build it &#8212; and because I own the engines, wiring them onto a new problem is fast. The terrain studies below took about an afternoon, on engines never built for terrain.</p>
   <p class="intro">I'm looking for research-engineer, applied-AI, or agentic-coding roles, and I take commissions.</p>
   <p class="solo">Everything in this portfolio is solo work &#8212; the design and the engineering are mine, start to finish. The one exception is a co-authored research paper, and even its engine was entirely mine.</p>
   <p class="note">This page is a growing, continuously-updated showcase of some of the cooler, more full-scale systems I&#39;ve built.</p>
 
   <section>
-    <div class="label">Selected work</div>
-
-    <div class="proj">
-      <h3>ltx-studio</h3>
-      <div class="kind">Python · ~11,400 lines · core in ~2 weeks · <a href="https://github.com/harrisonwolf/ltx-studio">github.com/harrisonwolf/ltx-studio</a></div>
-      <p>It makes short videos from typed descriptions, and the whole job runs on one ordinary gaming graphics card. A card like that is normally far too small for the work; generating video usually takes a rented data-center machine or a paid cloud service. A local text-to-video studio that runs two video models on a single 8&nbsp;GB GPU and chains short shots into longer clips that stay coherent. Built from scratch in about two weeks:</p>
-      <ul>
-        <li>A resident vision-language model (Qwen3-VL, 4-bit) runs as an agent that turns plain-language direction into runnable generation settings.</li>
-        <li>I built a measurement layer to go with it: seam and drift telemetry, plus a blind A/B comparison harness, so I can tell whether a change helped.</li>
-        <li>Drift control between shots uses AdaIN latent anchoring (from diffusers, cited) and a color-matching pass I wrote.</li>
-      </ul>
-      <a href="https://github.com/harrisonwolf/ltx-studio#what-it-looks-like"><img class="shot" src="media/ltx-newrun.png" alt="LTX Studio NEW RUN screen: backend schematic on a fast-to-nicer axis, contextual info panel, and readout meters predicting VRAM, quality, drift, and render time" loading="lazy" width="1400" height="697"></a>
-      <div class="shot-cap">Setting up a run: the backend schematic (fast → nicer), a contextual INFO panel, and READOUT meters predicting VRAM, quality, drift, and render time before anything starts.</div>
-      <a href="https://github.com/harrisonwolf/ltx-studio#what-it-looks-like"><img class="shot" src="media/ltx-live.png" alt="LTX Studio LIVE view mid-render: last-frame preview of a bioluminescent forest, phase timings, and job controls" loading="lazy" width="1400" height="808"></a>
-      <div class="shot-cap">The LIVE tab mid-render. More screenshots and sample clips in the repo README.</div>
-      <p>The clip that exact run produced, beside a second render from the same studio:</p>
-      <div class="shot-row">
-        <img class="shot" src="media/ltx-forest.gif" alt="Generated clip: bioluminescent forest at night, glowing moths over a stream lit from within" loading="lazy">
-        <img class="shot" src="media/ltx-fireflies.gif" alt="Generated clip: fireflies drifting over a glowing forest stream" loading="lazy">
-      </div>
-      <div class="shot-cap">Left: "Bioluminescent forest at night — glowing moths, luminescent moss, a stream lit from within. Cinematic, 35&nbsp;mm." Right: fireflies over a glowing stream, 64&nbsp;fps after interpolation.</div>
-      <div class="shot-row">
-        <video class="shot" autoplay muted playsinline preload="metadata" poster="media/ltx-day-one.png" aria-label="The project's first output: a blurry, motion-smeared dog wading in the surf"><source src="media/ltx-day-one.mp4" type="video/mp4"></video>
-        <video class="shot" autoplay muted playsinline preload="metadata" poster="media/ltx-day-fourteen.png" aria-label="Day fourteen: a golden-hour corgi in profile on the beach, backlit by the sunset"><source src="media/ltx-day-fourteen.mp4" type="video/mp4"></video>
-      </div>
-      <div class="shot-cap">How far it came in two weeks: the first clip this project ever produced (June 22, the initial LTX smoke test) beside a day-fourteen re-run of the same dog-on-a-beach prompt (July 6, Wan backend), same 8&nbsp;GB card.</div>
-      <p>ltx-studio grew out of an earlier AnimateDiff pipeline I directed onto the same unsupported 8&nbsp;GB card — a PyTorch-SDPA attention backport, a from-scratch LCM scheduler, a conv-aware LoRA merge — before modern open-weight models made the output worth watching. That earlier work, which I came to with no video-generation background, is where I learned the model internals this one runs on. Code on request.</p>
-    </div>
-
-    <div class="proj">
-      <h3>geo-map-v2</h3>
-      <div class="kind">Python · ~55,000 lines · core in ~3 months · <a href="https://github.com/harrisonwolf/geo-map-v2">github.com/harrisonwolf/geo-map-v2</a></div>
-      <p>On screen it&#39;s an ordinary-looking map of property values. The system behind it is the real work: it keeps a permanent, tamper-evident record of where every figure came from, so nothing on the map is unaccounted for.</p>
-      <p>A real-estate heatmap on the surface. Underneath, the most production-grade system I've built: a general geospatial data platform. Raw sources are ingested into adapted artifacts, recorded in a hashed canonical ledger with full provenance, frozen into monthly snapshots, scored, and published to a strictly read-only serving runtime, so every number a client sees traces back to an immutable record. The county registry is the extension point: new regions, sources, and verticals are designed to bolt on without touching the core.</p>
-      <ul>
-        <li>On top sits a full map application and renderer: an interactive client (vendored MapLibre GL) that draws the county's official GIS layers as toggleable overlays — parcels with per-parcel detail, the road and highway network, ZIP areas and boundaries, schools by level, and school attendance zones — over the scored basemap.</li>
-        <li>Roughly 1:1 code to tests across 24 modules, including SQL-safety, storage-integrity, and schema-version suites.</li>
-        <li>I built it by running several AI coding agents across git worktrees under a written set of rules — test-first, prompt-injection defense, and so on. The agents wrote most of the volume; the architecture and the test gates are mine.</li>
-      </ul>
-      <a href="media/geomap-hero.png"><img class="shot" src="media/geomap-hero.png" alt="Nexora agent workspace: Fresno County map with ZIP-level market tint, client-brief panel, and a data-lineage stamp in the footer" loading="lazy"></a>
-      <div class="shot-cap">The surface: the agent workspace on Fresno County. The footer stamps every view with its data lineage — this one traces to publication fresno-2026-04.</div>
-      <a href="media/geomap-pipeline.png"><img class="shot" src="media/geomap-pipeline.png" alt="Terminal output of one full pipeline run: adapt, normalize, snapshot, score, publish, with per-stage timings" loading="lazy"></a>
-      <div class="shot-cap">The engine: one make refresh-county run, end to end — 26,000 source rows through adapt → normalize → snapshot (55 ZIPs, 663 cells) → score → a published bundle, with per-stage timings. Click to read.</div>
-    </div>
-
-    <div class="proj">
-      <h3>boij-soderberg-engine</h3>
-      <div class="kind">C++ · ~2,700 lines · core in ~1 month · <a href="https://github.com/harrisonwolf/boij-soderberg-engine">github.com/harrisonwolf/boij-soderberg-engine</a></div>
-      <p>The engine sifts tens of billions of algebraic structures for the rare ones that break a proposed mathematical rule, doing the semi-advanced computation needed to test each one. I built it for a research paper I co-authored, where its search turned up the exceptional cases behind one of the paper&#39;s three main results. It finishes in seconds where Macaulay2, the standard software mathematicians use for this, needs many minutes and past a certain size cannot finish at all. The exhaustive search supporting the proof took a few nights on my laptop; in Macaulay2 it would have taken months at best, likely years. A C++ engine I wrote by hand in 2024 — a ~1,200-line math core, no AI, cross-validated case-by-case against Macaulay2. It enumerates and screens candidate degree sequences for counterexamples to two Betti-number lower-bound conjectures, and independently reproduced the exact four codimension-3 counterexamples that one of the theorems in a paper I co-authored (<a href="https://arxiv.org/abs/2512.24320">arXiv:2512.24320</a>) classifies. On the same search it runs <span class="num">~70–115×</span> faster than an equivalent Macaulay2 implementation across codimensions 3–7 — a 1.2-million-sequence search takes about a second, versus a hundred in Macaulay2 — and it clears 12-to-20-million-sequence searches in seconds, at sizes where Macaulay2 slows to many minutes (~17 minutes at 20.7M) and eventually runs out of memory as the candidate list outgrows RAM. Over about three or four days of mostly-overnight runs in 2024 the engine swept tens of billions of these sequences &#8212; codimension 3 out to degree 7,100 &#8212; collecting counterexamples; in the paper this exploratory search surfaced the cases to investigate, while the proof computations themselves ran in Macaulay2. I later used an AI agent to reorganize the repo, write the docs, and add a test and benchmark harness.</p>
-      <ul>
-        <li>Correctness is pinned against Macaulay2's own BoijSoederberg package: the pure Betti tables the engine computes are checked case-by-case against M2's reference values.</li>
-      </ul>
-      <div class="shot-cap">These charts are high-resolution SVG &#8212; right-click any chart and choose &#8220;Open image in new tab&#8221; to view at full resolution.</div>
-      <img class="shot" src="media/boij-runtime.svg" alt="Benchmark chart: linear-axis runtime versus number of candidate sequences across codimensions 3 to 7; the C++ engine stays fast to 20 million sequences while Macaulay2 climbs steeply, taking ~17 minutes at 20.7M where the engine takes ~11 seconds" loading="lazy">
-      <div class="shot-cap">Runtime vs. number of candidate sequences, codimension 3–7 (linear), C++ engine against Macaulay2 on the same machine. The engine screens 20M+ sequences in seconds; Macaulay2 climbs steeply instead &#8212; about 100 s at a million sequences, ~5 minutes at 4.5M, ~17 minutes at 20.7M &#8212; versus 11 seconds for the engine. And 20M is only the chart&#8217;s ceiling: the actual 2024 campaign swept tens of billions of sequences &#8212; codimension 3 out to degree 7,100, in a handful of overnight runs &#8212; Macaulay2 can&#8217;t approach that: it would have to be chopped into thousands of separate batches (it must materialize the whole candidate list, and runs out of memory only once that outgrows RAM) and would run for months of CPU time even in the best case.</div>
-      <img class="shot" src="media/boij-memory.svg" alt="Peak memory versus number of candidate sequences, codimensions 3 to 7, C++ engine versus Macaulay2" loading="lazy">
-      <div class="shot-cap">Peak memory. Macaulay2 starts at a ~100&nbsp;MB interpreter floor but climbs steeply as it materializes the candidate list &#8212; 1.4&nbsp;GB by 4.5M &#8212; and out of memory only once that list outgrows RAM (as it did on the lighter 2024 hardware). The C++ engine&#8217;s compact representation keeps it ~3&#215; lower at matched sizes, and let it sweep tens of billions of sequences on the same hardware.</div>
-      <img class="shot" src="media/boij-speedup.svg" alt="Speedup (Macaulay2 time over C++ time) versus number of sequences, colored by codimension" loading="lazy">
-      <div class="shot-cap">Speedup sits in a ~70&#8211;115&#215; band through the sub-million range and every codimension, then climbs past 150&#215; by a few million as Macaulay2&#8217;s per-sequence cost grows &#8212; the bigger the search, the more the engine wins.</div>
-      <p>Nobody assigned this. I got tired of waiting on Macaulay2, so I taught myself the algebra and built the engine at night, from scratch, in about a month, before AI coding tools existed.</p>
-
-    </div>
+    <div class="label">The engines</div>
+    <p class="sec-lede">Three systems built from scratch. Everything else on this page runs on them.</p>
 
     <div class="proj">
       <h3>planar-geometry-engine</h3>
       <div class="kind">C++ · ~5,600 lines · core in ~4–6 weeks · <a href="https://github.com/harrisonwolf/planar-geometry-engine">github.com/harrisonwolf/planar-geometry-engine</a></div>
-      <p>Geometry&#39;s classic hard problems, solved from the ground up: cutting complicated shapes into triangles, and turning a scatter of points into the mesh and region structures that games and mapping software rely on. A full computational-geometry engine I built for fun, from a bare terminal in vim and make, with no dependencies beyond the C++ standard library. It covers geometric predicates, polygon construction and random polygon generation, point-in-polygon and collision queries, ear-clipping triangulation, Delaunay triangulation, and Voronoi diagrams, with local SVG and Desmos-based viewers for exploring the output. The core predates my AI-agent workflow and is entirely hand-written; later upgrades used agents. The core platform and engine took about four to six weeks; implementing the ear-clipping algorithm from the paper onto it took another week.</p>
+      <p>Geometry&#39;s classic hard problems, solved from the ground up: cutting complicated shapes into triangles, and turning a scatter of points into the mesh and region structures that games and mapping software rely on.</p>
+      <p>I built it for fun, from a bare terminal in vim and make, with nothing beyond the C++ standard library: geometric predicates, polygon construction and random generation, point-in-polygon and collision queries, ear-clipping and Delaunay triangulation, Voronoi diagrams, and local SVG and Desmos viewers for the output. The core predates my AI-agent workflow and is entirely hand-written; later upgrades used agents. Building it took about four to six weeks; implementing the ear-clipping algorithm from the paper onto it took another week.</p>
       <ul>
+        <li><span class="num">1,500</span> random points &#8594; <span class="num">2,976</span> Delaunay triangles and the full Voronoi dual, validated, in <span class="num">0.09&nbsp;s</span>.</li>
         <li>Robustness is the hard part of geometry code, so the predicates handle the degenerate cases (collinear inputs, duplicate points, orientation) with explicit epsilon discipline.</li>
         <li>Verified by a hand-rolled TDD harness: 14 suites covering the predicates, both triangulations, and the Voronoi output.</li>
       </ul>
@@ -223,18 +167,91 @@
       <div class="shot-cap">One run through the engine at a legible scale (70 sites, seed 7): the raw input, its Delaunay triangulation (125 triangles, 194 edges — Euler-exact), the Voronoi dual, and the two overlaid. Every Voronoi vertex is the circumcenter of a triangle.</div>
       <img class="shot" src="media/geometry-duality.svg" alt="Delaunay triangulation in faint lines overlaid with its Voronoi dual in ink, 300 sites" loading="lazy">
       <div class="shot-cap">And at density: 300 sites, triangulated and dualized end to end by the engine. Seed and command are embedded in the file; the counts check exactly against Euler's formula (581 triangles, 880 edges).</div>
-      
     </div>
 
     <div class="proj">
-      <h3>Terrain studies</h3>
-      <div class="kind">Geometry engine + GIS · client demo · <a href="terrain-study.html">view the one-pager</a></div>
-      <p>A landowner or a public agency normally pays a survey crew and a consultant for this kind of study. I get a first pass from free public data, before anyone surveys a thing. Three studies on real Sierra ground: cutting a level building pad, routing a hillside's rainfall, and damming a canyon to size the reservoir behind it. Public USGS elevation becomes a triangulated surface in my planar-geometry engine, and the earthwork, drainage, and reservoir capacity are computed on that surface. It plugs into my geo-map platform, so a lot can come straight from parcel data. Made to hand to a non-technical client.</p>
+      <h3>boij-soderberg-engine</h3>
+      <div class="kind">C++ · ~2,700 lines · core in ~1 month · <a href="https://github.com/harrisonwolf/boij-soderberg-engine">github.com/harrisonwolf/boij-soderberg-engine</a></div>
+      <p>The engine sifts tens of billions of algebraic structures for the rare ones that break a proposed mathematical rule.</p>
+      <p>I wrote it by hand in 2024: a ~1,200-line C++ math core, no AI, cross-validated case-by-case against Macaulay2, the standard software mathematicians use for this. Its exhaustive search surfaced the exceptional cases behind one of the three main results of a paper I co-authored (<a href="https://arxiv.org/abs/2512.24320">arXiv:2512.24320</a>); the proof computations themselves ran in Macaulay2. The search supporting the proof took a few nights on my laptop; in Macaulay2 it would have taken months at best, likely years. I later used an AI agent to reorganize the repo, write the docs, and add a test and benchmark harness.</p>
+      <p>On matched searches it runs <span class="num">~70&#8211;115&#215;</span> faster than an equivalent Macaulay2 implementation across codimensions 3&#8211;7: a 1.2-million-sequence search in about a second versus a hundred, 20.7 million in 11 seconds versus ~17 minutes. Past that Macaulay2 runs out of memory, since it has to hold the whole candidate list at once. The 2024 campaign swept tens of billions of sequences, codimension 3 out to degree 7,100, in a handful of overnight runs.</p>
+      <ul>
+        <li>Correctness is pinned against Macaulay2's own BoijSoederberg package: the pure Betti tables the engine computes are checked case-by-case against M2's reference values.</li>
+      </ul>
+      <img class="shot" src="media/boij-runtime.svg" alt="Benchmark chart: linear-axis runtime versus number of candidate sequences across codimensions 3 to 7; the C++ engine stays fast to 20 million sequences while Macaulay2 climbs steeply, taking ~17 minutes at 20.7M where the engine takes ~11 seconds" loading="lazy">
+      <div class="shot-cap">Runtime vs. candidate-sequence count, codimensions 3&#8211;7, engine against Macaulay2 on the same machine (linear axes). The charts are high-resolution SVG &#8212; right-click any of them and choose &#8220;Open image in new tab&#8221; for full resolution.</div>
+      <img class="shot" src="media/boij-memory.svg" alt="Peak memory versus number of candidate sequences, codimensions 3 to 7, C++ engine versus Macaulay2" loading="lazy">
+      <div class="shot-cap">Peak memory. Macaulay2 climbs steeply as it materializes the candidate list &#8212; 1.4&nbsp;GB by 4.5M &#8212; and eventually exhausts RAM; the engine&#8217;s compact representation stays ~3&#215; lower at matched sizes, which is what let it sweep tens of billions of sequences on the same hardware.</div>
+      <img class="shot" src="media/boij-speedup.svg" alt="Speedup (Macaulay2 time over C++ time) versus number of sequences, colored by codimension" loading="lazy">
+      <div class="shot-cap">Speedup by search size: a ~70&#8211;115&#215; band through the sub-million range and every codimension, climbing past 150&#215; by a few million as Macaulay2&#8217;s per-sequence cost grows &#8212; the bigger the search, the more the engine wins.</div>
+      <p>Nobody assigned this. I got tired of waiting on Macaulay2, so I taught myself the algebra and built the engine at night, from scratch, in about a month, before AI coding tools existed.</p>
+    </div>
+
+    <div class="proj">
+      <h3>geo-map-v2</h3>
+      <div class="kind">Python · ~55,000 lines · core in ~3 months · <a href="https://github.com/harrisonwolf/geo-map-v2">github.com/harrisonwolf/geo-map-v2</a></div>
+      <p>On screen it&#39;s an ordinary-looking map of property values. The system behind it is the real work: it keeps a permanent, tamper-evident record of where every figure came from, so nothing on the map is unaccounted for.</p>
+      <p>Underneath is the most production-grade system I&#39;ve built, a general geospatial data platform. Raw sources are adapted, recorded in a hashed canonical ledger with full provenance, frozen into monthly snapshots, scored, and published to a strictly read-only serving runtime: every number a client sees traces back to an immutable record. New regions, sources, and verticals bolt on through the county registry without touching the core.</p>
+      <ul>
+        <li>On top sits a full map application and renderer: an interactive client (vendored MapLibre GL) that draws the county's official GIS layers as toggleable overlays — parcels with per-parcel detail, the road and highway network, ZIP areas and boundaries, schools by level, and school attendance zones — over the scored basemap.</li>
+        <li>Roughly 1:1 code to tests across 24 modules, including SQL-safety, storage-integrity, and schema-version suites.</li>
+        <li>I built it by running several AI coding agents across git worktrees under a written set of rules — test-first, prompt-injection defense, and so on. The agents wrote most of the volume; the architecture and the test gates are mine.</li>
+      </ul>
+      <a href="media/geomap-hero.png"><img class="shot" src="media/geomap-hero.png" alt="Nexora agent workspace: Fresno County map with ZIP-level market tint, client-brief panel, and a data-lineage stamp in the footer" loading="lazy"></a>
+      <div class="shot-cap">The surface: the agent workspace on Fresno County. The footer stamps every view with its data lineage — this one traces to publication fresno-2026-04.</div>
+      <a href="media/geomap-pipeline.png"><img class="shot" src="media/geomap-pipeline.png" alt="Terminal output of one full pipeline run: adapt, normalize, snapshot, score, publish, with per-stage timings" loading="lazy"></a>
+      <div class="shot-cap">The engine: one make refresh-county run, end to end — 26,000 source rows through adapt → normalize → snapshot (55 ZIPs, 663 cells) → score → a published bundle, with per-stage timings. Click to read.</div>
     </div>
   </section>
 
   <section>
-    <div class="label">Red-teaming</div>
+    <div class="label">Pointed at something real</div>
+    <p class="sec-lede">What happens when the engines meet real ground.</p>
+
+    <div class="proj">
+      <h3>Terrain studies</h3>
+      <div class="kind">Geometry engine + GIS platform · client demo · <a href="terrain-study.html">view the one-pager</a></div>
+      <p>A landowner or a public agency normally pays a survey crew and a consultant for this kind of study. I get a first pass from free public data, before anyone surveys a thing.</p>
+      <p>Three studies on real Sierra ground, each computed on a surface my geometry engine triangulates from public USGS elevation, with the parcel side handled by the geo-map platform. Neither engine was built for terrain, which is the point.</p>
+      <ul>
+        <li>A level building pad on a sloped lot, cut balancing fill: <span class="num">9,160</span> cubic yards moved.</li>
+        <li>A 22-acre bluff&#39;s rainfall, routed: which slopes shed, where the water collects, and where it leaves the property.</li>
+        <li>A dry canyon dammed at its one outlet: <span class="num">44,457</span> acre-feet behind a 256-foot dam &#8212; about 14.5 billion gallons.</li>
+      </ul>
+      <p>Empty drawing board to working tool took about an hour and a half, because the primitives already existed and were fast. These are proofs of concept; a real siting study needs calibrated models and a licensed engineer. What they show is how fast owned tools turn a real question into a working answer. The harness lives in its own repo now, available on request.</p>
+    </div>
+
+    <div class="proj">
+      <h3>ltx-studio</h3>
+      <div class="kind">Python · ~11,400 lines · core in ~2 weeks · <a href="https://github.com/harrisonwolf/ltx-studio">github.com/harrisonwolf/ltx-studio</a></div>
+      <p>It makes short videos from typed descriptions, and the whole job runs on one ordinary gaming graphics card, hardware normally far too small for the job. Work like this usually takes a rented data-center machine or a paid cloud service.</p>
+      <p>A local text-to-video studio: two video models on a single 8&nbsp;GB GPU, short shots chained into longer clips that stay coherent, all driven from a terminal UI. Built from scratch in about two weeks, and most of the interesting engineering falls out of taking the 8&nbsp;GB constraint seriously.</p>
+      <ul>
+        <li>A resident vision-language model (Qwen3-VL, 4-bit) runs as an agent that turns plain-language direction into runnable generation settings.</li>
+        <li>I built a measurement layer to go with it: seam and drift telemetry, plus a blind A/B comparison harness, so I can tell whether a change helped.</li>
+        <li>Drift control between shots uses AdaIN latent anchoring (from diffusers, cited) and a color-matching pass I wrote.</li>
+      </ul>
+      <a href="https://github.com/harrisonwolf/ltx-studio#what-it-looks-like"><img class="shot" src="media/ltx-newrun.png" alt="LTX Studio NEW RUN screen: backend schematic on a fast-to-nicer axis, contextual info panel, and readout meters predicting VRAM, quality, drift, and render time" loading="lazy" width="1400" height="697"></a>
+      <div class="shot-cap">Setting up a run: the backend schematic (fast → nicer), a contextual INFO panel, and READOUT meters predicting VRAM, quality, drift, and render time before anything starts.</div>
+      <a href="https://github.com/harrisonwolf/ltx-studio#what-it-looks-like"><img class="shot" src="media/ltx-live.png" alt="LTX Studio LIVE view mid-render: last-frame preview of a bioluminescent forest, phase timings, and job controls" loading="lazy" width="1400" height="808"></a>
+      <div class="shot-cap">The LIVE tab mid-render. More screenshots and sample clips in the repo README.</div>
+      <p>The clip that exact run produced, beside a second render from the same studio:</p>
+      <div class="shot-row">
+        <img class="shot" src="media/ltx-forest.gif" alt="Generated clip: bioluminescent forest at night, glowing moths over a stream lit from within" loading="lazy">
+        <img class="shot" src="media/ltx-fireflies.gif" alt="Generated clip: fireflies drifting over a glowing forest stream" loading="lazy">
+      </div>
+      <div class="shot-cap">Left: "Bioluminescent forest at night — glowing moths, luminescent moss, a stream lit from within. Cinematic, 35&nbsp;mm." Right: fireflies over a glowing stream, 64&nbsp;fps after interpolation.</div>
+      <div class="shot-row">
+        <video class="shot" autoplay muted playsinline preload="metadata" poster="media/ltx-day-one.png" aria-label="The project's first output: a blurry, motion-smeared dog wading in the surf"><source src="media/ltx-day-one.mp4" type="video/mp4"></video>
+        <video class="shot" autoplay muted playsinline preload="metadata" poster="media/ltx-day-fourteen.png" aria-label="Day fourteen: a golden-hour corgi in profile on the beach, backlit by the sunset"><source src="media/ltx-day-fourteen.mp4" type="video/mp4"></video>
+      </div>
+      <div class="shot-cap">How far it came in two weeks: the first clip this project ever produced (June 22, the initial LTX smoke test) beside a day-fourteen re-run of the same dog-on-a-beach prompt (July 6, Wan backend), same 8&nbsp;GB card.</div>
+      <p>ltx-studio grew out of an earlier AnimateDiff pipeline I directed onto the same unsupported 8&nbsp;GB card — a PyTorch-SDPA attention backport, a from-scratch LCM scheduler, a conv-aware LoRA merge — before modern open-weight models made the output worth watching. That earlier work, which I came to with no video-generation background, is where I learned the model internals this one runs on. Code on request.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="label">Evaluation</div>
     <div class="proj">
       <h3>Adversarial probing of frontier-model honesty</h3>
       <div class="kind">Self-directed evaluation · 277 exchanges, one session · full case study on request</div>
