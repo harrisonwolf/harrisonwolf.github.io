@@ -229,6 +229,13 @@
       </ul>
       <a href="media/geomap-hero.png"><img class="shot" src="media/geomap-hero.png" alt="Nexora agent workspace: Fresno County map with ZIP-level market tint, client-brief panel, and a data-lineage stamp in the footer" loading="lazy"></a>
       <div class="shot-cap">The surface: the agent workspace on Fresno County. The footer stamps every view with its data lineage — this one traces to publication fresno-2026-04.</div>
+      <a href="media/terrain/fresno-parcels.jpg"><img class="shot" src="media/terrain/fresno-parcels.jpg" alt="A map of Fresno County rendered as one dot per parcel over the scored basemap" loading="lazy"></a>
+      <div class="shot-cap">Fresno County, parcel by parcel: every dot is one parcel, and the map is just the front end to precomputed scores.</div>
+      <div class="shot-row">
+        <a href="media/terrain/clovis-parcels.jpg"><img class="shot" src="media/terrain/clovis-parcels.jpg" alt="The same map zoomed to Clovis street level, each dot a parcel on a named street" loading="lazy"></a>
+        <a href="media/terrain/parcel-detail.jpg"><img class="shot" src="media/terrain/parcel-detail.jpg" alt="A single-parcel detail panel: APN, address, neighborhood cell, modeled price, and a data-quality label" loading="lazy"></a>
+      </div>
+      <div class="shot-cap">The same data three zooms down (every dot a parcel on a named street), and one parcel opened: APN, neighborhood cell, modeled price, with the data-quality label right beside it.</div>
       <a href="media/geomap-pipeline.png"><img class="shot" src="media/geomap-pipeline.png" alt="Terminal output of one full pipeline run: adapt, normalize, snapshot, score, publish, with per-stage timings" loading="lazy"></a>
       <div class="shot-cap">The engine: one make refresh-county run, end to end — 26,000 source rows through adapt → normalize → snapshot (55 ZIPs, 663 cells) → score → a published bundle, with per-stage timings. Click to read.</div>
     </div>
@@ -241,14 +248,14 @@
     <div class="proj">
       <h3>Terrain studies</h3>
       <div class="kind">Geometry engine + GIS platform · client demo · <a href="terrain-study.html">view the one-pager</a></div>
-      <p>A landowner or a public agency normally pays a survey crew and a consultant for this kind of study. I get a first pass from free public data, before anyone surveys a thing.</p>
-      <p>The page holds three studies on real Sierra ground, each computed on a surface my geometry engine triangulates from public USGS elevation, with the parcel side handled by the geo-map platform. Neither engine was built for terrain, which is the point.</p>
+      <p>A landowner or a public agency normally pays a survey crew and a consultant for this kind of study. I got these numbers in an afternoon, from free public data, before anyone surveyed a thing: I thought up the three use cases, picked real Sierra sites more or less at random, and ran the computations on my own engines.</p>
+      <p>Neither engine was built for terrain, and that is the point of the page. The geometry engine triangulates each surface from public USGS elevation and the geo-map platform handles the parcel side; two tools built for other jobs bolt together into a working proof of concept because each one was built properly the first time.</p>
       <ul>
         <li>A level building pad on a sloped lot, cut balancing fill: <span class="num">9,160</span> cubic yards moved.</li>
         <li>A 22-acre bluff&#39;s rainfall, routed: which slopes shed, where the water collects, and where it leaves the property.</li>
         <li>A dry canyon dammed at its one outlet: <span class="num">44,457</span> acre-feet behind a 256-foot dam &#8212; about 14.5 billion gallons.</li>
       </ul>
-      <p>Empty drawing board to working tool took about an hour and a half, because the primitives already existed and were fast. These are proofs of concept; a real siting study needs calibrated models and a licensed engineer. What they show is how fast owned tools turn a real question into a working answer. The harness lives in its own repo now, available on request.</p>
+      <p>Empty drawing board to working tool took about an hour and a half, because the primitives already existed and were fast. A real siting study still needs calibrated models and a licensed engineer. The harness lives in its own repo now, available on request.</p>
     </div>
 
     <div class="proj">
