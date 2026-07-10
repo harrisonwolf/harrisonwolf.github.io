@@ -138,9 +138,9 @@
 
     <div class="proj">
       <h3>planar-geometry-engine</h3>
-      <div class="kind">C++ · ~5,600 lines · <a href="https://github.com/harrisonwolf/planar-geometry-engine">github.com/harrisonwolf/planar-geometry-engine</a></div>
+      <div class="kind">C++ · ~5,600 lines · core in ~4–6 weeks · <a href="https://github.com/harrisonwolf/planar-geometry-engine">github.com/harrisonwolf/planar-geometry-engine</a></div>
       <p>Geometry&#39;s classic hard problems, solved from the ground up: cutting complicated shapes into triangles, and turning a scatter of points into the mesh and region structures that games and mapping software rely on.</p>
-      <p>I built it for fun, from a bare terminal in vim and make, with nothing beyond the C++ standard library: geometric predicates, polygon construction and random generation, point-in-polygon and collision queries, ear-clipping and Delaunay triangulation, Voronoi diagrams, and local SVG and Desmos viewers for the output. The core predates my AI-agent workflow and is entirely hand-written; later upgrades used agents.</p>
+      <p>I built it for fun, from a bare terminal in vim and make, with nothing beyond the C++ standard library: geometric predicates, polygon construction and random generation, point-in-polygon and collision queries, ear-clipping and Delaunay triangulation, Voronoi diagrams, and local SVG and Desmos viewers for the output. The core predates my AI-agent workflow and is entirely hand-written; later upgrades used agents. The core platform and engine took about four to six weeks; implementing the ear-clipping algorithm from the paper onto it took another one to three.</p>
       <ul>
         <li><span class="num">1,500</span> random points &#8594; <span class="num">2,976</span> Delaunay triangles and the full Voronoi dual, validated, in <span class="num">0.09&nbsp;s</span>.</li>
         <li>Robustness is the hard part of geometry code, so the predicates handle the degenerate cases (collinear inputs, duplicate points, orientation) with explicit epsilon discipline.</li>
@@ -171,7 +171,7 @@
 
     <div class="proj">
       <h3>boij-soderberg-engine</h3>
-      <div class="kind">C++ · ~2,700 lines · <a href="https://github.com/harrisonwolf/boij-soderberg-engine">github.com/harrisonwolf/boij-soderberg-engine</a></div>
+      <div class="kind">C++ · ~2,700 lines · core in ~1 month · <a href="https://github.com/harrisonwolf/boij-soderberg-engine">github.com/harrisonwolf/boij-soderberg-engine</a></div>
       <p>The engine sifts tens of billions of algebraic structures for the rare ones that break a proposed mathematical rule.</p>
       <p>I wrote it by hand in 2024 &#8212; a ~1,200-line C++ math core, no AI, cross-validated case-by-case against Macaulay2, the standard software mathematicians use for this. Its exhaustive search surfaced the exceptional cases behind one of the three main results of a paper I co-authored (<a href="https://arxiv.org/abs/2512.24320">arXiv:2512.24320</a>); the proof computations themselves ran in Macaulay2. The search supporting the proof took a few nights on my laptop; in Macaulay2 it would have taken months at best, likely years. I later used an AI agent to reorganize the repo, write the docs, and add a test and benchmark harness.</p>
       <p>On matched searches it runs <span class="num">~70&#8211;115&#215;</span> faster than an equivalent Macaulay2 implementation across codimensions 3&#8211;7: a 1.2-million-sequence search in about a second versus a hundred, 20.7 million in 11 seconds versus ~17 minutes &#8212; and past that Macaulay2 runs out of memory, because it has to materialize the whole candidate list. The 2024 campaign swept tens of billions of sequences, codimension 3 out to degree 7,100, in a handful of overnight runs.</p>
@@ -184,11 +184,12 @@
       <div class="shot-cap">Peak memory. Macaulay2 climbs steeply as it materializes the candidate list &#8212; 1.4&nbsp;GB by 4.5M &#8212; and eventually exhausts RAM; the engine&#8217;s compact representation stays ~3&#215; lower at matched sizes, which is what let it sweep tens of billions of sequences on the same hardware.</div>
       <img class="shot" src="media/boij-speedup.svg" alt="Speedup (Macaulay2 time over C++ time) versus number of sequences, colored by codimension" loading="lazy">
       <div class="shot-cap">Speedup by search size: a ~70&#8211;115&#215; band through the sub-million range and every codimension, climbing past 150&#215; by a few million as Macaulay2&#8217;s per-sequence cost grows &#8212; the bigger the search, the more the engine wins.</div>
+      <p>Nobody assigned this. I got tired of waiting on Macaulay2, so I taught myself the algebra and built the engine at night, from scratch, in about a month, before AI coding tools existed.</p>
     </div>
 
     <div class="proj">
       <h3>geo-map-v2</h3>
-      <div class="kind">Python · ~55,000 lines · <a href="https://github.com/harrisonwolf/geo-map-v2">github.com/harrisonwolf/geo-map-v2</a></div>
+      <div class="kind">Python · ~55,000 lines · core in ~3 months · <a href="https://github.com/harrisonwolf/geo-map-v2">github.com/harrisonwolf/geo-map-v2</a></div>
       <p>On screen it&#39;s an ordinary-looking map of property values. The system behind it is the real work: it keeps a permanent, tamper-evident record of where every figure came from, so nothing on the map is unaccounted for.</p>
       <p>Underneath is the most production-grade system I&#39;ve built &#8212; a general geospatial data platform. Raw sources are adapted, recorded in a hashed canonical ledger with full provenance, frozen into monthly snapshots, scored, and published to a strictly read-only serving runtime: every number a client sees traces back to an immutable record. New regions, sources, and verticals bolt on through the county registry without touching the core.</p>
       <ul>
@@ -222,7 +223,7 @@
 
     <div class="proj">
       <h3>ltx-studio</h3>
-      <div class="kind">Python · ~11,400 lines · <a href="https://github.com/harrisonwolf/ltx-studio">github.com/harrisonwolf/ltx-studio</a></div>
+      <div class="kind">Python · ~11,400 lines · core in ~2 weeks · <a href="https://github.com/harrisonwolf/ltx-studio">github.com/harrisonwolf/ltx-studio</a></div>
       <p>It makes short videos from typed descriptions, and the whole job runs on one ordinary gaming graphics card &#8212; hardware normally far too small for this work, which usually takes a rented data-center machine or a paid cloud service.</p>
       <p>A local text-to-video studio: two video models on a single 8&nbsp;GB GPU, short shots chained into longer clips that stay coherent, all driven from a terminal UI. Built from scratch in about two weeks, and most of the interesting engineering falls out of taking the 8&nbsp;GB constraint seriously.</p>
       <ul>
