@@ -145,7 +145,7 @@
     </div>
     <div class="avail">Fresno, CA · Available now</div>
     <nav class="rail-nav" aria-label="Sections">
-      <a href="#engines">The engines</a>
+      <a href="#engines">Selected systems</a>
       <a href="#applied">Pointed at something real</a>
       <a href="#evaluation">Evaluation</a>
       <a href="#background">Background</a>
@@ -162,8 +162,8 @@
   <p class="note">This page is a growing, continuously-updated showcase of some of the cooler, more full-scale systems I&#39;ve built.</p>
 
   <section id="engines">
-    <h2 class="label"><span class="sno">01</span>The engines</h2>
-    <p class="sec-lede">Three engines I own outright. Most of what follows runs on them.</p>
+    <h2 class="label"><span class="sno">01</span>Selected systems</h2>
+    <p class="sec-lede">Three engines and a studio, all mine end to end.</p>
 
     <div class="proj" id="boij">
       <h3>boij-soderberg-engine</h3>
@@ -241,24 +241,6 @@
       <a href="media/geomap-pipeline.png"><img class="shot" src="media/geomap-pipeline.png" alt="Terminal output of one full pipeline run: adapt, normalize, snapshot, score, publish, with per-stage timings" loading="lazy"></a>
       <div class="shot-cap">The engine: one make refresh-county run, end to end — 26,000 source rows through adapt → normalize → snapshot (55 ZIPs, 663 cells) → score → a published bundle, with per-stage timings. Click to read.</div>
     </div>
-  </section>
-
-  <section id="applied">
-    <h2 class="label"><span class="sno">02</span>Pointed at something real</h2>
-    <p class="sec-lede">What happens when the engines meet real ground.</p>
-
-    <div class="proj">
-      <h3>Terrain studies</h3>
-      <div class="kind">Geometry engine + GIS platform · client demo · <a href="terrain-study.html">view the one-pager</a></div>
-      <p>A landowner or a public agency normally pays a survey crew and a consultant for this kind of study. I got these numbers in an afternoon, from free public data, before anyone surveyed a thing: I thought up the three use cases, picked real Sierra sites more or less at random, and ran the computations on my own engines.</p>
-      <p>Neither engine was built for terrain, and that is the point of the page. The geometry engine triangulates each surface from public USGS elevation and the geo-map platform handles the parcel side; two tools built for other jobs bolt together into a working proof of concept because each one was built properly the first time.</p>
-      <ul>
-        <li>A level building pad on a sloped lot, cut balancing fill: <span class="num">9,160</span> cubic yards moved.</li>
-        <li>A 22-acre bluff&#39;s rainfall, routed: which slopes shed, where the water collects, and where it leaves the property.</li>
-        <li>A dry canyon dammed at its one outlet: <span class="num">44,457</span> acre-feet behind a 256-foot dam &#8212; about 14.5 billion gallons.</li>
-      </ul>
-      <p>Empty drawing board to working tool took about an hour and a half, because the primitives already existed and were fast. A real siting study still needs calibrated models and a licensed engineer. The harness lives in its own repo now, available on request.</p>
-    </div>
 
     <div class="proj">
       <h3>ltx-studio</h3>
@@ -287,6 +269,24 @@
       </div>
       <div class="shot-cap">How far it came in two weeks: the first clip this project ever produced (June 22, the initial LTX smoke test) beside a day-fourteen re-run of the same dog-on-a-beach prompt (July 6, Wan backend), same 8&nbsp;GB card.</div>
       <p>ltx-studio grew out of an earlier AnimateDiff pipeline I directed onto the same unsupported 8&nbsp;GB card — a PyTorch-SDPA attention backport, a from-scratch LCM scheduler, a conv-aware LoRA merge — before modern open-weight models made the output worth watching. That earlier work, which I came to with no video-generation background, is where I learned the model internals this one runs on. Code on request.</p>
+    </div>
+  </section>
+
+  <section id="applied">
+    <h2 class="label"><span class="sno">02</span>Pointed at something real</h2>
+    <p class="sec-lede">What happens when the engines meet real ground.</p>
+
+    <div class="proj">
+      <h3>Terrain studies</h3>
+      <div class="kind">Geometry engine + GIS platform · client demo · <a href="terrain-study.html">view the one-pager</a></div>
+      <p>A landowner or a public agency normally pays a survey crew and a consultant for this kind of study. I got these numbers in an afternoon, from free public data, before anyone surveyed a thing: I thought up the three use cases, picked real Sierra sites more or less at random, and ran the computations on my own engines.</p>
+      <p>Neither engine was built for terrain, and that is the point of the page. The geometry engine triangulates each surface from public USGS elevation and the geo-map platform handles the parcel side; two tools built for other jobs bolt together into a working proof of concept because each one was built properly the first time.</p>
+      <ul>
+        <li>A level building pad on a sloped lot, cut balancing fill: <span class="num">9,160</span> cubic yards moved.</li>
+        <li>A 22-acre bluff&#39;s rainfall, routed: which slopes shed, where the water collects, and where it leaves the property.</li>
+        <li>A dry canyon dammed at its one outlet: <span class="num">44,457</span> acre-feet behind a 256-foot dam &#8212; about 14.5 billion gallons.</li>
+      </ul>
+      <p>Empty drawing board to working tool took about an hour and a half, because the primitives already existed and were fast. A real siting study still needs calibrated models and a licensed engineer. The harness lives in its own repo now, available on request.</p>
     </div>
   </section>
 
@@ -350,8 +350,9 @@
       <div class="xp">
         <div class="xp-item">
           <div class="r">Aug 2024 – present</div>
-          <div class="t">Software Engineer — DataAnnotation</div>
-          <div class="d">Review and evaluate frontier agentic coding models: reasoning traces, code correctness, failure modes. Create, execute, and evaluate the containerized (Docker) tasks the evaluations run in. On the quality-review team.</div>
+          <div class="t">Analyst, Agentic Coding &amp; Software Engineering Models — DataAnnotation</div>
+          <div class="t">Quality Reviewer — rating and reviewing the evaluations of other analysts</div>
+          <div class="d">Review and evaluate frontier agentic coding models: reasoning traces, code correctness, failure modes. Create, execute, and evaluate the containerized (Docker) tasks the evaluations run in.</div>
         </div>
         <div class="xp-item">
           <div class="r">Summer 2025 · AFOSR-funded · PI: Dr. Michael Shulman</div>

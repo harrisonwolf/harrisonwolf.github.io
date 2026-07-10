@@ -217,27 +217,7 @@
       <div class="eyebrow">Why this exists</div>
       <p class="lede">This is a portfolio piece, a working demonstration rather than a product. I build software from scratch, close to the metal, and here I point two of my own engines at real Sierra ground to answer three practical questions, end to end.</p>
       <p class="lede">Neither engine behind this page was built for terrain. My geospatial platform was built for real-estate market data: county records ingested into a hashed, auditable ledger and served read-only. My geometry engine was built from first principles in a bare terminal with nothing but C++ and g++ installed (low-level predicates, triangulation, Voronoi, no libraries), to see whether I could. Neither had anything to do with mapping ground.</p>
-      <p class="lede" style="margin-top:0.7em">This page is what happened when I pointed them at real ground anyway. Public USGS elevation goes in; the geometry engine turns it into a triangulated surface; the earthwork and drainage are computed on that surface; a real lot boundary would come from the platform. Empty drawing board to a working, genuinely useful tool in about an hour and a half, and nearly all of it ran on my own machine on my own code (the public elevation data and the plotting aside). That speed comes from building each piece properly the first time, so two of them bolt together into something new and still hold.</p></div><div class="why-fig"><figure class="eng"><div class="term-win"><div class="term-bar"><i></i><i></i><i></i></div><pre class="eng-term2">$ ./interview_demo --run-sample-demo
-
-Sample polygon
-Vertices:
-(-4,0)
-(-1,3)
-(3,4)
-(5,1)
-(2,-3)
-(-3,-4)
-Area: <b>46</b>
-Concave/Convex? <b class="ok">Convex</b>
-
-Triangulation:
-<b>{(-3,-4), (-4,0), (-1,3)}</b>
-Center: (-2.66667,-0.333333)
-Area: 7.5
-<b>{(-3,-4), (-1,3), (3,4)}</b>
-Center: (-0.333333,1)
-Area: 13
-...</pre></div><figcaption>one polygon, under the hood &#183; vertices in &#8594; area, convexity, and an ear-clipping triangulation out</figcaption></figure></div></div><div class="eng-duo"><div class="eng-col"><div class="eng-hd"><span class="eng-no">Engine 01</span><span class="eng-nm">planar-geometry &#183; C++ &#183; from scratch</span></div><p class="eng-note">A bare terminal: numbers in, numbers out. Every surface below is built from what it computes.</p><figure class="eng"><div class="term-win"><div class="term-bar"><i></i><i></i><i></i></div><pre class="eng-term2">$ delaunay_driver --random --random-count=1500 --coord-max=1000
+      <p class="lede" style="margin-top:0.7em">This page is what happened when I pointed them at real ground anyway. Public USGS elevation goes in; the geometry engine turns it into a triangulated surface; the earthwork and drainage are computed on that surface; a real lot boundary would come from the platform. Empty drawing board to a working, genuinely useful tool in about an hour and a half, and nearly all of it ran on my own machine on my own code (the public elevation data and the plotting aside). That speed comes from building each piece properly the first time, so two of them bolt together into something new and still hold.</p></div><div class="why-fig"><figure class="eng"><img loading="lazy" decoding="async" src="media/terrain/planar-desmos.png" alt="The geometry engine's triangulation export rendered in its Desmos viewer: a spiky 15-vertex polygon ear-clipped into 13 colored triangles on graph paper."><figcaption>the geometry engine&#39;s desmos viewer &#183; a 15-vertex polygon in &#8594; 13 triangles out</figcaption></figure><figure class="eng"><img loading="lazy" decoding="async" src="media/terrain/fresno-parcels.jpg" alt="The geospatial platform's map of Fresno County rendered as one dot per parcel."><figcaption>the platform&#39;s map of fresno county, parcel by parcel &#183; the front end to precomputed scores</figcaption></figure></div></div><div class="eng-duo"><div class="eng-col"><div class="eng-hd"><span class="eng-no">Engine 01</span><span class="eng-nm">planar-geometry &#183; C++ &#183; from scratch</span></div><p class="eng-note">A bare terminal: numbers in, numbers out. Every surface below is built from what it computes.</p><figure class="eng"><div class="term-win"><div class="term-bar"><i></i><i></i><i></i></div><pre class="eng-term2">$ delaunay_driver --random --random-count=1500 --coord-max=1000
 
 Generated 1500 random points within [-1000, 1000].
 Input sites:            1500
@@ -257,7 +237,27 @@ double eps = 1e-12 * scale;
 if (fabs(cross(twoMinus1, thisMinus1)) &gt; eps) return false;
 // 2) between-ness via projection
 double proj = dot(thisMinus1, twoMinus1);
-if (proj &lt; -eps) return false;</pre><figcaption>one predicate, hand-written &#183; is a point on this segment, within a scaled tolerance</figcaption></figure></div><div class="eng-col"><div class="eng-hd"><span class="eng-no">Engine 02</span><span class="eng-nm">geospatial platform &#183; Python</span></div><p class="eng-note">Same discipline, different material: county records go in, versioned scores come out, and the map is just the interface.</p><figure class="eng"><img loading="lazy" decoding="async" src="media/terrain/platform-pipeline.png" alt="Terminal run of the real pipeline: bootstrap, build-web, and serve steps with timings, plus a stale-data warning banner."><figcaption>the real pipeline &#183; bootstrap &#8594; build &#8594; serve &#8212; and it flags stale upstream data instead of hiding it</figcaption></figure><figure class="eng"><img loading="lazy" decoding="async" src="media/terrain/fresno-parcels.jpg" alt="The agent workspace: a map of Fresno County rendered as one dot per parcel."><figcaption>fresno county, parcel by parcel &#183; the map is the front end to precomputed scores</figcaption></figure><div class="eng-2up"><figure class="eng"><img loading="lazy" decoding="async" src="media/terrain/clovis-parcels.jpg" alt="The same map zoomed to Clovis street level, each dot a parcel on a named street."><figcaption>the same data, three zooms down &#183; every dot a parcel on a named street</figcaption></figure><figure class="eng"><img loading="lazy" decoding="async" src="media/terrain/parcel-detail.jpg" alt="A single-parcel detail panel: APN, address, neighborhood cell, modeled price, and a data-quality label."><figcaption>one parcel &#183; APN, neighborhood cell, modeled price &#8212; with the data-quality label right beside it</figcaption></figure></div></div></div></div>
+if (proj &lt; -eps) return false;</pre><figcaption>one predicate, hand-written &#183; is a point on this segment, within a scaled tolerance</figcaption></figure><figure class="eng"><div class="term-win"><div class="term-bar"><i></i><i></i><i></i></div><pre class="eng-term2">$ ./interview_demo --run-sample-demo
+
+Sample polygon
+Vertices:
+(-4,0)
+(-1,3)
+(3,4)
+(5,1)
+(2,-3)
+(-3,-4)
+Area: <b>46</b>
+Concave/Convex? <b class="ok">Convex</b>
+
+Triangulation:
+<b>{(-3,-4), (-4,0), (-1,3)}</b>
+Center: (-2.66667,-0.333333)
+Area: 7.5
+<b>{(-3,-4), (-1,3), (3,4)}</b>
+Center: (-0.333333,1)
+Area: 13
+...</pre></div><figcaption>one polygon, under the hood &#183; vertices in &#8594; area, convexity, and an ear-clipping triangulation out</figcaption></figure></div><div class="eng-col"><div class="eng-hd"><span class="eng-no">Engine 02</span><span class="eng-nm">geospatial platform &#183; Python</span></div><p class="eng-note">Same discipline, different material: county records go in, versioned scores come out, and the map is just the interface.</p><figure class="eng"><img loading="lazy" decoding="async" src="media/terrain/platform-pipeline.png" alt="Terminal run of the real pipeline: bootstrap, build-web, and serve steps with timings, plus a stale-data warning banner."><figcaption>the real pipeline &#183; bootstrap &#8594; build &#8594; serve &#8212; and it flags stale upstream data instead of hiding it</figcaption></figure><div class="eng-2up"><figure class="eng"><img loading="lazy" decoding="async" src="media/terrain/clovis-parcels.jpg" alt="The same map zoomed to Clovis street level, each dot a parcel on a named street."><figcaption>the same data, three zooms down &#183; every dot a parcel on a named street</figcaption></figure><figure class="eng"><img loading="lazy" decoding="async" src="media/terrain/parcel-detail.jpg" alt="A single-parcel detail panel: APN, address, neighborhood cell, modeled price, and a data-quality label."><figcaption>one parcel &#183; APN, neighborhood cell, modeled price &#8212; with the data-quality label right beside it</figcaption></figure></div></div></div></div>
 
     <div class="band head">
       <div class="eyebrow">Terrain &amp; earthwork · three studies</div>
