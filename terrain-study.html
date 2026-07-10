@@ -52,6 +52,8 @@
   @media (max-width:680px){ .collar-grid{ grid-template-columns:1fr 1fr 1fr; } }
 
   .eyebrow{ font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:.18em; color:var(--copper); }
+  .backlink{ display:inline-block; font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--copper); text-decoration:none; border-bottom:1px solid rgba(196,106,46,.4); margin-bottom:18px; }
+  .backlink:hover{ border-bottom-color:var(--copper); }
   h1{ font-weight:700; font-size:clamp(2rem,4.6vw,2.9rem); line-height:.98; letter-spacing:-.02em; color:var(--txt); margin:.55rem 0 0; text-wrap:balance; max-width:17ch; }
   .lede{ color:var(--txt2); font-size:clamp(1rem,1.7vw,1.12rem); max-width:60ch; margin:18px 0 0; line-height:1.6; }
   .lede em{ color:var(--txt); font-style:normal; }
@@ -200,6 +202,7 @@
   <div class="doc">
 
     <div class="band collar">
+      <a class="backlink" href="index.html">&#8592; Back to the portfolio</a>
       <div class="collar-grid">
         <div class="fld"><div class="k">Project</div><div class="v">Terrain studies</div></div>
         <div class="fld"><div class="k">Subject</div><div class="v">Three<br>Sierra sites</div></div>
@@ -358,7 +361,7 @@ if (proj &lt; -eps) return false;</pre><figcaption>one predicate, hand-written &
       <p class="disc">A demonstration of the method on real public data, not a licensed survey or construction document. Locations are approximate; satellite imagery courtesy Esri World Imagery. Ten-meter data suits planning and early pricing, and the same pipeline reads a surveyed point cloud without change.</p>
       <footer>
         <span class="a">Harrison Wolf · Research Engineer</span>
-        <span class="b"><a href="mailto:harrisonwolf42@gmail.com">harrisonwolf42@gmail.com</a> · <a href="https://harrisonwolf.github.io">harrisonwolf.github.io</a></span>
+        <span class="b"><a href="mailto:harrisonwolf42@gmail.com">harrisonwolf42@gmail.com</a> · <a href="index.html">back to the portfolio</a></span>
       </footer>
     </div>
 
