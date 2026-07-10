@@ -135,7 +135,7 @@
 
     <div class="proj">
       <h3>ltx-studio</h3>
-      <div class="kind">Python · ~11,400 lines · <a href="https://github.com/harrisonwolf/ltx-studio">github.com/harrisonwolf/ltx-studio</a></div>
+      <div class="kind">Python · ~11,400 lines · core in ~2 weeks · <a href="https://github.com/harrisonwolf/ltx-studio">github.com/harrisonwolf/ltx-studio</a></div>
       <p>It makes short videos from typed descriptions, and the whole job runs on one ordinary gaming graphics card. A card like that is normally far too small for the work; generating video usually takes a rented data-center machine or a paid cloud service. A local text-to-video studio that runs two video models on a single 8&nbsp;GB GPU and chains short shots into longer clips that stay coherent. Built from scratch in about two weeks:</p>
       <ul>
         <li>A resident vision-language model (Qwen3-VL, 4-bit) runs as an agent that turns plain-language direction into runnable generation settings.</li>
@@ -162,7 +162,7 @@
 
     <div class="proj">
       <h3>geo-map-v2</h3>
-      <div class="kind">Python · ~55,000 lines · <a href="https://github.com/harrisonwolf/geo-map-v2">github.com/harrisonwolf/geo-map-v2</a></div>
+      <div class="kind">Python · ~55,000 lines · core in ~3 months · <a href="https://github.com/harrisonwolf/geo-map-v2">github.com/harrisonwolf/geo-map-v2</a></div>
       <p>On screen it&#39;s an ordinary-looking map of property values. The system behind it is the real work: it keeps a permanent, tamper-evident record of where every figure came from, so nothing on the map is unaccounted for.</p>
       <p>A real-estate heatmap on the surface. Underneath, the most production-grade system I've built: a general geospatial data platform. Raw sources are ingested into adapted artifacts, recorded in a hashed canonical ledger with full provenance, frozen into monthly snapshots, scored, and published to a strictly read-only serving runtime, so every number a client sees traces back to an immutable record. The county registry is the extension point: new regions, sources, and verticals are designed to bolt on without touching the core.</p>
       <ul>
@@ -178,7 +178,7 @@
 
     <div class="proj">
       <h3>boij-soderberg-engine</h3>
-      <div class="kind">C++ · ~2,700 lines · <a href="https://github.com/harrisonwolf/boij-soderberg-engine">github.com/harrisonwolf/boij-soderberg-engine</a></div>
+      <div class="kind">C++ · ~2,700 lines · core in ~1 month · <a href="https://github.com/harrisonwolf/boij-soderberg-engine">github.com/harrisonwolf/boij-soderberg-engine</a></div>
       <p>The engine sifts tens of billions of algebraic structures for the rare ones that break a proposed mathematical rule, doing the semi-advanced computation needed to test each one. I built it for a research paper I co-authored, where its search turned up the exceptional cases behind one of the paper&#39;s three main results. It finishes in seconds where Macaulay2, the standard software mathematicians use for this, needs many minutes and past a certain size cannot finish at all. The exhaustive search supporting the proof took a few nights on my laptop; in Macaulay2 it would have taken months at best, likely years. A C++ engine I wrote by hand in 2024 — a ~1,200-line math core, no AI, cross-validated case-by-case against Macaulay2. It enumerates and screens candidate degree sequences for counterexamples to two Betti-number lower-bound conjectures, and independently reproduced the exact four codimension-3 counterexamples that one of the theorems in a paper I co-authored (<a href="https://arxiv.org/abs/2512.24320">arXiv:2512.24320</a>) classifies. On the same search it runs <span class="num">~70–115×</span> faster than an equivalent Macaulay2 implementation across codimensions 3–7 — a 1.2-million-sequence search takes about a second, versus a hundred in Macaulay2 — and it clears 12-to-20-million-sequence searches in seconds, at sizes where Macaulay2 slows to many minutes (~17 minutes at 20.7M) and eventually runs out of memory as the candidate list outgrows RAM. Over about three or four days of mostly-overnight runs in 2024 the engine swept tens of billions of these sequences &#8212; codimension 3 out to degree 7,100 &#8212; collecting counterexamples; in the paper this exploratory search surfaced the cases to investigate, while the proof computations themselves ran in Macaulay2. I later used an AI agent to reorganize the repo, write the docs, and add a test and benchmark harness.</p>
       <ul>
         <li>Correctness is pinned against Macaulay2's own BoijSoederberg package: the pure Betti tables the engine computes are checked case-by-case against M2's reference values.</li>
@@ -190,13 +190,14 @@
       <div class="shot-cap">Peak memory. Macaulay2 starts at a ~100&nbsp;MB interpreter floor but climbs steeply as it materializes the candidate list &#8212; 1.4&nbsp;GB by 4.5M &#8212; and out of memory only once that list outgrows RAM (as it did on the lighter 2024 hardware). The C++ engine&#8217;s compact representation keeps it ~3&#215; lower at matched sizes, and let it sweep tens of billions of sequences on the same hardware.</div>
       <img class="shot" src="media/boij-speedup.svg" alt="Speedup (Macaulay2 time over C++ time) versus number of sequences, colored by codimension" loading="lazy">
       <div class="shot-cap">Speedup sits in a ~70&#8211;115&#215; band through the sub-million range and every codimension, then climbs past 150&#215; by a few million as Macaulay2&#8217;s per-sequence cost grows &#8212; the bigger the search, the more the engine wins.</div>
+      <p>Nobody assigned this. I got tired of waiting on Macaulay2, so I taught myself the algebra and built the engine at night, from scratch, in about a month, before AI coding tools existed.</p>
 
     </div>
 
     <div class="proj">
       <h3>planar-geometry-engine</h3>
-      <div class="kind">C++ · ~5,600 lines · <a href="https://github.com/harrisonwolf/planar-geometry-engine">github.com/harrisonwolf/planar-geometry-engine</a></div>
-      <p>Geometry&#39;s classic hard problems, solved from the ground up: cutting complicated shapes into triangles, and turning a scatter of points into the mesh and region structures that games and mapping software rely on. A full computational-geometry engine I built for fun, from a bare terminal in vim and make, with no dependencies beyond the C++ standard library. It covers geometric predicates, polygon construction and random polygon generation, point-in-polygon and collision queries, ear-clipping triangulation, Delaunay triangulation, and Voronoi diagrams, with local SVG and Desmos-based viewers for exploring the output. The core predates my AI-agent workflow and is entirely hand-written; later upgrades used agents.</p>
+      <div class="kind">C++ · ~5,600 lines · core in ~4–6 weeks · <a href="https://github.com/harrisonwolf/planar-geometry-engine">github.com/harrisonwolf/planar-geometry-engine</a></div>
+      <p>Geometry&#39;s classic hard problems, solved from the ground up: cutting complicated shapes into triangles, and turning a scatter of points into the mesh and region structures that games and mapping software rely on. A full computational-geometry engine I built for fun, from a bare terminal in vim and make, with no dependencies beyond the C++ standard library. It covers geometric predicates, polygon construction and random polygon generation, point-in-polygon and collision queries, ear-clipping triangulation, Delaunay triangulation, and Voronoi diagrams, with local SVG and Desmos-based viewers for exploring the output. The core predates my AI-agent workflow and is entirely hand-written; later upgrades used agents. The core platform and engine took about four to six weeks; implementing the ear-clipping algorithm from the paper onto it took another one to three.</p>
       <ul>
         <li>Robustness is the hard part of geometry code, so the predicates handle the degenerate cases (collinear inputs, duplicate points, orientation) with explicit epsilon discipline.</li>
         <li>Verified by a hand-rolled TDD harness: 14 suites covering the predicates, both triangulations, and the Voronoi output.</li>
