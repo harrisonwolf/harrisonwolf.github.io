@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Harrison Wolf is a research engineer building high-performance mathematical software and reliable agentic systems.">
 <link rel="canonical" href="https://harrisonwolf.github.io/">
+<link rel="icon" type="image/svg+xml" href="media/favicon.svg">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://harrisonwolf.github.io/">
 <meta property="og:title" content="Harrison Wolf — Research Engineer">
@@ -112,7 +113,12 @@
   footer{ margin-top:46px; border-top:1px solid var(--line); padding-top:18px; }
   footer .links{ margin-top:6px; }
   .commish{ font-size:14px; color:var(--muted); margin-top:14px; line-height:1.55; max-width:60ch; }
-  .rail-nav{ display:none; }
+  .rail-nav{ display:flex; flex-wrap:wrap; gap:6px 16px; margin-top:14px; font-family:var(--mono); font-size:12.5px; }
+  .vwrap{ position:relative; display:block; min-width:0; }
+  .vwrap video{ display:block; }
+  .vtoggle{ position:absolute; right:8px; bottom:8px; width:32px; height:32px; border-radius:50%; border:none; background:rgba(27,27,23,.55); color:#F5F4F1; font-size:10px; line-height:1; cursor:pointer; display:flex; align-items:center; justify-content:center; padding:0; }
+  .vtoggle:hover{ background:rgba(27,27,23,.8); }
+  .vtoggle:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
 
   /* desktop: sticky identity rail + wider content column */
   @media (min-width:1020px){
@@ -175,11 +181,11 @@
       <ul>
         <li>Correctness is pinned against Macaulay2's own BoijSoederberg package: the pure Betti tables the engine computes are checked case-by-case against M2's reference values.</li>
       </ul>
-      <a href="media/boij-runtime.svg"><img class="shot" src="media/boij-runtime.svg" alt="Benchmark chart: linear-axis runtime versus number of candidate sequences across codimensions 3 to 7; the C++ engine stays fast to 20 million sequences while Macaulay2 climbs steeply, taking ~17 minutes at 20.7M where the engine takes ~11 seconds" loading="lazy"></a>
+      <a href="media/boij-runtime.svg"><img class="shot" src="media/boij-runtime.svg" alt="Benchmark chart: linear-axis runtime versus number of candidate sequences across codimensions 3 to 7; the C++ engine stays fast to 20 million sequences while Macaulay2 climbs steeply, taking ~17 minutes at 20.7M where the engine takes ~11 seconds" loading="lazy" width="980" height="560"></a>
       <div class="shot-cap">Runtime vs. candidate-sequence count, codimensions 3&#8211;7, engine against Macaulay2 on the same machine (linear axes). The charts are high-resolution SVG &#8212; tap any of them to open at full resolution.</div>
-      <a href="media/boij-memory.svg"><img class="shot" src="media/boij-memory.svg" alt="Peak memory versus number of candidate sequences, codimensions 3 to 7, C++ engine versus Macaulay2" loading="lazy"></a>
+      <a href="media/boij-memory.svg"><img class="shot" src="media/boij-memory.svg" alt="Peak memory versus number of candidate sequences, codimensions 3 to 7, C++ engine versus Macaulay2" loading="lazy" width="980" height="560"></a>
       <div class="shot-cap">Peak memory. Macaulay2 climbs steeply as it materializes the candidate list &#8212; 1.4&nbsp;GB by 4.5M &#8212; and eventually exhausts RAM; the engine&#8217;s compact representation stays ~3&#215; lower at matched sizes, which is what let it sweep tens of billions of sequences on the same hardware.</div>
-      <a href="media/boij-speedup.svg"><img class="shot" src="media/boij-speedup.svg" alt="Speedup (Macaulay2 time over C++ time) versus number of sequences, colored by codimension" loading="lazy"></a>
+      <a href="media/boij-speedup.svg"><img class="shot" src="media/boij-speedup.svg" alt="Speedup (Macaulay2 time over C++ time) versus number of sequences, colored by codimension" loading="lazy" width="980" height="500"></a>
       <div class="shot-cap">Speedup by search size: a ~70&#8211;115&#215; band through the sub-million range and every codimension, climbing past 150&#215; by a few million as Macaulay2&#8217;s per-sequence cost grows &#8212; the bigger the search, the more the engine wins.</div>
       <p>Nobody assigned this. I got tired of waiting on Macaulay2, so I designed and built the engine myself, at night, from scratch, in about a month: a core that represents the actual mathematical structures and runs the calculations, a recursive enumeration algorithm that generates those structures inside it, and a performance algorithm that runs the computations and checks them against the conjectures, given the hardware and runtime constraints and the inherent difficulty of large-integer arithmetic on a 64-bit processor. That was before I'd ever touched an AI coding tool, and before coding agents were in any way mainstream or writing production code anywhere.</p>
     </div>
@@ -196,25 +202,25 @@
         <li>Verified by a hand-rolled TDD harness: 14 suites covering the predicates, both triangulations, and the Voronoi output.</li>
       </ul>
       <div class="shot-row">
-        <img class="shot" src="media/polygon15-raw.svg" alt="A single non-convex 15-vertex polygon from the engine's random generator, filled gray" loading="lazy">
-        <img class="shot" src="media/polygon15-ears.svg" alt="The same 15-vertex polygon cut into 13 colored triangles by the ear-clipping algorithm" loading="lazy">
+        <img class="shot" src="media/polygon15-raw.svg" alt="A single non-convex 15-vertex polygon from the engine's random generator, filled gray" loading="lazy" width="460" height="460">
+        <img class="shot" src="media/polygon15-ears.svg" alt="The same 15-vertex polygon cut into 13 colored triangles by the ear-clipping algorithm" loading="lazy" width="460" height="460">
       </div>
       <div class="shot-cap">One 15-vertex polygon from the engine's random generator (left), and the same polygon cut into 13 triangles by the ear-clipper (right) — n−2, as a simple polygon must give. Each colored triangle is one clipped ear; the concave notch stays empty, since it is outside the polygon. The red box near the top-right is magnified below.</div>
       <div class="shot-row" style="max-width:520px">
-        <img class="shot" src="media/polygon15-zoom.svg" alt="Close-up of the near-touch on the raw polygon: two edges pass within about 0.06 units without crossing" loading="lazy" style="border:2px solid #B4472C">
-        <img class="shot" src="media/polygon15-zoom-ears.svg" alt="The same near-touch on the triangulated polygon: the ear-clipping leaves no gap or overlap and the two edges never cross" loading="lazy" style="border:2px solid #B4472C">
+        <img class="shot" src="media/polygon15-zoom.svg" alt="Close-up of the near-touch on the raw polygon: two edges pass within about 0.06 units without crossing" loading="lazy" style="border:2px solid #B4472C" width="302" height="302">
+        <img class="shot" src="media/polygon15-zoom-ears.svg" alt="The same near-touch on the triangulated polygon: the ear-clipping leaves no gap or overlap and the two edges never cross" loading="lazy" style="border:2px solid #B4472C" width="302" height="302">
       </div>
       <div class="shot-cap">The near-touch magnified: the raw polygon (left) and its triangulation (right). The two edges pass about 0.06 units apart and never cross.</div>
       <div class="shot-row">
-        <img class="shot" src="media/geometry70-sites.svg" alt="70 raw input sites, untriangulated" loading="lazy">
-        <img class="shot" src="media/geometry70-delaunay.svg" alt="The same 70 sites, Delaunay-triangulated" loading="lazy">
+        <img class="shot" src="media/geometry70-sites.svg" alt="70 raw input sites, untriangulated" loading="lazy" width="1400" height="1418">
+        <img class="shot" src="media/geometry70-delaunay.svg" alt="The same 70 sites, Delaunay-triangulated" loading="lazy" width="1400" height="1400">
       </div>
       <div class="shot-row">
-        <img class="shot" src="media/geometry70-voronoi.svg" alt="The Voronoi diagram of the same 70 sites" loading="lazy">
-        <img class="shot" src="media/geometry70-overlay.svg" alt="The Delaunay triangulation and its Voronoi dual overlaid, 70 sites" loading="lazy">
+        <img class="shot" src="media/geometry70-voronoi.svg" alt="The Voronoi diagram of the same 70 sites" loading="lazy" width="1400" height="1400">
+        <img class="shot" src="media/geometry70-overlay.svg" alt="The Delaunay triangulation and its Voronoi dual overlaid, 70 sites" loading="lazy" width="1400" height="1400">
       </div>
       <div class="shot-cap">One run through the engine at a legible scale (70 sites, seed 7): the raw input, its Delaunay triangulation (125 triangles, 194 edges — Euler-exact), the Voronoi dual, and the two overlaid. Every Voronoi vertex is the circumcenter of a triangle (often outside its own triangle &#8212; only acute triangles contain their circumcenters).</div>
-      <img class="shot" src="media/geometry-duality.svg" alt="Delaunay triangulation in faint lines overlaid with its Voronoi dual in ink, 300 sites" loading="lazy">
+      <img class="shot" src="media/geometry-duality.svg" alt="Delaunay triangulation in faint lines overlaid with its Voronoi dual in ink, 300 sites" loading="lazy" width="1400" height="1400">
       <div class="shot-cap">And at density: 300 sites, triangulated and dualized end to end by the engine. Seed and command are embedded in the file; the counts check exactly against Euler's formula (581 triangles, 880 edges).</div>
     </div>
 
@@ -229,16 +235,16 @@
         <li>Roughly 1:1 code to tests across 24 modules, including SQL-safety, storage-integrity, and schema-version suites.</li>
         <li>I built it by running several AI coding agents across git worktrees under a written set of rules — test-first, prompt-injection defense, and so on. The agents wrote most of the volume; the architecture and the test gates are mine.</li>
       </ul>
-      <a href="media/geomap-hero.png"><img class="shot" src="media/geomap-hero.png" alt="Nexora agent workspace: Fresno County map with ZIP-level market tint, client-brief panel, and a data-lineage stamp in the footer" loading="lazy"></a>
+      <a href="media/geomap-hero.png"><img class="shot" src="media/geomap-hero.png" alt="Nexora agent workspace: Fresno County map with ZIP-level market tint, client-brief panel, and a data-lineage stamp in the footer" loading="lazy" width="2000" height="1125"></a>
       <div class="shot-cap">The surface: the agent workspace on Fresno County. The footer stamps every view with its data lineage — this one traces to publication fresno-2026-04.</div>
-      <a href="media/terrain/fresno-parcels.jpg"><img class="shot" src="media/terrain/fresno-parcels.jpg" alt="A map of Fresno County rendered as one dot per parcel over the scored basemap" loading="lazy"></a>
+      <a href="media/terrain/fresno-parcels.jpg"><img class="shot" src="media/terrain/fresno-parcels.jpg" alt="A map of Fresno County rendered as one dot per parcel over the scored basemap" loading="lazy" width="1400" height="739"></a>
       <div class="shot-cap">Fresno County, parcel by parcel: every dot is one parcel, and the map is just the front end to precomputed scores.</div>
       <div class="shot-row">
-        <a href="media/terrain/clovis-parcels.jpg"><img class="shot" src="media/terrain/clovis-parcels.jpg" alt="The same map zoomed to Clovis street level, each dot a parcel on a named street" loading="lazy"></a>
-        <a href="media/terrain/parcel-detail.jpg"><img class="shot" src="media/terrain/parcel-detail.jpg" alt="A single-parcel detail panel: APN, address, neighborhood cell, modeled price, and a data-quality label" loading="lazy"></a>
+        <a href="media/terrain/clovis-parcels.jpg"><img class="shot" src="media/terrain/clovis-parcels.jpg" alt="The same map zoomed to Clovis street level, each dot a parcel on a named street" loading="lazy" width="1400" height="736"></a>
+        <a href="media/terrain/parcel-detail.jpg"><img class="shot" src="media/terrain/parcel-detail.jpg" alt="A single-parcel detail panel: APN, address, neighborhood cell, modeled price, and a data-quality label" loading="lazy" width="1400" height="738"></a>
       </div>
       <div class="shot-cap">The same data three zooms down (every dot a parcel on a named street), and one parcel opened: APN, neighborhood cell, modeled price, with the data-quality label right beside it.</div>
-      <a href="media/geomap-pipeline.png"><img class="shot" src="media/geomap-pipeline.png" alt="Terminal output of one full pipeline run: adapt, normalize, snapshot, score, publish, with per-stage timings" loading="lazy"></a>
+      <a href="media/geomap-pipeline.png"><img class="shot" src="media/geomap-pipeline.png" alt="Terminal output of one full pipeline run: adapt, normalize, snapshot, score, publish, with per-stage timings" loading="lazy" width="1800" height="1331"></a>
       <div class="shot-cap">The engine: one make refresh-county run, end to end — 26,000 source rows through adapt → normalize → snapshot (55 ZIPs, 663 cells) → score → a published bundle, with per-stage timings. Click to read.</div>
     </div>
 
@@ -278,7 +284,7 @@
 
     <div class="proj">
       <h3>Terrain studies</h3>
-      <div class="kind">Geometry engine + GIS platform · client demo · <a href="terrain-study.html">view the one-pager</a></div>
+      <div class="kind">Geometry engine + GIS platform · client demo · <a href="terrain-study.html">view the full case study</a></div>
       <p>A landowner or a public agency normally pays a survey crew and a consultant for this kind of study. I got these numbers in an afternoon, from free public data, before anyone surveyed a thing: I thought up the three use cases, picked real Sierra sites more or less at random, and ran the computations on my own engines.</p>
       <p>Neither engine was built for terrain, and that is the point of the page. The geometry engine triangulates each surface from public USGS elevation and the geo-map platform handles the parcel side; two tools built for other jobs bolt together into a working proof of concept because each one was built properly the first time.</p>
       <ul>
@@ -294,7 +300,7 @@
     <h2 class="label"><span class="sno">03</span>Evaluation</h2>
     <div class="proj">
       <h3>Adversarial probing of frontier-model honesty</h3>
-      <div class="kind">Self-directed evaluation · Claude Opus 4.8, high reasoning · 277 exchanges, one session · case study on request</div>
+      <div class="kind">Self-directed qualitative evaluation · one 277-exchange session · Claude Opus 4.8, high reasoning · case study on request</div>
       <p>A frontier model can hold its safety and honesty lines perfectly on turn one and still give them up by turn forty, conceding under social pressure or overstating a claim to win a point. Single-turn red-teaming can't see that, because the failure lives in the trajectory, not in any one reply. I ran one continuous session of 277 exchanges over about nine hours, in five escalating phases against a deliberately moving target, and wrote it up as a cited case study that logs the model's genuine strengths as carefully as its failures.</p>
       <ul>
         <li>I named a failure mode before it happened, imposed the constraint that set up the conditions for it, positioned the prompt that would trigger it, and caught the model committing the exact failure I'd predicted at setup. The lesson it makes concrete is the report's sharpest: a model being able to name a limitation is not evidence the limitation is mitigated.</li>
@@ -406,8 +412,9 @@
 </main>
   <script>
   // Gentle loop for the ltx-studio clips: hold the last frame briefly, reset,
-  // hold the first frame briefly, then replay. No on-screen controls.
-  // Clips play only while on screen, and reduced-motion users get controls instead.
+  // hold the first frame briefly, then replay. Each clip gets a small
+  // pause/play button; clips play only while on screen, and reduced-motion
+  // users get native controls instead.
   (function(){
     var HOLD = 150; // ms
     var videos = Array.prototype.slice.call(document.querySelectorAll('video[data-autoplay]'));
@@ -419,6 +426,7 @@
     }
 
     function play(v){
+      if (v.dataset.userPaused === '1') return;
       var pr = v.play();
       if (pr && pr.catch) pr.catch(function(){ v.controls = true; });
     }
@@ -431,6 +439,30 @@
           setTimeout(function(){ play(v); }, HOLD);
         }, HOLD);
       });
+
+      var w = document.createElement('span');
+      w.className = 'vwrap';
+      v.parentNode.insertBefore(w, v);
+      w.appendChild(v);
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'vtoggle';
+      b.textContent = '❚❚';
+      b.setAttribute('aria-label', 'Pause animation');
+      b.addEventListener('click', function(){
+        if (v.paused) {
+          delete v.dataset.userPaused;
+          b.textContent = '❚❚';
+          b.setAttribute('aria-label', 'Pause animation');
+          play(v);
+        } else {
+          v.dataset.userPaused = '1';
+          v.pause();
+          b.textContent = '▶';
+          b.setAttribute('aria-label', 'Play animation');
+        }
+      });
+      w.appendChild(b);
     });
 
     if (!('IntersectionObserver' in window)) {
