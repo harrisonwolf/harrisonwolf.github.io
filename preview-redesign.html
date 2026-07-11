@@ -85,6 +85,7 @@
   @media (max-width:560px){ .shot-row{ grid-template-columns:1fr; } }
 
   .how p{ color:#2C2A24; }
+  .how p + p{ margin-top:12px; }
   .exch{ margin-top:16px; border:1px solid var(--line); border-left:3px solid var(--accent); background:#FAF9F6; padding:15px 18px; border-radius:2px; }
   .exch .lead{ color:var(--muted); font-size:15px; line-height:1.6; }
   .exch blockquote{ margin:12px 0 0; font-family:var(--mono); font-size:13.5px; line-height:1.62; color:var(--ink); }
@@ -337,6 +338,7 @@
   <section class="how">
     <h2 class="label"><span class="sno">04</span>How I work</h2>
     <p>Most of the larger systems above were built by directing AI coding agents, not typed by hand. What I bring is the architecture, the tests, and the evaluation that make that output reliable. I hand-write the C++ so I know what "correct" looks like underneath, and where I've reused someone else's math or code, I say so.</p>
+    <p>I don't trust a result I can't check. The algebra engine is checked case by case against Macaulay2. The geometry engine's triangulations have to satisfy Euler's formula exactly. The map platform hashes every number into a ledger. The eval work tracks every claim to its owner. Every project ships with a way to prove it wrong.</p>
   </section>
 
   <section id="background">
