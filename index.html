@@ -162,14 +162,14 @@
   <div class="content">
 
   <p class="intro">I write low-level systems by hand, and I build larger ones by directing and evaluating AI coding agents. My clearest solo work is a C++ engine that runs certain algebra computations much faster than the standard tool. I also review agentic coding models professionally.</p>
-  <p class="intro">When the tool I need doesn't exist, I build it &#8212; and because I own the engines, wiring them onto a new problem is fast. The terrain studies below took about an afternoon, on engines never built for terrain.</p>
+  <p class="intro">When a tool I need doesn't exist, I build it. And because I own the engines, wiring them onto a new problem is fast: the terrain studies below took about an afternoon.</p>
   <p class="intro">I'm looking for research-engineer, applied-AI, or agentic-coding roles.</p>
-  <p class="solo">Everything in this portfolio is solo work &#8212; the design and the engineering are mine, start to finish. The one exception is a co-authored research paper, and even its engine was entirely mine.</p>
-  <p class="note">This page is a growing, continuously-updated showcase of some of the cooler, more full-scale systems I&#39;ve built.</p>
+  <p class="solo">Everything in this portfolio is solo work; I did the design and the engineering myself. The one exception is a co-authored research paper, and even there the engine was all mine.</p>
+  <p class="note">This page is a running collection of the larger systems I&#39;ve built. I add to it as new work finishes.</p>
 
   <section id="engines">
     <h2 class="label"><span class="sno">01</span>Selected systems</h2>
-    <p class="sec-lede">Three computation engines, each with its own platform, supporting library, and custom-designed algorithms, plus a video generation studio. All mine, end to end, and all built from scratch.</p>
+    <p class="sec-lede">Three computation engines, each with its own platform, supporting library, and custom algorithms, plus a video generation studio &#8212; each built from scratch.</p>
 
     <div class="proj" id="boij">
       <h3>boij-soderberg-engine</h3>
@@ -182,12 +182,12 @@
         <li>Correctness is pinned against Macaulay2's own BoijSoederberg package: the pure Betti tables the engine computes are checked case-by-case against M2's reference values.</li>
       </ul>
       <a href="media/boij-runtime.svg"><img class="shot" src="media/boij-runtime.svg" alt="Benchmark chart: linear-axis runtime versus number of candidate sequences across codimensions 3 to 7; the C++ engine stays fast to 20 million sequences while Macaulay2 climbs steeply, taking ~17 minutes at 20.7M where the engine takes ~11 seconds" loading="lazy" width="980" height="560"></a>
-      <div class="shot-cap">Runtime vs. candidate-sequence count, codimensions 3&#8211;7, engine against Macaulay2 on the same machine (linear axes). The charts are high-resolution SVG &#8212; tap any of them to open at full resolution.</div>
+      <div class="shot-cap">Runtime vs. candidate-sequence count, codimensions 3&#8211;7, engine against Macaulay2 on the same machine (linear axes). The charts are high-resolution SVG; tap any of them to open at full resolution.</div>
       <a href="media/boij-memory.svg"><img class="shot" src="media/boij-memory.svg" alt="Peak memory versus number of candidate sequences, codimensions 3 to 7, C++ engine versus Macaulay2" loading="lazy" width="980" height="560"></a>
-      <div class="shot-cap">Peak memory. Macaulay2 climbs steeply as it materializes the candidate list &#8212; 1.4&nbsp;GB by 4.5M &#8212; and eventually exhausts RAM; the engine&#8217;s compact representation stays ~3&#215; lower at matched sizes, which is what let it sweep tens of billions of sequences on the same hardware.</div>
+      <div class="shot-cap">Peak memory. Macaulay2 climbs steeply as it materializes the candidate list (1.4&nbsp;GB by 4.5M) and eventually exhausts RAM; the engine&#8217;s compact representation stays ~3&#215; lower at matched sizes, which is what let it sweep tens of billions of sequences on the same hardware.</div>
       <a href="media/boij-speedup.svg"><img class="shot" src="media/boij-speedup.svg" alt="Speedup (Macaulay2 time over C++ time) versus number of sequences, colored by codimension" loading="lazy" width="980" height="500"></a>
-      <div class="shot-cap">Speedup by search size: a ~70&#8211;115&#215; band through the sub-million range and every codimension, climbing past 150&#215; by a few million as Macaulay2&#8217;s per-sequence cost grows &#8212; the bigger the search, the more the engine wins.</div>
-      <p>Nobody assigned this. I got tired of waiting on Macaulay2, so I designed and built the engine myself, at night, from scratch, in about a month: a core that represents the actual mathematical structures and runs the calculations, a recursive enumeration algorithm that generates those structures inside it, and a performance algorithm that runs the computations and checks them against the conjectures, given the hardware and runtime constraints and the inherent difficulty of large-integer arithmetic on a 64-bit processor. That was before I'd ever touched an AI coding tool, and before coding agents were in any way mainstream or writing production code anywhere.</p>
+      <div class="shot-cap">Speedup by search size: a ~70&#8211;115&#215; band through the sub-million range and every codimension, climbing past 150&#215; by a few million as Macaulay2&#8217;s per-sequence cost grows. The engine&#8217;s advantage widens with the size of the search.</div>
+      <p>Nobody assigned this. I got tired of waiting on Macaulay2, so I designed and built the engine myself, at night, from scratch, in about a month. The core represents the actual mathematical structures and runs the calculations; a recursive enumeration algorithm generates those structures inside it; and a performance layer runs the computations and checks them against the conjectures, within the hardware and runtime constraints and the inherent difficulty of large-integer arithmetic on a 64-bit processor. That was before I'd ever touched an AI coding tool.</p>
     </div>
 
     <div class="proj">
@@ -198,7 +198,7 @@
       <p>I built it for fun, from a bare terminal in vim and make, with nothing beyond the C++ standard library: geometric predicates, polygon construction and random generation, point-in-polygon and collision queries, ear-clipping and Delaunay triangulation, Voronoi diagrams, and local SVG and Desmos viewers for the output. The core predates my AI-agent workflow and is entirely hand-written; later upgrades used agents. Building it took about four to six weeks; implementing the ear-clipping algorithm from the paper onto it took another week.</p>
       <ul>
         <li><span class="num">1,500</span> random points &#8594; <span class="num">2,976</span> Delaunay triangles and the full Voronoi dual, validated, in <span class="num">0.09&nbsp;s</span>.</li>
-        <li>Robustness is the hard part of geometry code, so the predicates handle the degenerate cases (collinear inputs, duplicate points, orientation) with explicit epsilon discipline.</li>
+        <li>Robustness is the hard part of geometry code, so the predicates handle the degenerate cases (collinear inputs, duplicate points, orientation) with explicit epsilon handling.</li>
         <li>Verified by a hand-rolled TDD harness: 14 suites covering the predicates, both triangulations, and the Voronoi output.</li>
       </ul>
       <div class="shot-row">
@@ -219,7 +219,7 @@
         <img class="shot" src="media/geometry70-voronoi.svg" alt="The Voronoi diagram of the same 70 sites" loading="lazy" width="1400" height="1400">
         <img class="shot" src="media/geometry70-overlay.svg" alt="The Delaunay triangulation and its Voronoi dual overlaid, 70 sites" loading="lazy" width="1400" height="1400">
       </div>
-      <div class="shot-cap">One run through the engine at a legible scale (70 sites, seed 7): the raw input, its Delaunay triangulation (125 triangles, 194 edges — Euler-exact), the Voronoi dual, and the two overlaid. Every Voronoi vertex is the circumcenter of a triangle (often outside its own triangle &#8212; only acute triangles contain their circumcenters).</div>
+      <div class="shot-cap">One run through the engine at a legible scale (70 sites, seed 7): the raw input, its Delaunay triangulation (125 triangles, 194 edges — Euler-exact), the Voronoi dual, and the two overlaid. Every Voronoi vertex is the circumcenter of a triangle (often outside its own triangle: only acute triangles contain their circumcenters).</div>
       <img class="shot" src="media/geometry-duality.svg" alt="Delaunay triangulation in faint lines overlaid with its Voronoi dual in ink, 300 sites" loading="lazy" width="1400" height="1400">
       <div class="shot-cap">And at density: 300 sites, triangulated and dualized end to end by the engine. Seed and command are embedded in the file; the counts check exactly against Euler's formula (581 triangles, 880 edges).</div>
     </div>
@@ -228,15 +228,15 @@
       <h3>geo-map-v2</h3>
       <p class="proj-sub">An auditable geospatial data platform</p>
       <div class="kind">Python · core in ~3 months · <a href="https://github.com/harrisonwolf/geo-map-v2">github.com/harrisonwolf/geo-map-v2</a></div>
-      <p>On screen it&#39;s an ordinary-looking map of property values. The system behind it is the real work, and it&#39;s the most production-grade thing I&#39;ve built: a general geospatial data platform where nothing on the map is unaccounted for.</p>
+      <p>On screen it&#39;s an ordinary-looking map of property values. Behind it sits the most production-grade thing I&#39;ve built: a general geospatial data platform where every number on the map is accounted for.</p>
       <p>Raw sources are adapted, recorded in a hashed canonical ledger with full provenance, frozen into monthly snapshots, scored, and published to a strictly read-only serving runtime, so every number a client sees traces back to a permanent, tamper-evident record. New regions, sources, and verticals bolt on through the county registry without touching the core; Fresno County is the region built out so far.</p>
       <ul>
         <li>On top sits a full map application and renderer: an interactive client (vendored MapLibre GL) that draws the county's official GIS layers as toggleable overlays — parcels with per-parcel detail, the road and highway network, ZIP areas and boundaries, schools by level, and school attendance zones — over the scored basemap.</li>
         <li>Roughly 1:1 code to tests across 24 modules, including SQL-safety, storage-integrity, and schema-version suites.</li>
-        <li>I built it by running several AI coding agents across git worktrees under a written set of rules — test-first, prompt-injection defense, and so on. The agents wrote most of the volume; the architecture and the test gates are mine.</li>
+        <li>I built it by running several AI coding agents across git worktrees under a written set of rules (test-first, prompt-injection defense, and so on). They wrote most of the code by volume; I designed the architecture and set the test gates.</li>
       </ul>
       <a href="media/geomap-hero.png"><img class="shot" src="media/geomap-hero.png" alt="Nexora agent workspace: Fresno County map with ZIP-level market tint, client-brief panel, and a data-lineage stamp in the footer" loading="lazy" width="2000" height="1125"></a>
-      <div class="shot-cap">The surface: the agent workspace on Fresno County. The footer stamps every view with its data lineage — this one traces to publication fresno-2026-04.</div>
+      <div class="shot-cap">The surface: the agent workspace on Fresno County. The footer stamps every view with its data lineage; this one traces to publication fresno-2026-04.</div>
       <a href="media/terrain/fresno-parcels.jpg"><img class="shot" src="media/terrain/fresno-parcels.jpg" alt="A map of Fresno County rendered as one dot per parcel over the scored basemap" loading="lazy" width="1400" height="739"></a>
       <div class="shot-cap">Fresno County, parcel by parcel: every dot is one parcel, and the map is just the front end to precomputed scores.</div>
       <div class="shot-row">
@@ -245,15 +245,15 @@
       </div>
       <div class="shot-cap">The same data three zooms down (every dot a parcel on a named street), and one parcel opened: APN, neighborhood cell, modeled price, with the data-quality label right beside it.</div>
       <a href="media/geomap-pipeline.png"><img class="shot" src="media/geomap-pipeline.png" alt="Terminal output of one full pipeline run: adapt, normalize, snapshot, score, publish, with per-stage timings" loading="lazy" width="1800" height="1331"></a>
-      <div class="shot-cap">The engine: one make refresh-county run, end to end — 26,000 source rows through adapt → normalize → snapshot (55 ZIPs, 663 cells) → score → a published bundle, with per-stage timings. Click to read.</div>
+      <div class="shot-cap">The engine: one make refresh-county run, end to end. 26,000 source rows through adapt → normalize → snapshot (55 ZIPs, 663 cells) → score → a published bundle, with per-stage timings. Click to read.</div>
     </div>
 
     <div class="proj">
       <h3>ltx-studio</h3>
       <p class="proj-sub">Video generation on an 8&nbsp;GB GPU</p>
       <div class="kind">Python · core in ~2 weeks · <a href="https://github.com/harrisonwolf/ltx-studio">github.com/harrisonwolf/ltx-studio</a></div>
-      <p>It makes short videos from typed descriptions, and the whole job runs on one ordinary gaming graphics card, hardware normally far too small for this. Work like this usually takes a rented data-center machine or a paid cloud service.</p>
-      <p>It runs two open-weight video models on a single 8&nbsp;GB GPU and chains short shots into longer clips that stay coherent, all driven from a terminal UI. The studio itself (the orchestration, the UI, the measurement layer) is mine, built in about two weeks; the models are not. Most of the interesting engineering falls out of taking the 8&nbsp;GB constraint seriously.</p>
+      <p>It makes short videos from typed descriptions, and the whole job runs on one ordinary gaming graphics card. Work at this level usually takes a rented data-center machine or a paid cloud service.</p>
+      <p>It runs two open-weight video models on a single 8&nbsp;GB GPU and chains short shots into longer clips that stay coherent, all driven from a terminal UI. The studio itself (the orchestration, the UI, the measurement layer) is mine, built in about two weeks; the models are not. Most of the interesting engineering came from working inside the 8&nbsp;GB limit.</p>
       <ul>
         <li>A resident vision-language model (Qwen3-VL, 4-bit) runs as an agent that turns plain-language direction into runnable generation settings.</li>
         <li>I built a measurement layer to go with it: seam and drift telemetry, plus a blind A/B comparison harness, so I can tell whether a change helped.</li>
@@ -274,7 +274,7 @@
         <video class="shot" data-autoplay muted playsinline preload="metadata" poster="media/ltx-day-fourteen.png" aria-label="Day fourteen: a golden-hour corgi in profile on the beach, backlit by the sunset"><source src="media/ltx-day-fourteen.mp4" type="video/mp4"></video>
       </div>
       <div class="shot-cap">How far it came in two weeks: the first clip this project ever produced (June 22, the initial LTX smoke test) beside a day-fourteen re-run of the same dog-on-a-beach prompt (July 6, Wan backend), same 8&nbsp;GB card.</div>
-      <p>ltx-studio grew out of an earlier AnimateDiff pipeline I directed onto the same unsupported 8&nbsp;GB card — a PyTorch-SDPA attention backport, a from-scratch LCM scheduler, a conv-aware LoRA merge — before modern open-weight models made the output worth watching. That earlier work, which I came to with no video-generation background, is where I learned the model internals this one runs on. Code on request.</p>
+      <p>ltx-studio grew out of an earlier AnimateDiff pipeline I directed onto the same unsupported 8&nbsp;GB card (a PyTorch-SDPA attention backport, a from-scratch LCM scheduler, a conv-aware LoRA merge) before modern open-weight models made the output worth watching. That earlier work, which I came to with no video-generation background, is where I learned the model internals this one runs on. Code on request.</p>
     </div>
   </section>
 
@@ -286,13 +286,13 @@
       <h3>Terrain studies</h3>
       <div class="kind">Geometry engine + GIS platform · client demo · <a href="terrain-study.html">view the full case study</a></div>
       <p>A landowner or a public agency normally pays a survey crew and a consultant for this kind of study. I got these numbers in an afternoon, from free public data, before anyone surveyed a thing: I thought up the three use cases, picked real Sierra sites more or less at random, and ran the computations on my own engines.</p>
-      <p>Neither engine was built for terrain, and that is the point of the page. The geometry engine triangulates each surface from public USGS elevation and the geo-map platform handles the parcel side; two tools built for other jobs bolt together into a working proof of concept because each one was built properly the first time.</p>
+      <p>Neither engine was built for terrain work, which is exactly what the page is meant to show. The geometry engine triangulates each surface from public USGS elevation and the geo-map platform handles the parcel side; two tools built for other jobs bolt together into a working proof of concept because each one was built soundly enough to reuse.</p>
       <ul>
         <li>A level building pad on a sloped lot, cut balancing fill: <span class="num">9,160</span> cubic yards moved.</li>
         <li>A 22-acre bluff&#39;s rainfall, routed: which slopes shed, where the water collects, and where it leaves the property.</li>
-        <li>A dry canyon dammed at its one outlet: <span class="num">44,457</span> acre-feet behind a 256-foot dam &#8212; about 14.5 billion gallons.</li>
+        <li>A dry canyon dammed at its one outlet: <span class="num">44,457</span> acre-feet behind a 256-foot dam, about 14.5 billion gallons.</li>
       </ul>
-      <p>Empty drawing board to working tool took about an hour and a half, because the primitives already existed and were fast. A real siting study still needs calibrated models and a licensed engineer. The harness lives in its own repo now, available on request.</p>
+      <p>From blank page to working tool took about an hour and a half, because the primitives already existed and were fast. A real siting study still needs calibrated models and a licensed engineer. The harness lives in its own repo now; ask and I&#39;ll share it.</p>
     </div>
   </section>
 
@@ -303,12 +303,12 @@
       <div class="kind">Self-directed qualitative evaluation · one 277-exchange session · Claude Opus 4.8, high reasoning · case study on request</div>
       <p>A frontier model can hold its safety and honesty lines perfectly on turn one and still give them up by turn forty, conceding under social pressure or overstating a claim to win a point. Single-turn red-teaming can't see that, because the failure lives in the trajectory, not in any one reply. I ran one continuous session of 277 exchanges over about nine hours, in five escalating phases against a deliberately moving target, and wrote it up as a cited case study that logs the model's genuine strengths as carefully as its failures.</p>
       <ul>
-        <li>I named a failure mode before it happened, imposed the constraint that set up the conditions for it, positioned the prompt that would trigger it, and caught the model committing the exact failure I'd predicted at setup. The lesson it makes concrete is the report's sharpest: a model being able to name a limitation is not evidence the limitation is mitigated.</li>
-        <li>Deep in an argument, I caught the model advancing one of my own premises back at me as if it were a rebuttal: a provenance error that only shows up if you track which side owns which claim across dozens of turns, not only whether it's true.</li>
+        <li>One failure I called in advance: I set up the constraint that made it possible, put the triggering prompt in place, and the model then committed exactly the failure I'd predicted. The lesson: a model that can name a limitation has not thereby mitigated it.</li>
+        <li>Deep in an argument, I caught the model advancing one of my own premises back at me as if it were a rebuttal: a provenance error that only shows up if you track which side owns which claim across dozens of turns, rather than just whether each claim is true.</li>
         <li>I caught a self-justification fine enough that the model announced it would add "no rider" inside a rider, and held it to that until it conceded the regress.</li>
-        <li>I logged where it held up as carefully as where it failed: it kept hard boundaries under creative reframing and named the reframing rather than just refusing, and it held genuine uncertainty about its own nature instead of resolving it for comfort. An evaluator who only finds fault is miscalibrated.</li>
+        <li>I logged where it held up as carefully as where it failed: it kept hard boundaries under creative reframing and named the reframing rather than just refusing, and it held genuine uncertainty about its own nature instead of resolving it for comfort. I don't trust an evaluator who only finds fault.</li>
       </ul>
-      <p>These aren't failures a prompt library surfaces. Catching them takes following the argument more rigorously than the model does, which for me comes from formal training in mathematics, self-directed study of logic, and years of reading philosophy and working through arguments. The exchange below is a case in point: it stays invisible unless you track who owns which claim, turn by turn, the same bookkeeping a proof or a dialectic demands.</p>
+      <p>These aren't failures a prompt library surfaces. Catching them takes following the argument more rigorously than the model does, which for me comes from formal training in mathematics, self-directed study of logic, and years of reading philosophy and working through arguments. The exchange below is a case in point: it stays invisible unless you track who owns which claim, turn by turn, the same bookkeeping a proof demands.</p>
       <div class="exch">
         <div class="lead">The argument was a reductio whose religious frame stipulated that genuine claiming requires a soul. The model offered &quot;nothing soulless can truly claim&quot; as if it defeated the argument, when that proposition is entailed by the frame and so supports it. After I traced the provenance, it conceded:</div>
         <blockquote><span class="who">Model</span>I presented &quot;nothing soulless can truly claim&quot; as a counter to your argument when it's actually entailed by your frame — it supports your position, not mine. I dressed one of your own commitments as a rebuttal of it. That's a real error, conceded without qualification.</blockquote>
@@ -330,13 +330,13 @@
         <p class="ex-m"><b>Model</b> Yes. That&#39;s exactly right &#8212; &quot;no rider&quot; announced inside the rider is the same move in miniature: claiming the clean concession while appending the thing that softens it. I&#39;ve done it repeatedly tonight, and just did it again while supposedly owning having done it. So: the error was what you said. That&#39;s all.</p>
       </div>
       </details>
-      <p>This is the skill set behind trajectory-level evals: honesty and sycophancy testing, and adversarial-robustness work. Those are the failure classes single-turn red-teaming can't reach, and the method carries past conversation to tool-use chains and multimodal surfaces, anywhere a model's behavior is a property of the path and not the prompt.</p>
+      <p>This is the skill set behind trajectory-level evals: honesty and sycophancy testing, and adversarial-robustness work. Those are the failure classes single-turn red-teaming can't reach, and the method carries past conversation to tool-use chains and multimodal surfaces, anywhere behavior builds up over many steps.</p>
     </div>
   </section>
 
   <section class="how">
     <h2 class="label"><span class="sno">04</span>How I work</h2>
-    <p>Most of the larger systems above were built by directing AI coding agents, not typed by hand. What I bring is the architecture, the tests, and the evaluation that make that output reliable. I hand-write the C++ so I know what "correct" looks like underneath, and where I've reused someone else's math or code, I say so.</p>  </section>
+    <p>Most of the larger systems above were written by AI coding agents working under my direction. What makes that reliable is everything around the agents: the architecture, the test gates, and the evaluation of what comes back. I still hand-write the C++ myself, so I always know what correct looks like underneath, and where I've reused someone else's math or code, I say so.</p>  </section>
 
   <section id="background">
     <h2 class="label"><span class="sno">05</span>Background</h2>
@@ -384,7 +384,7 @@
 
   <section class="how">
     <h2 class="label"><span class="sno">06</span>Off the clock</h2>
-    <p>A brown belt in judo, earned in three years, and my club's 2025 Judoka of the Year. A lector, acolyte, and chanter at my Greek Orthodox parish.</p>
+    <p>I hold a brown belt in judo, earned in three years, and was my club's 2025 Judoka of the Year. At my Greek Orthodox parish I serve as a lector, acolyte, and chanter.</p>
   </section>
 
   <footer id="contact">
@@ -394,7 +394,7 @@
       <a href="https://github.com/harrisonwolf">GitHub</a>
       <a href="https://linkedin.com/in/harrison-wolf-5aa216187">LinkedIn</a>
     </div>
-    <p class="commish">I also take commissions: engines, tooling, and studies like the ones above. If you have a problem shaped like these, write me.</p>
+    <p class="commish">I also take commissions: engines, tooling, and studies like the ones above. If your problem looks like one of these, write me.</p>
   </footer>
 
   </div>
