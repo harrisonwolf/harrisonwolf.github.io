@@ -162,9 +162,9 @@
   <div class="content">
 
   <p class="intro">I write low-level systems by hand, and I build larger ones by directing and evaluating AI coding agents. My clearest solo work is a C++ engine that runs certain algebra computations much faster than the standard tool. I also review agentic coding models professionally.</p>
-  <p class="intro">When a tool I need doesn't exist, I build it. And because I own the engines, wiring them onto a new problem is fast.</p>
+  <p class="intro">Because I own the engines, wiring them onto a new problem is fast.</p>
   <p class="intro">I'm looking for research-engineer, applied-AI, or agentic-coding roles.</p>
-  <p class="solo">Everything in this portfolio is solo work. The one exception is a co-authored research paper, and even there the engine was all mine.</p>
+  <p class="solo">Everything in this portfolio is solo work. The one exception is a co-authored research paper.</p>
   <p class="note">This page is a running collection of the larger systems I&#39;ve built. I add to it as new work finishes.</p>
 
   <section id="engines">
@@ -189,7 +189,7 @@
       <div class="shot-cap">Peak memory. Macaulay2 climbs steeply as it materializes the candidate list (1.4&nbsp;GB by 4.5M) and eventually exhausts RAM; the engine&#8217;s compact representation stays ~3&#215; lower at matched sizes, which is what let it sweep tens of billions of sequences on the same hardware.</div>
       <a href="media/boij-speedup.svg"><img class="shot" src="media/boij-speedup.svg" alt="Speedup (Macaulay2 time over C++ time) versus number of sequences, colored by codimension" loading="lazy" width="980" height="500"></a>
       <div class="shot-cap">Speedup by search size: a ~70&#8211;115&#215; band through the sub-million range and every codimension, climbing past 150&#215; by a few million as Macaulay2&#8217;s per-sequence cost grows. The engine&#8217;s advantage widens with the size of the search.</div>
-      <p>The core represents the actual mathematical structures and runs the calculations; a recursive enumeration algorithm generates those structures inside it; and a performance layer runs the computations and checks them against the conjectures, within the hardware and runtime constraints and the inherent difficulty of large-integer arithmetic on a 64-bit processor. That was before I'd ever touched an AI coding tool.</p>
+      <p>The core represents the actual mathematical structures and runs the calculations; a recursive enumeration algorithm generates those structures inside it; and a performance layer runs the computations and checks them against the conjectures, within the hardware and runtime constraints and the inherent difficulty of large-integer arithmetic on a 64-bit processor.</p>
     </div>
 
     <div class="proj">
@@ -230,7 +230,7 @@
       <h3>geo-map-v2</h3>
       <p class="proj-sub">An auditable geospatial data platform</p>
       <div class="kind">Python · core in ~3 months · <a href="https://github.com/harrisonwolf/geo-map-v2">github.com/harrisonwolf/geo-map-v2</a></div>
-      <p>On screen it&#39;s an ordinary-looking map of property values. Behind it sits the most production-grade thing I&#39;ve built: a general geospatial data platform where every number on the map is accounted for.</p>
+      <p>On screen it&#39;s an ordinary-looking map of property values. Behind it sits a general geospatial data platform where every number on the map is accounted for.</p>
       <p>Raw sources are adapted, recorded in a hashed canonical ledger with full provenance, frozen into monthly snapshots, scored, and published to a strictly read-only serving runtime, so every number a client sees traces back to a permanent, tamper-evident record. New regions, sources, and verticals bolt on through the county registry without touching the core; Fresno County is the region built out so far.</p>
       <ul>
         <li>On top sits a full map application and renderer: an interactive client (vendored MapLibre GL) that draws the county's official GIS layers as toggleable overlays — parcels with per-parcel detail, the road and highway network, ZIP areas and boundaries, schools by level, and school attendance zones — over the scored basemap.</li>
@@ -287,7 +287,7 @@
     <div class="proj">
       <h3>Terrain studies</h3>
       <div class="kind">Geometry engine + GIS platform · client demo · <a href="terrain-study.html">view the full case study</a></div>
-      <p>A landowner or a public agency normally pays a survey crew and a consultant for this kind of study. I got these numbers in an afternoon, from free public data, before anyone surveyed a thing: I thought up the three use cases, picked real Sierra sites more or less at random, and ran the computations on my own engines.</p>
+      <p>A landowner or a public agency normally pays a survey crew and a consultant for this kind of study. I got these numbers from free public data, before anyone surveyed a thing: I thought up the three use cases, picked real Sierra sites more or less at random, and ran the computations on my own engines.</p>
       <p>Neither engine was built for terrain work, which is exactly what the page is meant to show. The geometry engine triangulates each surface from public USGS elevation and the geo-map platform handles the parcel side; two tools built for other jobs bolt together into a working proof of concept because each one was built soundly enough to reuse.</p>
       <ul>
         <li>A level building pad on a sloped lot, cut balancing fill: <span class="num">9,160</span> cubic yards moved.</li>
