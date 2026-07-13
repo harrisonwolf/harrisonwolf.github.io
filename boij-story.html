@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="How a hand-written C++ engine met a research bottleneck and ended up behind one of a paper's three main theorems.">
+<link rel="canonical" href="https://harrisonwolf.github.io/boij-story.html">
+<link rel="icon" type="image/svg+xml" href="media/favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://harrisonwolf.github.io/boij-story.html">
+<meta property="og:title" content="The research story — boij-soderberg-engine">
+<meta property="og:description" content="How a hand-written C++ engine met a research bottleneck and ended up behind one of a paper's three main theorems.">
+<meta name="twitter:card" content="summary">
+<title>The research story — boij-soderberg-engine — Harrison Wolf</title>
+<style>
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ -webkit-text-size-adjust:100%; }
+  body,h1,h2,h3,p,ul{ margin:0; }
+  :root{
+    --paper:#F5F4F1; --ink:#1B1B17; --muted:#6C685F; --faint:#746F67;
+    --line:#E2DFD7; --accent:#3C5A49; --accent-d:#294032;
+    --sans: system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --mono: ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
+  }
+  body{ background:var(--paper); color:var(--ink); font-family:var(--sans); font-size:17px; line-height:1.65; -webkit-font-smoothing:antialiased; }
+  .page{ max-width:684px; margin:0 auto; padding:66px 26px 104px; }
+  a{ color:var(--accent); text-decoration:underline; text-underline-offset:2px; text-decoration-thickness:1px; }
+  a:hover{ color:var(--accent-d); }
+  a:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+  .backlink{ font-family:var(--mono); font-size:12.5px; }
+  h1{ font-size:29px; line-height:1.12; font-weight:700; letter-spacing:-.015em; margin-top:26px; }
+  .kind{ font-family:var(--mono); font-size:12.5px; color:var(--faint); margin-top:8px; }
+  h2{ font-family:var(--mono); font-size:12px; text-transform:uppercase; letter-spacing:.15em; color:var(--faint); border-top:1px solid var(--line); padding-top:14px; margin-top:44px; font-weight:400; }
+  p{ margin-top:14px; color:#2C2A24; }
+  .num{ font-variant-numeric:tabular-nums; }
+  .shot{ display:block; max-width:100%; height:auto; margin-top:16px; border:1px solid var(--line); border-radius:2px; }
+  .shot-cap{ font-family:var(--mono); font-size:12px; color:var(--faint); margin-top:6px; }
+</style>
+</head>
+<body>
+<main class="page">
+  <a class="backlink" href="index.html">&#8592; back to the portfolio</a>
+  <h1>The research story</h1>
+  <div class="kind">boij-soderberg-engine · C++ · <a href="https://github.com/harrisonwolf/boij-soderberg-engine">github.com/harrisonwolf/boij-soderberg-engine</a> · <a href="https://arxiv.org/abs/2512.24320">arXiv:2512.24320</a></div>
+
+  <h2>How it started</h2>
+  <p>We were using Macaulay2 to do the search initially, and after a little while, that&#39;s when I started to write my engine instead. Macaulay2 was painfully slow, and I could feel it in my bones that I could make something faster. Just as the core was getting finished, Macaulay2 was starting to really struggle to push the search any farther, and, essentially at the same time that my engine found the fourth or fifth counterexample &#8212; whichever it was, the one Macaulay2 really couldn&#39;t get past after that &#8212; my advisor realized the pattern. We were able to rigorously prove it, discovering one of the paper&#39;s three main theorems (<a href="https://arxiv.org/abs/2512.24320">arXiv:2512.24320</a>).</p>
+
+  <h2>What the search found</h2>
+  <p>My engine fed the other side of the same result, too. The first search had been turning up examples of what became an infinite family of counterexamples &#8212; all following exactly Pell&#39;s equation (think of it like the Fibonacci sequence, but in algebra), which itself is, in no exaggerated way, a genuine miracle. The same engine, sweeping tens of billions of degree sequences and computing numbers too large to work with conventionally using ordinary CPUs, is what surfaced the counterexamples: once you bound their size, there are exactly four. The engine found them; the proofs are the paper&#39;s &#8212; pure number theory for the infinite family, and a by-hand case analysis, more than a dozen cases, for the four. It is a great illustration of how pure and abstract mathematics can be, while at the same time being so utterly unwieldy. Given the number-theoretic and commutative-algebra methods we have now, we were able to find beautiful, essentially miraculous connections and explanations for one of the results; the others remain more and more hidden &#8212; we simply lack the tools and the vision for them so far.</p>
+
+  <h2>How the engine is built</h2>
+  <p>The core represents the actual mathematical structures and runs the calculations; a recursive enumeration algorithm generates those structures inside it; and a performance layer runs the computations and checks them against the conjectures, within the hardware and runtime constraints and the inherent difficulty of large-integer arithmetic on a 64-bit processor.</p>
+
+  <h2>More benchmarks</h2>
+  <p>The headline runtime chart is on the <a href="index.html#boij">portfolio</a>; these are the other two views, from the same task-matched runs.</p>
+  <a href="media/boij-memory.svg"><img class="shot" src="media/boij-memory.svg" alt="Peak memory versus number of candidate sequences, codimensions 3 to 7, C++ engine versus Macaulay2" loading="lazy" width="980" height="560"></a>
+  <div class="shot-cap">Peak memory. Macaulay2 climbs steeply as it materializes the candidate list (1.4&nbsp;GB by 4.5M) and eventually exhausts RAM; the engine&#8217;s compact representation stays ~3&#215; lower at matched sizes, which is what let it sweep tens of billions of sequences on the same hardware.</div>
+  <a href="media/boij-speedup.svg"><img class="shot" src="media/boij-speedup.svg" alt="Speedup (Macaulay2 time over C++ time) versus number of sequences, colored by codimension" loading="lazy" width="980" height="500"></a>
+  <div class="shot-cap">Speedup by search size: a ~70&#8211;115&#215; band through the sub-million range and every codimension, climbing past 150&#215; by a few million as Macaulay2&#8217;s per-sequence cost grows. The engine&#8217;s advantage widens with the size of the search.</div>
+</main>
+</body>
+</html>
