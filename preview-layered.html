@@ -136,18 +136,6 @@
     section{ margin-top:80px; }
     footer .links{ flex-direction:row; gap:6px 16px; }
   }
-
-  /* layered preview additions */
-  .glance{ margin-top:36px; }
-  .glance-wrap{ overflow-x:auto; }
-  .glance table{ border-collapse:collapse; width:100%; font-size:14.5px; line-height:1.5; }
-  .glance th{ font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:.12em; color:var(--faint); font-weight:400; text-align:left; padding:0 16px 8px 0; border-bottom:1px solid #CFCBC0; }
-  .glance td{ padding:11px 16px 11px 0; border-bottom:1px solid var(--line); vertical-align:top; }
-  .glance td:first-child{ font-family:var(--mono); font-size:12px; color:var(--muted); white-space:nowrap; padding-top:13px; }
-  .glance td:nth-child(2){ font-weight:600; color:var(--ink); }
-  .glance td:nth-child(3){ color:var(--muted); font-size:14px; }
-  .proj.compact{ border:1px solid var(--line); border-radius:2px; background:#FAF9F6; padding:20px 22px; margin-bottom:26px; }
-  .proj + .proj.compact{ border-top:1px solid var(--line); padding-top:20px; }
 </style>
 </head>
 <body>
@@ -180,17 +168,6 @@
   <p class="solo">Everything in this portfolio is solo work. The one exception is a co-authored research paper.</p>
   <p class="note">This page is a running collection of the larger systems I&#39;ve built. I add to it as new work finishes.</p>
 
-  <div class="glance">
-    <div class="sub-label">Evidence at a glance</div>
-    <div class="glance-wrap"><table>
-      <tr><th>Domain</th><th>Result</th><th>Proof</th></tr>
-      <tr><td>Mathematical computing</td><td>Algebra searches <span class="num">70&#8211;115&#215;</span> faster than Macaulay2</td><td>Task-matched benchmarks; co-authored paper (arXiv:2512.24320)</td></tr>
-      <tr><td>Computational geometry</td><td><span class="num">1,500</span> points &#8594; <span class="num">2,976</span> Delaunay triangles in <span class="num">0.09&nbsp;s</span></td><td>Hand-written C++, standard library only; 14 test suites</td></tr>
-      <tr><td>Geospatial systems</td><td><span class="num">26,000</span> county rows &#8594; an auditable monthly publication</td><td>Hashed lineage; roughly 1:1 code to tests across 24 modules</td></tr>
-      <tr><td>Video generation</td><td>Two open-weight video models on one <span class="num">8&nbsp;GB</span> GPU</td><td>Working studio; seam and drift telemetry, blind A/B harness</td></tr>
-    </table></div>
-  </div>
-
   <section id="engines">
     <h2 class="label"><span class="sno">01</span>Selected systems</h2>
     <p class="sec-lede">Three computation engines, each with its own platform, supporting library, and custom algorithms, plus a video generation studio.</p>
@@ -198,7 +175,7 @@
     <div class="proj" id="boij">
       <h3>boij-soderberg-engine</h3>
       <p class="proj-sub">Algebra searches 70&#8211;115&#215; faster than Macaulay2</p>
-      <div class="kind">C++ · core in ~1 month · <a href="https://github.com/harrisonwolf/boij-soderberg-engine">github.com/harrisonwolf/boij-soderberg-engine</a> · <a href="boij-story.html">case study</a> · <a href="https://arxiv.org/abs/2512.24320">arXiv:2512.24320</a></div>
+      <div class="kind">C++ · core in ~1 month · <a href="https://github.com/harrisonwolf/boij-soderberg-engine">github.com/harrisonwolf/boij-soderberg-engine</a> · <a href="boij-story.html">the research story</a> · <a href="https://arxiv.org/abs/2512.24320">arXiv:2512.24320</a></div>
       <p>The engine sifts tens of billions of algebraic structures for the rare ones that break a proposed mathematical rule. I wrote it by hand in 2024: a ~1,200-line C++ math core, cross-validated case-by-case against Macaulay2, the standard software mathematicians use for this.</p>
       <p>I later used an AI agent to reorganize the repo, write the docs, and add a test and benchmark harness.</p>
       <ul>
@@ -208,14 +185,15 @@
       </ul>
       <a href="media/boij-runtime.svg"><img class="shot" src="media/boij-runtime.svg" alt="Benchmark chart: linear-axis runtime versus number of candidate sequences across codimensions 3 to 7; the C++ engine stays fast to 20 million sequences while Macaulay2 climbs steeply, taking ~17 minutes at 20.7M where the engine takes ~11 seconds" loading="lazy" width="980" height="560"></a>
       <div class="shot-cap">Runtime vs. candidate-sequence count, codimensions 3&#8211;7, engine against Macaulay2 on the same machine (linear axes). High-resolution SVG; tap to open at full resolution.</div>
-      <p class="repo"><a href="boij-story.html">Read the case study</a> &#8212; the bottleneck, the engine, the counterexamples, and the theorem.</p>
+      <p class="repo"><a href="boij-story.html">Read the research story</a> &#8212; how the search met the paper, what it found, and how the engine is built.</p>
     </div>
 
-    <div class="proj compact">
+    <div class="proj">
       <h3>planar-geometry-engine</h3>
       <p class="proj-sub">A computational geometry engine from first principles</p>
       <div class="kind">C++ · core in ~4–6 weeks · <a href="https://github.com/harrisonwolf/planar-geometry-engine">github.com/harrisonwolf/planar-geometry-engine</a></div>
       <p>It solves geometry&#39;s classic hard problems: cutting complicated shapes into triangles, and turning a scatter of points into the mesh and region structures that games and mapping software rely on.</p>
+      <p>I built it for fun, from a bare terminal in vim and make, with nothing beyond the C++ standard library: geometric predicates, polygon construction and random generation, point-in-polygon and collision queries, ear-clipping and Delaunay triangulation, Voronoi diagrams, and local SVG and Desmos viewers for the output. The core predates my AI-agent workflow and is entirely hand-written; later upgrades used agents.</p>
       <ul>
         <li><span class="num">1,500</span> random points &#8594; <span class="num">2,976</span> Delaunay triangles and the full Voronoi dual, validated, in <span class="num">0.09&nbsp;s</span>.</li>
         <li>Robustness is the hard part of geometry code, so the predicates handle the degenerate cases (collinear inputs, duplicate points, orientation) with explicit epsilon handling.</li>
@@ -225,9 +203,8 @@
         <img class="shot" src="media/polygon15-raw.svg" alt="A single non-convex 15-vertex polygon from the engine's random generator, filled gray" loading="lazy" width="460" height="460">
         <img class="shot" src="media/polygon15-ears.svg" alt="The same 15-vertex polygon cut into 13 colored triangles by the ear-clipping algorithm" loading="lazy" width="460" height="460">
       </div>
-      <div class="shot-cap">One 15-vertex polygon from the engine's random generator (left), and the same polygon cut into 13 triangles by the ear-clipper (right) — n−2, as a simple polygon must give. Each colored triangle is one clipped ear; the concave notch stays empty, since it is outside the polygon. The red box near the top-right is magnified inside the expander.</div>
-      <details class="ex-more"><summary>More from the engine &#8212; how it was built, the near-touch magnified, Delaunay, Voronoi, and both overlaid</summary>
-      <p>I built it for fun, from a bare terminal in vim and make, with nothing beyond the C++ standard library: geometric predicates, polygon construction and random generation, point-in-polygon and collision queries, ear-clipping and Delaunay triangulation, Voronoi diagrams, and local SVG and Desmos viewers for the output. The core predates my AI-agent workflow and is entirely hand-written; later upgrades used agents.</p>
+      <div class="shot-cap">One 15-vertex polygon from the engine's random generator (left), and the same polygon cut into 13 triangles by the ear-clipper (right) — n−2, as a simple polygon must give. Each colored triangle is one clipped ear; the concave notch stays empty, since it is outside the polygon. The red box near the top-right is magnified below.</div>
+      <details class="ex-more"><summary>More from the engine &#8212; the near-touch magnified, Delaunay, Voronoi, and both overlaid</summary>
       <div class="shot-row" style="max-width:520px">
         <img class="shot" src="media/polygon15-zoom.svg" alt="Close-up of the near-touch on the raw polygon: two edges pass within about 0.06 units without crossing" loading="lazy" style="border:2px solid #B4472C" width="302" height="302">
         <img class="shot" src="media/polygon15-zoom-ears.svg" alt="The same near-touch on the triangulated polygon: the ear-clipping leaves no gap or overlap and the two edges never cross" loading="lazy" style="border:2px solid #B4472C" width="302" height="302">
@@ -247,11 +224,12 @@
       </details>
     </div>
 
-    <div class="proj compact">
+    <div class="proj">
       <h3>geo-map-v2</h3>
       <p class="proj-sub">An auditable geospatial data platform</p>
       <div class="kind">Python · core in ~3 months · <a href="https://github.com/harrisonwolf/geo-map-v2">github.com/harrisonwolf/geo-map-v2</a></div>
       <p>On screen it&#39;s an ordinary-looking map of property values. Behind it sits a general geospatial data platform where every number on the map is accounted for.</p>
+      <p>Raw sources are adapted, recorded in a hashed canonical ledger with full provenance, frozen into monthly snapshots, scored, and published to a strictly read-only serving runtime, so every number a client sees traces back to a permanent, tamper-evident record. New regions, sources, and verticals bolt on through the county registry without touching the core; Fresno County is the region built out so far.</p>
       <ul>
         <li>On top sits a full map application and renderer: an interactive client (vendored MapLibre GL) that draws the county's official GIS layers as toggleable overlays — parcels with per-parcel detail, the road and highway network, ZIP areas and boundaries, schools by level, and school attendance zones — over the scored basemap.</li>
         <li>Roughly 1:1 code to tests across 24 modules, including SQL-safety, storage-integrity, and schema-version suites.</li>
@@ -259,8 +237,7 @@
       </ul>
       <a href="media/geomap-hero.png"><img class="shot" src="media/geomap-hero.png" alt="Nexora agent workspace: Fresno County map with ZIP-level market tint, client-brief panel, and a data-lineage stamp in the footer" loading="lazy" width="2000" height="1125"></a>
       <div class="shot-cap">The surface: the agent workspace on Fresno County. The footer stamps every view with its data lineage; this one traces to publication fresno-2026-04.</div>
-      <details class="ex-more"><summary>See the platform, parcel to pipeline &#8212; how the ledger works, the county dot-map, street level, and a full run</summary>
-      <p>Raw sources are adapted, recorded in a hashed canonical ledger with full provenance, frozen into monthly snapshots, scored, and published to a strictly read-only serving runtime, so every number a client sees traces back to a permanent, tamper-evident record. New regions, sources, and verticals bolt on through the county registry without touching the core; Fresno County is the region built out so far.</p>
+      <details class="ex-more"><summary>See the map, parcel to pipeline &#8212; county dot-map, street level, one parcel opened, and a full pipeline run</summary>
       <a href="media/terrain/fresno-parcels.jpg"><img class="shot" src="media/terrain/fresno-parcels.jpg" alt="A map of Fresno County rendered as one dot per parcel over the scored basemap" loading="lazy" width="1400" height="739"></a>
       <div class="shot-cap">Fresno County, parcel by parcel: every dot is one parcel, and the map is just the front end to precomputed scores.</div>
       <div class="shot-row">
@@ -273,7 +250,7 @@
       </details>
     </div>
 
-    <div class="proj compact">
+    <div class="proj">
       <h3>ltx-studio</h3>
       <p class="proj-sub">Video generation on an 8&nbsp;GB GPU</p>
       <div class="kind">Python · core in ~2 weeks · <a href="https://github.com/harrisonwolf/ltx-studio">github.com/harrisonwolf/ltx-studio</a></div>
@@ -289,7 +266,7 @@
         <video class="shot" data-autoplay muted playsinline preload="metadata" poster="media/ltx-fireflies-poster.jpg" width="560" height="382" aria-label="Generated clip: fireflies drifting over a glowing forest stream"><source src="media/ltx-fireflies.mp4" type="video/mp4"></video>
       </div>
       <div class="shot-cap">Left: "Bioluminescent forest at night — glowing moths, luminescent moss, a stream lit from within. Cinematic, 35&nbsp;mm." Right: fireflies over a glowing stream, 64&nbsp;fps after interpolation.</div>
-      <details class="ex-more"><summary>Inside the studio &#8212; the terminal UI, day one vs day fourteen, data practices, and where it came from</summary>
+      <details class="ex-more"><summary>Inside the studio &#8212; the terminal UI, day one vs day fourteen, and where it came from</summary>
         <p>Everything a run records is kept, so that full-scale analysis with harnesses built for later hardware stays backwards-compatible with every past run, and all existing data can be used retroactively &#8212; at least in terms of compilation and computation; whether that data is still relevant, or still valid to judge in whatever way is being proposed, has to be decided in the moment.</p>
       <a href="https://github.com/harrisonwolf/ltx-studio#what-it-looks-like"><img class="shot" src="media/ltx-newrun.png" alt="LTX Studio NEW RUN screen: backend schematic on a fast-to-nicer axis, contextual info panel, and readout meters predicting VRAM, quality, drift, and render time" loading="lazy" width="1400" height="697"></a>
       <div class="shot-cap">Setting up a run: the backend schematic (fast → nicer), a contextual INFO panel, and READOUT meters predicting VRAM, quality, drift, and render time before anything starts.</div>
@@ -320,8 +297,6 @@
         <li>A 22-acre bluff&#39;s rainfall, routed: which slopes shed, where the water collects, and where it leaves the property.</li>
         <li>A dry canyon dammed at its one outlet: <span class="num">44,457</span> acre-feet behind a 256-foot dam, about 14.5 billion gallons.</li>
       </ul>
-      <a href="terrain-study.html"><img class="shot" src="media/terrain/terrain-sites.jpg" alt="Satellite photos of the three Sierra sites before any engineering: a foothill building lot, a river bluff, and a dry canyon a dam could close." loading="lazy" width="1937" height="728"></a>
-      <div class="shot-cap">The three sites, from the sky. Each study is computed end to end on the engines above; the <a href="terrain-study.html">full case study</a> has the plates, the storms, and the numbers.</div>
       <p>A real siting study still needs calibrated models and a licensed engineer. The harness lives in its own repo now; ask and I&#39;ll share it.</p>
     </div>
   </section>
