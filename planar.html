@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="More output from the planar geometry engine: the near-touch magnified, Delaunay, Voronoi, and both overlaid.">
+<link rel="canonical" href="https://harrisonwolf.github.io/planar.html">
+<link rel="icon" type="image/svg+xml" href="media/favicon.svg">
+<title>planar-geometry-engine — more output — Harrison Wolf</title>
+<style>
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ -webkit-text-size-adjust:100%; }
+  body,h1,h2,h3,p,ul{ margin:0; }
+  :root{
+    --paper:#F5F4F1; --ink:#1B1B17; --muted:#6C685F; --faint:#746F67;
+    --line:#E2DFD7; --accent:#3C5A49; --accent-d:#294032;
+    --sans: system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --mono: ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
+  }
+  body{ background:var(--paper); color:var(--ink); font-family:var(--sans); font-size:17px; line-height:1.65; -webkit-font-smoothing:antialiased; }
+  .page{ max-width:684px; margin:0 auto; padding:66px 26px 104px; }
+  a{ color:var(--accent); text-decoration:underline; text-underline-offset:2px; text-decoration-thickness:1px; }
+  a:hover{ color:var(--accent-d); }
+  a:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+  .backlink{ font-family:var(--mono); font-size:12.5px; }
+  h1{ font-size:29px; line-height:1.12; font-weight:700; letter-spacing:-.015em; margin-top:26px; }
+  .kind{ font-family:var(--mono); font-size:12.5px; color:var(--faint); margin-top:8px; }
+  h2{ font-family:var(--mono); font-size:12px; text-transform:uppercase; letter-spacing:.15em; color:var(--faint); border-top:1px solid var(--line); padding-top:14px; margin-top:44px; font-weight:400; }
+  p{ margin-top:14px; color:#2C2A24; }
+  .num{ font-variant-numeric:tabular-nums; }
+  .repo{ font-family:var(--mono); font-size:13px; margin-top:22px; }
+  .shot{ display:block; max-width:100%; height:auto; margin-top:16px; border:1px solid var(--line); border-radius:2px; }
+  .shot-cap{ font-family:var(--mono); font-size:12px; color:var(--faint); margin-top:6px; }
+  .shot-row{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:16px; }
+  .shot-row .shot{ margin-top:0; }
+  @media (max-width:560px){ .shot-row{ grid-template-columns:1fr; } }
+  pre{ font-family:var(--mono); font-size:12.5px; line-height:1.55; color:var(--ink); background:#FAF9F6; border:1px solid var(--line); border-radius:2px; padding:14px 16px; margin-top:16px; overflow-x:auto; }
+  .vwrap{ position:relative; display:block; min-width:0; }
+  .vwrap video{ display:block; }
+  .vtoggle{ position:absolute; right:8px; bottom:8px; width:32px; height:32px; border-radius:50%; border:none; background:rgba(27,27,23,.55); color:#F5F4F1; font-size:10px; line-height:1; cursor:pointer; display:flex; align-items:center; justify-content:center; padding:0; }
+  .vtoggle:hover{ background:rgba(27,27,23,.8); }
+  .vtoggle:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+  .ex-full{ margin-top:22px; border-left:2px solid var(--line); padding-left:15px; }
+  .ex-full p{ margin:0 0 12px; line-height:1.58; }
+  .ex-intro{ font-size:14px; line-height:1.6; color:var(--muted); margin:0 0 16px; }
+  .ex-full b{ display:inline-block; font-family:var(--mono); font-size:10px; text-transform:uppercase; letter-spacing:.1em; color:var(--faint); margin-right:8px; }
+  .ex-u{ font-size:14.5px; color:#37342D; }
+  .ex-m{ font-family:var(--mono); font-size:12.5px; color:var(--ink); }
+</style>
+</head>
+<body>
+<main class="page">
+  <a class="backlink" href="portfolio-redux.html">&#8592; back to the portfolio</a>
+  <h1>planar-geometry-engine</h1>
+  <div class="kind">C++ · <a href="https://github.com/harrisonwolf/planar-geometry-engine">github.com/harrisonwolf/planar-geometry-engine</a></div>
+      <p>It solves geometry&#39;s classic hard problems: cutting complicated shapes into triangles, and turning a scatter of points into the mesh and region structures that games and mapping software rely on.</p>
+      <div class="shot-row" style="max-width:520px">
+        <img class="shot" src="media/polygon15-zoom.svg" alt="Close-up of the near-touch on the raw polygon: two edges pass within about 0.06 units without crossing" loading="lazy" style="border:2px solid #B4472C" width="302" height="302">
+        <img class="shot" src="media/polygon15-zoom-ears.svg" alt="The same near-touch on the triangulated polygon: the ear-clipping leaves no gap or overlap and the two edges never cross" loading="lazy" style="border:2px solid #B4472C" width="302" height="302">
+      </div>
+      <div class="shot-cap">The near-touch magnified: the raw polygon (left) and its triangulation (right). The two edges pass about 0.06 units apart and never cross.</div>
+      <div class="shot-row">
+        <img class="shot" src="media/geometry70-sites.svg" alt="70 raw input sites, untriangulated" loading="lazy" width="1400" height="1418">
+        <img class="shot" src="media/geometry70-delaunay.svg" alt="The same 70 sites, Delaunay-triangulated" loading="lazy" width="1400" height="1400">
+      </div>
+      <div class="shot-row">
+        <img class="shot" src="media/geometry70-voronoi.svg" alt="The Voronoi diagram of the same 70 sites" loading="lazy" width="1400" height="1400">
+        <img class="shot" src="media/geometry70-overlay.svg" alt="The Delaunay triangulation and its Voronoi dual overlaid, 70 sites" loading="lazy" width="1400" height="1400">
+      </div>
+      <div class="shot-cap">One run through the engine at a legible scale (70 sites, seed 7): the raw input, its Delaunay triangulation (125 triangles, 194 edges — Euler-exact), the Voronoi dual, and the two overlaid. Every Voronoi vertex is the circumcenter of a triangle (often outside its own triangle: only acute triangles contain their circumcenters).</div>
+      <img class="shot" src="media/geometry-duality.svg" alt="Delaunay triangulation in faint lines overlaid with its Voronoi dual in ink, 300 sites" loading="lazy" width="1400" height="1400">
+      <div class="shot-cap">And at density: 300 sites, triangulated and dualized end to end by the engine. Seed and command are embedded in the file; the counts check exactly against Euler's formula (581 triangles, 880 edges).</div>
+      <p class="repo">Full detail &#8212; build, algorithms, tests &#8212; in the README: <a href="https://github.com/harrisonwolf/planar-geometry-engine">github.com/harrisonwolf/planar-geometry-engine</a></p>
+</main>
+</body>
+</html>

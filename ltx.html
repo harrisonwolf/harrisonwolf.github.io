@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Inside ltx-studio: the terminal UI, day one vs day fourteen, and where it came from.">
+<link rel="canonical" href="https://harrisonwolf.github.io/ltx.html">
+<link rel="icon" type="image/svg+xml" href="media/favicon.svg">
+<title>ltx-studio — inside the studio — Harrison Wolf</title>
+<style>
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ -webkit-text-size-adjust:100%; }
+  body,h1,h2,h3,p,ul{ margin:0; }
+  :root{
+    --paper:#F5F4F1; --ink:#1B1B17; --muted:#6C685F; --faint:#746F67;
+    --line:#E2DFD7; --accent:#3C5A49; --accent-d:#294032;
+    --sans: system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --mono: ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
+  }
+  body{ background:var(--paper); color:var(--ink); font-family:var(--sans); font-size:17px; line-height:1.65; -webkit-font-smoothing:antialiased; }
+  .page{ max-width:684px; margin:0 auto; padding:66px 26px 104px; }
+  a{ color:var(--accent); text-decoration:underline; text-underline-offset:2px; text-decoration-thickness:1px; }
+  a:hover{ color:var(--accent-d); }
+  a:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+  .backlink{ font-family:var(--mono); font-size:12.5px; }
+  h1{ font-size:29px; line-height:1.12; font-weight:700; letter-spacing:-.015em; margin-top:26px; }
+  .kind{ font-family:var(--mono); font-size:12.5px; color:var(--faint); margin-top:8px; }
+  h2{ font-family:var(--mono); font-size:12px; text-transform:uppercase; letter-spacing:.15em; color:var(--faint); border-top:1px solid var(--line); padding-top:14px; margin-top:44px; font-weight:400; }
+  p{ margin-top:14px; color:#2C2A24; }
+  .num{ font-variant-numeric:tabular-nums; }
+  .repo{ font-family:var(--mono); font-size:13px; margin-top:22px; }
+  .shot{ display:block; max-width:100%; height:auto; margin-top:16px; border:1px solid var(--line); border-radius:2px; }
+  .shot-cap{ font-family:var(--mono); font-size:12px; color:var(--faint); margin-top:6px; }
+  .shot-row{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:16px; }
+  .shot-row .shot{ margin-top:0; }
+  @media (max-width:560px){ .shot-row{ grid-template-columns:1fr; } }
+  pre{ font-family:var(--mono); font-size:12.5px; line-height:1.55; color:var(--ink); background:#FAF9F6; border:1px solid var(--line); border-radius:2px; padding:14px 16px; margin-top:16px; overflow-x:auto; }
+  .vwrap{ position:relative; display:block; min-width:0; }
+  .vwrap video{ display:block; }
+  .vtoggle{ position:absolute; right:8px; bottom:8px; width:32px; height:32px; border-radius:50%; border:none; background:rgba(27,27,23,.55); color:#F5F4F1; font-size:10px; line-height:1; cursor:pointer; display:flex; align-items:center; justify-content:center; padding:0; }
+  .vtoggle:hover{ background:rgba(27,27,23,.8); }
+  .vtoggle:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+  .ex-full{ margin-top:22px; border-left:2px solid var(--line); padding-left:15px; }
+  .ex-full p{ margin:0 0 12px; line-height:1.58; }
+  .ex-intro{ font-size:14px; line-height:1.6; color:var(--muted); margin:0 0 16px; }
+  .ex-full b{ display:inline-block; font-family:var(--mono); font-size:10px; text-transform:uppercase; letter-spacing:.1em; color:var(--faint); margin-right:8px; }
+  .ex-u{ font-size:14.5px; color:#37342D; }
+  .ex-m{ font-family:var(--mono); font-size:12.5px; color:var(--ink); }
+</style>
+</head>
+<body>
+<main class="page">
+  <a class="backlink" href="portfolio-redux.html">&#8592; back to the portfolio</a>
+  <h1>ltx-studio</h1>
+  <div class="kind">Python · <a href="https://github.com/harrisonwolf/ltx-studio">github.com/harrisonwolf/ltx-studio</a></div>
+      <p>It makes short videos from typed descriptions, and the whole job runs on an 8&nbsp;GB laptop GPU. Everything a run records is kept, so that full-scale analysis with harnesses built for later hardware stays backwards-compatible with every past run, and all existing data can be used retroactively &#8212; at least in terms of compilation and computation; whether that data is still relevant, or still valid to judge in whatever way is being proposed, has to be decided in the moment.</p>
+      <a href="https://github.com/harrisonwolf/ltx-studio#what-it-looks-like"><img class="shot" src="media/ltx-newrun.png" alt="LTX Studio NEW RUN screen: backend schematic on a fast-to-nicer axis, contextual info panel, and readout meters predicting VRAM, quality, drift, and render time" loading="lazy" width="1400" height="697"></a>
+      <div class="shot-cap">Setting up a run: the backend schematic (fast → nicer), a contextual INFO panel, and READOUT meters predicting VRAM, quality, drift, and render time before anything starts.</div>
+      <a href="https://github.com/harrisonwolf/ltx-studio#what-it-looks-like"><img class="shot" src="media/ltx-live.png" alt="LTX Studio LIVE view mid-render: last-frame preview of a bioluminescent forest, phase timings, and job controls" loading="lazy" width="1400" height="808"></a>
+      <div class="shot-cap">The LIVE tab mid-render. More screenshots and sample clips in the repo README.</div>
+      <p>The clip that exact run produced, beside a second render from the same studio:</p>
+      <div class="shot-row">
+        <video class="shot" data-autoplay muted playsinline preload="metadata" poster="media/ltx-forest-poster.jpg" width="560" height="382" aria-label="Generated clip: bioluminescent forest at night, glowing moths over a stream lit from within"><source src="media/ltx-forest.mp4" type="video/mp4"></video>
+        <video class="shot" data-autoplay muted playsinline preload="metadata" poster="media/ltx-fireflies-poster.jpg" width="560" height="382" aria-label="Generated clip: fireflies drifting over a glowing forest stream"><source src="media/ltx-fireflies.mp4" type="video/mp4"></video>
+      </div>
+      <div class="shot-cap">Left: "Bioluminescent forest at night — glowing moths, luminescent moss, a stream lit from within. Cinematic, 35&nbsp;mm." Right: fireflies over a glowing stream, 64&nbsp;fps after interpolation.</div>
+      <div class="shot-row">
+        <video class="shot" data-autoplay muted playsinline preload="metadata" poster="media/ltx-day-one.png" aria-label="The project's first output: a blurry, motion-smeared dog wading in the surf"><source src="media/ltx-day-one.mp4" type="video/mp4"></video>
+        <video class="shot" data-autoplay muted playsinline preload="metadata" poster="media/ltx-day-fourteen.png" aria-label="Day fourteen: a golden-hour corgi in profile on the beach, backlit by the sunset"><source src="media/ltx-day-fourteen.mp4" type="video/mp4"></video>
+      </div>
+      <div class="shot-cap">How far it came in two weeks: the first clip this project ever produced (June 22, the initial LTX smoke test) beside a day-fourteen re-run of the same dog-on-a-beach prompt (July 6, Wan backend), same 8&nbsp;GB card.</div>
+      <p>ltx-studio grew out of an earlier AnimateDiff pipeline I directed onto the same unsupported 8&nbsp;GB card (a PyTorch-SDPA attention backport, a from-scratch LCM scheduler, a conv-aware LoRA merge) before modern open-weight models made the output worth watching. That earlier work, which I came to with no video-generation background, is where I learned the model internals this one runs on. Code on request.</p>
+      <p class="repo">Full detail &#8212; architecture, the marker protocol, running it &#8212; in the README: <a href="https://github.com/harrisonwolf/ltx-studio">github.com/harrisonwolf/ltx-studio</a></p>
+</main>
+  <script>
+  // Gentle loop for the ltx-studio clips: hold the last frame briefly, reset,
+  // hold the first frame briefly, then replay. Each clip gets a small
+  // pause/play button; clips play only while on screen, and reduced-motion
+  // users get native controls instead.
+  (function(){
+    var HOLD = 150; // ms
+    var videos = Array.prototype.slice.call(document.querySelectorAll('video[data-autoplay]'));
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reduceMotion) {
+      videos.forEach(function(v){ v.controls = true; });
+      return;
+    }
+
+    function play(v){
+      if (v.dataset.userPaused === '1') return;
+      var pr = v.play();
+      if (pr && pr.catch) pr.catch(function(){ v.controls = true; });
+    }
+
+    videos.forEach(function(v){
+      v.removeAttribute('loop');
+      v.addEventListener('ended', function(){
+        setTimeout(function(){
+          try { v.currentTime = 0; } catch (e) {}
+          setTimeout(function(){ play(v); }, HOLD);
+        }, HOLD);
+      });
+
+      var w = document.createElement('span');
+      w.className = 'vwrap';
+      v.parentNode.insertBefore(w, v);
+      w.appendChild(v);
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'vtoggle';
+      b.textContent = '❚❚';
+      b.setAttribute('aria-label', 'Pause animation');
+      b.addEventListener('click', function(){
+        if (v.paused) {
+          delete v.dataset.userPaused;
+          b.textContent = '❚❚';
+          b.setAttribute('aria-label', 'Pause animation');
+          play(v);
+        } else {
+          v.dataset.userPaused = '1';
+          v.pause();
+          b.textContent = '▶';
+          b.setAttribute('aria-label', 'Play animation');
+        }
+      });
+      w.appendChild(b);
+    });
+
+    if (!('IntersectionObserver' in window)) {
+      videos.forEach(play);
+      return;
+    }
+
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) play(entry.target);
+        else entry.target.pause();
+      });
+    }, { rootMargin: '300px 0px', threshold: 0.01 });
+
+    videos.forEach(function(v){ observer.observe(v); });
+  })();
+  </script>
+</body>
+</html>

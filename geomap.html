@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="The geo-map platform, parcel to pipeline: county dot-map, street level, one parcel opened, and a full pipeline run.">
+<link rel="canonical" href="https://harrisonwolf.github.io/geomap.html">
+<link rel="icon" type="image/svg+xml" href="media/favicon.svg">
+<title>geo-map-v2 — parcel to pipeline — Harrison Wolf</title>
+<style>
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ -webkit-text-size-adjust:100%; }
+  body,h1,h2,h3,p,ul{ margin:0; }
+  :root{
+    --paper:#F5F4F1; --ink:#1B1B17; --muted:#6C685F; --faint:#746F67;
+    --line:#E2DFD7; --accent:#3C5A49; --accent-d:#294032;
+    --sans: system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --mono: ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
+  }
+  body{ background:var(--paper); color:var(--ink); font-family:var(--sans); font-size:17px; line-height:1.65; -webkit-font-smoothing:antialiased; }
+  .page{ max-width:684px; margin:0 auto; padding:66px 26px 104px; }
+  a{ color:var(--accent); text-decoration:underline; text-underline-offset:2px; text-decoration-thickness:1px; }
+  a:hover{ color:var(--accent-d); }
+  a:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+  .backlink{ font-family:var(--mono); font-size:12.5px; }
+  h1{ font-size:29px; line-height:1.12; font-weight:700; letter-spacing:-.015em; margin-top:26px; }
+  .kind{ font-family:var(--mono); font-size:12.5px; color:var(--faint); margin-top:8px; }
+  h2{ font-family:var(--mono); font-size:12px; text-transform:uppercase; letter-spacing:.15em; color:var(--faint); border-top:1px solid var(--line); padding-top:14px; margin-top:44px; font-weight:400; }
+  p{ margin-top:14px; color:#2C2A24; }
+  .num{ font-variant-numeric:tabular-nums; }
+  .repo{ font-family:var(--mono); font-size:13px; margin-top:22px; }
+  .shot{ display:block; max-width:100%; height:auto; margin-top:16px; border:1px solid var(--line); border-radius:2px; }
+  .shot-cap{ font-family:var(--mono); font-size:12px; color:var(--faint); margin-top:6px; }
+  .shot-row{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:16px; }
+  .shot-row .shot{ margin-top:0; }
+  @media (max-width:560px){ .shot-row{ grid-template-columns:1fr; } }
+  pre{ font-family:var(--mono); font-size:12.5px; line-height:1.55; color:var(--ink); background:#FAF9F6; border:1px solid var(--line); border-radius:2px; padding:14px 16px; margin-top:16px; overflow-x:auto; }
+  .vwrap{ position:relative; display:block; min-width:0; }
+  .vwrap video{ display:block; }
+  .vtoggle{ position:absolute; right:8px; bottom:8px; width:32px; height:32px; border-radius:50%; border:none; background:rgba(27,27,23,.55); color:#F5F4F1; font-size:10px; line-height:1; cursor:pointer; display:flex; align-items:center; justify-content:center; padding:0; }
+  .vtoggle:hover{ background:rgba(27,27,23,.8); }
+  .vtoggle:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+  .ex-full{ margin-top:22px; border-left:2px solid var(--line); padding-left:15px; }
+  .ex-full p{ margin:0 0 12px; line-height:1.58; }
+  .ex-intro{ font-size:14px; line-height:1.6; color:var(--muted); margin:0 0 16px; }
+  .ex-full b{ display:inline-block; font-family:var(--mono); font-size:10px; text-transform:uppercase; letter-spacing:.1em; color:var(--faint); margin-right:8px; }
+  .ex-u{ font-size:14.5px; color:#37342D; }
+  .ex-m{ font-family:var(--mono); font-size:12.5px; color:var(--ink); }
+</style>
+</head>
+<body>
+<main class="page">
+  <a class="backlink" href="portfolio-redux.html">&#8592; back to the portfolio</a>
+  <h1>geo-map-v2</h1>
+  <div class="kind">Python · <a href="https://github.com/harrisonwolf/geo-map-v2">github.com/harrisonwolf/geo-map-v2</a></div>
+      <p>Raw sources are adapted, recorded in a hashed canonical ledger with full provenance, frozen into monthly snapshots, scored, and published to a strictly read-only serving runtime, so every number a client sees traces back to a permanent, tamper-evident record. New regions, sources, and verticals bolt on through the county registry without touching the core; Fresno County is the region built out so far.</p>
+      <a href="media/terrain/fresno-parcels.jpg"><img class="shot" src="media/terrain/fresno-parcels.jpg" alt="A map of Fresno County rendered as one dot per parcel over the scored basemap" loading="lazy" width="1400" height="739"></a>
+      <div class="shot-cap">Fresno County, parcel by parcel: every dot is one parcel, and the map is just the front end to precomputed scores.</div>
+      <div class="shot-row">
+        <a href="media/terrain/clovis-parcels.jpg"><img class="shot" src="media/terrain/clovis-parcels.jpg" alt="The same map zoomed to Clovis street level, each dot a parcel on a named street" loading="lazy" width="1400" height="736"></a>
+        <a href="media/terrain/parcel-detail.jpg"><img class="shot" src="media/terrain/parcel-detail.jpg" alt="A single-parcel detail panel: APN, address, neighborhood cell, modeled price, and a data-quality label" loading="lazy" width="1400" height="738"></a>
+      </div>
+      <div class="shot-cap">The same data three zooms down (every dot a parcel on a named street), and one parcel opened: APN, neighborhood cell, modeled price, with the data-quality label right beside it.</div>
+      <a href="media/geomap-pipeline.png"><img class="shot" src="media/geomap-pipeline.png" alt="Terminal output of one full pipeline run: adapt, normalize, snapshot, score, publish, with per-stage timings" loading="lazy" width="1800" height="1331"></a>
+      <div class="shot-cap">The engine: one make refresh-county run, end to end. 26,000 source rows through adapt → normalize → snapshot (55 ZIPs, 663 cells) → score → a published bundle, with per-stage timings. Click to read.</div>
+      <p class="repo">Full detail &#8212; architecture, pipeline commands, tests &#8212; in the README: <a href="https://github.com/harrisonwolf/geo-map-v2">github.com/harrisonwolf/geo-map-v2</a></p>
+</main>
+</body>
+</html>
