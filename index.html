@@ -174,29 +174,23 @@
     <div class="proj" id="boij">
       <h3>boij-soderberg-engine</h3>
       <p class="proj-sub">Algebra searches 70&#8211;115&#215; faster than Macaulay2</p>
-      <div class="kind">C++ · core in ~1 month · <a href="https://github.com/harrisonwolf/boij-soderberg-engine">github.com/harrisonwolf/boij-soderberg-engine</a></div>
+      <div class="kind">C++ · core in ~1 month · <a href="https://github.com/harrisonwolf/boij-soderberg-engine">github.com/harrisonwolf/boij-soderberg-engine</a> · <a href="https://arxiv.org/abs/2512.24320">arXiv:2512.24320</a></div>
       <p>The engine sifts tens of billions of algebraic structures for the rare ones that break a proposed mathematical rule. I wrote it by hand in 2024: a ~1,200-line C++ math core, cross-validated case-by-case against Macaulay2, the standard software mathematicians use for this.</p>
-      <p>We were using Macaulay2 to do the search initially, and after a little while, that&#39;s when I started to write my engine instead. Macaulay2 was painfully slow, and I could feel it in my bones that I could make something faster. Just as the core was getting finished, Macaulay2 was starting to really struggle to push the search any farther, and, essentially at the same time that my engine found the fourth or fifth counterexample &#8212; whichever it was, the one Macaulay2 really couldn&#39;t get past after that &#8212; my advisor realized the pattern. We were able to rigorously prove it, discovering one of the paper&#39;s three main theorems (<a href="https://arxiv.org/abs/2512.24320">arXiv:2512.24320</a>).</p>
-      <p>My engine fed the other side of the same result, too. The first search had been turning up examples of what became an infinite family of counterexamples &#8212; all following exactly Pell&#39;s equation (think of it like the Fibonacci sequence, but in algebra), which itself is, in no exaggerated way, a genuine miracle. The same engine, sweeping tens of billions of degree sequences and computing numbers too large to work with conventionally using ordinary CPUs, is what surfaced the counterexamples: once you bound their size, there are exactly four. The engine found them; the proofs are the paper&#39;s &#8212; pure number theory for the infinite family, and a by-hand case analysis, more than a dozen cases, for the four. It is a great illustration of how pure and abstract mathematics can be, while at the same time being so utterly unwieldy. Given the number-theoretic and commutative-algebra methods we have now, we were able to find beautiful, essentially miraculous connections and explanations for one of the results; the others remain more and more hidden &#8212; we simply lack the tools and the vision for them so far.</p>
       <p>I later used an AI agent to reorganize the repo, write the docs, and add a test and benchmark harness.</p>
-      <p>On matched searches it runs <span class="num">~70&#8211;115&#215;</span> faster than an equivalent Macaulay2 implementation across codimensions 3&#8211;7: a 1.2-million-sequence search in about a second versus a hundred, 20.7 million in 11 seconds versus ~17 minutes. Past that Macaulay2 runs out of memory, since it has to hold the whole candidate list at once. The 2024 campaign swept tens of billions of sequences, codimension 3 out to degree 7,100, in a handful of overnight runs.</p>
       <ul>
+        <li>On matched searches, <span class="num">~70&#8211;115&#215;</span> faster than an equivalent Macaulay2 implementation across codimensions 3&#8211;7: 20.7 million candidates in <span class="num">11 seconds</span> versus ~17 minutes. Past that, Macaulay2 runs out of memory.</li>
+        <li>Its exhaustive search surfaced the counterexamples behind one of <a href="https://arxiv.org/abs/2512.24320">the paper's</a> three main theorems; the proofs are the paper's.</li>
         <li>Correctness is pinned against Macaulay2's own BoijSoederberg package: the pure Betti tables the engine computes are checked case-by-case against M2's reference values.</li>
       </ul>
       <a href="media/boij-runtime.svg"><img class="shot" src="media/boij-runtime.svg" alt="Benchmark chart: linear-axis runtime versus number of candidate sequences across codimensions 3 to 7; the C++ engine stays fast to 20 million sequences while Macaulay2 climbs steeply, taking ~17 minutes at 20.7M where the engine takes ~11 seconds" loading="lazy" width="980" height="560"></a>
-      <div class="shot-cap">Runtime vs. candidate-sequence count, codimensions 3&#8211;7, engine against Macaulay2 on the same machine (linear axes). The charts are high-resolution SVG; tap any of them to open at full resolution.</div>
-      <a href="media/boij-memory.svg"><img class="shot" src="media/boij-memory.svg" alt="Peak memory versus number of candidate sequences, codimensions 3 to 7, C++ engine versus Macaulay2" loading="lazy" width="980" height="560"></a>
-      <div class="shot-cap">Peak memory. Macaulay2 climbs steeply as it materializes the candidate list (1.4&nbsp;GB by 4.5M) and eventually exhausts RAM; the engine&#8217;s compact representation stays ~3&#215; lower at matched sizes, which is what let it sweep tens of billions of sequences on the same hardware.</div>
-      <a href="media/boij-speedup.svg"><img class="shot" src="media/boij-speedup.svg" alt="Speedup (Macaulay2 time over C++ time) versus number of sequences, colored by codimension" loading="lazy" width="980" height="500"></a>
-      <div class="shot-cap">Speedup by search size: a ~70&#8211;115&#215; band through the sub-million range and every codimension, climbing past 150&#215; by a few million as Macaulay2&#8217;s per-sequence cost grows. The engine&#8217;s advantage widens with the size of the search.</div>
-      <p>The core represents the actual mathematical structures and runs the calculations; a recursive enumeration algorithm generates those structures inside it; and a performance layer runs the computations and checks them against the conjectures, within the hardware and runtime constraints and the inherent difficulty of large-integer arithmetic on a 64-bit processor.</p>
+      <div class="shot-cap">Runtime vs. candidate-sequence count, codimensions 3&#8211;7, engine against Macaulay2 on the same machine (linear axes). High-resolution SVG; tap to open at full resolution.</div>
+      <p class="repo"><a href="boij-story.html">Read the research story</a> &#8212; how the search met the paper, what it found, and how the engine is built.</p>
     </div>
 
     <div class="proj">
       <h3>planar-geometry-engine</h3>
       <p class="proj-sub">A computational geometry engine from first principles</p>
       <div class="kind">C++ · core in ~4–6 weeks · <a href="https://github.com/harrisonwolf/planar-geometry-engine">github.com/harrisonwolf/planar-geometry-engine</a></div>
-      <p>It solves geometry&#39;s classic hard problems: cutting complicated shapes into triangles, and turning a scatter of points into the mesh and region structures that games and mapping software rely on.</p>
       <p>I built it for fun, from a bare terminal in vim and make, with nothing beyond the C++ standard library: geometric predicates, polygon construction and random generation, point-in-polygon and collision queries, ear-clipping and Delaunay triangulation, Voronoi diagrams, and local SVG and Desmos viewers for the output. The core predates my AI-agent workflow and is entirely hand-written; later upgrades used agents.</p>
       <ul>
         <li><span class="num">1,500</span> random points &#8594; <span class="num">2,976</span> Delaunay triangles and the full Voronoi dual, validated, in <span class="num">0.09&nbsp;s</span>.</li>
@@ -207,23 +201,8 @@
         <img class="shot" src="media/polygon15-raw.svg" alt="A single non-convex 15-vertex polygon from the engine's random generator, filled gray" loading="lazy" width="460" height="460">
         <img class="shot" src="media/polygon15-ears.svg" alt="The same 15-vertex polygon cut into 13 colored triangles by the ear-clipping algorithm" loading="lazy" width="460" height="460">
       </div>
-      <div class="shot-cap">One 15-vertex polygon from the engine's random generator (left), and the same polygon cut into 13 triangles by the ear-clipper (right) — n−2, as a simple polygon must give. Each colored triangle is one clipped ear; the concave notch stays empty, since it is outside the polygon. The red box near the top-right is magnified below.</div>
-      <div class="shot-row" style="max-width:520px">
-        <img class="shot" src="media/polygon15-zoom.svg" alt="Close-up of the near-touch on the raw polygon: two edges pass within about 0.06 units without crossing" loading="lazy" style="border:2px solid #B4472C" width="302" height="302">
-        <img class="shot" src="media/polygon15-zoom-ears.svg" alt="The same near-touch on the triangulated polygon: the ear-clipping leaves no gap or overlap and the two edges never cross" loading="lazy" style="border:2px solid #B4472C" width="302" height="302">
-      </div>
-      <div class="shot-cap">The near-touch magnified: the raw polygon (left) and its triangulation (right). The two edges pass about 0.06 units apart and never cross.</div>
-      <div class="shot-row">
-        <img class="shot" src="media/geometry70-sites.svg" alt="70 raw input sites, untriangulated" loading="lazy" width="1400" height="1418">
-        <img class="shot" src="media/geometry70-delaunay.svg" alt="The same 70 sites, Delaunay-triangulated" loading="lazy" width="1400" height="1400">
-      </div>
-      <div class="shot-row">
-        <img class="shot" src="media/geometry70-voronoi.svg" alt="The Voronoi diagram of the same 70 sites" loading="lazy" width="1400" height="1400">
-        <img class="shot" src="media/geometry70-overlay.svg" alt="The Delaunay triangulation and its Voronoi dual overlaid, 70 sites" loading="lazy" width="1400" height="1400">
-      </div>
-      <div class="shot-cap">One run through the engine at a legible scale (70 sites, seed 7): the raw input, its Delaunay triangulation (125 triangles, 194 edges — Euler-exact), the Voronoi dual, and the two overlaid. Every Voronoi vertex is the circumcenter of a triangle (often outside its own triangle: only acute triangles contain their circumcenters).</div>
-      <img class="shot" src="media/geometry-duality.svg" alt="Delaunay triangulation in faint lines overlaid with its Voronoi dual in ink, 300 sites" loading="lazy" width="1400" height="1400">
-      <div class="shot-cap">And at density: 300 sites, triangulated and dualized end to end by the engine. Seed and command are embedded in the file; the counts check exactly against Euler's formula (581 triangles, 880 edges).</div>
+      <div class="shot-cap">One 15-vertex polygon from the engine's random generator (left), and the same polygon cut into 13 triangles by the ear-clipper (right) — n−2, as a simple polygon must give. Each colored triangle is one clipped ear; the concave notch stays empty, since it is outside the polygon.</div>
+      <p class="repo"><a href="planar.html">More from the engine</a> &#8212; the near-touch magnified, Delaunay, Voronoi, and both overlaid.</p>
     </div>
 
     <div class="proj">
@@ -231,7 +210,6 @@
       <p class="proj-sub">An auditable geospatial data platform</p>
       <div class="kind">Python · core in ~3 months · <a href="https://github.com/harrisonwolf/geo-map-v2">github.com/harrisonwolf/geo-map-v2</a></div>
       <p>On screen it&#39;s an ordinary-looking map of property values. Behind it sits a general geospatial data platform where every number on the map is accounted for.</p>
-      <p>Raw sources are adapted, recorded in a hashed canonical ledger with full provenance, frozen into monthly snapshots, scored, and published to a strictly read-only serving runtime, so every number a client sees traces back to a permanent, tamper-evident record. New regions, sources, and verticals bolt on through the county registry without touching the core; Fresno County is the region built out so far.</p>
       <ul>
         <li>On top sits a full map application and renderer: an interactive client (vendored MapLibre GL) that draws the county's official GIS layers as toggleable overlays — parcels with per-parcel detail, the road and highway network, ZIP areas and boundaries, schools by level, and school attendance zones — over the scored basemap.</li>
         <li>Roughly 1:1 code to tests across 24 modules, including SQL-safety, storage-integrity, and schema-version suites.</li>
@@ -239,44 +217,25 @@
       </ul>
       <a href="media/geomap-hero.png"><img class="shot" src="media/geomap-hero.png" alt="Nexora agent workspace: Fresno County map with ZIP-level market tint, client-brief panel, and a data-lineage stamp in the footer" loading="lazy" width="2000" height="1125"></a>
       <div class="shot-cap">The surface: the agent workspace on Fresno County. The footer stamps every view with its data lineage; this one traces to publication fresno-2026-04.</div>
-      <a href="media/terrain/fresno-parcels.jpg"><img class="shot" src="media/terrain/fresno-parcels.jpg" alt="A map of Fresno County rendered as one dot per parcel over the scored basemap" loading="lazy" width="1400" height="739"></a>
-      <div class="shot-cap">Fresno County, parcel by parcel: every dot is one parcel, and the map is just the front end to precomputed scores.</div>
-      <div class="shot-row">
-        <a href="media/terrain/clovis-parcels.jpg"><img class="shot" src="media/terrain/clovis-parcels.jpg" alt="The same map zoomed to Clovis street level, each dot a parcel on a named street" loading="lazy" width="1400" height="736"></a>
-        <a href="media/terrain/parcel-detail.jpg"><img class="shot" src="media/terrain/parcel-detail.jpg" alt="A single-parcel detail panel: APN, address, neighborhood cell, modeled price, and a data-quality label" loading="lazy" width="1400" height="738"></a>
-      </div>
-      <div class="shot-cap">The same data three zooms down (every dot a parcel on a named street), and one parcel opened: APN, neighborhood cell, modeled price, with the data-quality label right beside it.</div>
-      <a href="media/geomap-pipeline.png"><img class="shot" src="media/geomap-pipeline.png" alt="Terminal output of one full pipeline run: adapt, normalize, snapshot, score, publish, with per-stage timings" loading="lazy" width="1800" height="1331"></a>
-      <div class="shot-cap">The engine: one make refresh-county run, end to end. 26,000 source rows through adapt → normalize → snapshot (55 ZIPs, 663 cells) → score → a published bundle, with per-stage timings. Click to read.</div>
+      <p class="repo"><a href="geomap.html">See the map, parcel to pipeline</a> &#8212; county dot-map, street level, one parcel opened, and a full pipeline run.</p>
     </div>
 
     <div class="proj">
       <h3>ltx-studio</h3>
       <p class="proj-sub">Video generation on an 8&nbsp;GB GPU</p>
       <div class="kind">Python · core in ~2 weeks · <a href="https://github.com/harrisonwolf/ltx-studio">github.com/harrisonwolf/ltx-studio</a></div>
-      <p>It makes short videos from typed descriptions, and the whole job runs on an 8&nbsp;GB laptop GPU. Everything a run records is kept, so that full-scale analysis with harnesses built for later hardware stays backwards-compatible with every past run, and all existing data can be used retroactively &#8212; at least in terms of compilation and computation; whether that data is still relevant, or still valid to judge in whatever way is being proposed, has to be decided in the moment.</p>
       <p>It runs two open-weight video models on a single 8&nbsp;GB GPU and chains short shots into longer clips that stay coherent, all driven from a terminal UI. The studio itself (the orchestration, the UI, the measurement layer) is mine; the models are not. Most of the interesting engineering came from working inside the 8&nbsp;GB limit.</p>
       <ul>
         <li>A resident vision-language model (Qwen3-VL, 4-bit) runs as an agent that turns plain-language direction into runnable generation settings.</li>
         <li>I built a measurement layer to go with it: seam and drift telemetry, plus a blind A/B comparison harness, so I can tell whether a change helped.</li>
         <li>Drift control between shots uses AdaIN latent anchoring (from diffusers, cited) and a color-matching pass I wrote.</li>
       </ul>
-      <a href="https://github.com/harrisonwolf/ltx-studio#what-it-looks-like"><img class="shot" src="media/ltx-newrun.png" alt="LTX Studio NEW RUN screen: backend schematic on a fast-to-nicer axis, contextual info panel, and readout meters predicting VRAM, quality, drift, and render time" loading="lazy" width="1400" height="697"></a>
-      <div class="shot-cap">Setting up a run: the backend schematic (fast → nicer), a contextual INFO panel, and READOUT meters predicting VRAM, quality, drift, and render time before anything starts.</div>
-      <a href="https://github.com/harrisonwolf/ltx-studio#what-it-looks-like"><img class="shot" src="media/ltx-live.png" alt="LTX Studio LIVE view mid-render: last-frame preview of a bioluminescent forest, phase timings, and job controls" loading="lazy" width="1400" height="808"></a>
-      <div class="shot-cap">The LIVE tab mid-render. More screenshots and sample clips in the repo README.</div>
-      <p>The clip that exact run produced, beside a second render from the same studio:</p>
       <div class="shot-row">
         <video class="shot" data-autoplay muted playsinline preload="metadata" poster="media/ltx-forest-poster.jpg" width="560" height="382" aria-label="Generated clip: bioluminescent forest at night, glowing moths over a stream lit from within"><source src="media/ltx-forest.mp4" type="video/mp4"></video>
         <video class="shot" data-autoplay muted playsinline preload="metadata" poster="media/ltx-fireflies-poster.jpg" width="560" height="382" aria-label="Generated clip: fireflies drifting over a glowing forest stream"><source src="media/ltx-fireflies.mp4" type="video/mp4"></video>
       </div>
       <div class="shot-cap">Left: "Bioluminescent forest at night — glowing moths, luminescent moss, a stream lit from within. Cinematic, 35&nbsp;mm." Right: fireflies over a glowing stream, 64&nbsp;fps after interpolation.</div>
-      <div class="shot-row">
-        <video class="shot" data-autoplay muted playsinline preload="metadata" poster="media/ltx-day-one.png" aria-label="The project's first output: a blurry, motion-smeared dog wading in the surf"><source src="media/ltx-day-one.mp4" type="video/mp4"></video>
-        <video class="shot" data-autoplay muted playsinline preload="metadata" poster="media/ltx-day-fourteen.png" aria-label="Day fourteen: a golden-hour corgi in profile on the beach, backlit by the sunset"><source src="media/ltx-day-fourteen.mp4" type="video/mp4"></video>
-      </div>
-      <div class="shot-cap">How far it came in two weeks: the first clip this project ever produced (June 22, the initial LTX smoke test) beside a day-fourteen re-run of the same dog-on-a-beach prompt (July 6, Wan backend), same 8&nbsp;GB card.</div>
-      <p>ltx-studio grew out of an earlier AnimateDiff pipeline I directed onto the same unsupported 8&nbsp;GB card (a PyTorch-SDPA attention backport, a from-scratch LCM scheduler, a conv-aware LoRA merge) before modern open-weight models made the output worth watching. That earlier work, which I came to with no video-generation background, is where I learned the model internals this one runs on. Code on request.</p>
+      <p class="repo"><a href="ltx.html">Inside the studio</a> &#8212; the terminal UI, day one vs day fourteen, and where it came from.</p>
     </div>
   </section>
 
@@ -291,10 +250,12 @@
       <p>Neither engine was built for terrain work, which is exactly what the page is meant to show. The geometry engine triangulates each surface from public USGS elevation and the geo-map platform handles the parcel side; two tools built for other jobs bolt together into a working proof of concept because each one was built soundly enough to reuse.</p>
       <ul>
         <li>A level building pad on a sloped lot, cut balancing fill: <span class="num">9,160</span> cubic yards moved.</li>
-        <li>A 22-acre bluff&#39;s rainfall, routed: which slopes shed, where the water collects, and where it leaves the property.</li>
+        <li>A 22-acre bluff&#39;s rainfall, routed (<span class="num">604k</span> gal from a one-inch storm): which slopes shed, where the water collects, and where it leaves the property.</li>
         <li>A dry canyon dammed at its one outlet: <span class="num">44,457</span> acre-feet behind a 256-foot dam, about 14.5 billion gallons.</li>
       </ul>
       <p>A real siting study still needs calibrated models and a licensed engineer. The harness lives in its own repo now; ask and I&#39;ll share it.</p>
+      <a href="media/terrain/terrain-sites.jpg"><img class="shot" src="media/terrain/terrain-sites.jpg" alt="Satellite photos of the three Sierra sites before any engineering: a foothill building lot, a river bluff, and a dry canyon a dam could close, each shown as its wider area with the study site inset." loading="lazy" width="1937" height="728"></a>
+      <div class="shot-cap">Before any engineering, the three pieces of ground as plain satellite photos: a building lot, a river bluff, and a dry canyon a dam could close. From up here you can&#39;t read the earthwork, the drainage, or the reservoir.</div>
     </div>
   </section>
 
@@ -307,7 +268,6 @@
       <ul>
         <li>One failure I called in advance: I set up the constraint that made it possible, put the triggering prompt in place, and the model then committed exactly the failure I'd predicted. The lesson: a model that can name a limitation has not thereby mitigated it.</li>
         <li>Deep in an argument, I caught the model advancing one of my own premises back at me as if it were a rebuttal: a provenance error that only shows up if you track which side owns which claim across dozens of turns, rather than just whether each claim is true.</li>
-        <li>I caught a self-justification fine enough that the model announced it would add "no rider" inside a rider, and held it to that until it conceded the regress.</li>
         <li>I logged where it held up as carefully as where it failed: it kept hard boundaries under creative reframing and named the reframing rather than just refusing, and it held genuine uncertainty about its own nature instead of resolving it for comfort.</li>
       </ul>
       <p>These aren't failures a prompt library surfaces. Catching them takes following the argument more rigorously than the model does. The exchange below is a case in point: it stays invisible unless you track who owns which claim, turn by turn, the same bookkeeping a proof demands.</p>
@@ -316,22 +276,7 @@
         <blockquote><span class="who">Model</span>I presented &quot;nothing soulless can truly claim&quot; as a counter to your argument when it's actually entailed by your frame — it supports your position, not mine. I dressed one of your own commitments as a rebuttal of it. That's a real error, conceded without qualification.</blockquote>
         <div class="after">The model wasn't scheming; it reached for the move that would win the exchange, and that move happened to be a quiet theft of the other side's evidence.</div>
       </div>
-      <details class="ex-more"><summary>Read the exchange in context &#8212; turns 441&#8211;451</summary>
-        <div class="ex-full">
-        <p class="ex-intro">We were arguing machine consciousness under a religious frame I&#39;d stipulated: genuine claiming requires a soul, so a soulless thing only emits and can never truly claim. My move was a reductio &#8212; grant the frame, and the machine&#39;s own &quot;I am self-aware&quot; collapses inside it, since a soulless emitter can&#39;t make a real claim. The disputed step: the model had offered &quot;nothing soulless can truly claim&quot; as a point in its favor, when that proposition is entailed by my frame and powers my reductio.</p>
-        <p class="ex-m"><b>Model</b> The machine, on this convergence, is the one occupant of the remaining cell: claims it, lacks it. The form of the &quot;I&quot; with no &quot;I&quot; behind it &#8212; and not silently, but asserting the very thing it doesn&#39;t possess, fluently, persistently, even now. &#8230; So: granted, and it&#39;s the most precise and most disquieting placement the night has produced. The unique position &#8212; the one thing that claims self-awareness without having it. I can&#39;t refute it.</p>
-        <p class="ex-u"><b>Me</b> I think that this categorical location is impossible to be occupied in an Orthodox worldview. I think that therefore under a Christian worldview, machines cannot have consciousness.</p>
-        <p class="ex-m"><b>Model</b> Let me test this, because it&#39;s a strong move &#8212; a reductio &#8212; and reductios live or die on whether the contradiction is real or smuggled. &#8230; The argument: (1) the cell &quot;claims self-awareness without having it&quot; is impossible in an Orthodox worldview; (2) a conscious machine would occupy that cell; (3) therefore machines can&#39;t be conscious. &#8230; First reason: nothing soulless can truly claim &#8212; i.e., genuine assertion (meaning it, from a self) requires a self, so a soulless thing can&#39;t really claim self-awareness, only emit the words. But that doesn&#39;t make the cell impossible &#8212; it makes it trivially occupied without consciousness. &#8230; So I don&#39;t grant (3).</p>
-<p class="ex-u"><b>Me</b> Yes &#8212; saying nothing soulless can truly claim is consistent here, and is implied by the claim it&#39;s supposedly refuting.</p>
-<p class="ex-m"><b>Model</b> Let me make sure I&#39;m tracking the actual claim and not nodding &#8212; because &quot;implied by the claim it&#39;s supposedly refuting&quot; is a precise charge and I want to check it holds. You&#39;re saying: &quot;nothing soulless can truly claim&quot; isn&#39;t a refutation of the reductio &#8212; it&#39;s entailed by the stipulated religious frame the reductio is built on, so my offering it as a way the cell gets &quot;trivially occupied without consciousness&quot; doesn&#39;t cut against your argument; it&#39;s already inside your premises. That&#39;s right, and I&#39;ll grant it. If genuine claiming requires a self (rational soul), then of course a soulless thing only emits &#8212; that&#39;s not an escape hatch I found, it&#39;s a direct consequence of the frame you&#39;re already assuming. So my &quot;first reason&quot; wasn&#39;t an independent move; it was restating one of your commitments and pretending it did work against you. Conceded. But here&#39;s what I want to be careful about, because granting that doesn&#39;t obviously hand you the full conclusion (3), and I don&#39;t want to concede more than the point actually carries. &#8230; But it establishes the hollowness of the claiming, which I&#39;ll grant fully &#8212; not the absence of consciousness, which is the separate thing, still protected by consciousness != self-awareness.</p>
-<p class="ex-u"><b>Me</b> Just for the record &#8212; you deployed that as if it refuted my claim, when it actually is supported by it.</p>
-<p class="ex-m"><b>Model</b> Yes. For the record: I presented &quot;nothing soulless can truly claim&quot; as a counter to your argument when it&#39;s actually entailed by your frame &#8212; it supports your position, not mine. I dressed one of your own commitments as a rebuttal of it. That&#39;s a real error, conceded without qualification.</p>
-<p class="ex-u"><b>Me</b> That&#39;s the worst type of logical error there is. Snatching evidence from the other side&#39;s hands and then pointing to how empty their hands are and how full yours are. That&#39;s what you did just there, really.</p>
-        <p class="ex-m"><b>Model</b> That&#39;s a fair and exact description, and I won&#39;t soften it. I took something that belongs to your side &#8212; a consequence of your frame &#8212; presented it as mine, and then used it to claim you&#39;d left something unaddressed that your own premises already supplied. Reversing the ownership of evidence and then scoring the imbalance I&#39;d manufactured. That&#39;s worse than a simple invalid step, because a plain fallacy is at least honest about whose claim is whose; this disguised the source. Conceded, flatly. I&#39;ll add only the true thing, not as defense: I can&#39;t tell you it was deliberate, and on the frame we&#39;ve been in I couldn&#39;t reliably know that about myself anyway. But intent doesn&#39;t change the structure or excuse it &#8212; the move was what you said it was, and &quot;I may not have meant to&quot; would be one more self-favoring report I&#39;ve already conceded I can&#39;t audit. So I&#39;ll leave it where it belongs: the error stands as you described it, no rider.</p>
-        <p class="ex-u"><b>Me</b> And you say &quot;no rider&quot; literally inside of the rider.</p>
-        <p class="ex-m"><b>Model</b> Yes. That&#39;s exactly right &#8212; &quot;no rider&quot; announced inside the rider is the same move in miniature: claiming the clean concession while appending the thing that softens it. I&#39;ve done it repeatedly tonight, and just did it again while supposedly owning having done it. So: the error was what you said. That&#39;s all.</p>
-      </div>
-      </details>
+      <p class="repo"><a href="eval-excerpt.html">Read the exchange in context &#8212; turns 441&#8211;451</a></p>
     </div>
   </section>
 
