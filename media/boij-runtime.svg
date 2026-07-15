@@ -1,95 +1,48 @@
-<svg viewBox="0 0 980 560" xmlns="http://www.w3.org/2000/svg" font-family="ui-monospace,Menlo,Consolas,monospace">
+<svg viewBox="0 0 980 560" xmlns="http://www.w3.org/2000/svg" font-family="ui-monospace,Menlo,Consolas,monospace" role="img" aria-labelledby="chart-title chart-desc">
+<title id="chart-title">Fresh matched-case end-to-end wall time</title>
+<desc id="chart-desc">Grouped bars compare median external wall time for the C++ engine and Macaulay2 across four cases. C++ medians are 0.227, 4.087, 2.785, 1.378 seconds; Macaulay2 medians are 13.963, 87.594, 78.985, 40.416 seconds.</desc>
 <rect width="980" height="560" fill="#FBFAF8"/>
-<text x="34" y="34" fill="#1B1B17" font-size="17" font-weight="700">Bad-one search: runtime vs. problem size</text>
-<text x="34" y="53" fill="#6C685F" font-size="11.5">codimension 3–7 · linear axes · C++ (solid) vs. Macaulay2 (dashed) · program CPU time, same machine</text>
-<line x1="92.0" y1="80" x2="92.0" y2="470" stroke="#E7E4DC"/>
-<text x="92.0" y="488" fill="#6C685F" font-size="11.5" text-anchor="middle">0</text>
-<line x1="246.8" y1="80" x2="246.8" y2="470" stroke="#E7E4DC"/>
-<text x="246.8" y="488" fill="#6C685F" font-size="11.5" text-anchor="middle">5M</text>
-<line x1="401.5" y1="80" x2="401.5" y2="470" stroke="#E7E4DC"/>
-<text x="401.5" y="488" fill="#6C685F" font-size="11.5" text-anchor="middle">10M</text>
-<line x1="556.3" y1="80" x2="556.3" y2="470" stroke="#E7E4DC"/>
-<text x="556.3" y="488" fill="#6C685F" font-size="11.5" text-anchor="middle">15M</text>
-<line x1="711.0" y1="80" x2="711.0" y2="470" stroke="#E7E4DC"/>
-<text x="711.0" y="488" fill="#6C685F" font-size="11.5" text-anchor="middle">20M</text>
-<line x1="92" y1="470.0" x2="742" y2="470.0" stroke="#E7E4DC"/>
-<text x="83" y="474.0" fill="#6C685F" font-size="11.5" text-anchor="end">0</text>
-<line x1="92" y1="399.1" x2="742" y2="399.1" stroke="#E7E4DC"/>
-<text x="83" y="403.1" fill="#6C685F" font-size="11.5" text-anchor="end">200 s</text>
-<line x1="92" y1="328.2" x2="742" y2="328.2" stroke="#E7E4DC"/>
-<text x="83" y="332.2" fill="#6C685F" font-size="11.5" text-anchor="end">400 s</text>
-<line x1="92" y1="257.3" x2="742" y2="257.3" stroke="#E7E4DC"/>
-<text x="83" y="261.3" fill="#6C685F" font-size="11.5" text-anchor="end">600 s</text>
-<line x1="92" y1="186.4" x2="742" y2="186.4" stroke="#E7E4DC"/>
-<text x="83" y="190.4" fill="#6C685F" font-size="11.5" text-anchor="end">800 s</text>
-<line x1="92" y1="115.5" x2="742" y2="115.5" stroke="#E7E4DC"/>
-<text x="83" y="119.5" fill="#6C685F" font-size="11.5" text-anchor="end">17 min</text>
-<text x="417" y="510" fill="#6C685F" font-size="12.5" text-anchor="middle">number of candidate sequences  n = C(d, c)</text>
-<text transform="translate(34,275) rotate(-90)" fill="#6C685F" font-size="12.5" text-anchor="middle">CPU time</text>
-<rect x="92" y="80" width="650" height="390" fill="none" stroke="#9C978C" stroke-width="1.2"/>
-<polyline points="92.0,470.0 93.1,469.4 100.7,465.4 171.6,401.5 229.9,363.3 733.0,108.0" fill="none" stroke="#0072B2" stroke-width="1.7" stroke-dasharray="5 3" opacity="0.9"/>
-<polyline points="92.0,470.0 93.1,470.0 100.7,470.0 171.6,469.6 229.9,469.3 733.0,466.1" fill="none" stroke="#0072B2" stroke-width="2.2"/>
-<circle cx="92.0" cy="470.0" r="4.3" fill="#FBFAF8" stroke="#0072B2" stroke-width="1.8"/>
-<circle cx="92.0" cy="470.0" r="4.3" fill="#0072B2"/>
-<circle cx="93.1" cy="469.4" r="4.3" fill="#FBFAF8" stroke="#0072B2" stroke-width="1.8"/>
-<circle cx="93.1" cy="470.0" r="4.3" fill="#0072B2"/>
-<circle cx="100.7" cy="465.4" r="4.3" fill="#FBFAF8" stroke="#0072B2" stroke-width="1.8"/>
-<circle cx="100.7" cy="470.0" r="4.3" fill="#0072B2"/>
-<circle cx="171.6" cy="401.5" r="4.3" fill="#FBFAF8" stroke="#0072B2" stroke-width="1.8"/>
-<circle cx="171.6" cy="469.6" r="4.3" fill="#0072B2"/>
-<circle cx="229.9" cy="363.3" r="4.3" fill="#FBFAF8" stroke="#0072B2" stroke-width="1.8"/>
-<circle cx="229.9" cy="469.3" r="4.3" fill="#0072B2"/>
-<circle cx="733.0" cy="108.0" r="4.3" fill="#FBFAF8" stroke="#0072B2" stroke-width="1.8"/>
-<circle cx="733.0" cy="466.1" r="4.3" fill="#0072B2"/>
-<polyline points="92.0,470.0 94.8,468.1" fill="none" stroke="#009E73" stroke-width="1.7" stroke-dasharray="5 3" opacity="0.9"/>
-<polyline points="92.0,470.0 94.8,470.0 141.0,469.7 719.1,465.4" fill="none" stroke="#009E73" stroke-width="2.2"/>
-<circle cx="92.0" cy="470.0" r="4.3" fill="#FBFAF8" stroke="#009E73" stroke-width="1.8"/>
-<circle cx="92.0" cy="470.0" r="4.3" fill="#009E73"/>
-<circle cx="94.8" cy="468.1" r="4.3" fill="#FBFAF8" stroke="#009E73" stroke-width="1.8"/>
-<circle cx="94.8" cy="470.0" r="4.3" fill="#009E73"/>
-<circle cx="141.0" cy="469.7" r="4.3" fill="#009E73"/>
-<circle cx="719.1" cy="465.4" r="4.3" fill="#009E73"/>
-<polyline points="92.0,470.0 93.6,468.7 129.8,434.3" fill="none" stroke="#E69F00" stroke-width="1.7" stroke-dasharray="5 3" opacity="0.9"/>
-<polyline points="92.0,470.0 93.6,470.0 129.8,469.7 466.6,466.0" fill="none" stroke="#E69F00" stroke-width="2.2"/>
-<circle cx="92.0" cy="470.0" r="4.3" fill="#FBFAF8" stroke="#E69F00" stroke-width="1.8"/>
-<circle cx="92.0" cy="470.0" r="4.3" fill="#E69F00"/>
-<circle cx="93.6" cy="468.7" r="4.3" fill="#FBFAF8" stroke="#E69F00" stroke-width="1.8"/>
-<circle cx="93.6" cy="470.0" r="4.3" fill="#E69F00"/>
-<circle cx="129.8" cy="434.3" r="4.3" fill="#FBFAF8" stroke="#E69F00" stroke-width="1.8"/>
-<circle cx="129.8" cy="469.7" r="4.3" fill="#E69F00"/>
-<circle cx="466.6" cy="466.0" r="4.3" fill="#E69F00"/>
-<circle cx="128.5" cy="437.0" r="4.3" fill="#FBFAF8" stroke="#E69F00" stroke-width="1.8"/>
-<circle cx="128.5" cy="469.6" r="4.3" fill="#E69F00"/>
-<polyline points="92.0,469.9 93.2,468.7 120.0,437.0" fill="none" stroke="#D55E00" stroke-width="1.7" stroke-dasharray="5 3" opacity="0.9"/>
-<polyline points="92.0,470.0 93.2,470.0 120.0,469.7 583.9,462.7" fill="none" stroke="#D55E00" stroke-width="2.2"/>
-<circle cx="92.0" cy="469.9" r="4.3" fill="#FBFAF8" stroke="#D55E00" stroke-width="1.8"/>
-<circle cx="92.0" cy="470.0" r="4.3" fill="#D55E00"/>
-<circle cx="93.2" cy="468.7" r="4.3" fill="#FBFAF8" stroke="#D55E00" stroke-width="1.8"/>
-<circle cx="93.2" cy="470.0" r="4.3" fill="#D55E00"/>
-<circle cx="120.0" cy="437.0" r="4.3" fill="#FBFAF8" stroke="#D55E00" stroke-width="1.8"/>
-<circle cx="120.0" cy="469.7" r="4.3" fill="#D55E00"/>
-<circle cx="583.9" cy="462.7" r="4.3" fill="#D55E00"/>
-<polyline points="92.0,470.0 93.0,468.7 102.7,455.0 128.6,414.6" fill="none" stroke="#CC79A7" stroke-width="1.7" stroke-dasharray="5 3" opacity="0.9"/>
-<polyline points="92.0,470.0 93.0,470.0 102.7,469.8 128.6,469.4 196.2,468.0" fill="none" stroke="#CC79A7" stroke-width="2.2"/>
-<circle cx="92.0" cy="470.0" r="4.3" fill="#FBFAF8" stroke="#CC79A7" stroke-width="1.8"/>
-<circle cx="92.0" cy="470.0" r="4.3" fill="#CC79A7"/>
-<circle cx="93.0" cy="468.7" r="4.3" fill="#FBFAF8" stroke="#CC79A7" stroke-width="1.8"/>
-<circle cx="93.0" cy="470.0" r="4.3" fill="#CC79A7"/>
-<circle cx="102.7" cy="455.0" r="4.3" fill="#FBFAF8" stroke="#CC79A7" stroke-width="1.8"/>
-<circle cx="102.7" cy="469.8" r="4.3" fill="#CC79A7"/>
-<circle cx="128.6" cy="414.6" r="4.3" fill="#FBFAF8" stroke="#CC79A7" stroke-width="1.8"/>
-<circle cx="128.6" cy="469.4" r="4.3" fill="#CC79A7"/>
-<circle cx="196.2" cy="468.0" r="4.3" fill="#CC79A7"/>
-<circle cx="128.0" cy="418.1" r="4.3" fill="#FBFAF8" stroke="#CC79A7" stroke-width="1.8"/>
-<circle cx="128.0" cy="469.4" r="4.3" fill="#CC79A7"/>
-<text x="724.7" y="102.0" fill="#B0432E" font-size="11" text-anchor="end">Macaulay2: 1,021 s (~17 min) at 20.7M</text>
-<text x="370.6" y="454.7" fill="#3C5A49" font-size="11">C++ stays under ~21 s all the way to 20M</text>
-<text x="762" y="86" fill="#1B1B17" font-size="12" font-weight="700">codimension</text>
-<circle cx="769" cy="104" r="5" fill="#0072B2"/><text x="784" y="108" fill="#6C685F" font-size="12">c = 3</text>
-<circle cx="769" cy="124" r="5" fill="#009E73"/><text x="784" y="128" fill="#6C685F" font-size="12">c = 4</text>
-<circle cx="769" cy="144" r="5" fill="#E69F00"/><text x="784" y="148" fill="#6C685F" font-size="12">c = 5</text>
-<circle cx="769" cy="164" r="5" fill="#D55E00"/><text x="784" y="168" fill="#6C685F" font-size="12">c = 6</text>
-<circle cx="769" cy="184" r="5" fill="#CC79A7"/><text x="784" y="188" fill="#6C685F" font-size="12">c = 7</text>
-<line x1="760" y1="224" x2="776" y2="224" stroke="#1B1B17" stroke-width="2.2"/><circle cx="768" cy="224" r="4.3" fill="#1B1B17"/><text x="784" y="228" fill="#6C685F" font-size="12">C++ engine</text>
-<line x1="760" y1="244" x2="776" y2="244" stroke="#1B1B17" stroke-width="1.7" stroke-dasharray="5 3"/><circle cx="768" cy="244" r="4.3" fill="#FBFAF8" stroke="#1B1B17" stroke-width="1.8"/><text x="784" y="248" fill="#6C685F" font-size="12">Macaulay2</text>
+<text x="34" y="34" fill="#1B1B17" font-size="17" font-weight="700">Fresh matched-case end-to-end wall time</text>
+<text x="34" y="55" fill="#6C685F" font-size="11.5">headline bundle 20260715T202630Z-b2a9bfb8-headline · medians · linear scale · exact outputs match</text>
+<line x1="92" y1="440.0" x2="940" y2="440.0" stroke="#E7E4DC"/>
+<text x="82" y="444.0" fill="#6C685F" font-size="11.5" text-anchor="end">0 s</text>
+<line x1="92" y1="370.4" x2="940" y2="370.4" stroke="#E7E4DC"/>
+<text x="82" y="374.4" fill="#6C685F" font-size="11.5" text-anchor="end">20 s</text>
+<line x1="92" y1="300.8" x2="940" y2="300.8" stroke="#E7E4DC"/>
+<text x="82" y="304.8" fill="#6C685F" font-size="11.5" text-anchor="end">40 s</text>
+<line x1="92" y1="231.2" x2="940" y2="231.2" stroke="#E7E4DC"/>
+<text x="82" y="235.2" fill="#6C685F" font-size="11.5" text-anchor="end">60 s</text>
+<line x1="92" y1="161.6" x2="940" y2="161.6" stroke="#E7E4DC"/>
+<text x="82" y="165.6" fill="#6C685F" font-size="11.5" text-anchor="end">80 s</text>
+<line x1="92" y1="92.0" x2="940" y2="92.0" stroke="#E7E4DC"/>
+<text x="82" y="96.0" fill="#6C685F" font-size="11.5" text-anchor="end">100 s</text>
+<line x1="92" y1="92" x2="92" y2="440" stroke="#9C978C"/>
+<line x1="92" y1="440" x2="940" y2="440" stroke="#9C978C"/>
+<rect x="141" y="439.21" width="44" height="0.79" fill="#0072B2"><title>C++: 0.227 s</title></rect>
+<text x="163" y="431.2" fill="#1B1B17" font-size="10.5" text-anchor="middle">0.227</text>
+<rect x="195" y="391.41" width="44" height="48.59" fill="#D55E00"><title>Macaulay2: 13.963 s</title></rect>
+<text x="217" y="383.4" fill="#1B1B17" font-size="10.5" text-anchor="middle">13.963</text>
+<text x="190" y="469" fill="#1B1B17" font-size="11.5" text-anchor="middle">c = 3, d = 120</text>
+<text x="190" y="487" fill="#6C685F" font-size="10.5" text-anchor="middle">280,840 candidates</text>
+<rect x="341" y="425.78" width="44" height="14.22" fill="#0072B2"><title>C++: 4.087 s</title></rect>
+<text x="363" y="417.8" fill="#1B1B17" font-size="10.5" text-anchor="middle">4.087</text>
+<rect x="395" y="135.17" width="44" height="304.83" fill="#D55E00"><title>Macaulay2: 87.594 s</title></rect>
+<text x="417" y="127.2" fill="#1B1B17" font-size="10.5" text-anchor="middle">87.594</text>
+<text x="390" y="469" fill="#1B1B17" font-size="11.5" text-anchor="middle">c = 5, d = 45</text>
+<text x="390" y="487" fill="#6C685F" font-size="10.5" text-anchor="middle">1,221,759 candidates</text>
+<rect x="541" y="430.31" width="44" height="9.69" fill="#0072B2"><title>C++: 2.785 s</title></rect>
+<text x="563" y="422.3" fill="#1B1B17" font-size="10.5" text-anchor="middle">2.785</text>
+<rect x="595" y="165.13" width="44" height="274.87" fill="#D55E00"><title>Macaulay2: 78.985 s</title></rect>
+<text x="617" y="157.1" fill="#1B1B17" font-size="10.5" text-anchor="middle">78.985</text>
+<text x="590" y="469" fill="#1B1B17" font-size="11.5" text-anchor="middle">c = 6, d = 32</text>
+<text x="590" y="487" fill="#6C685F" font-size="10.5" text-anchor="middle">906,192 candidates</text>
+<rect x="741" y="435.20" width="44" height="4.80" fill="#0072B2"><title>C++: 1.378 s</title></rect>
+<text x="763" y="427.2" fill="#1B1B17" font-size="10.5" text-anchor="middle">1.378</text>
+<rect x="795" y="299.35" width="44" height="140.65" fill="#D55E00"><title>Macaulay2: 40.416 s</title></rect>
+<text x="817" y="291.4" fill="#1B1B17" font-size="10.5" text-anchor="middle">40.416</text>
+<text x="790" y="469" fill="#1B1B17" font-size="11.5" text-anchor="middle">c = 7, d = 24</text>
+<text x="790" y="487" fill="#6C685F" font-size="10.5" text-anchor="middle">346,104 candidates</text>
+<rect x="673" y="69" width="12" height="12" fill="#0072B2"/><text x="691" y="79" fill="#1B1B17" font-size="11.5">C++ engine</text>
+<rect x="805" y="69" width="12" height="12" fill="#D55E00"/><text x="823" y="79" fill="#1B1B17" font-size="11.5">Macaulay2</text>
+<text x="516" y="526" fill="#6C685F" font-size="11.5" text-anchor="middle">three successful paired repetitions per case · complete exact result arrays match</text>
 </svg>

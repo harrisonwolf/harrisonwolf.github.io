@@ -1,94 +1,48 @@
-<svg viewBox="0 0 980 560" xmlns="http://www.w3.org/2000/svg" font-family="ui-monospace,Menlo,Consolas,monospace">
+<svg viewBox="0 0 980 560" xmlns="http://www.w3.org/2000/svg" font-family="ui-monospace,Menlo,Consolas,monospace" role="img" aria-labelledby="chart-title chart-desc">
+<title id="chart-title">Fresh matched-case median peak RSS</title>
+<desc id="chart-desc">Grouped bars compare median peak resident set size for the C++ engine and Macaulay2 across four cases. Macaulay2 used between 3.1 and 4.0 times the C++ process median peak RSS.</desc>
 <rect width="980" height="560" fill="#FBFAF8"/>
-<text x="34" y="34" fill="#1B1B17" font-size="17" font-weight="700">Peak memory vs. problem size</text>
-<text x="34" y="53" fill="#6C685F" font-size="11.5">codimension 3–7 · linear axes · peak resident set · C++ (solid) vs. Macaulay2 (dashed)</text>
-<line x1="92.0" y1="80" x2="92.0" y2="470" stroke="#E7E4DC"/>
-<text x="92.0" y="488" fill="#6C685F" font-size="11.5" text-anchor="middle">0</text>
-<line x1="246.8" y1="80" x2="246.8" y2="470" stroke="#E7E4DC"/>
-<text x="246.8" y="488" fill="#6C685F" font-size="11.5" text-anchor="middle">5M</text>
-<line x1="401.5" y1="80" x2="401.5" y2="470" stroke="#E7E4DC"/>
-<text x="401.5" y="488" fill="#6C685F" font-size="11.5" text-anchor="middle">10M</text>
-<line x1="556.3" y1="80" x2="556.3" y2="470" stroke="#E7E4DC"/>
-<text x="556.3" y="488" fill="#6C685F" font-size="11.5" text-anchor="middle">15M</text>
-<line x1="711.0" y1="80" x2="711.0" y2="470" stroke="#E7E4DC"/>
-<text x="711.0" y="488" fill="#6C685F" font-size="11.5" text-anchor="middle">20M</text>
-<line x1="92" y1="470.0" x2="742" y2="470.0" stroke="#E7E4DC"/>
-<text x="83" y="474.0" fill="#6C685F" font-size="11.5" text-anchor="end">0</text>
-<line x1="92" y1="395.0" x2="742" y2="395.0" stroke="#E7E4DC"/>
-<text x="83" y="399.0" fill="#6C685F" font-size="11.5" text-anchor="end">0.5 GB</text>
-<line x1="92" y1="320.0" x2="742" y2="320.0" stroke="#E7E4DC"/>
-<text x="83" y="324.0" fill="#6C685F" font-size="11.5" text-anchor="end">1 GB</text>
-<line x1="92" y1="245.0" x2="742" y2="245.0" stroke="#E7E4DC"/>
-<text x="83" y="249.0" fill="#6C685F" font-size="11.5" text-anchor="end">1.5 GB</text>
-<line x1="92" y1="170.0" x2="742" y2="170.0" stroke="#E7E4DC"/>
-<text x="83" y="174.0" fill="#6C685F" font-size="11.5" text-anchor="end">2 GB</text>
-<line x1="92" y1="95.0" x2="742" y2="95.0" stroke="#E7E4DC"/>
-<text x="83" y="99.0" fill="#6C685F" font-size="11.5" text-anchor="end">2.5 GB</text>
-<text x="417" y="510" fill="#6C685F" font-size="12.5" text-anchor="middle">number of candidate sequences  n = C(d, c)</text>
-<text transform="translate(34,275) rotate(-90)" fill="#6C685F" font-size="12.5" text-anchor="middle">peak memory</text>
-<rect x="92" y="80" width="650" height="390" fill="none" stroke="#9C978C" stroke-width="1.2"/>
-<polyline points="92.0,455.2 93.1,455.4 100.7,447.0 171.6,339.6 229.9,253.7" fill="none" stroke="#0072B2" stroke-width="1.7" stroke-dasharray="5 3" opacity="0.9"/>
-<polyline points="92.0,469.4 93.1,468.9 100.7,464.2 171.6,424.9 229.9,385.8 733.0,111.6" fill="none" stroke="#0072B2" stroke-width="2.2"/>
-<circle cx="92.0" cy="455.2" r="4.3" fill="#FBFAF8" stroke="#0072B2" stroke-width="1.8"/>
-<circle cx="92.0" cy="469.4" r="4.3" fill="#0072B2"/>
-<circle cx="93.1" cy="455.4" r="4.3" fill="#FBFAF8" stroke="#0072B2" stroke-width="1.8"/>
-<circle cx="93.1" cy="468.9" r="4.3" fill="#0072B2"/>
-<circle cx="100.7" cy="447.0" r="4.3" fill="#FBFAF8" stroke="#0072B2" stroke-width="1.8"/>
-<circle cx="100.7" cy="464.2" r="4.3" fill="#0072B2"/>
-<circle cx="171.6" cy="339.6" r="4.3" fill="#FBFAF8" stroke="#0072B2" stroke-width="1.8"/>
-<circle cx="171.6" cy="424.9" r="4.3" fill="#0072B2"/>
-<circle cx="229.9" cy="253.7" r="4.3" fill="#FBFAF8" stroke="#0072B2" stroke-width="1.8"/>
-<circle cx="229.9" cy="385.8" r="4.3" fill="#0072B2"/>
-<circle cx="733.0" cy="111.6" r="4.3" fill="#0072B2"/>
-<polyline points="92.0,455.2 94.8,454.2" fill="none" stroke="#009E73" stroke-width="1.7" stroke-dasharray="5 3" opacity="0.9"/>
-<polyline points="92.0,469.4 94.8,468.0 141.0,443.0 719.1,115.2" fill="none" stroke="#009E73" stroke-width="2.2"/>
-<circle cx="92.0" cy="455.2" r="4.3" fill="#FBFAF8" stroke="#009E73" stroke-width="1.8"/>
-<circle cx="92.0" cy="469.4" r="4.3" fill="#009E73"/>
-<circle cx="94.8" cy="454.2" r="4.3" fill="#FBFAF8" stroke="#009E73" stroke-width="1.8"/>
-<circle cx="94.8" cy="468.0" r="4.3" fill="#009E73"/>
-<circle cx="141.0" cy="443.0" r="4.3" fill="#009E73"/>
-<circle cx="719.1" cy="115.2" r="4.3" fill="#009E73"/>
-<polyline points="92.0,455.2 93.6,455.4 129.8,399.3" fill="none" stroke="#E69F00" stroke-width="1.7" stroke-dasharray="5 3" opacity="0.9"/>
-<polyline points="92.0,469.4 93.6,468.7 129.8,447.2 466.6,275.6" fill="none" stroke="#E69F00" stroke-width="2.2"/>
-<circle cx="92.0" cy="455.2" r="4.3" fill="#FBFAF8" stroke="#E69F00" stroke-width="1.8"/>
-<circle cx="92.0" cy="469.4" r="4.3" fill="#E69F00"/>
-<circle cx="93.6" cy="455.4" r="4.3" fill="#FBFAF8" stroke="#E69F00" stroke-width="1.8"/>
-<circle cx="93.6" cy="468.7" r="4.3" fill="#E69F00"/>
-<circle cx="129.8" cy="399.3" r="4.3" fill="#FBFAF8" stroke="#E69F00" stroke-width="1.8"/>
-<circle cx="129.8" cy="447.2" r="4.3" fill="#E69F00"/>
-<circle cx="466.6" cy="275.6" r="4.3" fill="#E69F00"/>
-<circle cx="128.5" cy="400.8" r="4.3" fill="#FBFAF8" stroke="#E69F00" stroke-width="1.8"/>
-<circle cx="128.5" cy="447.6" r="4.3" fill="#E69F00"/>
-<polyline points="92.0,455.2 93.2,455.4 120.0,411.6" fill="none" stroke="#D55E00" stroke-width="1.7" stroke-dasharray="5 3" opacity="0.9"/>
-<polyline points="92.0,469.4 93.2,468.7 120.0,452.9 583.9,178.6" fill="none" stroke="#D55E00" stroke-width="2.2"/>
-<circle cx="92.0" cy="455.2" r="4.3" fill="#FBFAF8" stroke="#D55E00" stroke-width="1.8"/>
-<circle cx="92.0" cy="469.4" r="4.3" fill="#D55E00"/>
-<circle cx="93.2" cy="455.4" r="4.3" fill="#FBFAF8" stroke="#D55E00" stroke-width="1.8"/>
-<circle cx="93.2" cy="468.7" r="4.3" fill="#D55E00"/>
-<circle cx="120.0" cy="411.6" r="4.3" fill="#FBFAF8" stroke="#D55E00" stroke-width="1.8"/>
-<circle cx="120.0" cy="452.9" r="4.3" fill="#D55E00"/>
-<circle cx="583.9" cy="178.6" r="4.3" fill="#D55E00"/>
-<polyline points="92.0,455.2 93.0,454.4 102.7,440.8 128.6,396.2" fill="none" stroke="#CC79A7" stroke-width="1.7" stroke-dasharray="5 3" opacity="0.9"/>
-<polyline points="92.0,469.4 93.0,468.9 102.7,462.1 128.6,442.5 196.2,400.2" fill="none" stroke="#CC79A7" stroke-width="2.2"/>
-<circle cx="92.0" cy="455.2" r="4.3" fill="#FBFAF8" stroke="#CC79A7" stroke-width="1.8"/>
-<circle cx="92.0" cy="469.4" r="4.3" fill="#CC79A7"/>
-<circle cx="93.0" cy="454.4" r="4.3" fill="#FBFAF8" stroke="#CC79A7" stroke-width="1.8"/>
-<circle cx="93.0" cy="468.9" r="4.3" fill="#CC79A7"/>
-<circle cx="102.7" cy="440.8" r="4.3" fill="#FBFAF8" stroke="#CC79A7" stroke-width="1.8"/>
-<circle cx="102.7" cy="462.1" r="4.3" fill="#CC79A7"/>
-<circle cx="128.6" cy="396.2" r="4.3" fill="#FBFAF8" stroke="#CC79A7" stroke-width="1.8"/>
-<circle cx="128.6" cy="442.5" r="4.3" fill="#CC79A7"/>
-<circle cx="196.2" cy="400.2" r="4.3" fill="#CC79A7"/>
-<circle cx="128.0" cy="397.1" r="4.3" fill="#FBFAF8" stroke="#CC79A7" stroke-width="1.8"/>
-<circle cx="128.0" cy="442.7" r="4.3" fill="#CC79A7"/>
-<text x="237.9" y="253.7" fill="#B0432E" font-size="11">M2 materializes the whole list — 1.4 GB by 4.5M</text>
-<text x="724.7" y="103.6" fill="#3C5A49" font-size="11" text-anchor="end">C++ 2.3 GB at 20.7M (~3× lower at matched sizes)</text>
-<text x="762" y="86" fill="#1B1B17" font-size="12" font-weight="700">codimension</text>
-<circle cx="769" cy="104" r="5" fill="#0072B2"/><text x="784" y="108" fill="#6C685F" font-size="12">c = 3</text>
-<circle cx="769" cy="124" r="5" fill="#009E73"/><text x="784" y="128" fill="#6C685F" font-size="12">c = 4</text>
-<circle cx="769" cy="144" r="5" fill="#E69F00"/><text x="784" y="148" fill="#6C685F" font-size="12">c = 5</text>
-<circle cx="769" cy="164" r="5" fill="#D55E00"/><text x="784" y="168" fill="#6C685F" font-size="12">c = 6</text>
-<circle cx="769" cy="184" r="5" fill="#CC79A7"/><text x="784" y="188" fill="#6C685F" font-size="12">c = 7</text>
-<line x1="760" y1="224" x2="776" y2="224" stroke="#1B1B17" stroke-width="2.2"/><circle cx="768" cy="224" r="4.3" fill="#1B1B17"/><text x="784" y="228" fill="#6C685F" font-size="12">C++ engine</text>
-<line x1="760" y1="244" x2="776" y2="244" stroke="#1B1B17" stroke-width="1.7" stroke-dasharray="5 3"/><circle cx="768" cy="244" r="4.3" fill="#FBFAF8" stroke="#1B1B17" stroke-width="1.8"/><text x="784" y="248" fill="#6C685F" font-size="12">Macaulay2</text>
+<text x="34" y="34" fill="#1B1B17" font-size="17" font-weight="700">Fresh matched-case median peak RSS</text>
+<text x="34" y="55" fill="#6C685F" font-size="11.5">headline bundle 20260715T202630Z-b2a9bfb8-headline · GNU time peak RSS · linear scale</text>
+<line x1="92" y1="440.0" x2="940" y2="440.0" stroke="#E7E4DC"/>
+<text x="82" y="444.0" fill="#6C685F" font-size="11.5" text-anchor="end">0 MiB</text>
+<line x1="92" y1="370.4" x2="940" y2="370.4" stroke="#E7E4DC"/>
+<text x="82" y="374.4" fill="#6C685F" font-size="11.5" text-anchor="end">100 MiB</text>
+<line x1="92" y1="300.8" x2="940" y2="300.8" stroke="#E7E4DC"/>
+<text x="82" y="304.8" fill="#6C685F" font-size="11.5" text-anchor="end">200 MiB</text>
+<line x1="92" y1="231.2" x2="940" y2="231.2" stroke="#E7E4DC"/>
+<text x="82" y="235.2" fill="#6C685F" font-size="11.5" text-anchor="end">300 MiB</text>
+<line x1="92" y1="161.6" x2="940" y2="161.6" stroke="#E7E4DC"/>
+<text x="82" y="165.6" fill="#6C685F" font-size="11.5" text-anchor="end">400 MiB</text>
+<line x1="92" y1="92.0" x2="940" y2="92.0" stroke="#E7E4DC"/>
+<text x="82" y="96.0" fill="#6C685F" font-size="11.5" text-anchor="end">500 MiB</text>
+<line x1="92" y1="92" x2="92" y2="440" stroke="#9C978C"/>
+<line x1="92" y1="440" x2="940" y2="440" stroke="#9C978C"/>
+<rect x="141" y="413.12" width="44" height="26.88" fill="#0072B2"><title>C++: 38.6 MiB</title></rect>
+<text x="163" y="405.1" fill="#1B1B17" font-size="10.5" text-anchor="middle">38.6</text>
+<rect x="195" y="333.70" width="44" height="106.30" fill="#D55E00"><title>Macaulay2: 152.7 MiB</title></rect>
+<text x="217" y="325.7" fill="#1B1B17" font-size="10.5" text-anchor="middle">152.7</text>
+<text x="190" y="469" fill="#1B1B17" font-size="11.5" text-anchor="middle">c = 3, d = 120</text>
+<text x="190" y="487" fill="#6C685F" font-size="10.5" text-anchor="middle">280,840 candidates</text>
+<rect x="341" y="333.90" width="44" height="106.10" fill="#0072B2"><title>C++: 152.4 MiB</title></rect>
+<text x="363" y="325.9" fill="#1B1B17" font-size="10.5" text-anchor="middle">152.4</text>
+<rect x="395" y="112.19" width="44" height="327.81" fill="#D55E00"><title>Macaulay2: 471.0 MiB</title></rect>
+<text x="417" y="104.2" fill="#1B1B17" font-size="10.5" text-anchor="middle">471.0</text>
+<text x="390" y="469" fill="#1B1B17" font-size="11.5" text-anchor="middle">c = 5, d = 45</text>
+<text x="390" y="487" fill="#6C685F" font-size="10.5" text-anchor="middle">1,221,759 candidates</text>
+<rect x="541" y="360.71" width="44" height="79.29" fill="#0072B2"><title>C++: 113.9 MiB</title></rect>
+<text x="563" y="352.7" fill="#1B1B17" font-size="10.5" text-anchor="middle">113.9</text>
+<rect x="595" y="169.38" width="44" height="270.62" fill="#D55E00"><title>Macaulay2: 388.8 MiB</title></rect>
+<text x="617" y="161.4" fill="#1B1B17" font-size="10.5" text-anchor="middle">388.8</text>
+<text x="590" y="469" fill="#1B1B17" font-size="11.5" text-anchor="middle">c = 6, d = 32</text>
+<text x="590" y="487" fill="#6C685F" font-size="10.5" text-anchor="middle">906,192 candidates</text>
+<rect x="741" y="403.15" width="44" height="36.85" fill="#0072B2"><title>C++: 52.9 MiB</title></rect>
+<text x="763" y="395.1" fill="#1B1B17" font-size="10.5" text-anchor="middle">52.9</text>
+<rect x="795" y="304.41" width="44" height="135.59" fill="#D55E00"><title>Macaulay2: 194.8 MiB</title></rect>
+<text x="817" y="296.4" fill="#1B1B17" font-size="10.5" text-anchor="middle">194.8</text>
+<text x="790" y="469" fill="#1B1B17" font-size="11.5" text-anchor="middle">c = 7, d = 24</text>
+<text x="790" y="487" fill="#6C685F" font-size="10.5" text-anchor="middle">346,104 candidates</text>
+<rect x="673" y="69" width="12" height="12" fill="#0072B2"/><text x="691" y="79" fill="#1B1B17" font-size="11.5">C++ engine</text>
+<rect x="805" y="69" width="12" height="12" fill="#D55E00"/><text x="823" y="79" fill="#1B1B17" font-size="11.5">Macaulay2</text>
+<text x="516" y="526" fill="#6C685F" font-size="11.5" text-anchor="middle">three successful paired repetitions per case · complete exact result arrays match</text>
 </svg>
