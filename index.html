@@ -80,9 +80,11 @@
   .repo{ font-family:var(--mono); font-size:13px; margin-top:11px; }
   .shot{ display:block; max-width:100%; height:auto; margin-top:14px; border:1px solid var(--line); border-radius:2px; }
   .shot-cap{ font-family:var(--mono); font-size:12px; color:var(--faint); margin-top:6px; }
-  .shot-row{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:14px; }
+  .shot-row{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:10px; margin-top:14px; }
+  .shot-row > *{ min-width:0; }
+  .shot-row > .shot{ width:100%; }
   .shot-row .shot{ margin-top:0; }
-  @media (max-width:560px){ .shot-row{ grid-template-columns:1fr; } }
+  @media (max-width:560px){ .shot-row{ grid-template-columns:minmax(0,1fr); } }
 
   .how p{ color:#2C2A24; }
   .exch{ margin-top:16px; border:1px solid var(--line); border-left:3px solid var(--accent); background:#FAF9F6; padding:15px 18px; border-radius:2px; }
@@ -180,7 +182,7 @@
       <p>The engine sifts tens of billions of algebraic structures for the rare ones that break a proposed mathematical rule. I wrote it by hand in 2024: a ~1,200-line C++ math core, cross-validated case-by-case against Macaulay2, the standard software mathematicians use for this.</p>
       <p>I later used an AI agent to reorganize the repo, write the docs, and add a test and benchmark harness.</p>
       <ul>
-        <li>On matched searches, <span class="num">~70&#8211;115&#215;</span> faster than an equivalent Macaulay2 implementation across codimensions 3&#8211;7: 20.7 million candidates in <span class="num">11 seconds</span> versus ~17 minutes. Past that, Macaulay2 runs out of memory.</li>
+        <li>In the recorded matched runs, <span class="num">~70&#8211;115&#215;</span> faster than an equivalent Macaulay2 implementation across codimensions 3&#8211;7: 20.7 million candidates in <span class="num">11 seconds</span> versus ~17 minutes on the same benchmark machine. Larger Macaulay2 runs exhausted the RAM available on the lighter machine used for the 2024 research campaign; that cutoff is hardware-dependent.</li>
         <li>Its exhaustive search surfaced the counterexamples behind one of <a href="https://arxiv.org/abs/2512.24320">the paper's</a> three main theorems; the proofs are the paper's.</li>
         <li>Correctness is pinned against Macaulay2's own BoijSoederberg package: the pure Betti tables the engine computes are checked case-by-case against M2's reference values.</li>
       </ul>
@@ -199,9 +201,9 @@
       <div class="kind">C++ · core in ~4–6 weeks · <a href="https://github.com/harrisonwolf/planar-geometry-engine">github.com/harrisonwolf/planar-geometry-engine</a></div>
       <p>I built it for fun, from a bare terminal in vim and make, with nothing beyond the C++ standard library: geometric predicates, polygon construction and random generation, point-in-polygon and collision queries, ear-clipping and Delaunay triangulation, Voronoi diagrams, and local SVG and Desmos viewers for the output. The core predates my AI-agent workflow and is entirely hand-written; later upgrades used agents.</p>
       <ul>
-        <li><span class="num">1,500</span> random points &#8594; <span class="num">2,976</span> Delaunay triangles and the full Voronoi dual, validated, in <span class="num">0.09&nbsp;s</span>.</li>
+        <li>In one recorded local run, <span class="num">1,500</span> random points &#8594; <span class="num">2,976</span> Delaunay triangles and the full Voronoi dual, validated, in <span class="num">0.09&nbsp;s</span>.</li>
         <li>Robustness is the hard part of geometry code, so the predicates handle the degenerate cases (collinear inputs, duplicate points, orientation) with explicit epsilon handling.</li>
-        <li>Verified by a hand-rolled TDD harness: 14 suites covering the predicates, both triangulations, and the Voronoi output.</li>
+        <li>Verified by a hand-rolled TDD harness: 13 suites covering the predicates, both triangulations, and the Voronoi output.</li>
       </ul>
       <div class="shot-row">
         <img class="shot" src="media/polygon15-raw.svg" alt="A single non-convex 15-vertex polygon from the engine's random generator, filled gray" loading="lazy" width="460" height="460">
@@ -218,7 +220,7 @@
       <p>On screen it&#39;s an ordinary-looking map of property values. Behind it sits a general geospatial data platform where every number on the map is accounted for.</p>
       <ul>
         <li>On top sits a full map application and renderer: an interactive client (vendored MapLibre GL) that draws the county's official GIS layers as toggleable overlays — parcels with per-parcel detail, the road and highway network, ZIP areas and boundaries, schools by level, and school attendance zones — over the scored basemap.</li>
-        <li>Roughly 1:1 code to tests across 24 modules, including SQL-safety, storage-integrity, and schema-version suites.</li>
+        <li>Test code is roughly the size of the implementation, including SQL-safety, storage-integrity, and schema-version suites.</li>
         <li>I built it by running several AI coding agents across git worktrees under a written set of rules (test-first, prompt-injection defense, and so on). They wrote most of the code by volume; I designed the architecture and set the test gates.</li>
       </ul>
       <a href="media/geomap-hero.png"><img class="shot" src="media/geomap-hero.png" alt="Nexora agent workspace: Fresno County map with ZIP-level market tint, client-brief panel, and a data-lineage stamp in the footer" loading="lazy" width="2000" height="1125"></a>
@@ -251,13 +253,13 @@
 
     <div class="proj">
       <h3>Terrain studies</h3>
-      <div class="kind">Geometry engine + GIS platform · client demo · <a href="terrain-study.html">view the full case study</a></div>
+      <div class="kind">Geometry engine + public terrain data · screening demo · <a href="terrain-study.html">view the full case study</a></div>
       <p>A landowner or a public agency normally pays a survey crew and a consultant for this kind of study. I got these numbers from free public data, before anyone surveyed a thing: I thought up the three use cases, picked real Sierra sites more or less at random, and ran the computations on my own engines.</p>
-      <p>Neither engine was built for terrain work, which is exactly what the page is meant to show. The geometry engine triangulates each surface from public USGS elevation and the geo-map platform handles the parcel side; two tools built for other jobs bolt together into a working proof of concept because each one was built soundly enough to reuse.</p>
+      <p>The geometry engine was not built for terrain work, which is exactly what the page is meant to show: it triangulates each surface from public USGS elevation and supports the three screening calculations. The geo-map platform already contains official parcel geometry, but the current terrain harness does not consume it yet; parcel-and-address integration is the next implementation stage, not a capability of this demo.</p>
       <ul>
         <li>A level building pad on a sloped lot, cut balancing fill: <span class="num">9,160</span> cubic yards moved.</li>
-        <li>A 22-acre bluff&#39;s rainfall, routed (<span class="num">604k</span> gal from a one-inch storm): which slopes shed, where the water collects, and where it leaves the property.</li>
-        <li>A dry canyon dammed at its one outlet: <span class="num">44,457</span> acre-feet behind a 256-foot dam, about 14.5 billion gallons.</li>
+        <li>A 22-acre bluff&#39;s gross rainfall volume, routed without an infiltration or loss model (<span class="num">604k</span> gal from a one-inch storm): modeled flow directions, concentration points, and outlet.</li>
+        <li>At one assumed waterline in a dry canyon: <span class="num">44,457</span> acre-feet of modeled storage, about 14.5 billion gallons, with a maximum modeled outlet barrier height of 256 feet.</li>
       </ul>
       <p>A real siting study still needs calibrated models and a licensed engineer. The harness lives in its own repo now; contact me for more info.</p>
       <a href="media/terrain/terrain-sites.jpg"><img class="shot" src="media/terrain/terrain-sites.jpg" alt="Satellite photos of the three Sierra sites before any engineering: a foothill building lot, a river bluff, and a dry canyon a dam could close, each shown as its wider area with the study site inset." loading="lazy" width="1937" height="728"></a>

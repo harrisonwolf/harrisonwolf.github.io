@@ -53,8 +53,8 @@
   <a class="backlink" href="index.html">&#8592; back to the portfolio</a>
   <h1>geo-map-v2</h1>
   <div class="kind">Python · <a href="https://github.com/harrisonwolf/geo-map-v2">github.com/harrisonwolf/geo-map-v2</a></div>
-      <p>Raw sources are adapted, recorded in a hashed canonical ledger with full provenance, frozen into monthly snapshots, scored, and published to a strictly read-only serving runtime, so every number a client sees traces back to a permanent, tamper-evident record. New regions, sources, and verticals bolt on through the county registry without touching the core; Fresno County is the region built out so far.</p>
-      <p>The whole stack is Python and SQLite. One external dependency &#8212; shapely, for geometry &#8212; and everything else is the standard library. The map client is vendored MapLibre GL; there is no npm, no node, no cloud service, and no external database anywhere in the system.</p>
+      <p>Raw sources are adapted, recorded in a hashed canonical ledger with full provenance, frozen into monthly snapshots, scored, and published. The analytical publication is immutable while it is served; the runtime separately persists narrowly scoped access-token and report state. New regions, sources, and verticals bolt on through the county registry without changing the scoring core; Fresno County is the region built out so far.</p>
+      <p>The serving stack is Python and SQLite. Geometry, image, and PDF features use a small set of pinned Python libraries, and the map client vendors MapLibre GL; serving needs neither npm/Node nor an external database. Data acquisition reaches public source APIs before publication, while the published runtime serves local artifacts.</p>
       <a href="media/terrain/fresno-parcels.jpg"><img class="shot" src="media/terrain/fresno-parcels.jpg" alt="A map of Fresno County rendered as one dot per parcel over the scored basemap" loading="lazy" width="1400" height="739"></a>
       <div class="shot-cap">Fresno County, parcel by parcel: every dot is one parcel, and the map is just the front end to precomputed scores.</div>
       <div class="shot-row">
