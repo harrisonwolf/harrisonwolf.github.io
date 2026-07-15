@@ -180,7 +180,7 @@
       <p>The engine sifts tens of billions of algebraic structures for the rare ones that break a proposed mathematical rule. I wrote it by hand in 2024: a ~1,200-line C++ math core, cross-validated case-by-case against Macaulay2, the standard software mathematicians use for this.</p>
       <p>I later used an AI agent to reorganize the repo, write the docs, and add a test and benchmark harness.</p>
       <ul>
-        <li>On matched searches, <span class="num">~70&#8211;115&#215;</span> faster than an equivalent Macaulay2 implementation across codimensions 3&#8211;7: 20.7 million candidates in <span class="num">11 seconds</span> versus ~17 minutes. Past that, Macaulay2 runs out of memory.</li>
+        <li>On matched searches, <span class="num">~70&#8211;115&#215;</span> faster than an equivalent Macaulay2 implementation across codimensions 3&#8211;7: 20.7 million candidates in <span class="num">11 seconds</span> versus ~17 minutes. Past that, Macaulay2 runs out of memory on the test machine.</li>
         <li>Its exhaustive search surfaced the counterexamples behind one of <a href="https://arxiv.org/abs/2512.24320">the paper's</a> three main theorems; the proofs are the paper's.</li>
         <li>Correctness is pinned against Macaulay2's own BoijSoederberg package: the pure Betti tables the engine computes are checked case-by-case against M2's reference values.</li>
       </ul>
@@ -201,7 +201,7 @@
       <ul>
         <li><span class="num">1,500</span> random points &#8594; <span class="num">2,976</span> Delaunay triangles and the full Voronoi dual, validated, in <span class="num">0.09&nbsp;s</span>.</li>
         <li>Robustness is the hard part of geometry code, so the predicates handle the degenerate cases (collinear inputs, duplicate points, orientation) with explicit epsilon handling.</li>
-        <li>Verified by a hand-rolled TDD harness: 14 suites covering the predicates, both triangulations, and the Voronoi output.</li>
+        <li>Verified by a hand-rolled TDD harness: 13 suites covering the predicates, both triangulations, and the Voronoi output.</li>
       </ul>
       <div class="shot-row">
         <img class="shot" src="media/polygon15-raw.svg" alt="A single non-convex 15-vertex polygon from the engine's random generator, filled gray" loading="lazy" width="460" height="460">
