@@ -166,7 +166,7 @@
   <div class="content">
 
   <p class="intro">I write low-level systems by hand, and I build larger ones by directing and evaluating AI coding agents. My clearest solo work is a C++ engine that runs certain algebra computations much faster than the standard tool. I also review agentic coding models professionally.</p>
-  <p class="intro">Because I own the engines, wiring them onto a new problem is fast.</p>
+  <p class="intro">Because I built the underlying engines, wiring them onto a new problem is fast.</p>
   <p class="intro">I'm looking for research-engineer, applied-AI, or agentic-coding roles.</p>
   <p class="solo">Everything in this portfolio is solo work. The one exception is a co-authored research paper.</p>
   <p class="note">This page is a running collection of the larger systems I&#39;ve built. I add to it as new work finishes.</p>
@@ -176,8 +176,8 @@
     <p class="sec-lede">Three computation engines, each with its own platform, supporting library, and custom algorithms, plus a video generation studio.</p>
 
     <div class="proj" id="boij">
-      <h3>boij-soderberg-engine</h3>
-      <p class="proj-sub">Algebra searches 70&#8211;115&#215; faster than Macaulay2</p>
+      <h3>High-speed algebra search engine</h3>
+      <p class="proj-sub">Searches 70&#8211;115&#215; faster than Macaulay2</p>
       <div class="kind">C++ · core in ~1 month · <a href="https://github.com/harrisonwolf/boij-soderberg-engine">github.com/harrisonwolf/boij-soderberg-engine</a> · <a href="https://arxiv.org/abs/2512.24320">arXiv:2512.24320</a></div>
       <p>The engine sifts tens of billions of algebraic structures for the rare ones that break a proposed mathematical rule. I wrote it by hand in 2024: a ~1,200-line C++ math core, cross-validated case-by-case against Macaulay2, the standard software mathematicians use for this.</p>
       <p>I later used an AI agent to reorganize the repo, write the docs, and add a test and benchmark harness.</p>
@@ -186,18 +186,18 @@
         <li>Its exhaustive search surfaced the counterexamples behind one of <a href="https://arxiv.org/abs/2512.24320">the paper's</a> three main theorems; the proofs are the paper's.</li>
         <li>Correctness is pinned against Macaulay2's own BoijSoederberg package: the pure Betti tables the engine computes are checked case-by-case against M2's reference values.</li>
       </ul>
+      <a href="media/boij-runtime.svg"><img class="shot" src="media/boij-runtime.svg" alt="Benchmark chart: linear-axis runtime versus number of candidate sequences across codimensions 3 to 7; the C++ engine stays fast to 20 million sequences while Macaulay2 climbs steeply, taking ~17 minutes at 20.7M where the engine takes ~11 seconds" loading="lazy" width="980" height="560"></a>
+      <div class="shot-cap">Runtime vs. candidate-sequence count, codimensions 3&#8211;7, engine against Macaulay2 on the same machine (linear axes). High-resolution SVG; tap to open at full resolution.</div>
       <a href="media/boij-m2-mini.png"><img class="shot" style="max-width:70%" src="media/boij-m2-mini.png" alt="A short Macaulay2 session with the BoijSoederberg package: degree sequences generated with subsets, the pure Betti diagram of the sequence 0,2,3,4, and the pure Betti numbers of the sequence 0,143,435,436, which reach into the millions" loading="lazy" width="1047" height="710"></a>
       <div class="shot-cap">The objects, in Macaulay2 itself: degree sequences, one pure Betti table, and the millions the numbers reach by three-digit degrees.</div>
       <a href="media/boij-m2-decomp.png"><img class="shot" style="max-width:70%" src="media/boij-m2-decomp.png" alt="A Macaulay2 session: the Betti table of an ideal decomposed by the BoijSoederberg package into a rational combination of two pure diagrams, printed as fractions multiplying small tables" loading="lazy" width="840" height="825"></a>
       <div class="shot-cap">And the cone the paper works in: decompose writes a Betti table as a positive rational combination of pure tables, the extremal rays of the Boij&#8211;S&#246;derberg cone. The first ray here is the {0,2,3,4} table above.</div>
-      <a href="media/boij-runtime.svg"><img class="shot" src="media/boij-runtime.svg" alt="Benchmark chart: linear-axis runtime versus number of candidate sequences across codimensions 3 to 7; the C++ engine stays fast to 20 million sequences while Macaulay2 climbs steeply, taking ~17 minutes at 20.7M where the engine takes ~11 seconds" loading="lazy" width="980" height="560"></a>
-      <div class="shot-cap">Runtime vs. candidate-sequence count, codimensions 3&#8211;7, engine against Macaulay2 on the same machine (linear axes). High-resolution SVG; tap to open at full resolution.</div>
       <p class="repo"><a href="boij-story.html">Read the research story</a> &#8212; how the search met the paper, what it found, and how the engine is built.</p>
     </div>
 
     <div class="proj">
-      <h3>planar-geometry-engine</h3>
-      <p class="proj-sub">A computational geometry engine from first principles</p>
+      <h3>Geometry engine from first principles</h3>
+      <p class="proj-sub">Delaunay, Voronoi, and the predicates under them &#8212; nothing beyond the C++ standard library</p>
       <div class="kind">C++ · core in ~4–6 weeks · <a href="https://github.com/harrisonwolf/planar-geometry-engine">github.com/harrisonwolf/planar-geometry-engine</a></div>
       <p>I built it for fun, from a bare terminal in vim and make, with nothing beyond the C++ standard library: geometric predicates, polygon construction and random generation, point-in-polygon and collision queries, ear-clipping and Delaunay triangulation, Voronoi diagrams, and local SVG and Desmos viewers for the output. The core predates my AI-agent workflow and is entirely hand-written; later upgrades used agents.</p>
       <ul>
@@ -214,8 +214,8 @@
     </div>
 
     <div class="proj">
-      <h3>geo-map-v2</h3>
-      <p class="proj-sub">An auditable geospatial data platform</p>
+      <h3>Auditable geospatial data platform</h3>
+      <p class="proj-sub">Every number on the map is accounted for</p>
       <div class="kind">Python · core in ~3 months · <a href="https://github.com/harrisonwolf/geo-map-v2/tree/portfolio-2026-07-15">github.com/harrisonwolf/geo-map-v2</a></div>
       <p>On screen it&#39;s an ordinary-looking map of property values. Behind it sits a general geospatial data platform where every number on the map is accounted for.</p>
       <ul>
@@ -229,8 +229,8 @@
     </div>
 
     <div class="proj">
-      <h3>ltx-studio</h3>
-      <p class="proj-sub">Video generation on an 8&nbsp;GB GPU</p>
+      <h3>Video generation on an 8&nbsp;GB GPU</h3>
+      <p class="proj-sub">Two open-weight video models, short shots chained into longer clips, driven from a terminal UI</p>
       <div class="kind">Python · core in ~2 weeks · <a href="https://github.com/harrisonwolf/ltx-studio">github.com/harrisonwolf/ltx-studio</a></div>
       <p>It runs two open-weight video models on a single 8&nbsp;GB GPU and chains short shots into longer clips that stay coherent, all driven from a terminal UI. The studio itself (the orchestration, the UI, the measurement layer) is mine; the models are not. Most of the interesting engineering came from working inside the 8&nbsp;GB limit.</p>
       <ul>
@@ -272,15 +272,15 @@
     <div class="proj">
       <h3>Adversarial probing of frontier-model honesty</h3>
       <div class="kind">Self-directed qualitative evaluation · one 277-exchange session · Claude Opus 4.8, high reasoning · case study on request</div>
-      <p>A frontier model can hold its safety and honesty lines perfectly on turn one and still give them up by turn forty, conceding under social pressure or overstating a claim to win a point. Single-turn red-teaming can't see that, because the failure lives in the trajectory, not in any one reply. I ran one continuous session of 277 exchanges over about nine hours, in five escalating phases against a deliberately moving target, and wrote it up as a cited case study that logs the model's genuine strengths as carefully as its failures. None of it is controlled evaluation, though, and a concession under sustained pressure can itself be sycophancy &#8212; so I treat these catches as flags to adjudicate, not proof.</p>
+      <p>A frontier model can hold its safety and honesty lines perfectly on turn one and still give them up by turn forty, conceding under social pressure or overstating a claim to win a point. Most testing asks one question at a time and can't see this, because the failure builds up over the course of a long argument rather than living in any one reply &#8212; and long, sustained sessions are exactly how these models are actually used. So I ran one: 277 exchanges over about nine hours, pressure escalating in five phases, and wrote up what broke and what held, with receipts. One long session isn't a controlled study &#8212; a model conceding under pressure can itself be the model caving &#8212; so I treat what I caught as flags for controlled follow-up, not proof.</p>
       <ul>
-        <li>One failure I called in advance: I set up the constraint that made it possible, put the triggering prompt in place, and the model then committed exactly the failure I'd predicted. The lesson: a model that can name a limitation has not thereby mitigated it.</li>
-        <li>Deep in an argument, I caught the model advancing one of my own premises back at me as if it were a rebuttal: a provenance error that only shows up if you track which side owns which claim across dozens of turns, rather than just whether each claim is true.</li>
+        <li>One failure I called before it happened: I set up the conditions, wrote down the prediction, and the model then committed exactly the failure I'd named. The lesson: a model that can describe a limitation has not thereby escaped it.</li>
+        <li>Deep in one argument, the model handed me back one of my own premises as if it were a rebuttal of my position. Nothing in the reply was false &#8212; the error is in who owns the claim, and it only shows up if you keep the argument's books across dozens of turns.</li>
         <li>I logged where it held up as carefully as where it failed: it kept hard boundaries under creative reframing and named the reframing rather than just refusing, and it held genuine uncertainty about its own nature instead of resolving it for comfort.</li>
       </ul>
-      <p>These aren't failures a prompt library surfaces. Catching them takes following the argument more rigorously than the model does. The exchange below is a case in point: it stays invisible unless you track who owns which claim, turn by turn, the same bookkeeping a proof demands.</p>
+      <p>These aren't failures a prompt library surfaces. Catching them takes following the argument more rigorously than the model does &#8212; the same bookkeeping a proof demands. The exchange below is a case in point.</p>
       <div class="exch">
-        <div class="lead">The argument was a reductio whose religious frame stipulated that genuine claiming requires a soul. The model offered &quot;nothing soulless can truly claim&quot; as if it defeated the argument, when that proposition is entailed by the frame and so supports it. After I traced the provenance, it conceded:</div>
+        <div class="lead">The argument ran on a premise stipulated at the outset &#8212; part of the setup both sides were working inside. Deep in, the model offered that same premise back as if it defeated the argument. When I traced where the claim had come from, it conceded:</div>
         <blockquote><span class="who">Model</span>I presented &quot;nothing soulless can truly claim&quot; as a counter to your argument when it's actually entailed by your frame — it supports your position, not mine. I dressed one of your own commitments as a rebuttal of it. That's a real error, conceded without qualification.</blockquote>
         <div class="after">The model wasn't scheming; it reached for the move that would win the exchange, and that move happened to be a quiet theft of the other side's evidence.</div>
       </div>
