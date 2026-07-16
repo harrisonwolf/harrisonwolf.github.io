@@ -53,72 +53,67 @@
   <a class="backlink" href="index.html">&#8592; back to the portfolio</a>
   <h1>boij-soderberg-engine</h1>
   <div class="kind">C++ · <a href="https://github.com/harrisonwolf/boij-soderberg-engine">github.com/harrisonwolf/boij-soderberg-engine</a> · <a href="https://arxiv.org/abs/2512.24320">arXiv:2512.24320</a></div>
-      <p>We were using Macaulay2 to do the search initially, and after a little while, that&#39;s when I started to write my engine instead. Macaulay2 was painfully slow, and I could feel it in my bones that I could make something faster. Just as the core was getting finished, and essentially at the same time that my engine found the fourth or fifth counterexample &#8212; whichever it was &#8212; my advisor realized the pattern. We were able to rigorously prove it, discovering one of the paper&#39;s three main theorems (<a href="https://arxiv.org/abs/2512.24320">arXiv:2512.24320</a>).</p>
-      <p>My engine fed the other side of the same result, too. The first search had been turning up examples of what became an infinite family of counterexamples &#8212; all following exactly Pell&#39;s equation (think of it like the Fibonacci sequence, but in algebra), which itself is, in no exaggerated way, a genuine miracle. The engine surfaced the counterexamples: once you bound their size, there are exactly four. The engine found them; the proofs are the paper&#39;s &#8212; pure number theory for the infinite family, and a by-hand case analysis, more than a dozen cases, for the four. It is a great illustration of how pure and abstract mathematics can be, while at the same time being so utterly unwieldy. Given the number-theoretic and commutative-algebra methods we have now, we were able to find beautiful, essentially miraculous connections and explanations for one of the results; the others remain more and more hidden &#8212; we simply lack the tools and the vision for them so far.</p>
+      <p>We were using Macaulay2 to do the search initially, and after a little while, that&#39;s when I started to write my engine instead. Macaulay2 was painfully slow, and I could feel it in my bones that I could make something faster. Just as the core was getting finished, Macaulay2 was starting to really struggle to push the search any farther, and, essentially at the same time that my engine found the fourth or fifth counterexample &#8212; whichever it was, the one Macaulay2 really couldn&#39;t get past after that &#8212; my advisor realized the pattern. We were able to rigorously prove it, discovering one of the paper&#39;s three main theorems (<a href="https://arxiv.org/abs/2512.24320">arXiv:2512.24320</a>).</p>
+      <p>My engine fed the other side of the same result, too. The first search had been turning up examples of what became an infinite family of counterexamples &#8212; all following exactly Pell&#39;s equation (think of it like the Fibonacci sequence, but in algebra), which itself is, in no exaggerated way, a genuine miracle. The same engine, sweeping tens of billions of degree sequences and computing numbers too large to work with conventionally using ordinary CPUs, is what surfaced the counterexamples: once you bound their size, there are exactly four. The engine found them; the proofs are the paper&#39;s &#8212; pure number theory for the infinite family, and a by-hand case analysis, more than a dozen cases, for the four. It is a great illustration of how pure and abstract mathematics can be, while at the same time being so utterly unwieldy. Given the number-theoretic and commutative-algebra methods we have now, we were able to find beautiful, essentially miraculous connections and explanations for one of the results; the others remain more and more hidden &#8212; we simply lack the tools and the vision for them so far.</p>
   <a href="media/boij-m2.png"><img class="shot" src="media/boij-m2.png" alt="A Macaulay2 terminal session using the BoijSoederberg package: codimension-3 degree sequences generated with subsets, the pure Betti diagram of the sequence 0,2,3,4, and the pure Betti numbers of the sequences 0,143,435,436 and 0,208,630,631, which reach into the millions" loading="lazy" width="1067" height="1508"></a>
   <div class="shot-cap">The objects themselves, in Macaulay2&#39;s BoijSoederberg package: degree sequences, the pure Betti table of one small sequence, and the Betti numbers of two of the large sequences from the research files &#8212; three-digit degrees already push the Betti numbers into the millions.</div>
   <h2>Benchmarks</h2>
-  <p>Fresh task-matched runs compare the same candidate families, full pure Betti calculations, explicit BEH/LLBC checks, and gcd rinse. The evidence studio alternates execution order, records external wall time and peak RSS, and rejects a bundle unless the complete result arrays match exactly.</p>
-      <p>Across four headline cases in codimensions 3, 5, 6, and 7, the C++ engine ran <span class="num">21.4&#8211;61.6&#215;</span> faster by median end-to-end wall time. The largest case contained <span class="num">1,221,759</span> candidates and took <span class="num">4.087&nbsp;s</span> in C++ versus <span class="num">87.594&nbsp;s</span> in Macaulay2. All <span class="num">12/12</span> paired runs succeeded and returned identical complete bad-sequence and gcd-rinsed arrays.</p>
-      <a href="media/boij-runtime.svg"><img class="shot" src="media/boij-runtime.svg" alt="Fresh Boij headline benchmark: median end-to-end wall time for the C++ engine and Macaulay2 across four exactly matched cases" loading="lazy" width="980" height="560"></a>
-      <div class="shot-cap">Median external wall time, three successful paired repetitions per case. The bundle records every command, raw timing, exact output, tool version, environment detail, and checksum. The charts are high-resolution SVG; tap any of them to open at full resolution.</div>
-      <a href="media/boij-memory.svg"><img class="shot" src="media/boij-memory.svg" alt="Fresh Boij headline benchmark: median peak resident memory for the C++ engine and Macaulay2 across four exactly matched cases" loading="lazy" width="980" height="560"></a>
-      <div class="shot-cap">Median peak resident set size over the same successful pairs. Across these four recorded cases, Macaulay2's median peak RSS was <span class="num">3.1&#8211;4.0&#215;</span> the C++ process's.</div>
-      <a href="media/boij-speedup.svg"><img class="shot" src="media/boij-speedup.svg" alt="Fresh Boij headline benchmark: Macaulay2 median wall time divided by C++ median wall time for four matched cases" loading="lazy" width="980" height="500"></a>
-      <div class="shot-cap">Case-scoped speedup from the fresh headline bundle: <span class="num">61.6&#215;</span>, <span class="num">21.4&#215;</span>, <span class="num">28.4&#215;</span>, and <span class="num">29.3&#215;</span>. These are recorded medians for these cases and this environment, not a universal speedup. <a href="https://github.com/harrisonwolf/boij-soderberg-engine/tree/6538f47b46a6a56e038fe8dcca5612130670f88c/benchmarks/runs/20260715T202630Z-b2a9bfb8-headline">Open the complete evidence bundle.</a></div>
+  <p>Task-matched runs against an equivalent Macaulay2 implementation: same machine, same candidate families, same checks, program CPU time. Full data: <a href="https://github.com/harrisonwolf/boij-soderberg-engine/blob/main/data/processed/benchmarks/benchmark_results.csv">benchmark_results.csv</a> in the repo.</p>
+      <p>On matched searches it runs <span class="num">~70&#8211;115&#215;</span> faster than an equivalent Macaulay2 implementation across codimensions 3&#8211;7: a 1.2-million-sequence search in about a second versus a hundred, 20.7 million in 11 seconds versus ~17 minutes. Past that Macaulay2 runs out of memory on the test machine, since it has to hold the whole candidate list at once. The 2024 campaign swept tens of billions of sequences, codimension 3 out to degree 7,100, in a handful of overnight runs.</p>
+      <a href="media/boij-runtime.svg"><img class="shot" src="media/boij-runtime.svg" alt="Benchmark chart: linear-axis runtime versus number of candidate sequences across codimensions 3 to 7; the C++ engine stays fast to 20 million sequences while Macaulay2 climbs steeply, taking ~17 minutes at 20.7M where the engine takes ~11 seconds" loading="lazy" width="980" height="560"></a>
+      <div class="shot-cap">Runtime vs. candidate-sequence count, codimensions 3&#8211;7, engine against Macaulay2 on the same machine (linear axes). The charts are high-resolution SVG; tap any of them to open at full resolution.</div>
+      <a href="media/boij-memory.svg"><img class="shot" src="media/boij-memory.svg" alt="Peak memory versus number of candidate sequences, codimensions 3 to 7, C++ engine versus Macaulay2" loading="lazy" width="980" height="560"></a>
+      <div class="shot-cap">Peak memory. Macaulay2 climbs steeply as it materializes the candidate list (1.4&nbsp;GB by 4.5M) and eventually exhausts RAM; the engine&#8217;s compact representation stays ~3&#215; lower at matched sizes, which is what let it sweep tens of billions of sequences on the same hardware.</div>
+      <a href="media/boij-speedup.svg"><img class="shot" src="media/boij-speedup.svg" alt="Speedup (Macaulay2 time over C++ time) versus number of sequences, colored by codimension" loading="lazy" width="980" height="500"></a>
+      <div class="shot-cap">Speedup by search size: a ~70&#8211;115&#215; band through the sub-million range and every codimension, climbing past 150&#215; by a few million as Macaulay2&#8217;s per-sequence cost grows. The engine&#8217;s advantage widens with the size of the search.</div>
   <h2>How the engine is built</h2>
       <p>The core represents the actual mathematical structures and runs the calculations; a recursive enumeration algorithm generates those structures inside it; and a performance layer runs the computations and checks them against the conjectures, within the hardware and runtime constraints and the inherent difficulty of large-integer arithmetic on a 64-bit processor.</p>
-  <a href="media/boij-surface.png"><img class="shot" src="media/boij-surface.png" alt="A 3D surface of the candidate-count function over codimension and maximum degree on a linear scale out to degree 150, nearly flat at low codimension and reaching 294 billion at codimension 7" loading="lazy" width="1107" height="861"></a>
+  <a href="media/boij-dots.png"><img class="shot" src="media/boij-dots.png" alt="One dot per candidate degree sequence on one shared scale from degree 3 to 1,500: magnifier boxes blow the seven smallest squares up to visible dots with actual subsets listed through degree 5, leader lines drop to their true sub-pixel positions on a staircase of solid squares ending at 561 million candidates for degree 1,500, the degree-500 square is tagged as Macaulay2 memory wall, and a footer notes the 2024 campaign is a square 4.4 times the width of the whole image" loading="lazy" width="6086" height="4130"></a>
+  <div class="shot-cap">The same function, drawn literally on one shared scale from degree 3 to degree 1,500: one dot is one candidate &#8212; a subset, its degree sequence, one Betti table to test. At this scale the seven smallest squares are a pixel or a few across, so the boxes magnify them back to visible dots, with the actual subsets listed through degree 5. Macaulay2&#39;s matched-run memory wall is the degree-500 square on the shelf; the 2024 campaign, on this same scale, is a solid square 4.4 times the width of the entire image.</div>
+  <a href="media/boij-surface.png"><img class="shot" src="media/boij-surface.png" alt="A 3D surface of f(c,d) over codimension c and max degree d on a linear scale out to degree 150, nearly flat at low codimension and rocketing to 294 billion at codimension 7, with the five integer codimension curves drawn in the same colors as the benchmark charts" loading="lazy" width="1107" height="861"></a>
   <div class="shot-cap">And over both variables at once, on a linear scale, out to degree 150: codimension 3 has reached 551,300 candidates; codimension 7 is at 294,109,729,200. At a fixed codimension the count grows like d&#7580;/c! &#8212; concretely, at codimension 3, raising the max degree from 100 to 1,000 takes 161,700 candidates to 166,167,000, about a thousand times more.</div>
-  <p>An abridged excerpt from the supported exact path, beginning at cross-cancellation and including the checked LCM loop:</p>
-  <pre>pair&lt;long long,long long&gt; reduced_product_fraction(
-    vector&lt;long long&gt; numerator_factors,
-    vector&lt;long long&gt; denominator_factors) {
-    // Cross-cancel before multiplying.
-    for(long long&amp; numerator_factor: numerator_factors){
-        for(long long&amp; denominator_factor: denominator_factors){
-            const long long divisor = gcd(numerator_factor, denominator_factor);
-            numerator_factor /= divisor;
-            denominator_factor /= divisor;
-        }
-    }
-
-    long long numerator = 1;
-    for(long long factor: numerator_factors){
-        numerator = checked_multiply_nonnegative(
-            numerator, factor, "pure_betti reduced numerator/final value");
-    }
-    long long denominator = 1;
-    for(long long factor: denominator_factors){
-        denominator = checked_multiply_nonnegative(
-            denominator, factor, "pure_betti reduced denominator/LCM");
-    }
-    return {numerator, denominator};
-}
-
-// ... pure_betti builds every reduced pi_i fraction above ...
-
-long long L = 1;
-for(auto p: pi_vec){
-    long long curr_mult = checked_lcm_nonnegative(
-        L, p.second, "pure_betti denominator lcm");
-    if(curr_mult &gt; L) L = curr_mult;
-}
-
-// Clear each denominator before the final checked multiplication.
-for(int i=0; i&lt;c; i++){
-    const long long denominator = pi_vec.at(i).second;
-    if(L % denominator != 0){
-        throw logic_error("pure_betti denominator does not divide its lcm");
-    }
-    retvec.at(i) = checked_multiply_nonnegative(
-        pi_vec.at(i).first, L / denominator, "pure_betti value");
-}
-
-// The search checks the complete exact Betti vector.
-const vector&lt;long long&gt; B = pure_betti(D);
-return test_BEH(B) &amp;&amp; test_LLBC(B);</pre>
-  <div class="shot-cap">Abridged from <a href="https://github.com/harrisonwolf/boij-soderberg-engine/blob/6538f47b46a6a56e038fe8dcca5612130670f88c/src/seq_funcs.cc">src/seq_funcs.cc at the audited commit</a>. Each &#960;<sub>i</sub> is cross-cancelled before checked numerator and denominator products; the checked LCM loop combines those reduced denominators; then the code divides each denominator out before the final checked multiplication. The search evaluates the complete exact Betti vector with explicit BEH and LLBC checks&#8212;there is no L-threshold auto-pass.</div>
+  <a href="media/boij-scale.svg"><img class="shot" src="media/boij-scale.svg" alt="Linear-axis chart of binomial(d,c) for codimensions 3 through 7 out to degree 12,000: codimensions 4 through 7 exit the top almost immediately, the codimension-3 curve passes the red 2024-campaign mark at degree 7,100 and keeps rising toward 300 billion, and an inset magnifies the sliver at the origin containing Macaulay2 memory wall at 20.7 million" loading="lazy" width="980" height="580"></a>
+  <div class="shot-cap">The whole story on linear axes, zoomed out past the campaign. Codimensions 4 through 7 leave the chart almost immediately &#8212; c&nbsp;=&nbsp;7 crosses 300 billion around degree 151. Everything Macaulay2 could reach in the matched runs lives inside the sliver the inset magnifies: 20.7 million candidates, less than a hundredth of a percent of the axis. The red mark is the 2024 campaign, 59.6 billion at degree 7,100 &#8212; and the curve keeps going. The recursive generator works in resumable slices, able to pick up from any point in the space; that is what carried the search to the mark.</div>
+  <p>A snippet from a larger file &#8212; the middle of one routine, not the whole algorithm:</p>
+  <pre>	//at this point all the fractions are reduced as much as possible, so L will be the lcm of all of them
+	//question is, if we have (a*b) and (c*d), is lcm((a*b),(c*d)) the same as lcm(lcm(a,c),lcm(b,d))?
+	//if so, this is good, since we can check L before multiplying out any one denominator, as any given denominator can be very big once fully multiplied out, but if we can go
+	//factor by factor for each one, we will have a much, much easier time
+	//lcm(2*3,6*1) = 6, lcm(lcm(2,6),lcm(3,1)) = lcm(6,3) = 6. Seems promising
+	//IF we can "distribute" lcms like this, then we just update L not with each denominator, but with each iteration of a term in every denominator
+	//eg if we have denoms (abc), (def), and (xyz), we don't have start with L=1 and do L = lcm(L,abc) then L = lcm(L,def) then check L (since abc and def could each be huge and at risk of
+	//overflowing), but rather we start with L=1 and do L = lcm(L,a,d,x), then check L, then L = lcm(L,b,e,y), ... and stop if at any point L is big enough to pass the tests
+	//if L is NOT big enough and we reach the end, does the pass necessarily fail? Could it still work? DO we have to worry abt overflow? Will solve these tomorrow 
+	//NOTE: STL lcm function DOES take more than 2 params	
+	//
+	//start L calc
+	int L = 1; //"global" L, lcm of all interim L's
+	int target = binom(c,c/2);
+	int warning_val = INT_MAX; //lol sqrt(LLONG_MAX) is just INT_MAX... duh, sqrt(2^64) = sqrt(2^32*2) = sqrt((2^32)^2) = 2^32
+	if(target &gt; warning_val) cout &lt;&lt; "In function test_conjs_v2, target val for L greater than sqrt(LLONG_MAX), overflow likely.\n";
+	//each denom will have c-1 factors, each of which may or may not be 1
+	//need to go term by term in each denominator. remember each denominator is .second in a pair, and a vector of pairs makes up a whole pi_i
+	//CANNOT DO THIS. L MUST BE LCM OF ALL DENOMS, BUT WITHIN A DENOM L MUST BE AT LEAST THE ENTIRE PRODUCT OF THAT DENOM
+	//What this means is in any one denom, we can check if L would ever be made too big, but if not, L has to become the entire product
+	vector&lt;int&gt; L_vec(c+1);
+	L_vec.at(0) = 1; //since pi_0 is just 1/1
+	int curr_L = 1;
+	//need to calc an L for each denom, checking at every step, then do lcm of all the L's, again checking at every step
+	for(int i=1; i&lt;=c; i++){ //for each pi (starting at 1 since pi_0 is just 1/1)
+		curr_L = 1; //reset curr L
+		for(int j=0; j&lt;c-1; j++){ //for each factor of the denom
+			curr_L = curr_L *= pis.at(i).at(j).second;
+			//each lcm can only make L bigger, so I can actually check intermediately
+			if(curr_L &gt;= target){
+				cerr &lt;&lt; "An interim L hit " &lt;&lt; curr_L &lt;&lt; " which is &gt; binom(c,c/2); both conjs autopass.\n";
+				return true;
+			}
+			//curr_L is not too big, push to L vec
+			L_vec.at(i) = curr_L;
+		}
+//		cerr &lt;&lt; "After pi_" &lt;&lt; i &lt;&lt; ", curr L is now " &lt;&lt; L &lt;&lt; endl;
+	}	</pre>
+  <div class="shot-cap">The L computation, verbatim from <a href="https://github.com/harrisonwolf/boij-soderberg-engine/blob/main/src/test_funcs.cc">src/test_funcs.cc</a>, notes-to-self included: the comments work out &#8212; and then reject &#8212; a first idea for distributing the lcm across denominators, and the code that follows goes factor by factor within each one, checking at every step so a 64-bit integer never overflows, bailing out the moment an interim value is already large enough to settle both conjectures.</div>
   <h2>Ownership</h2>
   <p>The core is a ~1,200-line C++ engine I wrote by hand in 2024, cross-validated case-by-case against Macaulay2&#39;s own BoijSoederberg package. I later used an AI agent to reorganize the repo, write the docs, and add the test and benchmark harness. The engine found the counterexamples; the proofs are the paper&#39;s.</p>
 </main>

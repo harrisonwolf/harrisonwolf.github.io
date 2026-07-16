@@ -1,42 +1,61 @@
-<svg viewBox="0 0 980 500" xmlns="http://www.w3.org/2000/svg" font-family="ui-monospace,Menlo,Consolas,monospace" role="img" aria-labelledby="chart-title chart-desc">
-<title id="chart-title">Fresh matched-case wall-time speedup</title>
-<desc id="chart-desc">Four bars show Macaulay2 median external wall time divided by C++ median external wall time: 61.6, 21.4, 28.4, 29.3 times.</desc>
+<svg viewBox="0 0 980 500" xmlns="http://www.w3.org/2000/svg" font-family="ui-monospace,Menlo,Consolas,monospace">
 <rect width="980" height="500" fill="#FBFAF8"/>
-<text x="34" y="34" fill="#1B1B17" font-size="17" font-weight="700">Fresh matched-case wall-time speedup</text>
-<text x="34" y="55" fill="#6C685F" font-size="11.5">headline bundle 20260715T202630Z-b2a9bfb8-headline · ratio of case medians · 12/12 pairs successful</text>
-<line x1="92" y1="390.0" x2="940" y2="390.0" stroke="#E7E4DC"/>
-<text x="82" y="394.0" fill="#6C685F" font-size="11.5" text-anchor="end">0×</text>
-<line x1="92" y1="347.1" x2="940" y2="347.1" stroke="#E7E4DC"/>
-<text x="82" y="351.1" fill="#6C685F" font-size="11.5" text-anchor="end">10×</text>
-<line x1="92" y1="304.3" x2="940" y2="304.3" stroke="#E7E4DC"/>
-<text x="82" y="308.3" fill="#6C685F" font-size="11.5" text-anchor="end">20×</text>
-<line x1="92" y1="261.4" x2="940" y2="261.4" stroke="#E7E4DC"/>
-<text x="82" y="265.4" fill="#6C685F" font-size="11.5" text-anchor="end">30×</text>
-<line x1="92" y1="218.6" x2="940" y2="218.6" stroke="#E7E4DC"/>
-<text x="82" y="222.6" fill="#6C685F" font-size="11.5" text-anchor="end">40×</text>
-<line x1="92" y1="175.7" x2="940" y2="175.7" stroke="#E7E4DC"/>
-<text x="82" y="179.7" fill="#6C685F" font-size="11.5" text-anchor="end">50×</text>
-<line x1="92" y1="132.9" x2="940" y2="132.9" stroke="#E7E4DC"/>
-<text x="82" y="136.9" fill="#6C685F" font-size="11.5" text-anchor="end">60×</text>
-<line x1="92" y1="90.0" x2="940" y2="90.0" stroke="#E7E4DC"/>
-<text x="82" y="94.0" fill="#6C685F" font-size="11.5" text-anchor="end">70×</text>
-<line x1="92" y1="90" x2="92" y2="390" stroke="#9C978C"/>
-<line x1="92" y1="390" x2="940" y2="390" stroke="#9C978C"/>
-<rect x="152" y="125.96" width="76" height="264.04" fill="#3C5A49"><title>61.6 times faster</title></rect>
-<text x="190" y="116.0" fill="#1B1B17" font-size="13" font-weight="700" text-anchor="middle">61.6×</text>
-<text x="190" y="419" fill="#1B1B17" font-size="11.5" text-anchor="middle">c = 3, d = 120</text>
-<text x="190" y="437" fill="#6C685F" font-size="10.5" text-anchor="middle">280,840 candidates</text>
-<rect x="352" y="298.16" width="76" height="91.84" fill="#3C5A49"><title>21.4 times faster</title></rect>
-<text x="390" y="288.2" fill="#1B1B17" font-size="13" font-weight="700" text-anchor="middle">21.4×</text>
-<text x="390" y="419" fill="#1B1B17" font-size="11.5" text-anchor="middle">c = 5, d = 45</text>
-<text x="390" y="437" fill="#6C685F" font-size="10.5" text-anchor="middle">1,221,759 candidates</text>
-<rect x="552" y="268.46" width="76" height="121.54" fill="#3C5A49"><title>28.4 times faster</title></rect>
-<text x="590" y="258.5" fill="#1B1B17" font-size="13" font-weight="700" text-anchor="middle">28.4×</text>
-<text x="590" y="419" fill="#1B1B17" font-size="11.5" text-anchor="middle">c = 6, d = 32</text>
-<text x="590" y="437" fill="#6C685F" font-size="10.5" text-anchor="middle">906,192 candidates</text>
-<rect x="752" y="264.35" width="76" height="125.65" fill="#3C5A49"><title>29.3 times faster</title></rect>
-<text x="790" y="254.3" fill="#1B1B17" font-size="13" font-weight="700" text-anchor="middle">29.3×</text>
-<text x="790" y="419" fill="#1B1B17" font-size="11.5" text-anchor="middle">c = 7, d = 24</text>
-<text x="790" y="437" fill="#6C685F" font-size="10.5" text-anchor="middle">346,104 candidates</text>
-<text x="516" y="475" fill="#6C685F" font-size="11.5" text-anchor="middle">machine- and case-scoped medians; not a universal speedup</text>
+<text x="34" y="34" fill="#1B1B17" font-size="17" font-weight="700">Speedup: how many times faster than Macaulay2</text>
+<text x="34" y="53" fill="#6C685F" font-size="11.5">speedup = M2 CPU time ÷ C++ CPU time · linear axes · colored by codimension</text>
+<rect x="92" y="204.9" width="650" height="80.3" fill="#3C5A49" opacity="0.07"/>
+<text x="100" y="249.0" fill="#3C5A49" font-size="11">70–115× band (sub-million)</text>
+<line x1="92.0" y1="80" x2="92.0" y2="410" stroke="#E7E4DC"/>
+<text x="92.0" y="428" fill="#6C685F" font-size="11.5" text-anchor="middle">0</text>
+<line x1="222.0" y1="80" x2="222.0" y2="410" stroke="#E7E4DC"/>
+<text x="222.0" y="428" fill="#6C685F" font-size="11.5" text-anchor="middle">1M</text>
+<line x1="352.0" y1="80" x2="352.0" y2="410" stroke="#E7E4DC"/>
+<text x="352.0" y="428" fill="#6C685F" font-size="11.5" text-anchor="middle">2M</text>
+<line x1="482.0" y1="80" x2="482.0" y2="410" stroke="#E7E4DC"/>
+<text x="482.0" y="428" fill="#6C685F" font-size="11.5" text-anchor="middle">3M</text>
+<line x1="612.0" y1="80" x2="612.0" y2="410" stroke="#E7E4DC"/>
+<text x="612.0" y="428" fill="#6C685F" font-size="11.5" text-anchor="middle">4M</text>
+<line x1="742.0" y1="80" x2="742.0" y2="410" stroke="#E7E4DC"/>
+<text x="742.0" y="428" fill="#6C685F" font-size="11.5" text-anchor="middle">5M</text>
+<line x1="92" y1="410.0" x2="742" y2="410.0" stroke="#E7E4DC"/>
+<text x="83" y="414.0" fill="#6C685F" font-size="11.5" text-anchor="end">0</text>
+<line x1="92" y1="320.8" x2="742" y2="320.8" stroke="#E7E4DC"/>
+<text x="83" y="324.8" fill="#6C685F" font-size="11.5" text-anchor="end">50×</text>
+<line x1="92" y1="231.6" x2="742" y2="231.6" stroke="#E7E4DC"/>
+<text x="83" y="235.6" fill="#6C685F" font-size="11.5" text-anchor="end">100×</text>
+<line x1="92" y1="142.4" x2="742" y2="142.4" stroke="#E7E4DC"/>
+<text x="83" y="146.4" fill="#6C685F" font-size="11.5" text-anchor="end">150×</text>
+<text x="417" y="450" fill="#6C685F" font-size="12.5" text-anchor="middle">number of candidate sequences  n = C(d, c)</text>
+<text transform="translate(34,245) rotate(-90)" fill="#6C685F" font-size="12.5" text-anchor="middle">speedup</text>
+<rect x="92" y="80" width="650" height="330" fill="none" stroke="#9C978C" stroke-width="1.2"/>
+<polyline points="92.1,299.7 96.4,230.4 128.5,219.2 426.5,111.4 671.2,135.4" fill="none" stroke="#0072B2" stroke-width="1.7" opacity="0.55"/>
+<circle cx="92.1" cy="299.7" r="3.4" fill="#0072B2" opacity="0.4"/>
+<circle cx="96.4" cy="230.4" r="4.3" fill="#0072B2"/>
+<circle cx="128.5" cy="219.2" r="4.3" fill="#0072B2"/>
+<circle cx="426.5" cy="111.4" r="4.3" fill="#0072B2"/>
+<circle cx="671.2" cy="135.4" r="4.3" fill="#0072B2"/>
+<polyline points="92.2,171.4 103.9,203.2" fill="none" stroke="#009E73" stroke-width="1.7" opacity="0.55"/>
+<circle cx="92.2" cy="171.4" r="3.4" fill="#009E73" opacity="0.4"/>
+<circle cx="103.9" cy="203.2" r="4.3" fill="#009E73"/>
+<polyline points="92.1,174.9 98.9,205.5 245.3,279.2 250.8,205.9" fill="none" stroke="#E69F00" stroke-width="1.7" opacity="0.55"/>
+<circle cx="92.1" cy="174.9" r="3.4" fill="#E69F00" opacity="0.4"/>
+<circle cx="98.9" cy="205.5" r="4.3" fill="#E69F00"/>
+<circle cx="245.3" cy="279.2" r="4.3" fill="#E69F00"/>
+<circle cx="250.8" cy="205.9" r="4.3" fill="#E69F00"/>
+<polyline points="92.1,185.9 97.0,276.9 209.8,204.0" fill="none" stroke="#D55E00" stroke-width="1.7" opacity="0.55"/>
+<circle cx="92.1" cy="185.9" r="3.4" fill="#D55E00" opacity="0.4"/>
+<circle cx="97.0" cy="276.9" r="4.3" fill="#D55E00"/>
+<circle cx="209.8" cy="204.0" r="4.3" fill="#D55E00"/>
+<polyline points="92.1,294.3 96.1,287.4 137.0,253.5 243.4,242.9 245.9,254.0" fill="none" stroke="#CC79A7" stroke-width="1.7" opacity="0.55"/>
+<circle cx="92.1" cy="294.3" r="3.4" fill="#CC79A7" opacity="0.4"/>
+<circle cx="96.1" cy="287.4" r="4.3" fill="#CC79A7"/>
+<circle cx="137.0" cy="253.5" r="4.3" fill="#CC79A7"/>
+<circle cx="243.4" cy="242.9" r="4.3" fill="#CC79A7"/>
+<circle cx="245.9" cy="254.0" r="4.3" fill="#CC79A7"/>
+<text x="434.5" y="113.3" fill="#0072B2" font-size="11">codim 3 peaks near ~168× around 2–4M</text>
+<text x="762" y="86" fill="#1B1B17" font-size="12" font-weight="700">codimension</text>
+<circle cx="769" cy="104" r="5" fill="#0072B2"/><text x="784" y="108" fill="#6C685F" font-size="12">c = 3</text>
+<circle cx="769" cy="124" r="5" fill="#009E73"/><text x="784" y="128" fill="#6C685F" font-size="12">c = 4</text>
+<circle cx="769" cy="144" r="5" fill="#E69F00"/><text x="784" y="148" fill="#6C685F" font-size="12">c = 5</text>
+<circle cx="769" cy="164" r="5" fill="#D55E00"/><text x="784" y="168" fill="#6C685F" font-size="12">c = 6</text>
+<circle cx="769" cy="184" r="5" fill="#CC79A7"/><text x="784" y="188" fill="#6C685F" font-size="12">c = 7</text>
 </svg>
