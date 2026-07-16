@@ -52,8 +52,8 @@
 <main class="page">
   <a class="backlink" href="index.html">&#8592; back to the portfolio</a>
   <h1>geo-map-v2</h1>
-  <div class="kind">Python · <a href="https://github.com/harrisonwolf/geo-map-v2">github.com/harrisonwolf/geo-map-v2</a></div>
-      <p>Raw sources are adapted, recorded in a hashed canonical ledger with full provenance, frozen into monthly snapshots, scored, and published to a strictly read-only serving runtime, so every number a client sees traces back to a permanent, tamper-evident record. New regions, sources, and verticals bolt on through the county registry without touching the core; Fresno County is the region built out so far.</p>
+  <div class="kind">Python · <a href="https://github.com/harrisonwolf/geo-map-v2/tree/portfolio-2026-07-15">github.com/harrisonwolf/geo-map-v2</a></div>
+      <p>Raw sources are adapted, recorded in a hashed canonical ledger with full provenance, frozen into monthly snapshots, scored, and published; the published analytics are immutable while they are served, so every number a client sees traces back to a permanent, tamper-evident record. New regions, sources, and verticals bolt on through the county registry without touching the core; Fresno County is the region built out so far.</p>
       <p>The whole stack is Python and SQLite. Four external Python dependencies &#8212; shapely for geometry, WeasyPrint for the PDF reports, Pillow, and packaging &#8212; and everything else is the standard library. The map client is vendored MapLibre GL; there is no npm, no node, no cloud service, and no external database anywhere in the system.</p>
       <a href="media/terrain/fresno-parcels.jpg"><img class="shot" src="media/terrain/fresno-parcels.jpg" alt="A map of Fresno County rendered as one dot per parcel over the scored basemap" loading="lazy" width="1400" height="739"></a>
       <div class="shot-cap">Fresno County, parcel by parcel: every dot is one parcel, and the map is just the front end to precomputed scores.</div>
@@ -64,7 +64,7 @@
       <div class="shot-cap">The same data three zooms down (every dot a parcel on a named street), and one parcel opened: APN, neighborhood cell, modeled price, with the data-quality label right beside it.</div>
       <a href="media/geomap-pipeline.png"><img class="shot" src="media/geomap-pipeline.png" alt="Terminal output of one full pipeline run: adapt, normalize, snapshot, score, publish, with per-stage timings" loading="lazy" width="1800" height="1331"></a>
       <div class="shot-cap">The engine: one make refresh-county run, end to end. 26,000 source rows through adapt → normalize → snapshot (55 ZIPs, 663 cells) → score → a published bundle, with per-stage timings. Click to read.</div>
-      <p class="repo">Full detail &#8212; architecture, pipeline commands, tests &#8212; in the README: <a href="https://github.com/harrisonwolf/geo-map-v2">github.com/harrisonwolf/geo-map-v2</a></p>
+      <p class="repo">Full detail &#8212; architecture, pipeline commands, tests &#8212; in the immutable release README: <a href="https://github.com/harrisonwolf/geo-map-v2/tree/portfolio-2026-07-15#readme">portfolio-2026-07-15</a></p>
 </main>
 </body>
 </html>

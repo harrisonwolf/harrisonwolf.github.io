@@ -32,7 +32,7 @@
   .shot{ display:block; max-width:100%; height:auto; margin-top:16px; border:1px solid var(--line); border-radius:2px; }
   .shot-cap{ font-family:var(--mono); font-size:12px; color:var(--faint); margin-top:6px; }
   .shot-row{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:16px; }
-  .shot-row .shot{ margin-top:0; }
+  .shot-row .shot{ margin-top:0; min-width:0; width:100%; }
   @media (max-width:560px){ .shot-row{ grid-template-columns:1fr; } }
   pre{ font-family:var(--mono); font-size:12.5px; line-height:1.55; color:var(--ink); background:#FAF9F6; border:1px solid var(--line); border-radius:2px; padding:14px 16px; margin-top:16px; overflow-x:auto; }
   .vwrap{ position:relative; display:block; min-width:0; }
@@ -70,6 +70,12 @@
       <div class="shot-cap">One run through the engine at a legible scale (70 sites, seed 7): the raw input, its Delaunay triangulation (125 triangles, 194 edges — Euler-exact), the Voronoi dual, and the two overlaid. Every Voronoi vertex is the circumcenter of a triangle (often outside its own triangle: only acute triangles contain their circumcenters).</div>
       <img class="shot" src="media/geometry-duality.svg" alt="Delaunay triangulation in faint lines overlaid with its Voronoi dual in ink, 300 sites" loading="lazy" width="1400" height="1400">
       <div class="shot-cap">And at density: 300 sites, triangulated and dualized end to end by the engine. Seed and command are embedded in the file; the counts check exactly against Euler's formula (581 triangles, 880 edges).</div>
+      <h2>Measured performance</h2>
+      <p>The published benchmark studio keeps exact generated inputs, raw process output, per-run resource logs, manifests, environment details, checksums, and validation results. Its primary compute metric includes triangulation, finite Voronoi construction, and topology validation; it excludes input generation, process startup, and serialization.</p>
+      <a href="media/planar-benchmark-phases.svg"><img class="shot" src="media/planar-benchmark-phases.svg" alt="Planar headline benchmark chart showing median triangulation, Voronoi, validation, and total compute time for 30 successful repetitions of one fixed 1,500-site input" loading="lazy" width="960" height="560"></a>
+      <div class="shot-cap">One fixed 1,500-site input, 30/30 successful repetitions: compute-only median 0.0551 s (MAD 0.0129 s; range 0.0396&#8211;0.0771 s), with identical input and topology hashes every time. Median full-process wall time was 0.0581 s (maximum 0.0807 s); median peak RSS was 4,710 KiB. <a href="https://github.com/harrisonwolf/planar-geometry-engine/tree/06c727772248a64da4114e742c597bdea83f8773/benchmarks/runs/20260715T192957Z-08d0ad77-headline">Manifest, exact input, all raw logs, and checksums.</a></div>
+      <a href="media/planar-benchmark-distributions.svg"><img class="shot" src="media/planar-benchmark-distributions.svg" alt="Planar research benchmark comparing compute time for uniform, clustered, jittered-grid, and near-collinear 1,024-site inputs across three seeds and five repetitions per input" loading="lazy" width="960" height="560"></a>
+      <div class="shot-cap">Input-shape study: four deterministic families, three seeds each, five repetitions per exact input&#8212;60/60 successful runs. The chart compares seed-level case medians so repeated timing noise is not mistaken for independent input evidence. <a href="https://github.com/harrisonwolf/planar-geometry-engine/tree/06c727772248a64da4114e742c597bdea83f8773/benchmarks/runs/20260715T193010Z-08d0ad77-research">Full research bundle.</a></div>
       <p class="repo">Full detail &#8212; build, algorithms, tests &#8212; in the README: <a href="https://github.com/harrisonwolf/planar-geometry-engine">github.com/harrisonwolf/planar-geometry-engine</a></p>
 </main>
 </body>
