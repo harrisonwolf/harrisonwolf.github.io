@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Algebra search engine — Harrison Wolf</title>
+<link rel="icon" href="media/favicon.svg">
+<style>
+body{margin:0;background:#F5F4F1;color:#1B1B17;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p,ul,pre{margin:0}
+a{color:#3C5A49;text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
+a:hover{color:#294032}
+a:focus-visible{outline:2px solid #3C5A49;outline-offset:2px}
+section[id],div[id]{scroll-margin-top:24px}
+img,svg,video{max-width:100%}
+#side-rail{visibility:hidden}
+@media (max-width:1279px){#side-rail{display:none}}
+@media (max-width:640px){
+  .g2{grid-template-columns:1fr !important}
+  .g4{grid-template-columns:1fr 1fr !important}
+}
+@media print{
+  #side-rail{display:none}
+  a{text-decoration:none}
+}
+</style>
+<style>.fx1:hover{color:#3C5A49 !important}
+.fx2:hover{color:#3C5A49 !important}
+.fx3:hover{color:#3C5A49 !important}
+.fx4:hover{color:#3C5A49 !important}
+.fx5:hover{color:#3C5A49 !important}
+.fx6:hover{color:#3C5A49 !important}
+.fx7:hover{text-decoration:underline !important}</style>
+</head>
+<body>
+<nav aria-label="Contents" id="side-rail" style="position:fixed;top:50%;left:24px;transform:translateY(-50%);z-index:20;opacity:0;pointer-events:none;transition:opacity 0.35s ease;display:flex;flex-direction:column;gap:9px;font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:12px;max-width:180px">
+  <a class="fx1" href="#search" style="text-decoration:none;color:#1B1B17;display:flex;align-items:baseline;gap:9px"><span style="opacity:0.32;font-variant-numeric:tabular-nums">01</span>The search</a>
+  <a class="fx2" href="#benchmarks" style="text-decoration:none;color:#1B1B17;display:flex;align-items:baseline;gap:9px"><span style="opacity:0.32;font-variant-numeric:tabular-nums">02</span>Benchmarks</a>
+  <a class="fx3" href="#scale" style="text-decoration:none;color:#1B1B17;display:flex;align-items:baseline;gap:9px"><span style="opacity:0.32;font-variant-numeric:tabular-nums">03</span>Scale</a>
+  <a class="fx4" href="#build" style="text-decoration:none;color:#1B1B17;display:flex;align-items:baseline;gap:9px"><span style="opacity:0.32;font-variant-numeric:tabular-nums">04</span>How it's built</a>
+  <a class="fx5" href="#ownership" style="text-decoration:none;color:#1B1B17;display:flex;align-items:baseline;gap:9px"><span style="opacity:0.32;font-variant-numeric:tabular-nums">05</span>Ownership</a>
+  <a class="fx6" href="index.html#boij" style="text-decoration:none;color:#746F67;display:flex;align-items:baseline;gap:9px;margin-top:2px;padding-top:9px;border-top:1px solid #E2DFD7"><span style="opacity:0.32">←</span>Portfolio</a>
+</nav>
+
+<main id="top" style="max-width:712px;margin:0 auto;padding:44px 26px 104px">
+  <a class="fx7" href="index.html#boij" style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:12.5px;text-decoration:none;color:#3C5A49">← Harrison Wolf</a>
+
+  <h1 style="font-size:30px;line-height:1.1;font-weight:700;letter-spacing:-0.015em;margin-top:26px">Algebra search engine</h1>
+  <p style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:13px;color:#746F67;margin-top:9px">The search it ran, what it found, and how it's built.</p>
+
+  <div class="g4" style="border-top:1px solid #CFCBC0;border-bottom:1px solid #CFCBC0;margin-top:22px;padding:14px 0;display:grid;grid-template-columns:repeat(4,auto);gap:14px 30px;font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:12.5px">
+    <div><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.13em;color:#9A958B">Language</div><div style="margin-top:3px;color:#37342D">C++</div></div>
+    <div><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.13em;color:#9A958B">Core</div><div style="margin-top:3px;color:#37342D">~1,200 lines, by hand</div></div>
+    <div><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.13em;color:#9A958B">Built</div><div style="margin-top:3px;color:#37342D">2024</div></div>
+    <div><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.13em;color:#9A958B">Speed</div><div style="margin-top:3px;color:#3C5A49">~70–115× vs Macaulay2</div></div>
+    <div style="grid-column:1/-1;display:flex;gap:20px;border-top:1px solid #E2DFD7;padding-top:12px"><a href="https://github.com/harrisonwolf/boij-soderberg-engine">repo</a><a href="https://arxiv.org/abs/2512.24320">arXiv:2512.24320</a></div>
+  </div>
+
+  <section id="search" style="margin-top:44px">
+    <h2 style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:0.15em;color:#746F67;font-weight:400;display:flex;align-items:baseline;gap:12px"><span style="font-family:system-ui,sans-serif;font-size:19px;font-weight:650;color:#1B1B17;opacity:0.22;font-variant-numeric:tabular-nums">01</span>The search</h2>
+    <p style="margin-top:18px;color:#2C2A24">The search began in Macaulay2, but time and memory limited the candidate ranges it could reach. I wrote a compact C++ engine for the same candidate families and checks, then cross-validated its output case by case against the BoijSoederberg package. The larger search found a counterexample pattern that was proved rigorously and became one of <a href="https://arxiv.org/abs/2512.24320">the preprint's</a> three main theorems.</p>
+    <p style="margin-top:14px;color:#2C2A24">The engine supported both sides of that result. Early searches found counterexamples following Pell's equation, an infinite family later proved by number theory. Under a fixed size bound, the search found exactly four cases; the proof checks more than a dozen cases by hand. The useful result was not speed by itself: the larger search changed the range of mathematics the project could inspect.</p>
+    <a href="media/boij-m2.png"><img src="media/boij-m2.png" alt="A Macaulay2 session using the BoijSoederberg package: degree sequences, one pure Betti table, and Betti numbers reaching into the millions" width="1067" height="1508" style="display:block;max-width:100%;height:auto;margin-top:18px;border:1px solid #E2DFD7;border-radius:2px"></a>
+    <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;color:#746F67;margin-top:6px">The objects in Macaulay2: degree sequences, one pure Betti table, and Betti numbers already in the millions by three-digit degrees.</div>
+  </section>
+
+  <section id="benchmarks" style="margin-top:52px">
+    <h2 style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:0.15em;color:#746F67;font-weight:400;display:flex;align-items:baseline;gap:12px"><span style="font-family:system-ui,sans-serif;font-size:19px;font-weight:650;color:#1B1B17;opacity:0.22;font-variant-numeric:tabular-nums">02</span>Benchmarks</h2>
+    <p style="margin-top:18px;color:#2C2A24">Task-matched runs against an equivalent Macaulay2 implementation: same machine, same candidate families, same checks, program CPU time. On matched searches across codimensions 3–7 the engine runs <span style="font-variant-numeric:tabular-nums">~70–115×</span> faster — 1.2 million sequences in about a second versus a hundred, 20.7 million in 11 seconds versus ~17 minutes. Past that it hits the materialize-the-whole-list wall, and on lighter hardware it runs out of memory. The 2024 campaign swept tens of billions of sequences in a handful of overnight runs. <a href="https://github.com/harrisonwolf/boij-soderberg-engine/blob/main/data/processed/benchmarks/benchmark_results.csv">Full data.</a></p>
+    <div style="margin-top:18px;border:1px solid #E2DFD7;border-radius:3px;background:#FAF9F6;padding:16px;display:grid;gap:16px">
+      <div>
+        <a href="media/boij-runtime.svg"><img src="media/boij-runtime.svg" alt="Runtime vs candidate count, codim 3-7, engine vs Macaulay2" width="980" height="560" style="display:block;max-width:100%;height:auto;border:1px solid #E2DFD7;border-radius:2px;background:#fff"></a>
+        <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;color:#746F67;margin-top:6px">Runtime vs. candidate count, codim 3–7, same machine, linear axes.</div>
+      </div>
+      <div>
+        <a href="media/boij-memory.svg"><img src="media/boij-memory.svg" alt="Peak memory vs candidate count" width="980" height="560" style="display:block;max-width:100%;height:auto;border:1px solid #E2DFD7;border-radius:2px;background:#fff"></a>
+        <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;color:#746F67;margin-top:6px">Peak memory. Macaulay2 materializes the whole candidate list (1.4 GB by 4.5M) and eventually runs out; the engine's compact representation stays ~3× lower.</div>
+      </div>
+      <div>
+        <a href="media/boij-speedup.svg"><img src="media/boij-speedup.svg" alt="Speedup vs number of sequences by codimension" width="980" height="500" style="display:block;max-width:100%;height:auto;border:1px solid #E2DFD7;border-radius:2px;background:#fff"></a>
+        <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;color:#746F67;margin-top:6px">Speedup by search size: a ~70–115× band through the sub-million range, climbing past 150× by a few million candidates.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="scale" style="margin-top:52px">
+    <h2 style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:0.15em;color:#746F67;font-weight:400;display:flex;align-items:baseline;gap:12px"><span style="font-family:system-ui,sans-serif;font-size:19px;font-weight:650;color:#1B1B17;opacity:0.22;font-variant-numeric:tabular-nums">03</span>The scale of the search</h2>
+    <p style="margin-top:18px;color:#2C2A24">One dot is one candidate: a subset, its degree sequence, one Betti table to test. Drawn on a shared scale, the size of the search becomes visible — and so does how little of it Macaulay2 could reach.</p>
+    <a href="media/boij-dots.png"><img src="media/boij-dots.png" alt="One dot per candidate on a shared scale from degree 3 to 1,500, with magnifier boxes for the smallest squares" width="6086" height="4130" style="display:block;max-width:100%;height:auto;margin-top:16px;border:1px solid #E2DFD7;border-radius:2px"></a>
+    <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;color:#746F67;margin-top:6px">One shared scale, degree 3 to 1,500. The smallest squares are a pixel across, so the boxes magnify them. Macaulay2's matched-run memory wall is the degree-500 square; the 2024 campaign is a solid square 4.4× the width of this image.</div>
+    <a href="media/boij-dots-campaign.png"><img src="media/boij-dots-campaign.png" alt="The shared-scale chart redrawn with the 2024 campaign square, 59.6 billion candidates, dwarfing the Macaulay2 memory-wall square" width="6086" height="4130" style="display:block;max-width:100%;height:auto;margin-top:16px;border:1px solid #E2DFD7;border-radius:2px"></a>
+    <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;color:#746F67;margin-top:6px">The campaign square drawn to fit. Macaulay2's entire matched-run reach is 1/54 its side — 11 seconds for the engine; ~17 minutes for Macaulay2, and past that it hits the materialize-the-whole-list wall.</div>
+    <div class="g2" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px">
+      <a href="media/boij-surface.png" style="min-width:0"><img src="media/boij-surface.png" alt="3D surface of candidate count over codimension and max degree, out to degree 150" width="1107" height="861" style="display:block;width:100%;height:auto;border:1px solid #E2DFD7;border-radius:2px"></a>
+      <a href="media/boij-surface-campaign.png" style="min-width:0"><img src="media/boij-surface-campaign.png" alt="The same surface out to degree 7,100 with the campaign mark at 59.6 billion" width="1107" height="861" style="display:block;width:100%;height:auto;border:1px solid #E2DFD7;border-radius:2px"></a>
+    </div>
+    <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;color:#746F67;margin-top:6px">Count over codimension and degree. Left, out to degree 150: codim 7 is already at 294 billion. Right, out to 7,100: only the codim-3 lane stays in view, ending at the campaign mark.</div>
+    <div class="g2" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px">
+      <a href="media/boij-scale.svg" style="min-width:0"><img src="media/boij-scale.svg" alt="Linear-axis chart of candidate count for codim 3-7 out to degree 12,000" width="980" height="580" style="display:block;width:100%;height:auto;border:1px solid #E2DFD7;border-radius:2px;background:#fff"></a>
+      <a href="media/boij-scale-codim3.svg" style="min-width:0"><img src="media/boij-scale-codim3.svg" alt="The codimension-3 lane alone, with Macaulay2's reach a narrow strip at the left edge" width="980" height="580" style="display:block;width:100%;height:auto;border:1px solid #E2DFD7;border-radius:2px;background:#fff"></a>
+    </div>
+    <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;color:#746F67;margin-top:6px">On linear axes. Codim 4–7 leave the chart almost immediately; everything Macaulay2 reached lives in the sliver the inset magnifies. The red mark is the campaign: 59.6 billion at degree 7,100, with the curve continuing past the chart.</div>
+  </section>
+
+  <section id="build" style="margin-top:52px">
+    <h2 style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:0.15em;color:#746F67;font-weight:400;display:flex;align-items:baseline;gap:12px"><span style="font-family:system-ui,sans-serif;font-size:19px;font-weight:650;color:#1B1B17;opacity:0.22;font-variant-numeric:tabular-nums">04</span>How it's built</h2>
+    <p style="margin-top:18px;color:#2C2A24">The core represents the mathematical structures and runs the calculations, with a recursive enumeration algorithm generating the structures inside it. A performance layer runs the computations and checks them against the conjectures, working within the hardware limits and the difficulty of large-integer arithmetic on a 64-bit processor. The recursive generator works in resumable slices, able to pick up from any point in the space — which is what let the search reach as far as it did.</p>
+    <p style="margin-top:14px;color:#2C2A24">A snippet from the middle of one routine — notes-to-self included:</p>
+    <pre style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:12px;line-height:1.55;color:#1B1B17;background:#FAF9F6;border:1px solid #E2DFD7;border-radius:2px;padding:14px 16px;margin-top:14px;overflow-x:auto">	//at this point all the fractions are reduced as much as possible, so L will be the lcm of all of them
+	//question is, if we have (a*b) and (c*d), is lcm((a*b),(c*d)) the same as lcm(lcm(a,c),lcm(b,d))?
+	//if so, this is good, since we can check L before multiplying out any one denominator, as any given denominator can be very big once fully multiplied out, but if we can go
+	//factor by factor for each one, we will have a much, much easier time
+	//lcm(2*3,6*1) = 6, lcm(lcm(2,6),lcm(3,1)) = lcm(6,3) = 6. Seems promising
+	//IF we can "distribute" lcms like this, then we just update L not with each denominator, but with each iteration of a term in every denominator
+	//eg if we have denoms (abc), (def), and (xyz), we don't have start with L=1 and do L = lcm(L,abc) then L = lcm(L,def) then check L (since abc and def could each be huge and at risk of
+	//overflowing), but rather we start with L=1 and do L = lcm(L,a,d,x), then check L, then L = lcm(L,b,e,y), ... and stop if at any point L is big enough to pass the tests
+	//if L is NOT big enough and we reach the end, does the pass necessarily fail? Could it still work? DO we have to worry abt overflow? Will solve these tomorrow 
+	//NOTE: STL lcm function DOES take more than 2 params	
+	//
+	//start L calc
+	int L = 1; //"global" L, lcm of all interim L's
+	int target = binom(c,c/2);
+	int warning_val = INT_MAX; //lol sqrt(LLONG_MAX) is just INT_MAX... duh, sqrt(2^64) = sqrt(2^32*2) = sqrt((2^32)^2) = 2^32
+	if(target &gt; warning_val) cout &lt;&lt; "In function test_conjs_v2, target val for L greater than sqrt(LLONG_MAX), overflow likely.\n";
+	//each denom will have c-1 factors, each of which may or may not be 1
+	//need to go term by term in each denominator. remember each denominator is .second in a pair, and a vector of pairs makes up a whole pi_i
+	//CANNOT DO THIS. L MUST BE LCM OF ALL DENOMS, BUT WITHIN A DENOM L MUST BE AT LEAST THE ENTIRE PRODUCT OF THAT DENOM
+	//What this means is in any one denom, we can check if L would ever be made too big, but if not, L has to become the entire product
+	vector&lt;int&gt; L_vec(c+1);
+	L_vec.at(0) = 1; //since pi_0 is just 1/1
+	int curr_L = 1;
+	//need to calc an L for each denom, checking at every step, then do lcm of all the L's, again checking at every step
+	for(int i=1; i&lt;=c; i++){ //for each pi (starting at 1 since pi_0 is just 1/1)
+		curr_L = 1; //reset curr L
+		for(int j=0; j&lt;c-1; j++){ //for each factor of the denom
+			curr_L = curr_L *= pis.at(i).at(j).second;
+			//each lcm can only make L bigger, so I can actually check intermediately
+			if(curr_L &gt;= target){
+				cerr &lt;&lt; "An interim L hit " &lt;&lt; curr_L &lt;&lt; " which is &gt; binom(c,c/2); both conjs autopass.\n";
+				return true;
+			}
+			//curr_L is not too big, push to L vec
+			L_vec.at(i) = curr_L;
+		}
+//		cerr &lt;&lt; "After pi_" &lt;&lt; i &lt;&lt; ", curr L is now " &lt;&lt; L &lt;&lt; endl;
+	}	</pre>
+    <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;color:#746F67;margin-top:6px">The L computation, verbatim from <a href="https://github.com/harrisonwolf/boij-soderberg-engine/blob/main/src/test_funcs.cc">src/test_funcs.cc</a>. The comments work out — then reject — a way to distribute the lcm across denominators; the implementation instead accumulates each denominator factor by factor and stops once the target is reached.</div>
+  </section>
+
+  <section id="ownership" style="margin-top:52px">
+    <h2 style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:0.15em;color:#746F67;font-weight:400;display:flex;align-items:baseline;gap:12px"><span style="font-family:system-ui,sans-serif;font-size:19px;font-weight:650;color:#1B1B17;opacity:0.22;font-variant-numeric:tabular-nums">05</span>Ownership</h2>
+    <p style="margin-top:18px;color:#2C2A24">The core is a ~1,200-line C++ engine I wrote by hand in 2024 and cross-validated case-by-case against Macaulay2's own BoijSoederberg package. Its exhaustive search surfaced the counterexamples used in one of the paper's three main theorems.</p>
+    <p style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:12.5px;margin-top:26px;padding-top:16px;border-top:1px solid #E2DFD7"><a href="index.html#boij">← Back to the portfolio</a></p>
+  </section>
+</main>
+
+<script>
+(function(){
+  var rail=document.getElementById('side-rail');
+  if(!rail)return;
+  function show(on){
+    rail.style.visibility=on?'visible':'hidden';
+    rail.style.opacity=on?'1':'0';
+    rail.style.pointerEvents=on?'auto':'none';
+  }
+  function tick(){show(window.scrollY>420);}
+  addEventListener('scroll',tick,{passive:true});
+  tick();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Geometry engine — Harrison Wolf</title>
+<link rel="icon" href="media/favicon.svg">
+<style>
+body{margin:0;background:#F5F4F1;color:#1B1B17;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p,ul{margin:0}
+a{color:#3C5A49;text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
+a:hover{color:#294032}
+a:focus-visible{outline:2px solid #3C5A49;outline-offset:2px}
+section[id],div[id]{scroll-margin-top:24px}
+img,svg,video{max-width:100%}
+#side-rail{visibility:hidden}
+@media (max-width:1279px){#side-rail{display:none}}
+@media (max-width:640px){
+  .g2{grid-template-columns:1fr !important}
+  .g4{grid-template-columns:1fr 1fr !important}
+}
+@media print{
+  #side-rail{display:none}
+  a{text-decoration:none}
+}
+</style>
+<style>.fx1:hover{color:#3C5A49 !important}
+.fx2:hover{color:#3C5A49 !important}
+.fx3:hover{color:#3C5A49 !important}
+.fx4:hover{color:#3C5A49 !important}
+.fx5:hover{text-decoration:underline !important}</style>
+</head>
+<body>
+<nav aria-label="Contents" id="side-rail" style="position:fixed;top:50%;left:24px;transform:translateY(-50%);z-index:20;opacity:0;pointer-events:none;transition:opacity 0.35s ease;display:flex;flex-direction:column;gap:9px;font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:12px;max-width:180px">
+  <a class="fx1" href="#triangulation" style="text-decoration:none;color:#1B1B17;display:flex;align-items:baseline;gap:9px"><span style="opacity:0.32;font-variant-numeric:tabular-nums">01</span>Triangulation</a>
+  <a class="fx2" href="#dual" style="text-decoration:none;color:#1B1B17;display:flex;align-items:baseline;gap:9px"><span style="opacity:0.32;font-variant-numeric:tabular-nums">02</span>Delaunay &amp; Voronoi</a>
+  <a class="fx3" href="#performance" style="text-decoration:none;color:#1B1B17;display:flex;align-items:baseline;gap:9px"><span style="opacity:0.32;font-variant-numeric:tabular-nums">03</span>Performance</a>
+  <a class="fx4" href="index.html#geometry" style="text-decoration:none;color:#746F67;display:flex;align-items:baseline;gap:9px;margin-top:2px;padding-top:9px;border-top:1px solid #E2DFD7"><span style="opacity:0.32">←</span>Portfolio</a>
+</nav>
+
+<main id="top" style="max-width:712px;margin:0 auto;padding:44px 26px 104px">
+  <a class="fx5" href="index.html#geometry" style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:12.5px;text-decoration:none;color:#3C5A49">← Harrison Wolf</a>
+
+  <h1 style="font-size:30px;line-height:1.1;font-weight:700;letter-spacing:-0.015em;margin-top:26px">Geometry engine</h1>
+  <p style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:13px;color:#746F67;margin-top:9px">Cutting complicated shapes into triangles, and turning scattered points into the meshes and regions games and mapping software rely on.</p>
+
+  <div class="g4" style="border-top:1px solid #CFCBC0;border-bottom:1px solid #CFCBC0;margin-top:22px;padding:14px 0;display:grid;grid-template-columns:repeat(4,auto);gap:14px 30px;font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:12.5px">
+    <div><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.13em;color:#9A958B">Language</div><div style="margin-top:3px;color:#37342D">C++, std library only</div></div>
+    <div><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.13em;color:#9A958B">Core</div><div style="margin-top:3px;color:#37342D">~4–6 weeks</div></div>
+    <div><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.13em;color:#9A958B">Tests</div><div style="margin-top:3px;color:#37342D">1,027 assertions · 13 suites (at the pictured commit)</div></div>
+    <div><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.13em;color:#9A958B">Speed</div><div style="margin-top:3px;color:#3C5A49">1,500 sites / 0.055 s</div></div>
+    <div style="grid-column:1/-1;display:flex;gap:20px;border-top:1px solid #E2DFD7;padding-top:12px"><a href="https://github.com/harrisonwolf/planar-geometry-engine">repo</a></div>
+  </div>
+
+  <section id="triangulation" style="margin-top:44px">
+    <h2 style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:0.15em;color:#746F67;font-weight:400;display:flex;align-items:baseline;gap:12px"><span style="font-family:system-ui,sans-serif;font-size:19px;font-weight:650;color:#1B1B17;opacity:0.22;font-variant-numeric:tabular-nums">01</span>Triangulation</h2>
+    <p style="margin-top:18px;color:#2C2A24">The nominal algorithms are straightforward; the boundary cases are not. The predicate implementations explicitly handle collinear inputs, duplicate points, and orientation with scale-aware epsilon checks. In the tested near-degenerate cases, a near-touch resolves without a crossing or degenerate mesh.</p>
+    <div class="g2" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px;max-width:540px">
+      <img src="media/polygon15-raw.svg" alt="A single non-convex 15-vertex polygon from the engine's random generator, filled gray" width="302" height="302" style="display:block;width:100%;height:auto;border:1px solid #E2DFD7;border-radius:2px;background:#fff">
+      <img src="media/polygon15-ears.svg" alt="The same 15-vertex polygon cut into 13 colored triangles by the ear-clipping algorithm" width="302" height="302" style="display:block;width:100%;height:auto;border:1px solid #E2DFD7;border-radius:2px;background:#fff">
+    </div>
+    <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;color:#746F67;margin-top:6px">One 15-vertex polygon from the engine's random generator (left), and the same polygon cut into 13 triangles by the ear-clipper (right) — n−2, as a simple polygon must give. The red boxes below mark the near-touch.</div>
+    <div class="g2" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px;max-width:540px">
+      <img src="media/polygon15-zoom.svg" alt="Close-up of the near-touch on the raw polygon: two edges within about 0.06 units without crossing" width="302" height="302" style="display:block;width:100%;height:auto;border:2px solid #B4472C;border-radius:2px">
+      <img src="media/polygon15-zoom-ears.svg" alt="The same near-touch on the triangulated polygon: no gap or overlap" width="302" height="302" style="display:block;width:100%;height:auto;border:2px solid #B4472C;border-radius:2px">
+    </div>
+    <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;color:#746F67;margin-top:6px">The near-touch magnified: raw polygon (left) and its triangulation (right). The two edges pass about 0.06 units apart and never cross.</div>
+    <p style="margin-top:26px;color:#2C2A24">The same predicates, caught deciding. With debug tracing on, every verdict prints its evidence: the determinant, the epsilon it was weighed against (size-scaled for the in-circle tests), and the call.</p>
+    <div style="display:grid;gap:14px;margin-top:14px">
+      <div>
+        <a href="media/geometry-predicates-collinear.png"><img src="media/geometry-predicates-collinear.png" alt="Debug trace: three collinear-test verdicts, each printing orient2d determinant zero against a scaled epsilon, ending in the input being rejected as collinear" width="1300" height="311" style="display:block;width:100%;height:auto;border:1px solid #E2DFD7;border-radius:2px"></a>
+        <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;color:#746F67;margin-top:6px">Collinear input, rejected with the decision logged: orient2d = 0 against the epsilon, three times, then a refusal instead of a degenerate mesh.</div>
+      </div>
+      <div>
+        <a href="media/geometry-predicates-eps.png"><img src="media/geometry-predicates-eps.png" alt="Debug trace of in-circle tests on near-degenerate input: each line prints circumcenter, squared radius, margin, and epsilon, with INSIDE (bad edge) and outside verdicts interleaved" width="1500" height="1008" style="display:block;width:100%;height:auto;border:1px solid #E2DFD7;border-radius:2px"></a>
+        <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;color:#746F67;margin-top:6px">Near-degenerate points, |det| = 1e-8 against eps = 1e-9: every in-circle test prints center, radius², margin, and epsilon before calling INSIDE or outside. Margins swing from millions down to ~50 — the edge cases are where the epsilon scaling earns its keep.</div>
+      </div>
+      <div>
+        <a href="media/geometry-tests-tally.png"><img src="media/geometry-tests-tally.png" alt="The end of the TDD harness run: delaunay-predicate, triangulation, voronoi, and export suites all green, ending in Ran 1027 assertions / All tests passed" width="1150" height="1056" style="display:block;width:100%;height:auto;border:1px solid #E2DFD7;border-radius:2px"></a>
+        <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;color:#746F67;margin-top:6px">The harness that pins it all down: 1,027 assertions across the 13 suites — predicates, both triangulations, the Voronoi dual, and the export path — all green.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="dual" style="margin-top:52px">
+    <h2 style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:0.15em;color:#746F67;font-weight:400;display:flex;align-items:baseline;gap:12px"><span style="font-family:system-ui,sans-serif;font-size:19px;font-weight:650;color:#1B1B17;opacity:0.22;font-variant-numeric:tabular-nums">02</span>Delaunay &amp; Voronoi</h2>
+    <p style="margin-top:18px;color:#2C2A24">One run through the engine at a legible scale: 70 sites, seed 7. The raw input, its Delaunay triangulation, the Voronoi dual, and the two overlaid. Every Voronoi vertex is the circumcenter of a triangle — often outside its own triangle, since only acute triangles contain their circumcenters.</p>
+    <div style="margin-top:18px;border:1px solid #E2DFD7;border-radius:3px;background:#FAF9F6;padding:12px">
+      <div class="g2" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <img src="media/geometry70-sites.svg" alt="70 raw input sites" width="1400" height="1418" style="display:block;width:100%;height:auto;border:1px solid #E2DFD7;border-radius:2px;background:#fff">
+        <img src="media/geometry70-delaunay.svg" alt="The same 70 sites, Delaunay-triangulated" width="1400" height="1400" style="display:block;width:100%;height:auto;border:1px solid #E2DFD7;border-radius:2px;background:#fff">
+        <img src="media/geometry70-voronoi.svg" alt="The Voronoi diagram of the 70 sites" width="1400" height="1400" style="display:block;width:100%;height:auto;border:1px solid #E2DFD7;border-radius:2px;background:#fff">
+        <img src="media/geometry70-overlay.svg" alt="Delaunay and its Voronoi dual overlaid" width="1400" height="1400" style="display:block;width:100%;height:auto;border:1px solid #E2DFD7;border-radius:2px;background:#fff">
+      </div>
+      <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;color:#746F67;margin-top:8px">Sites → Delaunay (125 triangles, 194 edges, Euler-exact) → Voronoi dual → both overlaid.</div>
+    </div>
+    <img src="media/geometry-duality.svg" alt="Delaunay in faint lines overlaid with its Voronoi dual in ink, 300 sites" width="1400" height="1400" style="display:block;width:100%;height:auto;margin-top:16px;border:1px solid #E2DFD7;border-radius:2px">
+    <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;color:#746F67;margin-top:6px">And at density: 300 sites, triangulated and dualized end to end. The counts check exactly against Euler's formula (581 triangles, 880 edges).</div>
+  </section>
+
+  <section id="performance" style="margin-top:52px">
+    <h2 style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:0.15em;color:#746F67;font-weight:400;display:flex;align-items:baseline;gap:12px"><span style="font-family:system-ui,sans-serif;font-size:19px;font-weight:650;color:#1B1B17;opacity:0.22;font-variant-numeric:tabular-nums">03</span>Measured performance</h2>
+    <p style="margin-top:18px;color:#2C2A24">The published benchmark studio keeps exact generated inputs, raw process output, per-run resource logs, manifests, checksums, and validation results. The compute metric covers triangulation, finite Voronoi construction, and topology validation; it excludes input generation, startup, and serialization.</p>
+    <div style="margin-top:18px;border:1px solid #E2DFD7;border-radius:3px;background:#FAF9F6;padding:16px;display:grid;gap:16px">
+      <div>
+        <a href="media/planar-benchmark-phases.svg"><img src="media/planar-benchmark-phases.svg" alt="Median triangulation, Voronoi, validation, and total compute time for 30 runs of one 1,500-site input" width="960" height="560" style="display:block;max-width:100%;height:auto;border:1px solid #E2DFD7;border-radius:2px;background:#fff"></a>
+        <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;color:#746F67;margin-top:6px">One fixed 1,500-site input, 30/30 successful runs: compute-only median 0.0551 s (range 0.0396–0.0771 s), identical input and topology hashes every time. Median peak RSS 4,710 KiB. <a href="https://github.com/harrisonwolf/planar-geometry-engine/tree/06c727772248a64da4114e742c597bdea83f8773/benchmarks/runs/20260715T192957Z-08d0ad77-headline">Manifest and raw logs.</a></div>
+      </div>
+      <div>
+        <a href="media/planar-benchmark-distributions.svg"><img src="media/planar-benchmark-distributions.svg" alt="Compute time for uniform, clustered, jittered-grid, and near-collinear 1,024-site inputs across three seeds" width="960" height="560" style="display:block;max-width:100%;height:auto;border:1px solid #E2DFD7;border-radius:2px;background:#fff"></a>
+        <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;color:#746F67;margin-top:6px">Input-shape study: four deterministic families, three seeds each, five repetitions — 60/60 successful. Seed-level case medians, so timing noise isn't mistaken for input evidence. <a href="https://github.com/harrisonwolf/planar-geometry-engine/tree/06c727772248a64da4114e742c597bdea83f8773/benchmarks/runs/20260715T193010Z-08d0ad77-research">Full research bundle.</a></div>
+      </div>
+      <div>
+        <a href="media/geometry-timing-20k.png"><img src="media/geometry-timing-20k.png" alt="Per-phase timing for 20,000 sites: Bowyer-Watson 5.56 s, Voronoi dualization 0.49 ms, Delaunay validation 10.11 s, total 15.7 s, 39,965 triangles, validation passed" width="1250" height="256" style="display:block;width:100%;height:auto;border:1px solid #E2DFD7;border-radius:2px"></a>
+        <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;color:#746F67;margin-top:6px">And where the time actually goes, at 20,000 sites: triangulation 5.6 s, dualization 0.5 ms, then 10.1 s re-proving every circumcircle empty — the O(N²) validation pass costs more than the construction it checks.</div>
+      </div>
+    </div>
+    <p style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:12.5px;margin-top:26px;padding-top:16px;border-top:1px solid #E2DFD7">Full detail — build, algorithms, tests — in the README: <a href="https://github.com/harrisonwolf/planar-geometry-engine">github.com/harrisonwolf/planar-geometry-engine</a></p>
+    <p style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:12.5px;margin-top:14px"><a href="index.html#geometry">← Back to the portfolio</a></p>
+  </section>
+</main>
+
+<script>
+(function(){
+  var rail=document.getElementById('side-rail');
+  if(!rail)return;
+  function show(on){
+    rail.style.visibility=on?'visible':'hidden';
+    rail.style.opacity=on?'1':'0';
+    rail.style.pointerEvents=on?'auto':'none';
+  }
+  function tick(){show(window.scrollY>420);}
+  addEventListener('scroll',tick,{passive:true});
+  tick();
+})();
+</script>
+</body>
+</html>

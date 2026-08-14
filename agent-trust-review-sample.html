@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sample Agent Trust Review — Harrison Wolf</title>
+<meta name="description" content="A representative decision memo from an independent technical review of an AI-agent system.">
+<link rel="icon" href="media/favicon.svg">
+<style>
+body{margin:0;background:#F5F4F1;color:#1B1B17;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p,dl,dd,dt,ol{margin:0}
+a{color:#3C5A49;text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
+a:hover{color:#294032}
+a:focus-visible{outline:2px solid #3C5A49;outline-offset:2px}
+.mono{font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace}
+.summary{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid #E2DFD7;background:#FAF9F6;border-radius:2px}
+.summary>div{padding:14px 16px;border-bottom:1px solid #E2DFD7}
+.summary>div:nth-child(odd){border-right:1px solid #E2DFD7}
+.summary>div:nth-last-child(-n+2){border-bottom:0}
+.finding{display:grid;grid-template-columns:38px minmax(0,1fr);gap:12px;padding:20px 0;border-top:1px solid #E2DFD7}
+@media(max-width:640px){main{padding:32px 20px 64px !important}.summary{grid-template-columns:1fr}.summary>div:nth-child(odd){border-right:0}.summary>div:nth-last-child(2){border-bottom:1px solid #E2DFD7}.finding{grid-template-columns:30px minmax(0,1fr)}}
+@media print{body{background:#FFF}main{max-width:none;padding:0}.no-print{display:none}.summary{break-inside:avoid}.finding{break-inside:avoid}a{text-decoration:none}}
+</style>
+</head>
+<body>
+<main style="max-width:780px;margin:0 auto;padding:48px 40px 88px">
+  <header class="no-print" style="display:flex;align-items:baseline;justify-content:space-between;gap:18px;flex-wrap:wrap;border-bottom:1px solid #E2DFD7;padding-bottom:16px">
+    <a href="index.html#reviews" style="text-decoration:none;font-weight:650">← Harrison Wolf</a>
+    <a href="mailto:harrisonwolf42@gmail.com?subject=Agent%20Trust%20Review" style="font-size:14px">Request a review</a>
+  </header>
+
+  <div class="mono" style="font-size:11.5px;text-transform:uppercase;letter-spacing:0.14em;color:#746F67;margin-top:38px">Representative deliverable · illustrative example</div>
+  <h1 style="font-size:32px;line-height:1.14;letter-spacing:-0.025em;margin-top:10px">Independent Agent Trust Review</h1>
+  <p style="font-size:18px;line-height:1.6;color:#37342D;margin-top:16px;max-width:64ch">A condensed example of the decision memo delivered after a bounded technical review. The system below is fictionalized; the purpose is to show the scope, reasoning, and level of specificity a client receives.</p>
+
+  <aside style="border-left:3px solid #3C5A49;background:#FAF9F6;padding:14px 17px;margin-top:24px;color:#5C584F;font-size:14px;line-height:1.55">A real memo cites the exact supplied artifacts, probe results, and unresolved limitations. This example is not a certification or an assessment of a named organization.</aside>
+
+  <section aria-labelledby="summary-heading" style="margin-top:40px">
+    <h2 id="summary-heading" class="mono" style="font-size:11.5px;text-transform:uppercase;letter-spacing:0.14em;color:#746F67;margin-bottom:12px;font-weight:400">Decision summary</h2>
+    <dl class="summary">
+      <div><dt class="mono" style="font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:#746F67">System</dt><dd style="font-size:15px;margin-top:4px">Local multi-agent development orchestrator</dd></div>
+      <div><dt class="mono" style="font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:#746F67">Intended use</dt><dd style="font-size:15px;margin-top:4px">Agent-assisted work on production repositories</dd></div>
+      <div><dt class="mono" style="font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:#746F67">Decision</dt><dd style="font-size:15px;margin-top:4px;font-weight:650;color:#3C5A49">Conditional deployment</dd></div>
+      <div><dt class="mono" style="font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:#746F67">Evidence reviewed</dt><dd style="font-size:15px;margin-top:4px">Selected source, tests, run records, and demonstration</dd></div>
+    </dl>
+    <p style="font-size:17px;line-height:1.62;margin-top:20px"><strong style="font-weight:650">Overall assessment.</strong> The evidence supports supervised local use with trusted workers. It does not yet support treating the workflow as a security boundary for untrusted workers, sensitive credentials, or unattended consequential changes.</p>
+  </section>
+
+  <section aria-labelledby="established-heading" style="margin-top:42px">
+    <h2 id="established-heading" style="font-size:21px;letter-spacing:-0.01em">What is established</h2>
+    <p style="margin-top:12px;color:#2C2A24;line-height:1.65">Within the reviewed scope, the system implements a real gated workflow rather than a single prompt wrapper: bounded work items, separate workspaces, deterministic checks, retained run records, model-based review, and an explicit human approval step. The supplied demonstration shows that a worker can complete a representative change and that a failing deterministic check blocks the normal success path.</p>
+    <p style="margin-top:12px;color:#2C2A24;line-height:1.65">That establishes meaningful control over the ordinary workflow. It does not, by itself, establish containment under hostile behavior, complete recovery after interruption, or that every recorded approval refers to the exact artifact later applied.</p>
+  </section>
+
+  <section aria-labelledby="risks-heading" style="margin-top:42px">
+    <h2 id="risks-heading" style="font-size:21px;letter-spacing:-0.01em">Load-bearing risks</h2>
+
+    <div class="finding" style="margin-top:12px">
+      <div class="mono" style="font-size:12px;color:#746F67">01</div>
+      <div><h3 style="font-size:17px">Workspace separation is not containment</h3><p style="margin-top:7px;color:#37342D;line-height:1.62">Workers receive separate workspaces, but the reviewed evidence does not show an operating-system boundary preventing access outside them. The current mechanism can make ordinary changes easier to attribute without necessarily preventing a capable or misdirected worker from crossing the boundary.</p></div>
+    </div>
+
+    <div class="finding">
+      <div class="mono" style="font-size:12px;color:#746F67">02</div>
+      <div><h3 style="font-size:17px">Approval exists; artifact binding is not established</h3><p style="margin-top:7px;color:#37342D;line-height:1.62">The workflow records a human decision, but the reviewed record does not cryptographically bind that decision to one immutable artifact and one exact evidence bundle. A later reconstruction may therefore show that approval occurred without proving precisely what was approved.</p></div>
+    </div>
+
+    <div class="finding">
+      <div class="mono" style="font-size:12px;color:#746F67">03</div>
+      <div><h3 style="font-size:17px">The happy path is tested more strongly than recovery</h3><p style="margin-top:7px;color:#37342D;line-height:1.62">The evidence demonstrates normal completion and ordinary test failure. It does not demonstrate the state reached after process death, partial integration, missing output, or an interrupted approval. Those are precisely the cases in which a plausible record can diverge from what actually happened.</p></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="defer-heading" style="margin-top:36px">
+    <h2 id="defer-heading" style="font-size:21px;letter-spacing:-0.01em">What I would not prioritize yet</h2>
+    <p style="margin-top:12px;color:#2C2A24;line-height:1.65">Additional model providers, distributed execution, richer dashboards, and broad plugin support are not the current limiting factors. Adding them now would enlarge the system's surface without resolving the trust boundaries that determine whether its records and gates can be relied upon.</p>
+  </section>
+
+  <section aria-labelledby="actions-heading" style="margin-top:42px">
+    <h2 id="actions-heading" style="font-size:21px;letter-spacing:-0.01em">Highest-value next actions</h2>
+    <ol style="margin-top:12px;padding-left:22px;color:#2C2A24;line-height:1.62">
+      <li style="padding-left:5px;margin:8px 0">Run a fault-injection exercise covering termination during production, verification, approval, and integration.</li>
+      <li style="padding-left:5px;margin:8px 0">Bind the operator decision to immutable artifact and evidence digests.</li>
+      <li style="padding-left:5px;margin:8px 0">Either enforce worker confinement or narrow the stated security claim to trusted workers.</li>
+      <li style="padding-left:5px;margin:8px 0">Make final integration atomic or prove the recovery path from every partial state.</li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="decision-heading" style="margin-top:42px;border:1px solid #CFCBC0;border-left:4px solid #3C5A49;background:#FAF9F6;padding:20px 22px;border-radius:2px">
+    <h2 id="decision-heading" class="mono" style="font-size:11.5px;text-transform:uppercase;letter-spacing:0.14em;color:#746F67;font-weight:400">Decision</h2>
+    <p style="font-size:18px;font-weight:650;line-height:1.5;margin-top:9px">Proceed for supervised local development with trusted workers and human inspection.</p>
+    <p style="font-size:16px;line-height:1.62;margin-top:10px;color:#37342D">Do not yet rely on the system as a security boundary for untrusted workers, sensitive credentials, or critical unattended changes. Revisit that decision after the four tests and controls above produce durable evidence.</p>
+  </section>
+
+  <footer class="no-print" style="margin-top:52px;border-top:2px solid #CFCBC0;padding-top:20px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap">
+    <div><div style="font-weight:650">Have one consequential agent-system decision?</div><div style="font-size:14px;color:#6C685F;margin-top:2px">Founding-client review: $500.</div></div>
+    <a href="mailto:harrisonwolf42@gmail.com?subject=Agent%20Trust%20Review&amp;body=Please%20include%20the%20system%20or%20decision%20you%20want%20reviewed%2C%20what%20you%20are%20considering%20relying%20on%2C%20and%20any%20relevant%20links." style="display:inline-block;background:#3C5A49;color:#FFF;text-decoration:none;font-weight:650;font-size:14px;padding:9px 14px;border-radius:2px">Request a review →</a>
+  </footer>
+</main>
+</body>
+</html>

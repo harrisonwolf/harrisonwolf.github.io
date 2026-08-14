@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neighborhood-intelligence engine — Harrison Wolf</title>
+<link rel="icon" href="media/favicon.svg">
+<style>
+body{margin:0;background:#F5F4F1;color:#1B1B17;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p,ul{margin:0}
+a{color:#3C5A49;text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
+a:hover{color:#294032}
+a:focus-visible{outline:2px solid #3C5A49;outline-offset:2px}
+section[id],div[id]{scroll-margin-top:24px}
+img,svg,video{max-width:100%}
+#side-rail{visibility:hidden}
+@media (max-width:1279px){#side-rail{display:none}}
+@media (max-width:640px){
+  .g2{grid-template-columns:1fr !important}
+  .g4{grid-template-columns:1fr 1fr !important}
+}
+@media print{
+  #side-rail{display:none}
+  a{text-decoration:none}
+}
+</style>
+<style>.fx1:hover{color:#3C5A49 !important}
+.fx2:hover{color:#3C5A49 !important}
+.fx3:hover{color:#3C5A49 !important}
+.fx4:hover{color:#3C5A49 !important}
+.fx5:hover{color:#3C5A49 !important}
+.fx6:hover{text-decoration:underline !important}</style>
+</head>
+<body>
+<nav aria-label="Contents" id="side-rail" style="position:fixed;top:50%;left:24px;transform:translateY(-50%);z-index:20;opacity:0;pointer-events:none;transition:opacity 0.35s ease;display:flex;flex-direction:column;gap:9px;font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:12px;max-width:180px">
+  <a class="fx1" href="#picker" style="text-decoration:none;color:#1B1B17;display:flex;align-items:baseline;gap:9px"><span style="opacity:0.32;font-variant-numeric:tabular-nums">01</span>The picker</a>
+  <a class="fx2" href="#engine" style="text-decoration:none;color:#1B1B17;display:flex;align-items:baseline;gap:9px"><span style="opacity:0.32;font-variant-numeric:tabular-nums">02</span>The engine</a>
+  <a class="fx3" href="#waterline" style="text-decoration:none;color:#1B1B17;display:flex;align-items:baseline;gap:9px"><span style="opacity:0.32;font-variant-numeric:tabular-nums">03</span>Below the waterline</a>
+  <a class="fx4" href="#discipline" style="text-decoration:none;color:#1B1B17;display:flex;align-items:baseline;gap:9px"><span style="opacity:0.32;font-variant-numeric:tabular-nums">04</span>Discipline</a>
+  <a class="fx5" href="index.html#geomap" style="text-decoration:none;color:#746F67;display:flex;align-items:baseline;gap:9px;margin-top:2px;padding-top:9px;border-top:1px solid #E2DFD7"><span style="opacity:0.32">←</span>Portfolio</a>
+</nav>
+
+<main id="top" style="max-width:712px;margin:0 auto;padding:44px 26px 104px">
+  <a class="fx6" href="index.html#geomap" style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:12.5px;text-decoration:none;color:#3C5A49">← Harrison Wolf</a>
+
+  <h1 style="font-size:30px;line-height:1.1;font-weight:700;letter-spacing:-0.015em;margin-top:26px">Neighborhood-intelligence engine</h1>
+  <p style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:13px;color:#746F67;margin-top:9px">A family picker on the surface. An analytics platform underneath.</p>
+
+  <div class="g4" style="border-top:1px solid #CFCBC0;border-bottom:1px solid #CFCBC0;margin-top:22px;padding:14px 0;display:grid;grid-template-columns:repeat(4,auto);gap:14px 30px;font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:12.5px">
+    <div><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.13em;color:#9A958B">Stack</div><div style="margin-top:3px;color:#37342D">Python + SQLite</div></div>
+    <div><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.13em;color:#9A958B">Core</div><div style="margin-top:3px;color:#37342D">~3 months</div></div>
+    <div><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.13em;color:#9A958B">Tests</div><div style="margin-top:3px;color:#37342D">948 across 78 files</div></div>
+    <div><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.13em;color:#9A958B">Region</div><div style="margin-top:3px;color:#3C5A49">Fresno County</div></div>
+    <div style="grid-column:1/-1;border-top:1px solid #E2DFD7;padding-top:12px;color:#746F67">Private repo — architecture walkthrough on request. · <a href="nexora.html">Full platform case study →</a></div>
+  </div>
+
+  <section id="picker" style="margin-top:44px">
+    <h2 style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:0.15em;color:#746F67;font-weight:400;display:flex;align-items:baseline;gap:12px"><span style="font-family:system-ui,sans-serif;font-size:19px;font-weight:650;color:#1B1B17;opacity:0.22;font-variant-numeric:tabular-nums">01</span>The picker</h2>
+    <p style="margin-top:18px;color:#2C2A24">What a family sees: pick your priorities, get neighborhoods ranked to match — star ratings for schools, safety, and market, over an interactive map of Fresno County with the county's official GIS layers as toggleable overlays. Every dot is one parcel; every figure is a precomputed score.</p>
+    <a href="media/geomap-hero.png"><img src="media/geomap-hero.png" alt="Agent workspace on Fresno County" width="2000" height="1125" style="display:block;max-width:100%;height:auto;margin-top:18px;border:1px solid #E2DFD7;border-radius:2px"></a>
+    <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;color:#746F67;margin-top:6px">The agent workspace. The footer stamps every view with its data lineage.</div>
+    <div style="margin-top:16px;border:1px solid #E2DFD7;border-radius:3px;background:#FAF9F6;padding:12px">
+      <div class="g2" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <a href="media/terrain/clovis-parcels.jpg" style="min-width:0"><img src="media/terrain/clovis-parcels.jpg" alt="The same map zoomed to Clovis street level" width="1400" height="736" style="display:block;width:100%;height:auto;border:1px solid #E2DFD7;border-radius:2px"></a>
+        <a href="media/terrain/parcel-detail.jpg" style="min-width:0"><img src="media/terrain/parcel-detail.jpg" alt="A single-parcel detail panel: APN, address, neighborhood cell, modeled price, data-quality label" width="1400" height="738" style="display:block;width:100%;height:auto;border:1px solid #E2DFD7;border-radius:2px"></a>
+      </div>
+      <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;color:#746F67;margin-top:8px">Down to street level, and one parcel opened: APN, neighborhood cell, modeled price, with the data-quality label right beside it.</div>
+    </div>
+  </section>
+
+  <section id="engine" style="margin-top:52px">
+    <h2 style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:0.15em;color:#746F67;font-weight:400;display:flex;align-items:baseline;gap:12px"><span style="font-family:system-ui,sans-serif;font-size:19px;font-weight:650;color:#1B1B17;opacity:0.22;font-variant-numeric:tabular-nums">02</span>The engine</h2>
+    <p style="margin-top:18px;color:#2C2A24">The picker is the last of eight stages. Six external sources — county GIS, two school datasets, school attendance boundaries, market data, and a safety baseline — arrive with different formats, update cycles, and failure modes. Each source is adapted into a canonical SQLite schema of 53 tables before scoring; published results are frozen in versioned bundles, and the web app reads a separate 14-table runtime. Roughly 50 metrics are computed per county, with source-file provenance retained for published values.</p>
+    <div style="margin-top:18px;border:1px solid #E2DFD7;border-radius:3px;background:#FAF9F6;padding:16px 18px;display:grid;grid-template-columns:max-content 1fr;gap:9px 18px;font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:13px">
+      <span style="color:#3C5A49">1 extract</span><span style="color:#37342D">live ArcGIS + retried, hash-verified fetches → raw batch + manifest</span>
+      <span style="color:#3C5A49">2 adapt</span><span style="color:#37342D">per-source-family dispatch into one shape, version-stamped</span>
+      <span style="color:#3C5A49">3 normalize</span><span style="color:#37342D">canonical schema — reference, observation, and metadata rows</span>
+      <span style="color:#3C5A49">4 snapshot</span><span style="color:#37342D">geometry frozen into serving artifacts (hex-cell engine)</span>
+      <span style="color:#3C5A49">5 score</span><span style="color:#37342D">two scoring layers, Bayesian shrinkage throughout</span>
+      <span style="color:#3C5A49">6 publish</span><span style="color:#37342D">immutable versioned bundle — payloads, thumbnails, manifest</span>
+      <span style="color:#3C5A49">7 bootstrap</span><span style="color:#37342D">fresh per-scope runtime DB from the latest bundle, idempotent</span>
+      <span style="color:#3C5A49">8 serve</span><span style="color:#37342D">request-time ranking, PDF reports, share links, rate limits</span>
+    </div>
+    <p style="margin-top:16px;color:#2C2A24">One <span style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:14.5px">make refresh-county</span> run, end to end: 26,000 source rows through adapt → normalize → snapshot (55 ZIPs, 663 cells) → score → a published bundle, with per-stage timings.</p>
+    <a href="media/geomap-pipeline.png"><img src="media/geomap-pipeline.png" alt="Terminal output of one full pipeline run: adapt, normalize, snapshot, score, publish, with per-stage timings" width="1800" height="1331" style="display:block;max-width:100%;height:auto;margin-top:18px;border:1px solid #E2DFD7;border-radius:2px"></a>
+    <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;color:#746F67;margin-top:6px">The engine, one run end to end. Click to read.</div>
+  </section>
+
+  <section id="waterline" style="margin-top:52px">
+    <h2 style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:0.15em;color:#746F67;font-weight:400;display:flex;align-items:baseline;gap:12px"><span style="font-family:system-ui,sans-serif;font-size:19px;font-weight:650;color:#1B1B17;opacity:0.22;font-variant-numeric:tabular-nums">03</span>Below the waterline</h2>
+    <p style="margin-top:18px;color:#2C2A24">Most of what the engine computes, the picker never shows:</p>
+    <div style="margin-top:16px;display:flex;flex-direction:column;gap:13px">
+      <div style="display:grid;grid-template-columns:max-content 1fr;gap:14px;align-items:baseline"><span style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11px;color:#3C5A49;white-space:nowrap">heat map</span><p style="font-size:15.5px;line-height:1.6;color:#37342D">A full per-hex-cell market heat map — value, tightness, trend, acceleration — is precomputed, stored, and served whole on every page load. The picker ships with the layer switched off.</p></div>
+      <div style="display:grid;grid-template-columns:max-content 1fr;gap:14px;align-items:baseline"><span style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11px;color:#3C5A49;white-space:nowrap">detail</span><p style="font-size:15.5px;line-height:1.6;color:#37342D">Per-neighborhood school assignment with split-boundary disclosure, and per-ZIP safety composites with letter grades, percentiles, and source citations — reduced to single star rows in the picker.</p></div>
+      <div style="display:grid;grid-template-columns:max-content 1fr;gap:14px;align-items:baseline"><span style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11px;color:#3C5A49;white-space:nowrap">scale</span><p style="font-size:15.5px;line-height:1.6;color:#37342D">Multi-county spin-up — registry, induction, live GIS querying — is fully built and tested, deployed at exactly one county.</p></div>
+      <div style="display:grid;grid-template-columns:max-content 1fr;gap:14px;align-items:baseline"><span style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11px;color:#B4472C;white-space:nowrap">refusal</span><p style="font-size:15.5px;line-height:1.6;color:#37342D">The commute-weight slider was deliberately withheld — and pinned to zero in code — until real commute data exists to back it.</p></div>
+    </div>
+  </section>
+
+  <section id="discipline" style="margin-top:52px">
+    <h2 style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:0.15em;color:#746F67;font-weight:400;display:flex;align-items:baseline;gap:12px"><span style="font-family:system-ui,sans-serif;font-size:19px;font-weight:650;color:#1B1B17;opacity:0.22;font-variant-numeric:tabular-nums">04</span>Discipline</h2>
+    <p style="margin-top:18px;color:#2C2A24">The normal scoring path rejects data normalized by an older schema version and reports which stage must be re-run. Each artifact records the code version that produced it, and the runtime refuses a bundle with a mismatched payload version. Sparse data is suppressed instead of zero-filled; report quotas use one atomic insert covered by a two-thread concurrency test. At the pictured commit, the repository contained 29,000 lines of tests and 26,000 lines of source.</p>
+    <p style="margin-top:14px;color:#2C2A24">I designed the architecture, schema, scoring, and test gates. AI coding agents produced most of the code by volume, working across git worktrees under a written rulebook; merges had to pass the project's tests and review gates. The private repository and supporting evidence are available in a walkthrough.</p>
+    <p style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:12.5px;margin-top:26px;padding-top:16px;border-top:1px solid #E2DFD7;display:flex;gap:24px;flex-wrap:wrap"><a href="index.html#geomap">← Back to the portfolio</a> <a href="nexora.html">Schema and runtime deep dive →</a></p>
+  </section>
+</main>
+
+<script>
+(function(){
+  var rail=document.getElementById('side-rail');
+  if(!rail)return;
+  function show(on){
+    rail.style.visibility=on?'visible':'hidden';
+    rail.style.opacity=on?'1':'0';
+    rail.style.pointerEvents=on?'auto':'none';
+  }
+  function tick(){show(window.scrollY>420);}
+  addEventListener('scroll',tick,{passive:true});
+  tick();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Harrison Wolf</title>
+<link rel="icon" href="media/favicon.svg">
+<style>
+body{margin:0;background:#F5F4F1;color:#1B1B17;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p,ul,blockquote{margin:0}
+ul{padding:0}
+a{color:#3C5A49;text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
+a:hover{color:#294032}
+a:focus-visible{outline:2px solid #3C5A49;outline-offset:2px}
+section[id],div[id],footer[id]{scroll-margin-top:56px}
+img,svg,video{max-width:100%}
+#side-rail{visibility:hidden}
+@media (max-width:1279px){#side-rail{display:none}}
+@media (max-width:640px){
+  main{padding:34px 20px 64px !important}
+  .g2{grid-template-columns:1fr !important}
+  .review-grid{grid-template-columns:1fr !important}
+  .xp{grid-template-columns:1fr !important;gap:4px !important}
+}
+@media print{
+  #side-rail{display:none}
+  main{max-width:none;padding:0}
+  a{text-decoration:none}
+}
+</style>
+<style>.fx1:hover{color:#3C5A49 !important}
+.fx2:hover{color:#3C5A49 !important}
+.fx3:hover{color:#3C5A49 !important}
+.fx4:hover{color:#3C5A49 !important}
+.fx5:hover{color:#3C5A49 !important}
+.fx19:hover{color:#3C5A49 !important}
+.fx7:hover{border-color:#3C5A49 !important}
+.fx8:hover{border-color:#3C5A49 !important}
+.fx9:hover{border-color:#3C5A49 !important}
+.fx10:hover{border-color:#3C5A49 !important}
+.fx11:hover{border-color:#3C5A49 !important}
+.fx13::before{content:'–';position:absolute;left:-19px;color:#746F67}
+.fx14::before{content:'–';position:absolute;left:-19px;color:#746F67}
+.fx15::before{content:'–';position:absolute;left:-19px;color:#746F67}
+.review-cta:hover{background:#294032 !important;color:#FFF !important}</style>
+</head>
+<body>
+<nav aria-label="Contents" id="side-rail" style="position:fixed;top:50%;left:24px;transform:translateY(-50%);z-index:20;opacity:0;pointer-events:none;transition:opacity 0.35s ease;display:flex;flex-direction:column;gap:9px;font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:12px;max-width:170px">
+  <a class="fx1" href="#systems" style="text-decoration:none;color:#1B1B17;display:flex;align-items:baseline;gap:9px"><span style="opacity:0.32;font-variant-numeric:tabular-nums">01</span>Systems</a>
+  <a class="fx2" href="#terrain" style="text-decoration:none;color:#1B1B17;display:flex;align-items:baseline;gap:9px"><span style="opacity:0.32;font-variant-numeric:tabular-nums">02</span>Applied demo</a>
+  <a class="fx3" href="#how" style="text-decoration:none;color:#1B1B17;display:flex;align-items:baseline;gap:9px"><span style="opacity:0.32;font-variant-numeric:tabular-nums">03</span>How I work</a>
+  <a class="fx4" href="#reviews" style="text-decoration:none;color:#1B1B17;display:flex;align-items:baseline;gap:9px"><span style="opacity:0.32;font-variant-numeric:tabular-nums">04</span>Reviews</a>
+  <a class="fx5" href="#background" style="text-decoration:none;color:#1B1B17;display:flex;align-items:baseline;gap:9px"><span style="opacity:0.32;font-variant-numeric:tabular-nums">05</span>Background</a>
+  <a class="fx19" href="#top" style="text-decoration:none;color:#746F67;display:flex;align-items:baseline;gap:9px;margin-top:2px;padding-top:9px;border-top:1px solid #E2DFD7"><span style="opacity:0.32">↑</span>Top</a>
+</nav>
+<main id="top" style="max-width:872px;margin:0 auto;padding:52px 40px 96px">
+
+  <header style="display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap;border-bottom:1px solid #E2DFD7;padding-bottom:18px">
+    <h1 style="font-size:26px;line-height:1.1;font-weight:700;letter-spacing:-0.015em">Harrison Wolf</h1>
+    <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:12.5px;display:flex;flex-wrap:wrap;align-items:baseline;gap:18px">
+      <a href="mailto:harrisonwolf42@gmail.com" style="text-decoration:none">Email</a>
+      <a href="https://github.com/harrisonwolf" style="text-decoration:none">GitHub</a>
+      <a href="https://linkedin.com/in/harrison-wolf-5aa216187" style="text-decoration:none">LinkedIn</a>
+      <span style="color:#746F67">Fresno, CA</span>
+    </div>
+  </header>
+
+  <p style="font-size:18px;line-height:1.6;margin-top:28px;max-width:62ch">My work has two scales: focused custom engines for algorithmic and performance-sensitive problems, and larger end-to-end systems whose architecture, interfaces, tests, and review gates I define before implementation, sometimes through coding-agent fleets.</p>
+  <p style="font-size:14.5px;color:#6C685F;line-height:1.55;margin-top:16px;border-left:2px solid #3C5A49;padding-left:14px;max-width:64ch">Open to research-engineer, applied-AI, and agentic-systems roles. I also take a small number of paid <a href="#reviews">Agent Trust Reviews</a>.</p>
+
+  <div id="current" style="margin-top:30px;border:1px solid #E2DFD7;border-left:3px solid #3C5A49;background:#FAF9F6;padding:18px 20px;border-radius:2px;max-width:68ch">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap">
+      <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.13em;color:#6C685F">Current work · private · active development</div>
+    </div>
+    <div style="font-weight:650;font-size:17px;margin-top:8px">AI-agent control and governance</div>
+    <p style="font-size:15.5px;line-height:1.6;color:#37342D;margin-top:8px">A private system for planning, routing, and running large multi-agent workflows. Current development focuses on preregistered checks, retained raw evidence, adversarial review, and decisions reserved to the operator. The design and implementation remain in progress.</p>
+  </div>
+
+  <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.13em;color:#6C685F;margin-top:36px">Selected work</div>
+  <div class="g2" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px">
+    <a class="fx7" href="#geomap" style="text-decoration:none;color:#1B1B17;display:block;border:1px solid #E2DFD7;border-radius:2px;background:#FAF9F6">
+      <img src="media/geomap-hero.png" alt="Geospatial workspace" width="2000" height="1125" style="display:block;width:100%;height:158px;object-fit:cover;border-bottom:1px solid #E2DFD7">
+      <div style="padding:13px 15px 15px">
+        <div style="font-weight:650;font-size:15.5px">Neighborhood-intelligence engine</div>
+        <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:12px;color:#3C5A49;margin-top:4px">Data architecture · provenance + fail-closed gates</div>
+      </div>
+    </a>
+    <a class="fx8" href="#boij" style="text-decoration:none;color:#1B1B17;display:block;border:1px solid #E2DFD7;border-radius:2px;background:#FAF9F6">
+      <img src="media/boij-runtime.svg" alt="Runtime benchmark chart" width="980" height="560" style="display:block;width:100%;height:158px;object-fit:cover;object-position:top;border-bottom:1px solid #E2DFD7">
+      <div style="padding:13px 15px 15px">
+        <div style="font-weight:650;font-size:15.5px">Algebra search engine</div>
+        <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:12px;color:#3C5A49;margin-top:4px">Research search engine · ~70–115× faster vs Macaulay2</div>
+      </div>
+    </a>
+    <a class="fx9" href="#ltx" style="text-decoration:none;color:#1B1B17;display:block;border:1px solid #E2DFD7;border-radius:2px;background:#FAF9F6">
+      <img src="media/ltx-forest-poster.jpg" alt="Generated video still" width="560" height="382" style="display:block;width:100%;height:158px;object-fit:cover;border-bottom:1px solid #E2DFD7">
+      <div style="padding:13px 15px 15px">
+        <div style="font-weight:650;font-size:15.5px">Video generation studio</div>
+        <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:12px;color:#3C5A49;margin-top:4px">Model orchestration + measurement · one 8 GB GPU</div>
+      </div>
+    </a>
+    <a class="fx10" href="#geometry" style="text-decoration:none;color:#1B1B17;display:block;border:1px solid #E2DFD7;border-radius:2px;background:#FAF9F6">
+      <img src="media/polygon15-ears.svg" alt="Ear-clipped polygon" width="460" height="460" style="display:block;width:100%;height:158px;object-fit:cover;border-bottom:1px solid #E2DFD7">
+      <div style="padding:13px 15px 15px">
+        <div style="font-weight:650;font-size:15.5px">Geometry engine</div>
+        <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:12px;color:#3C5A49;margin-top:4px">Delaunay + Voronoi · 13 test suites · C++</div>
+      </div>
+    </a>
+  </div>
+
+  <a class="fx11" href="#reviews" style="text-decoration:none;color:#1B1B17;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;border:1px solid #E2DFD7;border-radius:2px;background:#FAF9F6;padding:13px 15px;margin-top:14px">
+    <div>
+      <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:0.12em;color:#6C685F">Service · Agent Trust Review</div>
+      <div style="font-size:14.5px;color:#37342D;margin-top:3px">One AI-agent system or decision · concise written assessment</div>
+    </div>
+    <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:12.5px;color:#3C5A49">Scope and sample →</div>
+  </a>
+
+  <div id="rail-sentinel" style="height:1px"></div>
+
+  <section id="systems" style="margin-top:64px">
+    <h2 style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:0.15em;color:#746F67;border-top:2px solid #CFCBC0;padding-top:14px;margin-bottom:24px;font-weight:400;display:flex;align-items:baseline;gap:12px"><span style="font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:20px;font-weight:650;line-height:1;color:#1B1B17;opacity:0.22;font-variant-numeric:tabular-nums">01</span>Systems</h2>
+
+    <div id="geomap">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap">
+        <h3 style="font-size:20px;font-weight:650;letter-spacing:-0.01em">Neighborhood-intelligence engine</h3>
+        <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:13px;color:#3C5A49">six-source pipeline with a separate serving runtime</div>
+      </div>
+      <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:12px;color:#746F67;margin-top:5px">Python · core in ~3 months · private repo — walkthrough on request</div>
+      <p style="margin-top:12px;color:#2C2A24;font-size:16px;line-height:1.62;max-width:68ch">On screen, an agent workspace for choosing a neighborhood — parcels, schools, safety, and market layers over Fresno County. That's the tip of it. Underneath is an 8-stage pipeline that pulls from six external sources — county GIS, schools, market data — normalizes everything into one canonical schema, scores it with Bayesian shrinkage throughout, and publishes frozen, versioned bundles that a separate 14-table runtime serves; every number still traces back to its source file. What that discipline buys is concrete: the serving layer can only name 12 tables from an allowlist, scoring refuses to run on data normalized by older code, and the runtime refuses a bundle whose payload version doesn't match — those version mismatches raise an error instead of quietly shipping. A path-traversal hole in static file serving was caught this way and closed with a regression test that fails if it ever comes back. Multi-county spin-up is built and tested; it currently runs at one county. I designed the architecture, schema, scoring, and test gates; coding agents produced most of the implementation under a written rulebook.</p>
+      <a href="media/geomap-hero.png"><img src="media/geomap-hero.png" alt="Agent workspace on Fresno County" width="2000" height="1125" style="display:block;max-width:100%;height:auto;margin-top:16px;border:1px solid #E2DFD7;border-radius:2px"></a>
+      <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;color:#746F67;margin-top:6px">The surface: the agent workspace on Fresno County. The footer stamps every view with its data lineage.</div>
+      <p style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:12.5px;margin-top:11px"><a href="geomap.html">See the map, parcel to pipeline →</a> &nbsp;·&nbsp; <a href="nexora.html">The platform case study, with the schema →</a></p>
+    </div>
+
+    <div id="boij" style="border-top:1px solid #E2DFD7;margin-top:36px;padding-top:32px">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap">
+        <h3 style="font-size:20px;font-weight:650;letter-spacing:-0.01em">Algebra search engine</h3>
+        <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:13px;color:#3C5A49;font-variant-numeric:tabular-nums">70–115× faster than Macaulay2</div>
+      </div>
+      <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:12px;color:#746F67;margin-top:5px">C++ · hand-written core · <a href="https://github.com/harrisonwolf/boij-soderberg-engine">repo</a> · <a href="https://arxiv.org/abs/2512.24320">arXiv:2512.24320</a></div>
+      <p style="margin-top:12px;color:#2C2A24;font-size:16px;line-height:1.62;max-width:68ch">Sifts tens of billions of algebraic structures for the rare ones that break a proposed rule. I wrote the ~1,200-line C++ core by hand in 2024 and validated it case-by-case against Macaulay2, the standard tool for this work. Its exhaustive search surfaced the counterexamples behind one of <a href="https://arxiv.org/abs/2512.24320">the paper's</a> three main theorems. On matched searches across codimensions 3–7 it runs 20.7 million candidates in 11 seconds, versus ~17 minutes in Macaulay2.</p>
+      <a href="media/boij-runtime.svg"><img src="media/boij-runtime.svg" alt="Runtime vs. candidate count benchmark" width="980" height="560" style="display:block;max-width:100%;height:auto;margin-top:16px;border:1px solid #E2DFD7;border-radius:2px"></a>
+      <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;color:#746F67;margin-top:6px">Runtime vs. candidate-sequence count, codimensions 3–7, against Macaulay2 on the same machine (linear axes).</div>
+      <p style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:12.5px;margin-top:11px"><a href="boij-story.html">The research story →</a></p>
+    </div>
+
+    <div id="ltx" style="border-top:1px solid #E2DFD7;margin-top:36px;padding-top:32px">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap">
+        <h3 style="font-size:20px;font-weight:650;letter-spacing:-0.01em">Video generation on an 8&nbsp;GB GPU</h3>
+        <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:13px;color:#3C5A49">two open-weight models, one 8&nbsp;GB card</div>
+      </div>
+      <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:12px;color:#746F67;margin-top:5px">Python · core in ~2 weeks · <a href="https://github.com/harrisonwolf/ltx-studio">repo</a></div>
+      <p style="margin-top:12px;color:#2C2A24;font-size:16px;line-height:1.62;max-width:68ch">Runs two open-weight video models on a single 8&nbsp;GB GPU and chains short shots into longer clips that stay coherent, driven from a terminal UI. A resident vision-language model (Qwen3-VL, 4-bit) turns plain-language direction into runnable generation settings. The measurement layer includes seam and drift telemetry plus a blind A/B harness. Drift control between shots uses AdaIN latent anchoring (from diffusers, cited) and a custom color-matching pass. I built the orchestration, UI, and measurement; the generation models use published open weights.</p>
+      <div class="g2" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px">
+        <video autoplay loop muted playsinline preload="metadata" poster="media/ltx-forest-poster.jpg" width="560" height="382" aria-label="Generated clip: bioluminescent forest at night, glowing moths over a stream lit from within" style="display:block;width:100%;height:auto;border:1px solid #E2DFD7;border-radius:2px"><source src="media/ltx-forest.mp4" type="video/mp4"></video>
+        <video autoplay loop muted playsinline preload="metadata" poster="media/ltx-fireflies-poster.jpg" width="560" height="382" aria-label="Generated clip: fireflies drifting over a glowing forest stream" style="display:block;width:100%;height:auto;border:1px solid #E2DFD7;border-radius:2px"><source src="media/ltx-fireflies.mp4" type="video/mp4"></video>
+      </div>
+      <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;color:#746F67;margin-top:6px">Left: bioluminescent forest at night, 35&nbsp;mm. Right: fireflies over a glowing stream, 64&nbsp;fps after interpolation.</div>
+      <p style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:12.5px;margin-top:11px"><a href="ltx.html">Inside the studio →</a></p>
+    </div>
+
+    <div id="geometry" style="border-top:1px solid #E2DFD7;margin-top:36px;padding-top:32px">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap">
+        <h3 style="font-size:20px;font-weight:650;letter-spacing:-0.01em">Geometry engine from first principles</h3>
+        <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:13px;color:#3C5A49">The geometry behind games and maps</div>
+      </div>
+      <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:12px;color:#746F67;margin-top:5px">C++ · hand-written · nothing beyond the standard library · <a href="https://github.com/harrisonwolf/planar-geometry-engine">repo</a></div>
+      <p style="margin-top:12px;color:#2C2A24;font-size:16px;line-height:1.62;max-width:68ch">Delaunay and Voronoi, plus the geometric predicates under them, built for fun from a bare terminal in vim and make: polygon construction and generation, point-in-polygon and collision queries, ear-clipping, and local SVG and Desmos viewers. The hard part is robustness: the predicates handle collinear inputs, duplicate points, and orientation with explicit epsilon handling, verified by a hand-rolled TDD harness of 13 suites.</p>
+      <div class="g2" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px">
+        <img src="media/polygon15-raw.svg" alt="Random 15-vertex polygon" width="460" height="460" style="display:block;width:100%;height:auto;border:1px solid #E2DFD7;border-radius:2px">
+        <img src="media/polygon15-ears.svg" alt="Same polygon cut into 13 triangles" width="460" height="460" style="display:block;width:100%;height:auto;border:1px solid #E2DFD7;border-radius:2px">
+      </div>
+      <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;color:#746F67;margin-top:6px">One random 15-vertex polygon (left) cut into 13 triangles by the ear-clipper (right) — n−2, as a simple polygon must give.</div>
+      <p style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:12.5px;margin-top:11px"><a href="planar.html">More from the engine →</a></p>
+    </div>
+  </section>
+
+  <section id="terrain" style="margin-top:64px">
+    <h2 style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:0.15em;color:#746F67;border-top:2px solid #CFCBC0;padding-top:14px;margin-bottom:24px;font-weight:400;display:flex;align-items:baseline;gap:12px"><span style="font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:20px;font-weight:650;line-height:1;color:#1B1B17;opacity:0.22;font-variant-numeric:tabular-nums">02</span>Applied demo</h2>
+
+    <div>
+      <h3 style="font-size:20px;font-weight:650;letter-spacing:-0.01em">Terrain studies</h3>
+      <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:12px;color:#746F67;margin-top:5px">Geometry engine + GIS platform · portfolio demonstration · <a href="terrain-study.html">full case study</a></div>
+      <p style="margin-top:12px;color:#2C2A24;font-size:16px;line-height:1.62;max-width:68ch">A study a landowner or agency would normally pay a survey crew and a consultant for. These preliminary estimates use free public data at three Central California sites. The geometry engine triangulates each surface from public USGS elevation; the Nexora platform can supply a real parcel boundary. Neither was built for terrain work. Each surface is a Delaunay TIN over USGS 3DEP 10-meter elevation, and reservoir volume is integrated off the resulting stage–storage curve — resolution enough to scope a site, not to design one.</p>
+      <ul style="margin-top:12px;padding-left:19px;list-style:none;max-width:68ch">
+        <li class="fx13" style="position:relative;margin:6px 0;color:#37342D;font-size:16px;line-height:1.55">A level building pad on a sloped lot, cut balancing fill: <span style="font-variant-numeric:tabular-nums">9,160</span> cubic yards moved.</li>
+        <li class="fx14" style="position:relative;margin:6px 0;color:#37342D;font-size:16px;line-height:1.55">A 22.2-acre bluff's rainfall routed (<span style="font-variant-numeric:tabular-nums">604k</span> gal from a one-inch storm): which slopes shed, where the water collects, where it leaves the property.</li>
+        <li class="fx15" style="position:relative;margin:6px 0;color:#37342D;font-size:16px;line-height:1.55">A dry canyon dammed at its one outlet: <span style="font-variant-numeric:tabular-nums">44,457</span> acre-feet below the 329-meter waterline, about 14.5 billion gallons, closed by a 256-foot dam.</li>
+      </ul>
+      <p style="margin-top:12px;color:#2C2A24;font-size:16px;line-height:1.62;max-width:68ch">A real siting study still needs calibrated models and a licensed engineer. The harness lives in its own repo now; contact me for more.</p>
+      <a href="media/terrain/terrain-sites.jpg"><img src="media/terrain/terrain-sites.jpg" alt="Satellite photos of the three Central California sites" width="1937" height="728" style="display:block;max-width:100%;height:auto;margin-top:16px;border:1px solid #E2DFD7;border-radius:2px"></a>
+      <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;color:#746F67;margin-top:6px">Before any engineering: a building lot, a river bluff, and a dry canyon a dam could close.</div>
+    </div>
+  </section>
+
+  <section id="how" style="margin-top:64px">
+    <h2 style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:0.15em;color:#746F67;border-top:2px solid #CFCBC0;padding-top:14px;margin-bottom:24px;font-weight:400;display:flex;align-items:baseline;gap:12px"><span style="font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:20px;font-weight:650;line-height:1;color:#1B1B17;opacity:0.22;font-variant-numeric:tabular-nums">03</span>How I work</h2>
+    <p style="color:#2C2A24;font-size:16px;line-height:1.62;max-width:68ch">On compact problems, I keep the implementation small enough to reason about directly and build measurements around the parts most likely to fail. On larger work, I define the architecture, interfaces, and acceptance tests before directing agent implementation, then review the result against those artifacts. The C++ cores here are hand-written. The neighborhood platform was implemented mainly by coding agents; each project identifies the use of external models, algorithms, or collaborators.</p>
+  </section>
+
+  <section id="reviews" style="margin-top:64px">
+    <h2 style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:0.15em;color:#746F67;border-top:2px solid #CFCBC0;padding-top:14px;margin-bottom:24px;font-weight:400;display:flex;align-items:baseline;gap:12px"><span style="font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:20px;font-weight:650;line-height:1;color:#1B1B17;opacity:0.22;font-variant-numeric:tabular-nums">04</span>Reviews</h2>
+
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap">
+      <h3 style="font-size:20px;font-weight:650;letter-spacing:-0.01em">Independent AI Agent Reliability Reviews</h3>
+      <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:13px;color:#3C5A49">three founding-client sessions</div>
+    </div>
+    <p style="margin-top:12px;color:#2C2A24;font-size:16px;line-height:1.62;max-width:68ch">For founders and small teams building or deploying AI-agent systems. Each review is limited to one architecture, evaluation setup, persistent failure, deployment decision, or cost-and-reliability question. The written assessment records what the supplied evidence supports, the main assumptions and failure risks, and the 3–5 tests or controls most useful next.</p>
+
+    <div class="review-grid" style="display:grid;grid-template-columns:minmax(0,1.08fr) minmax(260px,0.92fr);gap:28px;margin-top:20px;border:1px solid #E2DFD7;border-left:3px solid #3C5A49;background:#FAF9F6;padding:22px 24px;border-radius:2px">
+      <div>
+        <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:0.12em;color:#6C685F">Agent Trust Review</div>
+        <p style="font-size:16px;line-height:1.62;color:#2C2A24;margin-top:10px">The review includes up to 30 minutes of advance reading and a 75–90 minute working session. The follow-up memo states what was reviewed, the main failure risks and open questions, and any unnecessary complexity or cost.</p>
+        <p style="font-size:15px;line-height:1.58;color:#6C685F;margin-top:12px">This is a bounded independent assessment—not an implementation engagement.</p>
+      </div>
+      <div>
+        <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:0.12em;color:#6C685F">Included</div>
+        <ul style="margin-top:9px;padding:0;list-style:none;color:#37342D;font-size:15px;line-height:1.55">
+          <li style="margin:6px 0"><span aria-hidden="true" style="color:#746F67;margin-right:7px">–</span>Up to 30 minutes of advance review</li>
+          <li style="margin:6px 0"><span aria-hidden="true" style="color:#746F67;margin-right:7px">–</span>A 75–90 minute working session</li>
+          <li style="margin:6px 0"><span aria-hidden="true" style="color:#746F67;margin-right:7px">–</span>A concise written decision memo</li>
+          <li style="margin:6px 0"><span aria-hidden="true" style="color:#746F67;margin-right:7px">–</span>The 3–5 highest-value next tests or controls</li>
+          <li style="margin:6px 0"><span aria-hidden="true" style="color:#746F67;margin-right:7px">–</span>A proceed, pause, or conditional recommendation within the reviewed scope</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-top:18px">
+      <div>
+        <div style="font-weight:650;font-size:17px">Founding-client rate: $500</div>
+        <div style="font-size:14px;color:#6C685F;margin-top:2px">Three initial sessions available.</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+        <a href="agent-trust-review-sample.html" style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:12.5px">See a sample decision memo →</a>
+        <a class="review-cta" href="mailto:harrisonwolf42@gmail.com?subject=Agent%20Trust%20Review&amp;body=Please%20include%20the%20system%20or%20decision%20you%20want%20reviewed%2C%20what%20you%20are%20considering%20relying%20on%2C%20and%20any%20relevant%20links." style="display:inline-block;background:#3C5A49;color:#FFF;text-decoration:none;font-weight:650;font-size:14px;padding:9px 14px;border-radius:2px">Request a review →</a>
+      </div>
+    </div>
+    <p style="font-size:13.5px;color:#746F67;line-height:1.55;margin-top:16px;max-width:68ch">Independent technical review and engineering judgment only—not legal advice, regulatory certification, or a compliance audit.</p>
+  </section>
+
+  <section id="background" style="margin-top:64px">
+    <h2 style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:0.15em;color:#746F67;border-top:2px solid #CFCBC0;padding-top:14px;margin-bottom:24px;font-weight:400;display:flex;align-items:baseline;gap:12px"><span style="font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:20px;font-weight:650;line-height:1;color:#1B1B17;opacity:0.22;font-variant-numeric:tabular-nums">05</span>Background</h2>
+
+    <div>
+      <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:0.12em;color:#6C685F;margin-bottom:12px">Professional experience</div>
+      <div style="display:grid;gap:18px">
+        <div class="xp" style="display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px">
+          <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:12px;color:#746F67">Aug 2024 – present</div>
+          <div>
+            <div style="font-weight:640">Analyst, Agentic Coding &amp; Software Engineering Models — DataAnnotation</div>
+            <div style="color:#6C685F;font-size:15px;margin-top:2px">Review and evaluate frontier agentic coding models: reasoning traces, code correctness, failure modes. Create, execute, and evaluate the containerized (Docker) tasks the evaluations run in. Selected for the quality-review team, which grades other evaluators' work.</div>
+          </div>
+        </div>
+        <div class="xp" style="display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px">
+          <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:12px;color:#746F67">Summer 2025 · AFOSR · PI: Dr. Michael Shulman</div>
+          <div>
+            <div style="font-weight:640">Research Assistant, HoTT / Narya Proof Assistant — University of San Diego</div>
+            <div style="color:#6C685F;font-size:15px;margin-top:2px">Tested, debugged, and documented experimental proof-assistant software.</div>
+          </div>
+        </div>
+        <div class="xp" style="display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px">
+          <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:12px;color:#746F67">Summer 2024 · BURST grant · PI: Dr. Adam Boocher</div>
+          <div>
+            <div style="font-weight:640">Research Assistant, Boij–Söderberg theory — University of San Diego</div>
+            <div style="color:#6C685F;font-size:15px;margin-top:2px">Built the C++ engine above; its exhaustive search surfaced the counterexample cases behind one of the paper's three main theorems, and the proof computations then ran in Macaulay2. I received the mathematics department's award for outstanding research in mathematics for this work.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:28px">
+      <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:0.12em;color:#6C685F;margin-bottom:10px">Preprint</div>
+      <p style="font-size:15.5px;color:#37342D;max-width:68ch">Boocher, Huang, Wolf. <em>Arithmetic in the Boij–Söderberg Cone.</em> <a href="https://arxiv.org/abs/2512.24320">arXiv:2512.24320</a> (Dec 2025).</p>
+    </div>
+
+    <div style="margin-top:28px">
+      <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:0.12em;color:#6C685F;margin-bottom:10px">Education</div>
+      <p style="font-size:15.5px;color:#37342D;max-width:68ch">University of San Diego, 2022–2025 — transferred in for CS, added mathematics, then made it primary and went past the major's requirements: three semesters of abstract algebra, two of real analysis, logic and formal methods, computational topology and geometry, combinatorics, number theory, graph theory, modeling. SE capstone 2023–24 (lead dev, auth and access control).</p>
+      <p style="font-size:15.5px;color:#37342D;margin-top:8px;max-width:68ch">DePaul University, 2021–2022 — Dean's List; CS coursework (algorithms, cryptology, databases, OOP).</p>
+      <p style="font-size:15.5px;color:#37342D;margin-top:8px;max-width:68ch">Clovis Community College, 2019–2021 — A.S. Computer Science, A.S. Mathematics.</p>
+    </div>
+
+    <div style="margin-top:28px">
+      <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:0.12em;color:#6C685F;margin-bottom:10px">Skills</div>
+      <p style="font-size:15.5px;color:#37342D;max-width:68ch"><strong style="font-weight:640">Proficient:</strong> C/C++, Python, algorithms, GPU / VRAM-constrained systems, AI-agent orchestration, testing and evaluation, Git, Linux.</p>
+      <p style="font-size:15.5px;color:#37342D;margin-top:8px;max-width:68ch"><strong style="font-weight:640">Familiar:</strong> PyTorch and diffusion internals, Docker, SQLite pipelines, LLM-agent and JSON-protocol design, evaluation harnesses, quantization and model offloading.</p>
+    </div>
+
+    <div style="margin-top:28px">
+      <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:0.12em;color:#6C685F;margin-bottom:10px">Off the clock</div>
+      <p style="font-size:15.5px;color:#37342D;max-width:68ch">Brown belt in judo, earned in three years; my club's 2025 Judoka of the Year. At my Greek Orthodox parish I serve as a lector, acolyte, and chanter.</p>
+    </div>
+  </section>
+
+  <footer id="contact" style="margin-top:64px;border-top:2px solid #CFCBC0;padding-top:20px">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap">
+      <div style="font-weight:650;font-size:18px">Get in touch</div>
+      <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:13px;display:flex;flex-wrap:wrap;gap:18px">
+        <a href="mailto:harrisonwolf42@gmail.com">harrisonwolf42@gmail.com</a>
+        <a href="https://github.com/harrisonwolf">GitHub</a>
+        <a href="https://linkedin.com/in/harrison-wolf-5aa216187">LinkedIn</a>
+      </div>
+    </div>
+    <p style="font-size:14px;color:#6C685F;margin-top:14px;line-height:1.55;max-width:62ch">I take a limited number of <a href="#reviews">Agent Trust Reviews</a> and selected technical commissions. If your problem looks like one of these, write me.</p>
+  </footer>
+
+</main>
+<script>
+(function(){
+  var rail=document.getElementById('side-rail'), mark=document.getElementById('rail-sentinel');
+  if(!rail||!mark||!('IntersectionObserver' in window))return;
+  function show(on){rail.style.visibility=on?'visible':'hidden';rail.style.opacity=on?'1':'0';rail.style.pointerEvents=on?'auto':'none';}
+  new IntersectionObserver(function(e){show(!e[0].isIntersecting&&e[0].boundingClientRect.top<0);}).observe(mark);
+})();
+</script>
+</body>
+</html>

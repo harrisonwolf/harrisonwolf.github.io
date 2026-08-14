@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexora — Engineering Case Study</title>
+<link rel="icon" href="media/favicon.svg">
+<style>
+@font-face {
+  font-family: "Source Serif 4";
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+  src: url("media/nexora/source-serif-4.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-weight: 400 800;
+  font-style: normal;
+  font-display: swap;
+  src: url("media/nexora/inter.woff2") format("woff2");
+}
+:root {
+  --font-serif: "Source Serif 4", "Source Serif Pro", Charter, "Iowan Old Style", Georgia, serif;
+  --font-sans: Inter, "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+  --serif: var(--font-serif); --sans: var(--font-sans); --mono: var(--font-mono);
+  --text-meta: 0.78rem; --text-small: 0.88rem; --text-lead: 1.125rem; --text-h3: 1.125rem; --text-h2: 1.5rem;
+  --leading-body: 1.6;
+  --tracking-eyebrow: 0.12em; --tracking-tight: -0.02em;
+  --paper: #f7f2ea; --paper-soft: #fbf8f3; --paper-deep: #efe7d9;
+  --ink: #27211c; --ink-muted: #70675d; --ink-soft: #463e35; --muted: var(--ink-muted);
+  --rule: #e5dcd0; --rule-soft: #efe9df; --rule-strong: #d6c9b8;
+  --accent: #2f676b; --accent-deep: #255457; --accent-warm: #b98645; --accent-soft: #e6eeed;
+  --card: #ffffff; --card-soft: var(--paper-soft);
+  --gold: var(--accent-warm); --gold-soft: #f6ecd8;
+  --shadow-card: 0 1px 3px rgba(28, 26, 24, 0.05), 0 10px 28px rgba(28, 26, 24, 0.07);
+  --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem; --space-5: 1.5rem;
+  --space-6: 2rem; --space-7: 3rem; --space-8: 4rem;
+  --measure-prose: 65ch;
+  --radius-0: 4px; --radius-1: 8px; --radius-2: 14px;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+body { line-height: 1.55; }
+a { color: var(--accent-deep); }
+a:hover { color: var(--accent); }
+@media (max-width: 880px) {
+  [data-split] { grid-template-columns: 1fr !important; }
+}
+html[data-theme="dark"] {
+  --paper:#201d17; --paper-soft:#262219; --paper-deep:#2c2820;
+  --card:#2a261e; --card-soft:#262219;
+  --ink:#eae3d3; --ink-muted:#a79c87; --ink-soft:#cfc5b1; --muted:#a79c87;
+  --rule:#3a352a; --rule-soft:#332e24; --rule-strong:#4a4436;
+  --accent:#6fa8a2; --accent-deep:#8fbfb9; --accent-soft:#2b3a38;
+  --gold:#d0a061; --gold-soft:#3a3122;
+  --shadow-card:0 1px 3px rgba(0,0,0,0.4), 0 10px 28px rgba(0,0,0,0.35);
+  color-scheme: dark;
+}
+</style>
+<style>.fx1:hover{border-color:var(--accent) !important;color:var(--ink) !important}
+.fx2:hover{background:var(--accent-deep) !important}</style>
+</head>
+<body>
+<div style="min-height:100vh;background:var(--paper);color:var(--ink);font-family:var(--sans);padding:0 var(--space-5) var(--space-8)">
+  <div style="max-width:1020px;margin:0 auto">
+
+    <header style="display:flex;align-items:baseline;justify-content:space-between;gap:var(--space-4);flex-wrap:wrap;padding:var(--space-5) 0 0">
+      <p style="margin:0;font-family:var(--serif);font-size:1.3rem;color:var(--ink)"><strong style="font-weight:700">Nexora</strong> <span style="color:var(--muted);font-weight:400">· case study</span></p>
+      <div style="display:flex;align-items:center;gap:var(--space-4)">
+        <p style="margin:0;font-family:var(--mono);font-size:var(--text-meta);letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--muted)">Neighborhood intelligence, county-first</p>
+        <button class="fx1" id="theme-toggle" type="button" style="font:inherit;font-size:var(--text-small);font-weight:600;color:var(--ink-soft);background:var(--card);border:1px solid var(--rule-strong);border-radius:999px;padding:6px 14px;cursor:pointer;white-space:nowrap;line-height:1">☾ Dark</button>
+      </div>
+    </header>
+
+    <section data-screen-label="Hero" style="padding:var(--space-8) 0 var(--space-6)">
+      <p style="margin:0 0 10px;font-family:var(--mono);font-size:var(--text-meta);letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--gold)">Engineering case study</p>
+      <h1 style="margin:0 0 var(--space-5);font-family:var(--serif);font-weight:600;font-size:clamp(34px, 5vw, 54px);line-height:1.12;letter-spacing:var(--tracking-tight);text-wrap:balance;max-width:22ch">A family picker on the surface.<br><span style="color:var(--muted)">A county-scale analytics engine underneath.</span></h1>
+      <p style="margin:0;font-size:var(--text-lead);line-height:var(--leading-body);color:var(--ink-soft);max-width:58ch">Nexora ranks neighborhoods in a county against a family's stated budget and priorities for real-estate agents. The picker is the interface; this page documents the data pipeline, scoring, and serving runtime behind it.</p>
+      <dl style="display:flex;flex-wrap:wrap;gap:var(--space-2) var(--space-6);margin:var(--space-5) 0 0;font-size:var(--text-small)">
+        <div><dt style="display:inline;color:var(--muted)">Role</dt> <dd style="display:inline;margin:0;font-weight:600">architecture, schema, scoring, and test gates; implementation mainly through coding agents</dd></div>
+        <div><dt style="display:inline;color:var(--muted)">Status</dt> <dd style="display:inline;margin:0;font-weight:600">private repository · working walkthrough on request</dd></div>
+      </dl>
+      <figure style="margin:var(--space-7) 0 0;display:grid;gap:var(--space-3)">
+        <div style="background:var(--paper-deep);border:1px solid var(--rule);border-radius:var(--radius-2);padding:10px;box-shadow:var(--shadow-card)"><img src="media/nexora/hero-workspace.webp" alt="Nexora agent workspace: Fresno County choropleth map with ZIP boundaries, a client-brief panel, and an agent access gate" style="display:block;width:100%;height:auto;border-radius:var(--radius-0)"></div>
+        <figcaption style="font-family:var(--mono);font-size:var(--text-meta);color:var(--muted);line-height:1.5">agent workspace · fresno county · every pixel traces to a versioned data bundle — note the lineage stamp in the footer</figcaption>
+      </figure>
+    </section>
+
+    <section data-screen-label="Numbers" style="padding:var(--space-7) 0;border-top:1px solid var(--rule)">
+      <p style="margin:0 0 10px;font-family:var(--mono);font-size:var(--text-meta);letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--gold)">The system, in numbers</p>
+      <h2 style="margin:0 0 var(--space-4);font-family:var(--serif);font-size:var(--text-h2);font-weight:600;text-wrap:balance">Current implementation, measured from the codebase</h2>
+      <p style="margin:0;line-height:var(--leading-body);color:var(--ink-soft);max-width:var(--measure-prose)">The current system uses Python 3.12 and SQLite. Its three Python dependencies are Shapely for geometry, WeasyPrint for PDF reports, and Pillow for images; the map client is vendored MapLibre GL. It requires no npm or Node build, cloud service, or external database.</p>
+      <div style="margin-top:var(--space-5);display:grid;grid-template-columns:repeat(auto-fit, minmax(240px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:var(--radius-2);overflow:hidden">
+        <div style="background:var(--card);padding:var(--space-4)"><p style="margin:0;font-family:var(--mono);font-size:var(--text-meta);letter-spacing:0.1em;text-transform:uppercase;color:var(--muted)">Pipeline</p><p style="margin:8px 0 4px;font-family:var(--mono);font-size:1.7rem;font-weight:600;color:var(--accent-deep)">8 stages</p><p style="margin:0;font-size:var(--text-small);line-height:1.45;color:var(--muted)">extract → adapt → normalize → snapshot → score → publish → bootstrap → serve, re-runnable end to end</p></div>
+        <div style="background:var(--card);padding:var(--space-4)"><p style="margin:0;font-family:var(--mono);font-size:var(--text-meta);letter-spacing:0.1em;text-transform:uppercase;color:var(--muted)">Test cases</p><p style="margin:8px 0 4px;font-family:var(--mono);font-size:1.7rem;font-weight:600;color:var(--accent-deep)">948</p><p style="margin:0;font-size:var(--text-small);line-height:1.45;color:var(--muted)">29,220 lines of tests against 25,865 lines of source — the tests outweigh the code</p></div>
+        <div style="background:var(--card);padding:var(--space-4)"><p style="margin:0;font-family:var(--mono);font-size:var(--text-meta);letter-spacing:0.1em;text-transform:uppercase;color:var(--muted)">Data sources</p><p style="margin:8px 0 4px;font-family:var(--mono);font-size:1.7rem;font-weight:600;color:var(--accent-deep)">6</p><p style="margin:0;font-size:var(--text-small);line-height:1.45;color:var(--muted)">county GIS, market, two school datasets, attendance boundaries, safety — one canonical schema</p></div>
+        <div style="background:var(--card);padding:var(--space-4)"><p style="margin:0;font-family:var(--mono);font-size:var(--text-meta);letter-spacing:0.1em;text-transform:uppercase;color:var(--muted)">Database</p><p style="margin:8px 0 4px;font-family:var(--mono);font-size:1.7rem;font-weight:600;color:var(--accent-deep)">67 tables</p><p style="margin:0;font-size:var(--text-small);line-height:1.45;color:var(--muted)">53 canonical pipeline tables; a separate 14-table runtime schema is all the web app can see, and its API can query 12 of those</p></div>
+        <div style="background:var(--card);padding:var(--space-4)"><p style="margin:0;font-family:var(--mono);font-size:var(--text-meta);letter-spacing:0.1em;text-transform:uppercase;color:var(--muted)">Computed metrics</p><p style="margin:8px 0 4px;font-family:var(--mono);font-size:1.7rem;font-weight:600;color:var(--accent-deep)">~50</p><p style="margin:0;font-size:var(--text-small);line-height:1.45;color:var(--muted)">per county scope, per month — the picker surfaces a fraction of them</p></div>
+        <div style="background:var(--card);padding:var(--space-4)"><p style="margin:0;font-family:var(--mono);font-size:var(--text-meta);letter-spacing:0.1em;text-transform:uppercase;color:var(--muted)">Live demo scope</p><p style="margin:8px 0 4px;font-family:var(--mono);font-size:1.7rem;font-weight:600;color:var(--accent-deep)">38 / 55 / 663</p><p style="margin:0;font-size:var(--text-small);line-height:1.45;color:var(--muted)">neighborhoods, ZIP areas, and market hex cells built across Fresno County</p></div>
+      </div>
+    </section>
+
+    <section data-screen-label="The face" style="padding:var(--space-7) 0;border-top:1px solid var(--rule)">
+      <div data-split="true" style="display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--space-7);align-items:start">
+        <div>
+          <p style="margin:0 0 10px;font-family:var(--mono);font-size:var(--text-meta);letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--gold)">The face</p>
+          <h2 style="margin:0 0 var(--space-4);font-family:var(--serif);font-size:var(--text-h2);font-weight:600;text-wrap:balance">What a buyer's agent sees</h2>
+          <div style="display:grid;gap:var(--space-4);line-height:var(--leading-body);color:var(--ink-soft)">
+            <p style="margin:0">An agent describes the family once — budget, beds, school district, priorities. Hard constraints filter the county; soft preferences weight what's left; the result is a ranked shortlist with plain-language reasons an agent can hand to a client.</p>
+            <p style="margin:0">Every card carries its evidence: assigned schools with scores, safety relative to the county median, typical home price against the family's range — and honest caveats, like a neighborhood that straddles two attendance boundaries.</p>
+            <p style="margin:0">One click turns the shortlist into a branded share link or a print-ready PDF report.</p>
+          </div>
+        </div>
+        <figure style="margin:0;display:grid;gap:var(--space-3)">
+          <div style="background:var(--paper-deep);border:1px solid var(--rule);border-radius:var(--radius-2);padding:10px;box-shadow:var(--shadow-card)"><img src="media/nexora/shortlist.webp" alt="Ranked shortlist: Fort Washington ranked #1 with fit score 74, school and safety scores, price context, and a boundary disclosure note" style="display:block;width:100%;height:auto;border-radius:var(--radius-0)"></div>
+          <figcaption style="font-family:var(--mono);font-size:var(--text-meta);color:var(--muted);line-height:1.5">ranked shortlist · fit scores with reasons · boundary caveats printed on the card</figcaption>
+        </figure>
+      </div>
+      <figure style="margin:var(--space-6) 0 0;display:grid;gap:var(--space-3)">
+        <div style="background:var(--paper-deep);border:1px solid var(--rule);border-radius:var(--radius-2);padding:10px;box-shadow:var(--shadow-card)"><img src="media/nexora/workspace-redesign.jpg" alt="Redesigned agent workspace: client brief chips, shortlist editor, live map" style="display:block;width:100%;height:auto;border-radius:var(--radius-0)"></div>
+        <figcaption style="font-family:var(--mono);font-size:var(--text-meta);color:var(--muted);line-height:1.5">the workspace after the latest design pass — brief chips, shortlist editor, live client preview</figcaption>
+      </figure>
+    </section>
+
+    <section data-screen-label="The platform" style="padding:var(--space-7) 0;border-top:1px solid var(--rule)">
+      <p style="margin:0 0 10px;font-family:var(--mono);font-size:var(--text-meta);letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--gold)">The platform</p>
+      <h2 style="margin:0 0 var(--space-4);font-family:var(--serif);font-size:var(--text-h2);font-weight:600;text-wrap:balance">Eight stages between a county website and a ranked answer</h2>
+      <p style="margin:0;line-height:var(--leading-body);color:var(--ink-soft);max-width:var(--measure-prose)">Data moves one direction through hard boundaries: source quirks die in the first two stages, scorers only ever see canonical facts, and the web runtime only ever reads frozen, versioned bundles. No stage can peek upstream.</p>
+      <ol style="list-style:none;margin:var(--space-6) 0 0;padding:0;position:relative;background:linear-gradient(var(--rule), var(--rule)) 17px 10px / 2px calc(100% - 20px) no-repeat">
+        <li style="position:relative;padding:0 0 24px 60px"><span style="position:absolute;left:0;top:-1px;width:36px;height:36px;border-radius:50%;background:var(--paper);border:2px solid var(--gold);color:var(--gold);font-family:var(--mono);font-size:0.85rem;font-weight:600;display:flex;align-items:center;justify-content:center">1</span><p style="margin:0;font-weight:650">Extract <span style="font-family:var(--mono);font-size:var(--text-meta);color:var(--muted);font-weight:400;margin-left:8px">raw, hashed on arrival</span></p><p style="margin:2px 0 0;color:var(--muted);font-size:0.94rem;max-width:62ch;line-height:1.5">Payloads pulled from county GIS services and public datasets — every file SHA-256-fingerprinted the moment it lands.</p></li>
+        <li style="position:relative;padding:0 0 24px 60px"><span style="position:absolute;left:0;top:-1px;width:36px;height:36px;border-radius:50%;background:var(--paper);border:2px solid var(--gold);color:var(--gold);font-family:var(--mono);font-size:0.85rem;font-weight:600;display:flex;align-items:center;justify-content:center">2</span><p style="margin:0;font-weight:650">Adapt <span style="font-family:var(--mono);font-size:var(--text-meta);color:var(--muted);font-weight:400;margin-left:8px">quirks end here</span></p><p style="margin:2px 0 0;color:var(--muted);font-size:0.94rem;max-width:62ch;line-height:1.5">Each source family becomes a structured, versioned artifact. Downstream code never sees a source's file format again.</p></li>
+        <li style="position:relative;padding:0 0 24px 60px"><span style="position:absolute;left:0;top:-1px;width:36px;height:36px;border-radius:50%;background:var(--paper);border:2px solid var(--gold);color:var(--gold);font-family:var(--mono);font-size:0.85rem;font-weight:600;display:flex;align-items:center;justify-content:center">3</span><p style="margin:0;font-weight:650">Normalize <span style="font-family:var(--mono);font-size:var(--text-meta);color:var(--muted);font-weight:400;margin-left:8px">one canonical schema</span></p><p style="margin:2px 0 0;color:var(--muted);font-size:0.94rem;max-width:62ch;line-height:1.5">Adapted records land in canonical tables; every run is stamped with the normalizer version that produced it.</p></li>
+        <li style="position:relative;padding:0 0 24px 60px"><span style="position:absolute;left:0;top:-1px;width:36px;height:36px;border-radius:50%;background:var(--paper);border:2px solid var(--gold);color:var(--gold);font-family:var(--mono);font-size:0.85rem;font-weight:600;display:flex;align-items:center;justify-content:center">4</span><p style="margin:0;font-weight:650">Snapshot <span style="font-family:var(--mono);font-size:var(--text-meta);color:var(--muted);font-weight:400;margin-left:8px">geometry, frozen</span></p><p style="margin:2px 0 0;color:var(--muted);font-size:0.94rem;max-width:62ch;line-height:1.5">For a county and month: clipped polygons, hex-cell grids, school-attendance overlaps — computed once, then immutable.</p></li>
+        <li style="position:relative;padding:0 0 24px 60px"><span style="position:absolute;left:0;top:-1px;width:36px;height:36px;border-radius:50%;background:var(--paper);border:2px solid var(--gold);color:var(--gold);font-family:var(--mono);font-size:0.85rem;font-weight:600;display:flex;align-items:center;justify-content:center">5</span><p style="margin:0;font-weight:650">Score <span style="font-family:var(--mono);font-size:var(--text-meta);color:var(--muted);font-weight:400;margin-left:8px">with confidence labels</span></p><p style="margin:2px 0 0;color:var(--muted);font-size:0.94rem;max-width:62ch;line-height:1.5">Market state per hex cell; schools and safety per neighborhood. Thin evidence shrinks estimates toward neutral instead of overclaiming.</p></li>
+        <li style="position:relative;padding:0 0 24px 60px"><span style="position:absolute;left:0;top:-1px;width:36px;height:36px;border-radius:50%;background:var(--paper);border:2px solid var(--gold);color:var(--gold);font-family:var(--mono);font-size:0.85rem;font-weight:600;display:flex;align-items:center;justify-content:center">6</span><p style="margin:0;font-weight:650">Publish <span style="font-family:var(--mono);font-size:var(--text-meta);color:var(--muted);font-weight:400;margin-left:8px">sealed bundles</span></p><p style="margin:2px 0 0;color:var(--muted);font-size:0.94rem;max-width:62ch;line-height:1.5">Scored results become a self-contained, versioned bundle — manifest, payloads, map thumbnails — tracked in a publication index.</p></li>
+        <li style="position:relative;padding:0 0 24px 60px"><span style="position:absolute;left:0;top:-1px;width:36px;height:36px;border-radius:50%;background:var(--paper);border:2px solid var(--gold);color:var(--gold);font-family:var(--mono);font-size:0.85rem;font-weight:600;display:flex;align-items:center;justify-content:center">7</span><p style="margin:0;font-weight:650">Bootstrap <span style="font-family:var(--mono);font-size:var(--text-meta);color:var(--muted);font-weight:400;margin-left:8px">fail-closed</span></p><p style="margin:2px 0 0;color:var(--muted);font-size:0.94rem;max-width:62ch;line-height:1.5">The runtime database is rebuilt from the latest bundle. A version mismatch refuses to load — there is no silent legacy fallback.</p></li>
+        <li style="position:relative;padding:0 0 0 60px"><span style="position:absolute;left:0;top:-1px;width:36px;height:36px;border-radius:50%;background:var(--paper);border:2px solid var(--gold);color:var(--gold);font-family:var(--mono);font-size:0.85rem;font-weight:600;display:flex;align-items:center;justify-content:center">8</span><p style="margin:0;font-weight:650">Serve <span style="font-family:var(--mono);font-size:var(--text-meta);color:var(--muted);font-weight:400;margin-left:8px">rank at request time</span></p><p style="margin:2px 0 0;color:var(--muted);font-size:0.94rem;max-width:62ch;line-height:1.5">A lightweight web runtime ranks against each family's preferences live, and renders the map UI, share links, and PDFs.</p></li>
+      </ol>
+      <div style="border-left:3px solid var(--accent);background:var(--card-soft);border-radius:0 var(--radius-1) var(--radius-1) 0;padding:16px 20px;margin-top:var(--space-6);max-width:62ch">
+        <p style="margin:0;font-family:var(--serif);font-style:italic;font-size:1.05rem;line-height:1.55;color:var(--ink-soft)">Scorers never see raw data. The runtime never sees the pipeline. Refreshing a county is one command.</p>
+      </div>
+    </section>
+
+    <section data-screen-label="The receipts" style="padding:var(--space-7) 0;border-top:1px solid var(--rule)">
+      <p style="margin:0 0 10px;font-family:var(--mono);font-size:var(--text-meta);letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--gold)">Source lineage</p>
+      <h2 style="margin:0 0 var(--space-4);font-family:var(--serif);font-size:var(--text-h2);font-weight:600;text-wrap:balance">Published values retain their source lineage</h2>
+      <p style="margin:0;line-height:var(--leading-body);color:var(--ink-soft);max-width:var(--measure-prose)">Families make six-figure decisions on this output, so every artifact records what it came from, when, under which code version, and with what fingerprint. Below, one real lineage pair: a raw county-GIS batch and the adapted artifact derived from it.</p>
+      <figure style="margin:var(--space-6) 0 0;display:grid;gap:var(--space-3)">
+        <div style="background:var(--paper-deep);border:1px solid var(--rule);border-radius:var(--radius-2);padding:10px;box-shadow:var(--shadow-card)"><img src="media/nexora/lineage-manifests.webp" alt="Two terminal panes comparing a raw batch manifest and its adapted manifest: acquisition timestamps, SHA-256 fingerprints, source URL, adapter version, and back-references from adapted to raw" style="display:block;width:100%;height:auto;border-radius:var(--radius-0)"></div>
+        <figcaption style="font-family:var(--mono);font-size:var(--text-meta);color:var(--muted);line-height:1.5">raw manifest (left) → adapted manifest (right) · sha-256 lineage, timestamps, source url, adapter version, and a back-reference to the exact raw batch · local paths redacted</figcaption>
+      </figure>
+      <ul style="list-style:none;margin:var(--space-6) 0 0;padding:0;display:grid;gap:var(--space-4)">
+        <li style="padding-left:26px;position:relative;max-width:68ch;line-height:1.55"><span style="position:absolute;left:2px;top:9px;width:8px;height:8px;border-radius:2px;background:var(--accent)"></span><strong style="font-weight:650">Fail-closed version gates.</strong> <span style="color:var(--muted)">The normal scoring path rejects data normalized by an older schema version; the runtime rejects bundles with a mismatched payload version and reports the mismatch.</span></li>
+        <li style="padding-left:26px;position:relative;max-width:68ch;line-height:1.55"><span style="position:absolute;left:2px;top:9px;width:8px;height:8px;border-radius:2px;background:var(--accent)"></span><strong style="font-weight:650">Shrinkage on thin data.</strong> <span style="color:var(--muted)">Estimates shrink toward neutral in proportion to sample support (n / (n + k)); where coverage is too thin, the score is suppressed outright.</span></li>
+        <li style="padding-left:26px;position:relative;max-width:68ch;line-height:1.55"><span style="position:absolute;left:2px;top:9px;width:8px;height:8px;border-radius:2px;background:var(--accent)"></span><strong style="font-weight:650">No fabricated commute scores.</strong> <span style="color:var(--muted)">The UI collects a family's commute constraints, and the easy move was to fake the rest — zero-fill the data and ship a commute <em>weight</em> slider anyway. Instead the slider is withheld until real commute data lands.</span></li>
+        <li style="padding-left:26px;position:relative;max-width:68ch;line-height:1.55"><span style="position:absolute;left:2px;top:9px;width:8px;height:8px;border-radius:2px;background:var(--accent)"></span><strong style="font-weight:650">Atomic report limits.</strong> <span style="color:var(--muted)">Per-agent report quotas use a single guarded insert, covered by a two-thread test that fires simultaneous requests at the limit.</span></li>
+        <li style="padding-left:26px;position:relative;max-width:68ch;line-height:1.55"><span style="position:absolute;left:2px;top:9px;width:8px;height:8px;border-radius:2px;background:var(--accent)"></span><strong style="font-weight:650">Tests outweigh the code.</strong> <span style="color:var(--muted)">948 cases, written fail-before / pass-after. The suite covers the pipeline, the scoring math, the HTTP surface, and the race conditions.</span></li>
+      </ul>
+    </section>
+
+    <section data-screen-label="Schema" style="padding:var(--space-7) 0;border-top:1px solid var(--rule)">
+      <p style="margin:0 0 10px;font-family:var(--mono);font-size:var(--text-meta);letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--gold)">The schema, in the open</p>
+      <h2 style="margin:0 0 var(--space-4);font-family:var(--serif);font-size:var(--text-h2);font-weight:600;text-wrap:balance">Schema and runtime boundaries</h2>
+      <p style="margin:0;line-height:var(--leading-body);color:var(--ink-soft);max-width:var(--measure-prose)">The table names below are generated from the current schema and grouped by layer. Their prefixes mark boundaries enforced in code: source-specific data is separated from canonical facts, snapshots, scores, and the 14-table serving runtime.</p>
+      <div style="margin-top:var(--space-5);border:1px solid var(--rule);border-radius:var(--radius-2);background:var(--card);padding:4px 20px 20px">
+      <div style="border-top:1px solid #E2DFD7;padding-top:12px;margin-top:14px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap">
+          <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:13px;font-weight:650;color:#1B1B17">meta</div>
+          <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;color:#746F67;font-variant-numeric:tabular-nums">13 tables</div>
+        </div>
+        <div style="font-size:14.5px;color:#37342D;line-height:1.55;margin-top:4px;max-width:68ch">Run bookkeeping: counties, scopes, layers, and one row per normalization, snapshot, score, and publication build.</div>
+        <div style="margin-top:8px"><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">meta_analysis_scope</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">meta_analysis_scope_source</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">meta_city</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">meta_county</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">meta_county_reference_foundation</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">meta_county_source_policy</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">meta_county_zip</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">meta_layer</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">meta_normalization_run</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">meta_publication_build</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">meta_score_build</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">meta_snapshot_build</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">meta_source_batch</code></div>
+      </div>
+      <div style="border-top:1px solid #E2DFD7;padding-top:12px;margin-top:14px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap">
+          <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:13px;font-weight:650;color:#1B1B17">ref</div>
+          <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;color:#746F67;font-variant-numeric:tabular-nums">15 tables</div>
+        </div>
+        <div style="font-size:14.5px;color:#37342D;line-height:1.55;margin-top:4px;max-width:68ch">Reference geography and entities: parcels, boundaries, roads, schools, attendance areas, ZIP areas.</div>
+        <div style="margin-top:8px"><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">ref_agent_token</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">ref_city_boundary</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">ref_county_boundary</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">ref_neighborhood</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">ref_neighborhood_school_assignment</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">ref_parcel</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">ref_park</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">ref_reference_point</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">ref_road_segment</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">ref_school</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">ref_school_attendance_area</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">ref_school_district</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">ref_school_zone</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">ref_zip_area</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">ref_zoning_area</code></div>
+      </div>
+      <div style="border-top:1px solid #E2DFD7;padding-top:12px;margin-top:14px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap">
+          <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:13px;font-weight:650;color:#1B1B17">obs</div>
+          <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;color:#746F67;font-variant-numeric:tabular-nums">8 tables</div>
+        </div>
+        <div style="font-size:14.5px;color:#37342D;line-height:1.55;margin-top:4px;max-width:68ch">Observations as recorded: sales, listings, permits, assessments, school metrics, monthly ZIP market rows.</div>
+        <div style="margin-top:8px"><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">obs_assessment_observation</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">obs_listing_event</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">obs_permit_event</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">obs_sale_event</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">obs_school_metric</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">obs_vendor_property_observation</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">obs_zip_market_month</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">obs_zip_sale_observation</code></div>
+      </div>
+      <div style="border-top:1px solid #E2DFD7;padding-top:12px;margin-top:14px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap">
+          <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:13px;font-weight:650;color:#1B1B17">snapshot</div>
+          <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;color:#746F67;font-variant-numeric:tabular-nums">13 tables</div>
+        </div>
+        <div style="font-size:14.5px;color:#37342D;line-height:1.55;margin-top:4px;max-width:68ch">A county-month frozen in place: clipped geometry, partitions, parcel assignments, serving context.</div>
+        <div style="margin-top:8px"><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">snapshot</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">snapshot_area</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">snapshot_area_parent</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">snapshot_parcel_assignment</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">snapshot_parcel_centroid</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">snapshot_parcel_sale</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">snapshot_partition_definition</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">snapshot_reference_layer</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">snapshot_rent_observation</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">snapshot_sale_observation</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">snapshot_serving_context</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">snapshot_source_family</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">snapshot_zip_tightness_observation</code></div>
+      </div>
+      <div style="border-top:1px solid #E2DFD7;padding-top:12px;margin-top:14px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap">
+          <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:13px;font-weight:650;color:#1B1B17">score</div>
+          <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;color:#746F67;font-variant-numeric:tabular-nums">4 tables</div>
+        </div>
+        <div style="font-size:14.5px;color:#37342D;line-height:1.55;margin-top:4px;max-width:68ch">Scored outputs: market state, neighborhood quality, ZIP safety, and the explanation rows behind each score.</div>
+        <div style="margin-top:8px"><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">score_area_month_explanation</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">score_area_month_market_state</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">score_neighborhood_quality</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">score_zip_safety</code></div>
+      </div>
+      <div style="border-top:1px solid #E2DFD7;padding-top:12px;margin-top:14px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap">
+          <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:13px;font-weight:650;color:#1B1B17">runtime</div>
+          <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;color:#746F67;font-variant-numeric:tabular-nums">14 tables</div>
+        </div>
+        <div style="font-size:14.5px;color:#37342D;line-height:1.55;margin-top:4px;max-width:68ch">The only schema the web app can reach. Rebuilt from a published bundle; nothing upstream is reachable from here.</div>
+        <div style="margin-top:8px"><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">runtime_cell</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">runtime_cell_detail</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">runtime_data_provenance</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">runtime_manifest</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">runtime_neighborhood</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">runtime_neighborhood_school_assignment</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">runtime_parcel_centroid</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">runtime_parcel_sale</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">runtime_reference_layer</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">runtime_saved_report</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">runtime_school</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">runtime_school_attendance_area</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">runtime_zip</code><code style="display:inline-block;background:#F1EFEA;border:1px solid #E2DFD7;border-radius:2px;padding:1px 6px;margin:0 4px 4px 0;font-size:11.5px;color:#37342D">runtime_zip_detail</code></div>
+      </div>
+      </div>
+      <p style="margin:var(--space-4) 0 0;font-family:var(--mono);font-size:var(--text-meta);color:var(--muted);line-height:1.5">generated from the CREATE TABLE statements in storage.py &#183; 67 tables &#183; 53 canonical, 14 runtime</p>
+    </section>
+
+    <section data-screen-label="Below the waterline" style="padding:var(--space-7) 0;border-top:1px solid var(--rule)">
+      <p style="margin:0 0 10px;font-family:var(--mono);font-size:var(--text-meta);letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--gold)">Below the waterline</p>
+      <h2 style="margin:0 0 var(--space-4);font-family:var(--serif);font-size:var(--text-h2);font-weight:600;text-wrap:balance">Built into the engine, not yet in the picker</h2>
+      <p style="margin:0;line-height:var(--leading-body);color:var(--ink-soft);max-width:var(--measure-prose)">The family picker deliberately surfaces a fraction of what the platform computes. The rest is implemented in the current serving runtime, one toggle or one data feed away.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px,1fr));gap:var(--space-4);margin-top:var(--space-5)">
+        <div style="border:1px solid var(--rule);border-radius:var(--radius-2);background:var(--card-soft);padding:18px 20px"><span style="display:block;margin-bottom:8px;font-family:var(--mono);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold)">served · layer off</span><h3 style="margin:0 0 6px;font-family:var(--serif);font-size:var(--text-h3);font-weight:600">Hex-cell market heat map</h3><p style="margin:0;font-size:0.92rem;line-height:1.5;color:var(--muted)">Heat, tightness, trend, and acceleration scored per hex cell across the county — an investor's layer, dark by default in the family product.</p></div>
+        <div style="border:1px solid var(--rule);border-radius:var(--radius-2);background:var(--card-soft);padding:18px 20px"><span style="display:block;margin-bottom:8px;font-family:var(--mono);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold)">served · layer off</span><h3 style="margin:0 0 6px;font-family:var(--serif);font-size:var(--text-h3);font-weight:600">Parcel-level inspector</h3><p style="margin:0;font-size:0.92rem;line-height:1.5;color:var(--muted)">Parcel geometry with APN, address, and sale history behind a disabled map layer.</p></div>
+        <div style="border:1px solid var(--rule);border-radius:var(--radius-2);background:var(--card-soft);padding:18px 20px"><span style="display:block;margin-bottom:8px;font-family:var(--mono);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold)">built · tested · one county run</span><h3 style="margin:0 0 6px;font-family:var(--serif);font-size:var(--text-h3);font-weight:600">New-county spin-up</h3><p style="margin:0;font-size:0.92rem;line-height:1.5;color:var(--muted)">The registry-driven path covers boundary validation, ZIP baselines, and GIS profiles without changing engine code. Fresno is the only county run end to end.</p></div>
+        <div style="border:1px solid var(--rule);border-radius:var(--radius-2);background:var(--card-soft);padding:18px 20px"><span style="display:block;margin-bottom:8px;font-family:var(--mono);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold)">tracked · latest served</span><h3 style="margin:0 0 6px;font-family:var(--serif);font-size:var(--text-h3);font-weight:600">Longitudinal vintages</h3><p style="margin:0;font-size:0.92rem;line-height:1.5;color:var(--muted)">Monthly publications are indexed and retained. The runtime serves the latest; a time-series interface is not implemented.</p></div>
+      </div>
+    </section>
+
+    <section data-screen-label="Known limits" style="padding:var(--space-7) 0;border-top:1px solid var(--rule)">
+      <p style="margin:0 0 10px;font-family:var(--mono);font-size:var(--text-meta);letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--gold)">Known limits</p>
+      <h2 style="margin:0 0 var(--space-4);font-family:var(--serif);font-size:var(--text-h2);font-weight:600;text-wrap:balance">Current limits</h2>
+      <ul style="margin:0;padding-left:20px;display:grid;gap:var(--space-3);max-width:var(--measure-prose);line-height:1.55;color:var(--ink-soft)">
+        <li>Data staleness at serve time warns the operator but doesn't block serving — keeping data fresh is left to the operator.</li>
+        <li>Multi-county support is tested but has never run against more than one county for real.</li>
+        <li>Bundle versioning catches version mismatches, but a payload shape change within a version would slip through — a known gap, flagged in the repo's own docs.</li>
+      </ul>
+    </section>
+
+    <section data-screen-label="Closing" style="padding:var(--space-7) 0;border-top:1px solid var(--rule)">
+      <p style="margin:0 0 10px;font-family:var(--mono);font-size:var(--text-meta);letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--gold)">Private repository</p>
+      <h2 style="margin:0 0 var(--space-4);font-family:var(--serif);font-size:var(--text-h2);font-weight:600;text-wrap:balance">See it running</h2>
+      <p style="margin:0;line-height:var(--leading-body);color:var(--ink-soft);max-width:var(--measure-prose)">The repository is private. The counts and schema descriptions on this page reflect the snapshot used for this case study; a walkthrough can cover the pipeline, scoring math, or test suite.</p>
+      <p style="margin:var(--space-5) 0 0"><a class="fx2" href="mailto:harrisonwolf42@gmail.com?subject=Nexora%20walkthrough" style="display:inline-block;background:var(--accent);color:var(--paper);font-weight:600;text-decoration:none;border-bottom:none;border-radius:var(--radius-1);padding:13px 26px;white-space:nowrap;line-height:1">Request a walkthrough</a></p>
+    </section>
+
+    <footer style="border-top:1px solid var(--rule);padding:var(--space-5) 0 0;display:flex;justify-content:space-between;gap:var(--space-4);flex-wrap:wrap;color:var(--muted);font-size:var(--text-small)">
+      <p style="margin:0">Nexora · residential neighborhood intelligence · Fresno County, CA demo</p>
+      <p style="margin:0;font-family:var(--mono)">python 3.12 · sqlite · shapely · maplibre · no frameworks · <a href="index.html#geomap" style="color:var(--accent-deep)">← back to the portfolio</a></p>
+    </footer>
+
+  </div>
+</div>
+<script>
+(function(){
+  var KEY='nexora-case-study-theme';
+  var btn=document.getElementById('theme-toggle');
+  function resolved(){var s=null;try{s=localStorage.getItem(KEY);}catch(e){}
+    if(s==='dark'||s==='light')return s;
+    return matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}
+  function apply(){var t=resolved();document.documentElement.setAttribute('data-theme',t);
+    if(btn)btn.textContent=t==='dark'?'\u2600 Light':'\u263E Dark';}
+  if(btn)btn.addEventListener('click',function(){var n=resolved()==='dark'?'light':'dark';
+    try{localStorage.setItem(KEY,n);}catch(e){}apply();});
+  apply();
+})();
+</script>
+</body>
+</html>

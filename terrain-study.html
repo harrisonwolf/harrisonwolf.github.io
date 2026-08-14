@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Three terrain feasibility studies computed from public elevation data using Harrison Wolf's geometry and geospatial engines.">
+<link rel="canonical" href="https://harrisonwolf.github.io/terrain-study.html">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://harrisonwolf.github.io/terrain-study.html">
+<meta property="og:title" content="Terrain Studies — Harrison Wolf">
+<meta property="og:description" content="Building-pad earthwork, storm drainage, and reservoir capacity computed on real Sierra terrain.">
+<meta property="og:image" content="https://harrisonwolf.github.io/media/terrain/reservoir-capacity.jpg">
+<meta property="og:image:width" content="2043">
+<meta property="og:image:height" content="1110">
+<meta property="og:image:alt" content="A modeled Sierra reservoir beside its flooded extent and stage-storage capacity curve.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Terrain Studies — Harrison Wolf">
+<meta name="twitter:description" content="Building-pad earthwork, storm drainage, and reservoir capacity computed on real Sierra terrain.">
+<meta name="twitter:image" content="https://harrisonwolf.github.io/media/terrain/reservoir-capacity.jpg">
+<title>Terrain Studies — Harrison Wolf</title>
+<link rel="icon" type="image/svg+xml" href="media/favicon.svg">
+<style>
+  /* "Strata Section" — page read as a road-cut. COMMITTED DARK by design. */
+  :root{
+    color-scheme: dark;
+    --bg:#14161A; --b1:#1C1F24; --b2:#23272E; --b3:#2B3038; --b4:#343A44;
+    --sep:#3E4550; --txt:#C9CDD4; --txt2:#8B929C; --txt3:#9DA5B0;
+    --copper:#C46A2E; --copper2:#E39A5C; --verd:#6E8F7A;
+    --sans:"Helvetica Neue","Segoe UI",Roboto,system-ui,-apple-system,Arial,sans-serif;
+    --mono:ui-monospace,"SF Mono","Cascadia Mono","Segoe UI Mono",Menlo,Consolas,monospace;
+  }
+  *{ box-sizing:border-box; }
+  .sheet{ background:var(--bg); color:var(--txt); font-family:var(--sans); font-size:16.5px;
+    line-height:1.55; max-width:1160px; margin:0 auto; display:grid; grid-template-columns:46px 1fr; }
+
+  .rail{ position:relative; }
+  .rail::before{ content:""; position:absolute; right:-1px; top:0; bottom:0; width:2px; background:var(--copper); }
+  .rail .ticks{ position:sticky; top:0; height:100vh; display:flex; flex-direction:column; justify-content:space-around; align-items:flex-end; padding:24px 0; }
+  .rail .ticks i{ width:8px; height:1px; background:var(--copper); opacity:.55; }
+  @media (max-width:680px){ .sheet{ grid-template-columns:3px 1fr; } .rail .ticks{ display:none; } }
+
+  .doc{ position:relative; min-width:0; }
+  .band{ padding:clamp(22px,3.3vw,40px); border-bottom:1px solid var(--sep); box-shadow:0 2px 0 rgba(0,0,0,.28); }
+  .collar{ background:var(--b1); } .head{ background:var(--b2); }
+  .slabel{ background:var(--b3); border-top:2px solid var(--copper); display:flex; justify-content:space-between; align-items:baseline; gap:12px 20px; flex-wrap:wrap; padding-top:14px; padding-bottom:14px; }
+  .intro{ background:var(--b2); } .readout{ background:var(--b3); padding:0; } .figband{ background:var(--bg); }
+  .means{ background:var(--b4); padding:0; } .method{ background:var(--b2); } .gis{ background:var(--b1); }
+  .foot{ background:var(--b1); border-bottom:none; box-shadow:none; }
+
+  .collar-grid{ display:grid; grid-template-columns:repeat(6,1fr); gap:14px 20px; }
+  .fld .k{ font-family:var(--mono); font-size:10px; text-transform:uppercase; letter-spacing:.14em; color:var(--txt3); }
+  .fld .v{ font-family:var(--mono); font-size:12px; color:var(--txt); margin-top:4px; line-height:1.35; }
+  @media (max-width:680px){ .collar-grid{ grid-template-columns:1fr 1fr 1fr; } }
+
+  .eyebrow{ font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:.18em; color:var(--copper); }
+  .backlink{ display:inline-block; font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--copper); text-decoration:none; border-bottom:1px solid rgba(196,106,46,.4); margin-bottom:18px; }
+  .backlink:hover{ border-bottom-color:var(--copper); }
+  h1{ font-weight:700; font-size:clamp(2rem,4.6vw,2.9rem); line-height:.98; letter-spacing:-.02em; color:var(--txt); margin:.55rem 0 0; text-wrap:balance; max-width:17ch; }
+  .lede{ color:var(--txt2); font-size:clamp(1rem,1.7vw,1.12rem); max-width:60ch; margin:18px 0 0; line-height:1.6; }
+  .lede em{ color:var(--txt); font-style:normal; }
+
+  .slabel .st{ font-family:var(--mono); font-size:12.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--copper); }
+  .slabel .sub{ font-family:var(--mono); font-size:11px; letter-spacing:.08em; color:var(--txt2); }
+  .intro p{ margin:0; color:var(--txt2); font-size:1.04rem; max-width:62ch; line-height:1.6; }
+  .intro p b{ color:var(--txt); font-weight:600; }
+
+  .rod{ display:grid; grid-template-columns:repeat(5,1fr); }
+  @media (max-width:680px){ .rod{ grid-template-columns:repeat(2,1fr); } .rod .grad{ border-right:1px solid var(--sep); border-bottom:1px solid var(--sep); } }
+  .grad{ padding:20px clamp(10px,1.6vw,20px); border-right:1px solid var(--sep); }
+  .grad:last-child{ border-right:none; }
+  .grad .n{ font-weight:700; font-variant-numeric:tabular-nums; color:var(--copper); font-size:clamp(1.4rem,3vw,2.05rem); line-height:1; letter-spacing:-.02em; }
+  .grad .n small{ font-size:.44em; font-weight:600; color:var(--copper2); }
+  .grad .u{ font-family:var(--mono); font-size:9.5px; text-transform:uppercase; letter-spacing:.1em; color:var(--txt2); margin-top:10px; line-height:1.3; }
+  .grad.w .n{ color:var(--verd); }
+  .rod.hero{ grid-template-columns:repeat(3,1fr); border-top:1px solid var(--sep); margin-top:26px; }
+  a.grad{ display:block; text-decoration:none; }
+  a.grad:hover .n{ color:var(--copper2); }
+  a.grad:focus-visible{ outline:2px solid var(--copper); outline-offset:-2px; }
+  .herodisc{ font-family:var(--mono); font-size:11px; color:var(--txt3); margin:16px 0 0; line-height:1.6; }
+  .herodisc a{ color:var(--copper); text-decoration:none; border-bottom:1px solid rgba(196,106,46,.4); }
+  .herodisc a:hover{ border-bottom-color:var(--copper); }
+  .lede a{ color:var(--copper); text-decoration:none; border-bottom:1px solid rgba(196,106,46,.4); }
+  .lede a:hover{ border-bottom-color:var(--copper); }
+  @media (max-width:680px){ .rod.hero{ grid-template-columns:1fr 1fr 1fr; } .rod.hero .grad{ border-bottom:none; } }
+
+  figure{ margin:0; }
+  .plate{ border:1px solid var(--copper); background:var(--bg); overflow-x:auto; }
+  .plate img{ display:block; width:100%; min-width:660px; height:auto; }
+  .plate-foot{ display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; align-items:baseline; margin-top:12px; }
+  .plate-foot .pl{ font-family:var(--mono); font-size:10px; letter-spacing:.1em; color:var(--copper); text-transform:uppercase; }
+  figcaption{ font-family:var(--mono); font-size:11px; color:var(--txt2); line-height:1.5; max-width:74ch; }
+  figcaption.plate-foot{ max-width:none; }
+  .plate-foot .cap{ font-family:var(--mono); font-size:11px; color:var(--txt2); line-height:1.5; max-width:74ch; }
+  @media (max-width:680px){ .plate-foot .pl::before{ content:"\2190 swipe \00b7 "; color:var(--txt2); } }
+
+  .trio{ display:grid; grid-template-columns:repeat(3,1fr); }
+  .col{ padding:clamp(20px,2.6vw,32px); border-right:1px solid var(--sep); }
+  .col:last-child{ border-right:none; }
+  .col h3{ font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:.14em; color:var(--txt3); margin:0 0 10px; font-weight:400; }
+  .col.w h3{ color:var(--verd); }
+  .col p{ font-size:.96rem; color:var(--txt2); margin:0; line-height:1.6; }
+  .col p b{ color:var(--txt); font-weight:600; }
+  .col.w p b{ color:var(--verd); }
+  @media (max-width:680px){ .trio{ grid-template-columns:1fr; } .col{ border-right:none; border-bottom:1px solid var(--sep); } .col:last-child{ border-bottom:none; } }
+
+  .method h2{ font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:.16em; color:var(--copper); margin:0 0 18px; font-weight:400; }
+  .steps{ display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--sep); }
+  .step{ padding:16px 20px 4px 0; border-right:1px solid var(--sep); }
+  .step:last-child{ border-right:none; padding-right:0; }
+  .step .sn{ font-family:var(--mono); font-size:11px; letter-spacing:.1em; color:var(--copper); text-transform:uppercase; }
+  .step p{ font-size:.92rem; color:var(--txt2); margin:8px 0 0; line-height:1.55; }
+  .step b{ color:var(--txt); font-weight:600; }
+  @media (max-width:680px){ .steps{ grid-template-columns:1fr; } .step{ border-right:none; border-bottom:1px solid var(--sep); padding:14px 0; } }
+
+  .gis .m{ font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--copper); }
+  .gis p{ margin:8px 0 0; font-size:1rem; color:var(--txt2); line-height:1.6; }
+  .gis b{ color:var(--txt); font-weight:600; }
+
+  .disc{ font-size:.85rem; color:var(--txt3); max-width:66ch; margin:0; line-height:1.6; }
+  footer{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:8px 20px; margin-top:20px; }
+  footer .a{ color:var(--txt2); font-size:.92rem; }
+  footer .b{ font-family:var(--mono); font-size:11.5px; color:var(--txt3); }
+  footer a{ color:var(--copper); text-decoration:none; border-bottom:1px solid rgba(196,106,46,.4); }
+  footer a:hover{ border-bottom-color:var(--copper); }
+  a:focus-visible{ outline:2px solid var(--copper); outline-offset:2px; }
+  .band.banner{ padding-top:16px; padding-bottom:16px; }
+  .gis p{ max-width:64ch; }
+  .slabel{ margin-top:30px; border-top:3px solid var(--copper); padding-top:20px; padding-bottom:18px; }
+  .slabel .st{ font-size:14px; }
+  .fkey{ font-family:var(--mono); font-size:11px; color:var(--txt2); line-height:1.5; margin-top:11px; padding-left:12px; border-left:2px solid var(--verd); max-width:80ch; }
+  .fkey b{ color:var(--verd); font-weight:600; }
+  .digi-row{ display:block; width:100%; height:auto; min-width:660px; }
+  .digi-lab{ font-family:var(--mono); font-size:11.5px; color:var(--txt2); margin:11px 0 6px; padding-left:2px; }
+  .digi-3d{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px; min-width:660px; }
+  .digi-3d video, .digi-3d img{ display:block; width:100%; height:auto; min-width:0; background:var(--bg); }
+  .intro-2col{ display:grid; grid-template-columns:1fr minmax(0,0.82fr); gap:clamp(18px,3vw,38px); align-items:start; }
+  .intro-2col p{ max-width:none; }
+  .lotpic{ margin:0; }
+  .lotpic img{ display:block; width:100%; height:auto; border:1px solid var(--sep); }
+  .lotpic figcaption{ font-family:var(--mono); font-size:10.5px; color:var(--txt2); margin-top:6px; text-transform:uppercase; letter-spacing:.08em; }
+  .mine{ margin-top:18px; color:var(--txt); font-size:1.02rem; line-height:1.62; border-left:3px solid var(--copper); padding-left:15px; max-width:66ch; }
+  @media (max-width:680px){ .intro-2col{ grid-template-columns:1fr; } }
+
+  .resv3{ display:grid; grid-template-columns:1fr 1.72fr; gap:8px; align-items:center; min-width:660px; }
+  .resv3 video, .resv3 img{ width:100%; height:auto; display:block; min-width:0; border:0; }
+
+  .head-2col{ display:grid; grid-template-columns:minmax(0,56ch) minmax(0,1fr); gap:clamp(22px,3.6vw,52px); align-items:start; }
+  .engines{ display:flex; flex-direction:column; gap:16px; min-width:0; }
+  .eng-intro{ color:var(--txt2); font-size:0.95rem; line-height:1.55; max-width:46ch; }
+  .eng{ margin:0; }
+  .eng img{ width:100%; height:auto; display:block; border:1px solid var(--sep); border-radius:3px; }
+  .vwrap{ position:relative; display:block; min-width:0; }
+  .vwrap video{ display:block; }
+  .vtoggle{ position:absolute; right:10px; bottom:10px; width:32px; height:32px; border-radius:50%; border:none; background:rgba(0,0,0,.55); color:#E6E9ED; font-size:10px; line-height:1; cursor:pointer; display:flex; align-items:center; justify-content:center; padding:0; }
+  .vtoggle:hover{ background:rgba(0,0,0,.8); }
+  .vtoggle:focus-visible{ outline:2px solid var(--copper); outline-offset:2px; }
+  .eng-term, .eng-code{ background:#0E1013; border:1px solid var(--sep); border-radius:3px; padding:10px 12px; margin:0; font-family:var(--mono); font-size:11px; line-height:1.45; color:var(--txt); overflow-x:auto; white-space:pre; }
+  .eng figcaption{ font-family:var(--mono); font-size:10px; text-transform:uppercase; letter-spacing:.05em; color:var(--txt3); margin-top:6px; }
+  @media (max-width:760px){ .head-2col{ grid-template-columns:1fr; } }
+
+  .term-win{ border:1px solid var(--sep); border-radius:4px; overflow:hidden; background:#0E1013; }
+  .term-bar{ display:flex; gap:6px; padding:7px 10px; background:#181B20; border-bottom:1px solid var(--sep); }
+  .term-bar i{ width:9px; height:9px; border-radius:50%; background:#3E4550; }
+  .eng-term2{ margin:0; padding:11px 13px; font-family:var(--mono); font-size:11px; line-height:1.5; color:var(--txt); white-space:pre; overflow-x:auto; }
+  .eng-term2 b{ color:var(--copper2); font-weight:600; }
+  .eng-term2 b.ok{ color:var(--verd); }
+
+  .eng-intro2{ margin-top:20px; padding-top:18px; border-top:1px solid var(--sep); }
+
+  .plate.plate-split{ border-color:var(--sep); display:grid; grid-template-columns:minmax(0,2.6fr) minmax(0,1fr); gap:12px; padding:12px; }
+  .plate.plate-split img, .plate.plate-split .digi-row, .plate.plate-split .digi-3d{ min-width:0; }
+  .ps-story{ border:1px solid var(--copper); padding:10px; min-width:0; }
+  .ps-reads{ display:flex; flex-direction:column; gap:8px; min-width:0; min-height:0; }
+  .ps-lab{ font-family:var(--mono); font-size:10px; letter-spacing:.14em; color:var(--txt3); text-transform:uppercase; }
+  .ps-cell{ flex:1 1 0; min-height:0; display:flex; flex-direction:column; gap:4px; }
+  .ps-cap{ font-family:var(--mono); font-size:10px; letter-spacing:.06em; color:var(--txt2); }
+  .ps-tile{ flex:1 1 0; min-height:0; width:100%; object-fit:contain; object-position:left top; }
+  @media (max-width:760px){ .plate.plate-split{ grid-template-columns:1fr; } .ps-reads{ flex-direction:row; flex-wrap:wrap; } .ps-cell{ flex:1 1 30%; } .ps-tile{ min-height:auto; } }
+
+  .ps-left{ min-width:0; display:flex; flex-direction:column; }
+  .plate.plate-split .plate-foot{ margin-top:auto; padding-top:18px; }
+  .plate.plate-split{ align-items:stretch; }
+  .plate.plate-split .plate-foot{ padding:2px 2px 0; }
+  .ps-reads{ gap:16px; }
+  .ps-cell{ flex:0 0 auto; min-height:auto; max-width:176px; }
+  .ps-tile{ flex:0 0 auto; width:min(100%,176px); height:auto; }
+  .snum{ font-family:var(--mono); font-weight:700; font-size:30px; line-height:.9; color:var(--copper); opacity:.5; margin-right:16px; }
+  .slabel{ margin-top:72px; margin-bottom:0; border-top:5px solid var(--copper); padding-top:24px; padding-bottom:20px; background:var(--b4); align-items:center; font-size:inherit; font-weight:400; box-shadow:0 -72px 0 0 #0B0C0F; }
+  #built{ margin-top:72px; border-top:5px solid var(--copper); box-shadow:0 -72px 0 0 #0B0C0F; }
+  .slabel .st{ font-size:15px; letter-spacing:.16em; }
+
+  .digi-lab{ margin:58px 2px 14px; padding-top:22px; border-top:1px solid var(--sep); color:var(--copper); letter-spacing:.06em; }
+  .clipfig video{ display:block; width:100%; height:auto; background:var(--bg); }
+  .clipfig .clipnarrow{ max-width:830px; margin:0 auto; }
+
+  .why-2col{ display:grid; grid-template-columns:minmax(0,56ch) minmax(0,1fr); gap:clamp(26px,4vw,60px); align-items:start; }
+  .why-fig{ min-width:0; }
+  .eng-duo{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(24px,3.4vw,48px); margin-top:46px; padding-top:30px; border-top:1px solid var(--sep); }
+  .eng-col{ min-width:0; }
+  .eng-hd{ display:flex; align-items:baseline; gap:12px; border-bottom:2px solid var(--copper); padding-bottom:8px; }
+  .eng-no{ font-family:var(--mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--copper); }
+  .eng-nm{ font-family:var(--mono); font-size:11px; letter-spacing:.08em; color:var(--txt2); }
+  .eng-note{ font-size:.95rem; color:var(--txt2); line-height:1.55; max-width:50ch; margin:12px 0 16px; }
+  .eng-col figure.eng{ margin:0 0 16px; }
+  .eng-col figure.eng:last-child{ margin-bottom:0; }
+  .eng-2up{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .eng-2up figure.eng{ margin:0; }
+  @media (max-width:820px){ .why-2col,.eng-duo{ grid-template-columns:1fr; } }
+
+  .intro-2col{ align-items:center; }
+  .slabel{ justify-content:flex-start; gap:14px 22px; }
+  .slabel .sub{ margin-left:auto; }
+
+  .digi-hd{ margin:56px 2px 10px; padding-top:24px; border-top:1px solid var(--sep); font-family:var(--mono); font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--copper); }
+  .digi-hd .no{ font-family:var(--mono); font-size:11px; color:var(--txt3); letter-spacing:.12em; margin-right:12px; }
+</style>
+</head>
+<body>
+
+<main class="sheet">
+  <div class="rail" aria-hidden="true"><div class="ticks"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+  <div class="doc">
+
+    <div class="band collar">
+      <a class="backlink" href="index.html#terrain">&#8592; Back to the portfolio</a>
+      <div class="collar-grid">
+        <div class="fld"><div class="k">Project</div><div class="v">Terrain studies</div></div>
+        <div class="fld"><div class="k">Subject</div><div class="v">Three<br>Sierra sites</div></div>
+        <div class="fld"><div class="k">Source</div><div class="v">USGS 3DEP<br>10&nbsp;m NED</div></div>
+        <div class="fld"><div class="k">Surface</div><div class="v">Delaunay TIN</div></div>
+        <div class="fld"><div class="k">Engine</div><div class="v">planar-<br>geometry</div></div>
+        <div class="fld"><div class="k">Prepared</div><div class="v">H. Wolf<br>2026-07-07</div></div>
+      </div>
+    </div>
+
+
+    <div class="band head">
+      <div class="eyebrow">Terrain &amp; earthwork · three studies</div>
+      <h1>What can the engines really do?</h1>
+      <p class="lede">Three preliminary terrain questions: how much earth a level pad would move on a sloped foothill lot; where a storm would run across a bluff; and how much water a dammed Sierra canyon would hold. The studies were computed in about an hour and a half using two existing systems that were not built for terrain (<a href="#built">how this was built</a>, below).</p>
+      <div class="rod hero">
+        <a class="grad" href="#study1"><div class="n">9,160<small>&nbsp;yd³</small></div><div class="u">Earth moved · a level pad</div></a>
+        <a class="grad" href="#study2"><div class="n">604k<small>&nbsp;gal</small></div><div class="u">Storm runoff routed · 22 acres</div></a>
+        <a class="grad" href="#study3"><div class="n">44,457<small>&nbsp;ac·ft</small></div><div class="u">Reservoir · one 256-ft dam</div></a>
+      </div>
+      <p class="herodisc">Computed end to end from public 10&#8202;m USGS elevation; proofs of concept rather than a survey. <a href="#method">Method</a> &#183; <a href="#built">The engines behind it</a></p>
+    </div>
+
+    <div class="band figband banner"><figure>
+      <div class="plate"><img loading="lazy" decoding="async" src="media/terrain/terrain-sites.jpg" alt="Satellite photos of the three Central California sites before any engineering: a foothill building lot, a river bluff, and a dry canyon a dam could close, each shown as its wider area with the study site inset." width="1937" height="728"></div>
+      <figcaption class="plate-foot"><span class="pl">The three sites &#183; from the sky</span><span class="cap">Before any engineering, the three pieces of ground as plain satellite photos: a building lot, a river bluff, and a dry canyon a dam could close. From up here you can't read the earthwork, the drainage, or the reservoir; the studies below work each of those out, one site each.</span></figcaption>
+    </figure></div>
+
+    <!-- STUDY 1 -->
+    <h2 class="band slabel" id="study1"><span class="snum">01</span><span class="st">Study 1 · Building pad</span><span class="sub">Foothill lot · Fresno County · 37.08°N 119.49°W</span></h2>
+    <div class="band intro"><div class="intro-2col"><p>Imagine a lot for sale in the foothills. You want to buy it and build a house, but the ground sits on a slope. How steep, exactly? How hard would it be to get a pad level, and how much dirt would have to be cut, filled, or trucked out to do it? You can't eyeball any of that, and it's most of the grading bill. It's the number you'd want before you make the offer: <b>what does a level pad here cost in dirt?</b></p><figure class="lotpic"><img loading="lazy" decoding="async" src="media/terrain/pad-satellite.jpg" alt="Plain satellite view of the foothill lot, the kind of map view a buyer would pull up online." width="1200" height="1200"><figcaption>the lot, from the map</figcaption></figure></div></div>
+    <div class="band figband"><figure>
+      <div class="plate plate-split"><div class="ps-left"><div class="ps-story"><img loading="lazy" decoding="async" class="digi-row" src="media/terrain/pad-build-sequence.jpg" alt="Build maps of the site: the satellite with the study boundary, its marked edge badged with its cardinal letter, the sampled points, and the mesh." width="1188" height="420"><div class="digi-hd"><span class="no">04</span>The computed, rendered surface</div><div class="digi-3d"><img loading="lazy" decoding="async" src="media/terrain/pad-context.jpg" alt="Zoomed far out and map-aligned with plate 01: the site boundary, badge on its marked edge, small within the surrounding terrain." width="604" height="604"><video src="media/terrain/pad-orbit.mp4" width="1120" height="938" loop muted playsinline preload="metadata" data-autoplay aria-label="Animation: slow orbit of the foothill lot's computed 3D surface with the graded building pad"></video><img loading="lazy" decoding="async" src="media/terrain/pad-oblique.jpg" alt="A second, low oblique view of the site in its surroundings, boundary badged." width="604" height="604"></div></div><div class="plate-foot"><span class="pl">Plate 0 &#183; from ground to model &#183; seven views</span><span class="cap">First the engine builds the model, then it reads figures from it. The build: the lot from above (01), the elevation points it samples (02), and the Delaunay mesh it triangulates (03), lifted into the 3D surface (04), a slow aerial pass flanked by stills, the left one map-aligned with 01. The supporting tiles at right read that surface off: colored by height (05), contour lines (06), shaded relief (07). The figures below are computed on this modeled surface. Vertical exaggeration &#215;3.0.</span></div></div><div class="ps-reads"><div class="ps-lab">Supporting reads</div><div class="ps-cell"><div class="ps-cap">05 &#183; ELEVATION &#183; 631&#8211;643 m</div><img loading="lazy" decoding="async" class="ps-tile" src="media/terrain/pad-elevation.jpg" alt="The surface colored by elevation." width="408" height="408"></div><div class="ps-cell"><div class="ps-cap">06 &#183; CONTOURS</div><img loading="lazy" decoding="async" class="ps-tile" src="media/terrain/pad-contours.jpg" alt="The surface as contour lines." width="408" height="408"></div><div class="ps-cell"><div class="ps-cap">07 &#183; SHADED RELIEF</div><img loading="lazy" decoding="async" class="ps-tile" src="media/terrain/pad-relief.jpg" alt="The surface lit as shaded relief." width="408" height="408"></div></div></div>
+    </figure></div>
+    <div class="band readout"><div class="rod">
+      <div class="grad"><div class="n">39<small>&nbsp;ft</small></div><div class="u">Fall across lot</div></div>
+      <div class="grad"><div class="n">12.9<small>&nbsp;%</small></div><div class="u">Steepest grade</div></div>
+      <div class="grad"><div class="n">2,089<small>&nbsp;ft</small></div><div class="u">Balanced pad</div></div>
+      <div class="grad"><div class="n">9,160<small>&nbsp;yd³</small></div><div class="u">Earth moved</div></div>
+      <div class="grad w"><div class="n">~0<small>&nbsp;yd³</small></div><div class="u">Hauled off-site</div></div>
+    </div></div>
+    <div class="band figband"><figure>
+      <div class="plate"><img loading="lazy" decoding="async" src="media/terrain/pad-grading.jpg" alt="Grading the lot to a level pad: the 3D pad tinted for cut and fill, a cut and fill map, and a cross-section from the low corner to the high." width="2739" height="1046"></div>
+      <figcaption class="plate-foot"><span class="pl">Plate 1 &#183; grading &#183; 80 &#215; 80 m pad</span><span class="cap">Grading the lot to one level building pad. The engine finds the height where the soil cut off the high side exactly fills the low side: 9,160 cubic yards each way, nothing trucked in or hauled out. Copper is cut, verdigris is fill; the section at right runs from the low corner up to the high one.</span><div class="fkey"><b>How to read it:</b> copper is soil cut off the high ground, verdigris is soil filled into the low ground, and the two balance, so no dirt has to leave the site.</div></figcaption>
+    </figure></div>
+    <div class="band means"><div class="trio">
+      <div class="col"><h3>The pad</h3><p>You cut the high side down and fill the low side up until it's level. Put the pad at the <b>balanced grade</b> (2,089&nbsp;ft) and the dirt you remove matches the dirt you need, so almost nothing leaves the site. On a slope, the trucking is where the money goes.</p></div>
+      <div class="col"><h3>The dirt</h3><p>Making the pad moves about <b>9,160&nbsp;cubic&nbsp;yards</b> (cut from the high side, placed on the low side), so modeled cut and fill approximately balance. Each figure comes from samples in the public elevation model.</p></div>
+      <div class="col w"><h3>The water</h3><p>In the modeled surface, runoff moves <b>southwest</b> and concentrates at the low corner. Any drainage intervention would require field verification and site-specific engineering.</p></div>
+    </div></div>
+
+    <!-- STUDY 2 -->
+    <h2 class="band slabel" id="study2"><span class="snum">02</span><span class="st">Study 2 · Rainwater</span><span class="sub">West bluff · San Joaquin River rim · north Fresno</span></h2>
+    <div class="band intro"><div class="intro-2col"><p>Say your house sits near the rim of this bluff, or you're planning to build one here. Bluffs erode, and 95&nbsp;feet below runs the San Joaquin. You don't want the foundations creeping toward that edge over the years, so you need to know what every storm does to this ground: which way the rain sheds, where it gathers and cuts, and where it leaves the property. So: <b>where does the rain run?</b></p><figure class="lotpic"><img loading="lazy" decoding="async" src="media/terrain/drainage-satellite.jpg" alt="Plain satellite view of the bluff above the San Joaquin, the kind of map view you would pull up before siting houses." width="1200" height="1200"><figcaption>the bluff, from the map</figcaption></figure></div></div>
+    <div class="band figband"><figure>
+      <div class="plate plate-split"><div class="ps-left"><div class="ps-story"><img loading="lazy" decoding="async" class="digi-row" src="media/terrain/drainage-build-sequence.jpg" alt="Build maps of the site: the satellite with the study boundary, its marked edge badged with its cardinal letter, the sampled points, and the mesh." width="1188" height="420"><div class="digi-hd"><span class="no">04</span>The computed, rendered surface</div><div class="digi-3d"><img loading="lazy" decoding="async" src="media/terrain/drainage-context.jpg" alt="Zoomed far out and map-aligned with plate 01: the site boundary, badge on its marked edge, small within the surrounding terrain." width="604" height="604"><video src="media/terrain/drainage-orbit.mp4" width="1120" height="938" loop muted playsinline preload="metadata" data-autoplay aria-label="Animation: slow orbit of the bluff's computed 3D surface with the study square marked"></video><img loading="lazy" decoding="async" src="media/terrain/drainage-oblique.jpg" alt="A second, low oblique view of the site in its surroundings, boundary badged." width="604" height="604"></div></div><div class="plate-foot"><span class="pl">Plate 0 &#183; from ground to model &#183; seven views</span><span class="cap">The same build on the river bluff: satellite (01), the sampled points (02), and the Delaunay mesh (03), lifted into the 3D surface (04), a slow aerial pass flanked by stills, the left one map-aligned with 01, the site outlined in orange inside the surrounding ground. The supporting tiles at right read it off: elevation (05), contour lines (06), shaded relief (07). Vertical exaggeration &#215;2.9.</span></div></div><div class="ps-reads"><div class="ps-lab">Supporting reads</div><div class="ps-cell"><div class="ps-cap">05 &#183; ELEVATION &#183; 92&#8211;121 m</div><img loading="lazy" decoding="async" class="ps-tile" src="media/terrain/drainage-elevation.jpg" alt="The surface colored by elevation." width="408" height="408"></div><div class="ps-cell"><div class="ps-cap">06 &#183; CONTOURS</div><img loading="lazy" decoding="async" class="ps-tile" src="media/terrain/drainage-contours.jpg" alt="The surface as contour lines." width="408" height="408"></div><div class="ps-cell"><div class="ps-cap">07 &#183; SHADED RELIEF</div><img loading="lazy" decoding="async" class="ps-tile" src="media/terrain/drainage-relief.jpg" alt="The surface lit as shaded relief." width="408" height="408"></div></div></div>
+    </figure></div>
+    <div class="band readout"><div class="rod">
+      <div class="grad"><div class="n">95<small>&nbsp;ft</small></div><div class="u">Fall down bluff</div></div>
+      <div class="grad"><div class="n">39<small>&nbsp;%</small></div><div class="u">Steepest grade</div></div>
+      <div class="grad"><div class="n">NW</div><div class="u">Bluff faces</div></div>
+      <div class="grad w"><div class="n">604k<small>&nbsp;gal</small></div><div class="u">Runoff · 1-in storm · 22.2 ac</div></div>
+      <div class="grad w"><div class="n">WNW</div><div class="u">Drains to river</div></div>
+    </div></div>
+    <div class="band figband"><figure>
+      <div class="plate"><img loading="lazy" decoding="async" src="media/terrain/drainage-map.jpg" alt="The bluff drainage: shaded relief with contours, downhill runoff arrows, and where flow concentrates into a draw and exits to the river." width="2836" height="1039"></div>
+      <figcaption class="plate-foot"><span class="pl">Plate 2 &#183; drainage &#183; 300 &#215; 300 m</span><span class="cap">Where a one-inch storm goes. The bluff lit and contoured (left), the downhill direction at every point (middle), and where those paths pool into a draw and leave toward the river (right, exit marked). About 604,000 gallons run off the modeled slope per inch of rain, assuming zero infiltration — the worst case.</span><div class="fkey"><b>How to read it:</b> the green arrows point downhill the way rain runs, the bright green is where those paths gather into a draw, and the dot marks where the water leaves toward the river.</div></figcaption>
+    </figure></div><div class="band figband clipfig"><figure><div class="plate"><div class="clipnarrow"><video src="media/terrain/drainage-storm.mp4" width="1036" height="966" loop muted playsinline preload="metadata" data-autoplay aria-label="Animation: a simulated rainstorm over the bluff; water gathers in the draws and drains off the study square"></video></div></div><figcaption class="plate-foot"><span class="pl">Plate 2 &#183; animated &#183; a storm over the bluff</span><span class="cap">A storm crossing the modeled bluff: rain lands, gathers into the draws, pools where the ground allows, and drains off toward the river. The study boundary is painted on the ground, its north edge marked in gold with a badge diamond and an N. Illustrative routing on the modeled surface, not calibrated hydrology. Vertical exaggeration &#215;6.5.</span></figcaption></figure></div>
+    <div class="band means"><div class="trio">
+      <div class="col"><h3>The slope</h3><p>A steep <b>northwest-facing bluff</b> dropping 95&nbsp;feet toward the San Joaquin, 39% at the steepest.</p></div>
+      <div class="col"><h3>The runoff</h3><p>This water can't be held in place on a 39% face. A 1-inch storm sheds roughly <b>604,000 gallons</b> off the modeled slope, all of it running downhill.</p></div>
+      <div class="col w"><h3>Where it goes</h3><p>The runoff gathers into a <b>draw</b> that cuts west-northwest down the bluff and exits toward the river. Anything built near the rim has to respect that draw: it's where the water and the erosion go.</p></div>
+    </div></div>
+
+    <!-- STUDY 3 -->
+    <h2 class="band slabel" id="study3"><span class="snum">03</span><span class="st">Study 3 &#183; Reservoir</span><span class="sub">San Joaquin River gorge &#183; Sierra Nevada &#183; 37.03&#176;N 119.57&#176;W</span></h2>
+    <div class="band intro"><div class="intro-2col"><p>A regional screening exercise may begin with many possible reservoir sites and incomplete information. This study asks a narrower question of one dry gorge with a single southern outlet: using public 10-meter elevation, what preliminary capacity and dam-height curve does the modeled surface produce? <b>Dam the outlet, and how much would it hold?</b></p><figure class="lotpic"><img loading="lazy" decoding="async" src="media/terrain/reservoir-satellite.jpg" alt="Plain satellite view of the dry gorge and its narrow south outlet, the kind of map view you would pull up before surveying a dam." width="1200" height="1200"><figcaption>the gorge, from the map</figcaption></figure></div></div>
+    <div class="band figband"><figure>
+      <div class="plate plate-split"><div class="ps-left"><div class="ps-story"><img loading="lazy" decoding="async" class="digi-row" src="media/terrain/reservoir-build-sequence.jpg" alt="Build maps of the site: the satellite with the study boundary, its marked edge badged with its cardinal letter, the sampled points, and the mesh." width="1188" height="420"><div class="digi-hd"><span class="no">04</span>The computed, rendered surface</div><div class="digi-3d"><img loading="lazy" decoding="async" src="media/terrain/reservoir-context.jpg" alt="Zoomed far out and map-aligned with plate 01: the site boundary, badge on its marked edge, small within the surrounding terrain." width="604" height="604"><video src="media/terrain/reservoir-orbit.mp4" width="1120" height="938" loop muted playsinline preload="metadata" data-autoplay aria-label="Animation: slow orbit of the canyon's computed 3D surface with the dam site marked"></video><img loading="lazy" decoding="async" src="media/terrain/reservoir-oblique.jpg" alt="A second, low oblique view of the site in its surroundings, boundary badged." width="604" height="604"></div></div><div class="plate-foot"><span class="pl">Plate 0 &#183; from ground to model &#183; the canyon</span><span class="cap">This canyon, built the same way: the Sierra gorge from above (01), 3,721 sampled points (02), and the 7,200-triangle Delaunay mesh (03), lifted into the 3D surface (04), a slow aerial pass flanked by stills, the left one map-aligned with 01, the site outlined in orange inside the surrounding ground. The supporting tiles at right read it off: elevation (05), contours (06), shaded relief (07). The dam and the water it holds come next. Vertical exaggeration &#215;3.2.</span></div></div><div class="ps-reads"><div class="ps-lab">Supporting reads</div><div class="ps-cell"><div class="ps-cap">05 &#183; ELEVATION &#183; 251&#8211;617 m</div><img loading="lazy" decoding="async" class="ps-tile" src="media/terrain/reservoir-elevation.jpg" alt="The surface colored by elevation." width="408" height="408"></div><div class="ps-cell"><div class="ps-cap">06 &#183; CONTOURS</div><img loading="lazy" decoding="async" class="ps-tile" src="media/terrain/reservoir-contours.jpg" alt="The surface as contour lines." width="408" height="408"></div><div class="ps-cell"><div class="ps-cap">07 &#183; SHADED RELIEF</div><img loading="lazy" decoding="async" class="ps-tile" src="media/terrain/reservoir-relief.jpg" alt="The surface lit as shaded relief." width="408" height="408"></div></div></div>
+    </figure></div>
+    <div class="band figband clipfig"><figure><div class="plate"><div class="clipnarrow" style="overflow:hidden"><video style="margin-top:-22%" src="media/terrain/reservoir-storm.mp4" width="1036" height="966" loop muted playsinline preload="metadata" data-autoplay aria-label="Animation: a simulated rainstorm over the canyon watershed"></video></div></div><figcaption class="plate-foot"><span class="pl">Plate 0 &#183; animated &#183; a storm over the gorge</span><span class="cap">The same storm physics over the whole catchment: the drainage network lights up, runoff concentrates, and water collects in the very basin the dam would use. The study boundary is painted on the ground, its south edge marked in gold with a badge diamond and an S. Illustrative routing, not calibrated hydrology. &#215;3.4 vertical.</span></figcaption></figure></div><div class="band figband clipfig"><figure><div class="plate"><video src="media/terrain/reservoir-comparison.mp4" width="1662" height="830" loop muted playsinline preload="metadata" data-autoplay aria-label="Animation: side by side, the canyon shedding a storm without the dam and the reservoir filling behind the dam"></video></div><figcaption class="plate-foot"><span class="pl">Plate 3 &#183; animated &#183; without the dam, with the dam</span><span class="cap">The case for the site, shown side by side. Without the dam, the drainage runs out the gorge&#8217;s one outlet. With it: the dam&#8217;s footprint appears first as a phantom, drops into place, and the reservoir fills behind it while the stream below runs dry. The reservoir is the flooded basin the engine computes, not a drawn shape. &#215;3.4 vertical.</span></figcaption></figure></div><div class="band figband"><figure>
+      <div class="plate"><div class="resv3"><img loading="lazy" decoding="async" src="media/terrain/reservoir-fill.jpg" width="1388" height="1388" alt="The canyon at full pool from the air: the impounded reservoir shaded by depth (dark where deepest) behind the orange dam wall at the south outlet, the study boundary marked in copper with its south edge in gold."><img loading="lazy" decoding="async" src="media/terrain/reservoir-capacity.jpg" alt="The flooded extent shaded by water depth with the dam and deepest point marked, and the engine's stage-storage curve, capacity at every waterline." width="2043" height="1110"></div></div>
+      <figcaption class="plate-foot"><span class="pl">Plate 4 &#183; reservoir &#183; full pool</span><span class="cap">In the model, a dam across the south outlet fills the gorge to 44,457 acre-feet. The canyon at full pool from the air (left), the flooded footprint shaded by depth with the dam and deepest point marked (middle), and the stage-storage curve at each modeled waterline (right). Capacity is integrated below the waterline from public 10-meter elevation: a preliminary estimate, not a design survey.</span><div class="fkey"><b>How to read it:</b> the orange wall is the dam, darker blue is deeper water, and the curve on the right shows how much the reservoir holds as the dam is built taller.</div></figcaption>
+    </figure></div>
+    <div class="band readout"><div class="rod">
+      <div class="grad"><div class="n">44,457<small>&nbsp;ac-ft</small></div><div class="u">Full-pool capacity</div></div>
+      <div class="grad"><div class="n">256<small>&nbsp;ft</small></div><div class="u">Dam height</div></div>
+      <div class="grad"><div class="n">449<small>&nbsp;ac</small></div><div class="u">Surface at full pool</div></div>
+      <div class="grad w"><div class="n">14.5<small>&nbsp;B gal</small></div><div class="u">Water impounded</div></div>
+      <div class="grad w"><div class="n">0.9<small>&nbsp;mi</small></div><div class="u">Reservoir reach</div></div>
+    </div></div>
+    <div class="band means"><div class="trio">
+      <div class="col"><h3>The basin</h3><p>A dry Sierra gorge that falls to a single narrow outlet on the south. Close that notch with a <b>256-foot dam</b> and the canyon behind it becomes a reservoir, held on the other three sides by its own rim.</p></div>
+      <div class="col"><h3>The modeled capacity</h3><p>At the selected full-pool elevation, the model yields <b>44,457 acre-feet</b>, about 14.5 billion gallons. The stage&#8211;storage curve reports the estimated capacity at successive waterlines.</p></div>
+      <div class="col w"><h3>What the estimate supports</h3><p>At this resolution, the result is a preliminary capacity and dam-height estimate for comparing sites. It is not a design value and still requires surveyed elevation, calibrated hydrology, and engineering review.</p></div>
+    </div></div>
+
+    <div class="band head" id="built"><div class="why-2col"><div class="head-text">
+      <div class="eyebrow">Why this exists</div>
+      <p class="lede">This is a portfolio demonstration rather than a product. It combines a hand-written C++ geometry engine with a geospatial platform I architected, applied to three Sierra and foothill sites.</p>
+      <p class="lede">Neither system was built for terrain. The geospatial platform originated as a county data pipeline; the geometry engine originated as a standard-library C++ implementation of predicates, triangulation, and Voronoi construction.</p>
+      <p class="lede" style="margin-top:0.7em">Public USGS elevation goes in; the geometry engine turns it into a triangulated surface; earthwork, drainage, and reservoir calculations run on that surface; a real lot boundary can come from the platform. The C++ geometry core and Python drainage analysis are hand-written. I designed the platform architecture, schema, scoring, and test gates; coding agents produced most of its Python implementation.</p></div><div class="why-fig"><figure class="eng"><img loading="lazy" decoding="async" src="media/terrain/planar-desmos.png" alt="The geometry engine's triangulation export rendered in its Desmos viewer: a spiky 15-vertex polygon ear-clipped into 13 colored triangles on graph paper." width="2640" height="1720"><figcaption>the geometry engine&#39;s desmos viewer &#183; a 15-vertex polygon in &#8594; 13 triangles out</figcaption></figure><figure class="eng"><img loading="lazy" decoding="async" src="media/terrain/fresno-parcels.jpg" alt="The geospatial platform's map of Fresno County rendered as one dot per parcel." width="1400" height="739"><figcaption>the platform&#39;s map of fresno county, parcel by parcel &#183; the front end to precomputed scores</figcaption></figure></div></div><div class="eng-duo"><div class="eng-col"><div class="eng-hd"><span class="eng-no">Engine 01</span><span class="eng-nm">planar-geometry &#183; C++ &#183; from scratch</span></div><p class="eng-note">A bare terminal: numbers in, numbers out. Every surface below is built from what it computes.</p><figure class="eng"><div class="term-win"><div class="term-bar"><i></i><i></i><i></i></div><pre class="eng-term2">$ delaunay_driver --random --random-count=1500 --coord-max=1000
+
+Generated 1500 random points within [-1000, 1000].
+Input sites:            1500
+Delaunay triangles:     <b>2976</b>
+Voronoi vertices:       2976
+Voronoi finite edges:   <b>4453</b>
+Delaunay validation:    <b class="ok">passed</b></pre></div><figcaption>1,500 random points &#8594; 2,976 Delaunay triangles and the full Voronoi dual, validated, in 0.09&#160;s</figcaption></figure><p class="eng-note" style="margin:12px 0 16px">Those counts are the summary line, not the computation. In that 0.09&#160;s the engine constructs every one of those objects &#8212; each triangle, each Voronoi vertex and edge, coordinates and adjacency &#8212; and then verifies the whole structure against the Delaunay condition before printing <b style="color:var(--txt)">passed</b>. The terrain surfaces above are these same structures, built from elevation samples instead of random points.</p><figure class="eng"><img decoding="async" src="media/geometry-dump-soup.png" width="1300" height="836" alt="Debug dump mid-scroll: dozens of Voronoi vertices, each printed as a 20-digit coordinate pair, scrolling past."><figcaption>the dump behind the summary line &#183; every voronoi vertex, coordinates and all &#183; a separate debug run</figcaption></figure><figure class="eng"><img decoding="async" src="media/geometry-validation.png" width="1500" height="810" alt="Empty-circumcircle validation trace: per-triangle circumcenter, radius, nearest foreign site, and margin, ending in ALL TRIANGLES PASS."><figcaption>the validation validating &#183; one empty-circumcircle check per triangle, margins printed &#8594; all pass &#183; another debug run</figcaption></figure><figure class="eng"><pre class="eng-code">Point twoMinus1  = p2 - p1;
+Point thisMinus1 = *this - p1;
+
+// scale epsilon to the problem size
+double scale = max({1.0,
+    fabs(twoMinus1.get_x()), fabs(twoMinus1.get_y()),
+    fabs(thisMinus1.get_x()), fabs(thisMinus1.get_y())});
+double eps = 1e-12 * scale;
+
+// 1) collinear?
+if (fabs(cross(twoMinus1, thisMinus1)) &gt; eps) return false;
+// 2) between-ness via projection
+double proj = dot(thisMinus1, twoMinus1);
+if (proj &lt; -eps) return false;</pre><figcaption>one predicate, hand-written &#183; is a point on this segment, within a scaled tolerance</figcaption></figure><figure class="eng"><div class="term-win"><div class="term-bar"><i></i><i></i><i></i></div><pre class="eng-term2">$ ./interview_demo --run-sample-demo
+
+Sample polygon
+Vertices:
+(-4,0)
+(-1,3)
+(3,4)
+(5,1)
+(2,-3)
+(-3,-4)
+Area: <b>46</b>
+Concave/Convex? <b class="ok">Convex</b>
+
+Triangulation:
+<b>{(-3,-4), (-4,0), (-1,3)}</b>
+Center: (-2.66667,-0.333333)
+Area: 7.5
+<b>{(-3,-4), (-1,3), (3,4)}</b>
+Center: (-0.333333,1)
+Area: 13
+...</pre></div><figcaption>one polygon, under the hood &#183; vertices in &#8594; area, convexity, and an ear-clipping triangulation out</figcaption></figure></div><div class="eng-col"><div class="eng-hd"><span class="eng-no">Engine 02</span><span class="eng-nm">geospatial platform &#183; Python</span></div><p class="eng-note">The same approach on different material: county records go in, versioned scores come out, and the map is just the interface.</p><figure class="eng"><img loading="lazy" decoding="async" src="media/terrain/platform-pipeline.png" alt="Terminal run of the real pipeline: bootstrap, build-web, and serve steps with timings, plus a stale-data warning banner." width="1400" height="546"><figcaption>the real pipeline &#183; bootstrap &#8594; build &#8594; serve &#8212; and it flags stale upstream data instead of hiding it</figcaption></figure><figure class="eng"><img loading="lazy" decoding="async" src="media/terrain/clovis-parcels.jpg" alt="The same map zoomed to Clovis street level, each dot a parcel on a named street." width="1400" height="736"><figcaption>the same data, three zooms down &#183; every dot a parcel on a named street</figcaption></figure><figure class="eng"><img loading="lazy" decoding="async" src="media/terrain/parcel-detail.jpg" alt="A single-parcel detail panel: APN, address, neighborhood cell, modeled price, and a data-quality label." width="1400" height="738"><figcaption>one parcel &#183; APN, neighborhood cell, modeled price &#8212; with the data-quality label right beside it</figcaption></figure><figure class="eng"><img decoding="async" src="media/heatmap-tests-midflight.png" width="1200" height="960" alt="The platform's Python test suite mid-flight at the pictured commit: 432 of 943 tests complete, dozens of PASS lines with per-suite timings, test_ranking currently running."><figcaption>the suite at the pictured commit &#183; 432/943, per-suite timings, test_ranking in the chamber</figcaption></figure><figure class="eng"><img decoding="async" src="media/heatmap-tests-final.png" width="1200" height="960" alt="The end of the pictured run: the web, storage, and safety suites passing, then the tally — 943 tests passed in 123.74 seconds, 1 skipped."><figcaption>the pictured run &#183; 943 tests passed in 123.74&#160;s &#183; 56 modules at that commit</figcaption></figure></div></div></div>
+
+    <div class="band method" id="method">
+      <h2>How this was made</h2>
+      <div class="steps">
+        <div class="step"><div class="sn">01 · elevation</div><p>Real USGS 10-meter elevation, sampled across each site: 100 points on the pad, 576 on the bluff, and 3,721 across the reservoir basin.</p></div>
+        <div class="step"><div class="sn">02 · surface</div><p>The points are triangulated into a continuous surface (a TIN) by a <b>C++ geometry engine I built from scratch</b>. 162, 1,058, and 7,200 triangles, exact to Euler's formula.</p></div>
+        <div class="step"><div class="sn">03 · analysis</div><p>From that surface: cut and fill balanced to a pad, and rainfall routed downhill neighbor-to-neighbor to find where water concentrates.</p></div>
+      </div>
+      <p class="mine">The 3D views are plots of the mesh underneath. Triangulation, balanced cut and fill, and reservoir capacity ran locally through the hand-written C++ geometry engine; the drainage analysis ran in Python on the same surface. Elevation comes from public USGS data, and the visualizations use external plotting libraries.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px">
+        <figure class="eng"><img decoding="async" src="media/terrain/terrain-elevation.png" width="1200" height="336" alt="Terminal log of 576 USGS NED 10-meter elevation samples arriving in six batches over a 300-meter window, with per-batch elevation ranges."><figcaption>step 01, live &#183; 576 elevation samples arriving batch by batch &#183; the bluff</figcaption></figure>
+        <figure class="eng"><img decoding="async" src="media/terrain/terrain-meshbuild.png" width="1200" height="476" alt="Terminal run over the reservoir basin: 3,721 sites triangulated into 7,200 triangles in 0.206 seconds, with slope statistics and the top flow-accumulation points."><figcaption>step 02 &#183; 3,721 samples &#8594; 7,200 triangles in 0.206&#160;s, slope and flow read off the mesh &#183; the canyon</figcaption></figure>
+        <figure class="eng"><img decoding="async" src="media/terrain/terrain-cutfill-search.png" width="1200" height="756" alt="Bisection table converging on the balanced pad: 28 trials narrowing cut-minus-fill from thousands of cubic meters to a fraction, ending at 9,160.1 cubic yards, matching the engine's closed-form answer."><figcaption>step 03 &#183; 28 bisection trials to a 0.0001&#160;m&#179; residual, and the engine&#8217;s closed-form answer agrees: 9,160.1&#160;yd&#179; &#183; the pad</figcaption></figure>
+        <figure class="eng"><img decoding="async" src="media/terrain/terrain-stagestorage.png" width="1200" height="416" alt="Stage-storage sweep: capacity computed at 16 waterlines from 253 to 328 meters, totaling 54,836,488 cubic meters at full pool."><figcaption>step 03 &#183; the stage&#8211;storage sweep, 16 waterlines &#8594; 54,836,488&#160;m&#179; (44,457&#160;acre-ft) &#183; the reservoir</figcaption></figure>
+      </div>
+    </div>
+
+    <div class="band gis">
+      <div class="m">County GIS · layer ready</div>
+      <p><b>It runs on the same engine as my county GIS platform</b>, so a lot boundary can come from official parcel data, and either study runs on any parcel in the county from its address alone, or any given coordinate boundary, provided elevation data exists.</p>
+    </div>
+
+    <div class="band foot">
+      <p class="disc">A demonstration of the method on real public data, not a licensed survey or construction document. Locations are approximate; satellite imagery courtesy Esri World Imagery. Ten-meter elevation supports preliminary comparison only. The pipeline can also accept a surveyed point cloud, but that path is not demonstrated here.</p>
+      <footer>
+        <span class="a">Harrison Wolf · Research Engineer</span>
+        <span class="b"><a href="mailto:harrisonwolf42@gmail.com">harrisonwolf42@gmail.com</a> · <a href="index.html#terrain">back to the portfolio</a></span>
+      </footer>
+    </div>
+
+  </div>
+</main>
+
+<script>
+  (function () {
+    var videos = Array.prototype.slice.call(document.querySelectorAll("video[data-autoplay]"));
+    var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (reduceMotion) {
+      videos.forEach(function (video) { video.controls = true; });
+      return;
+    }
+
+    function play(video) {
+      if (video.dataset.userPaused === "1") return;
+      var attempt = video.play();
+      if (attempt && attempt.catch) {
+        attempt.catch(function () { video.controls = true; });
+      }
+    }
+
+    videos.forEach(function (v) {
+      var w = document.createElement("span");
+      w.className = "vwrap";
+      v.parentNode.insertBefore(w, v);
+      w.appendChild(v);
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "vtoggle";
+      b.textContent = "❚❚";
+      b.setAttribute("aria-label", "Pause animation");
+      b.addEventListener("click", function () {
+        if (v.paused) {
+          delete v.dataset.userPaused;
+          b.textContent = "❚❚";
+          b.setAttribute("aria-label", "Pause animation");
+          play(v);
+        } else {
+          v.dataset.userPaused = "1";
+          v.pause();
+          b.textContent = "▶";
+          b.setAttribute("aria-label", "Play animation");
+        }
+      });
+      w.appendChild(b);
+    });
+
+    if (!("IntersectionObserver" in window)) {
+      videos.forEach(play);
+      return;
+    }
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) play(entry.target);
+        else entry.target.pause();
+      });
+    }, { rootMargin: "300px 0px", threshold: 0.01 });
+
+    videos.forEach(function (video) { observer.observe(video); });
+
+    videos.forEach(function (v) {
+      if (/drainage-storm|reservoir-storm/.test(v.currentSrc || v.src)) v.playbackRate = 0.6;
+    });
+  }());
+</script>
+</body>
+</html>
