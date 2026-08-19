@@ -81,7 +81,8 @@ html[data-theme="dark"] {
       <p style="margin:0;font-size:var(--text-lead);line-height:var(--leading-body);color:var(--ink-soft);max-width:58ch">Nexora ranks neighborhoods in a county against a family's stated budget and priorities for real-estate agents. The picker is the interface; this page documents the data pipeline, scoring, and serving runtime behind it.</p>
       <dl style="display:flex;flex-wrap:wrap;gap:var(--space-2) var(--space-6);margin:var(--space-5) 0 0;font-size:var(--text-small)">
         <div><dt style="display:inline;color:var(--muted)">Role</dt> <dd style="display:inline;margin:0;font-weight:600">architecture, schema, scoring, and test gates; implementation mainly through coding agents</dd></div>
-        <div><dt style="display:inline;color:var(--muted)">Status</dt> <dd style="display:inline;margin:0;font-weight:600">private repository · working walkthrough on request</dd></div>
+        <div><dt style="display:inline;color:var(--muted)">Status</dt> <dd style="display:inline;margin:0;font-weight:600">private product repository</dd></div>
+        <div><dt style="display:inline;color:var(--muted)">Inspect</dt> <dd style="display:inline;margin:0;font-weight:600"><a href="https://github.com/harrisonwolf/nexora-audit-edition">public Audit Edition</a></dd></div>
       </dl>
       <figure style="margin:var(--space-7) 0 0;display:grid;gap:var(--space-3)">
         <div style="background:var(--paper-deep);border:1px solid var(--rule);border-radius:var(--radius-2);padding:10px;box-shadow:var(--shadow-card)"><img src="media/nexora/hero-workspace.webp" alt="Nexora agent workspace: Fresno County choropleth map with ZIP boundaries, a client-brief panel, and an agent access gate" style="display:block;width:100%;height:auto;border-radius:var(--radius-0)"></div>
@@ -241,10 +242,10 @@ html[data-theme="dark"] {
     </section>
 
     <section data-screen-label="Closing" style="padding:var(--space-7) 0;border-top:1px solid var(--rule)">
-      <p style="margin:0 0 10px;font-family:var(--mono);font-size:var(--text-meta);letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--gold)">Private repository</p>
-      <h2 style="margin:0 0 var(--space-4);font-family:var(--serif);font-size:var(--text-h2);font-weight:600;text-wrap:balance">See it running</h2>
-      <p style="margin:0;line-height:var(--leading-body);color:var(--ink-soft);max-width:var(--measure-prose)">The repository is private. The counts and schema descriptions on this page reflect the snapshot used for this case study; a walkthrough can cover the pipeline, scoring math, or test suite.</p>
-      <p style="margin:var(--space-5) 0 0"><a class="fx2" href="mailto:harrisonwolf42@gmail.com?subject=Nexora%20walkthrough" style="display:inline-block;background:var(--accent);color:var(--paper);font-weight:600;text-decoration:none;border-bottom:none;border-radius:var(--radius-1);padding:13px 26px;white-space:nowrap;line-height:1">Request a walkthrough</a></p>
+      <p style="margin:0 0 10px;font-family:var(--mono);font-size:var(--text-meta);letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--gold)">Public audit surface</p>
+      <h2 style="margin:0 0 var(--space-4);font-family:var(--serif);font-size:var(--text-h2);font-weight:600;text-wrap:balance">Inspect the reliability mechanisms</h2>
+      <p style="margin:0;line-height:var(--leading-body);color:var(--ink-soft);max-width:var(--measure-prose)">The product repository remains private. The public <a href="https://github.com/harrisonwolf/nexora-audit-edition">Nexora Audit Edition</a> is a synthetic, executable extraction of five reliability mechanisms. I directed the extraction and adversarial review; coding agents produced most of the implementation under executable tests and release gates. <a href="https://github.com/harrisonwolf/nexora-audit-edition/releases/tag/v0.1.1">Version 0.1.1</a> includes the tests, machine-readable claims, source map, known limitations, and correction record, but no product interface, real data, production configuration, or private history. It is released under AGPL-3.0-only.</p>
+      <p style="margin:var(--space-5) 0 0;display:flex;align-items:center;gap:var(--space-4);flex-wrap:wrap"><a class="fx2" href="https://github.com/harrisonwolf/nexora-audit-edition" style="display:inline-block;background:var(--accent);color:var(--paper);font-weight:600;text-decoration:none;border-bottom:none;border-radius:var(--radius-1);padding:13px 26px;white-space:nowrap;line-height:1">Open Audit Edition</a><a href="mailto:harrisonwolf42@gmail.com?subject=Nexora%20walkthrough" style="font-weight:600">Request a product walkthrough →</a></p>
     </section>
 
     <footer style="border-top:1px solid var(--rule);padding:var(--space-5) 0 0;display:flex;justify-content:space-between;gap:var(--space-4);flex-wrap:wrap;color:var(--muted);font-size:var(--text-small)">

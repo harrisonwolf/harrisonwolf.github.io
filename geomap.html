@@ -51,7 +51,7 @@ img,svg,video{max-width:100%}
     <div><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.13em;color:#9A958B">Core</div><div style="margin-top:3px;color:#37342D">~3 months</div></div>
     <div><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.13em;color:#9A958B">Tests</div><div style="margin-top:3px;color:#37342D">948 across 78 files</div></div>
     <div><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.13em;color:#9A958B">Region</div><div style="margin-top:3px;color:#3C5A49">Fresno County</div></div>
-    <div style="grid-column:1/-1;border-top:1px solid #E2DFD7;padding-top:12px;color:#746F67">Private repo — architecture walkthrough on request. · <a href="nexora.html">Full platform case study →</a></div>
+    <div style="grid-column:1/-1;border-top:1px solid #E2DFD7;padding-top:12px;color:#746F67">Private product repo — architecture walkthrough on request. · <a href="https://github.com/harrisonwolf/nexora-audit-edition">Public Audit Edition →</a> · <a href="nexora.html">Full platform case study →</a></div>
   </div>
 
   <section id="picker" style="margin-top:44px">
@@ -101,6 +101,7 @@ img,svg,video{max-width:100%}
     <h2 style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:0.15em;color:#746F67;font-weight:400;display:flex;align-items:baseline;gap:12px"><span style="font-family:system-ui,sans-serif;font-size:19px;font-weight:650;color:#1B1B17;opacity:0.22;font-variant-numeric:tabular-nums">04</span>Discipline</h2>
     <p style="margin-top:18px;color:#2C2A24">The normal scoring path rejects data normalized by an older schema version and reports which stage must be re-run. Each artifact records the code version that produced it, and the runtime refuses a bundle with a mismatched payload version. Sparse data is suppressed instead of zero-filled; report quotas use one atomic insert covered by a two-thread concurrency test. At the pictured commit, the repository contained 29,000 lines of tests and 26,000 lines of source.</p>
     <p style="margin-top:14px;color:#2C2A24">I designed the architecture, schema, scoring, and test gates. AI coding agents produced most of the code by volume, working across git worktrees under a written rulebook; merges had to pass the project's tests and review gates. The private repository and supporting evidence are available in a walkthrough.</p>
+    <p style="margin-top:14px;color:#2C2A24">A public, synthetic-data-only <a href="https://github.com/harrisonwolf/nexora-audit-edition">Audit Edition</a> isolates five of the reliability mechanisms and their tests for independent inspection. The product, data, interface, and private history remain private.</p>
     <p style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:12.5px;margin-top:26px;padding-top:16px;border-top:1px solid #E2DFD7;display:flex;gap:24px;flex-wrap:wrap"><a href="index.html#geomap">← Back to the portfolio</a> <a href="nexora.html">Schema and runtime deep dive →</a></p>
   </section>
 </main>
