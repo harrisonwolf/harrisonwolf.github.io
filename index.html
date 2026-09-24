@@ -81,7 +81,7 @@ img,svg,video{max-width:100%}
     </div>
   </header>
 
-  <p style="font-size:18px;line-height:1.6;margin-top:28px;max-width:62ch">I evaluate pre-release frontier coding models professionally: reading agent trajectories for correctness and reasoning, and catching the ones that cheat. I also build systems where correctness can be measured, from a hand-written C++ research engine behind a mathematics paper to larger data and AI systems built by coding agents under explicit tests and review gates.</p>
+  <p style="font-size:18px;line-height:1.6;margin-top:28px;max-width:62ch">I evaluate pre-release frontier coding models professionally: reviewing agent trajectories for correctness and reasoning, and identifying reward hacking and misleading claims about what was verified. I also build systems where correctness can be measured, from a hand-written C++ research engine behind a mathematics paper to larger data and AI systems built by coding agents under explicit tests and review gates.</p>
   <p style="font-size:14.5px;color:#37342D;line-height:1.55;margin-top:16px;border-left:2px solid #3C5A49;padding-left:14px;max-width:64ch"><strong style="font-weight:650">Looking for:</strong> a research-engineering role at a frontier AI lab, in evaluations, reward hacking and RL environments, or agentic coding. <a href="mailto:harrisonwolf42@gmail.com">Get in touch</a>.</p>
 
   <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.13em;color:#6C685F;margin-top:36px">Selected work</div>
@@ -121,8 +121,7 @@ img,svg,video{max-width:100%}
     <div style="font-weight:650;font-size:17px;margin-top:8px">Evaluating pre-release frontier coding models</div>
     <p style="font-size:15.5px;line-height:1.6;color:#37342D;margin-top:8px">Under confidentiality, I evaluate unreleased coding models and agents from leading AI labs. I audit full agent trajectories for integrity, flagging reward hacking (solutions that game the tests or grader, or misreport what was verified) and separating it from legitimate fixes. I also run head-to-head comparisons of competing agents on the same task, rate multi-trajectory sets, and author the containerized tasks and tests used to measure them.</p>
     <div style="font-weight:650;font-size:17px;margin-top:18px">AI-agent control and governance <span style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11px;font-weight:400;text-transform:uppercase;letter-spacing:0.1em;color:#6C685F;margin-left:6px">private · in progress</span></div>
-    <p style="font-size:15.5px;line-height:1.6;color:#37342D;margin-top:8px">Governance and reliability infrastructure for orchestrating coding-agent fleets: machine-checkable safeguards, deterministic checks, mechanically enforced workflow gates, retained evidence, and decision gates reserved to the human operator.</p>
-    <p style="font-size:15.5px;line-height:1.6;color:#37342D;margin-top:10px">Next, I’m adding the <strong style="font-weight:650">Jev System-One Decision Model</strong>. It handles the decisions that need to be checkable and type-safe, and it sets up each run’s parameters quickly, with little room to make things up.</p>
+    <p style="font-size:15.5px;line-height:1.6;color:#37342D;margin-top:8px">I’m developing a private system for coordinating coding agents. It records each run, checks outputs against predefined rules, and reserves consequential decisions for a human operator. The design and implementation are still in progress.</p>
   </div>
 
   <div id="rail-sentinel" style="height:1px"></div>
