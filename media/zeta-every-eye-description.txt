@@ -1,0 +1,28 @@
+Every Eye v3 — visual description
+
+Duration: 94 seconds. The original audio is retained in the complete local film.
+This description supports the visual content; it is not a verified speech transcript.
+
+The film examines the eyes of a finite complex partial-sum path, moving from
+smooth structures formed by dense steps to sparse lines near the middle.
+
+Sampled visual progression (times approximate, from inspected video frames):
+0:00  A luminous cloud and small orbit-like structures against black.
+0:10  A pale, smooth two-armed eye fills the picture.
+0:20  Red, gold and blue colour separates its arms. Eye 1.
+0:30  Dense fine lines emerge in a pale eye.
+0:40  Blue and gold arms. Eye 112.
+0:48  Eye 224; on-screen label: 2,513 steps per turn; "the two arms".
+0:50  Increasingly separated lines around an eye. Eye 1,414.
+1:00  Sparse coloured strokes cross the picture. Eye 17,812.
+1:10  A dense star-like web of coloured lines; "the middle of the path".
+1:20  Several eyes at different scales shown together.
+
+Silent portfolio excerpt: 0:42–0:58. Its poster comes from 0:48.
+Supporting excerpt: The Eye in Depth II, 0:28–0:40 (silent), poster 0:34.
+The latter shows coloured paths crowding into sheets; the poster's text reads
+"tens of thousands: they merge into sheets".
+
+Playback/audio, transition timing, complete caption transcription and
+synchronization have not received continuous audiovisual acceptance in this
+review. Source and recipe limitations are recorded in the local media manifest.

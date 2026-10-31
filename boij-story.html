@@ -46,7 +46,7 @@ img,svg,video{max-width:100%}
   <a class="fx7" href="index.html#boij" style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:12.5px;text-decoration:none;color:#3C5A49">← Harrison Wolf</a>
 
   <h1 style="font-size:30px;line-height:1.1;font-weight:700;letter-spacing:-0.015em;margin-top:26px">Algebra search engine</h1>
-  <p style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:13px;color:#746F67;margin-top:9px">The search it ran, what it found, and how it's built.</p>
+  <p style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:13px;color:#746F67;margin-top:9px">Finding the rare structures that break a proposed rule, among tens of billions of candidates.</p>
 
   <div class="g4" style="border-top:1px solid #CFCBC0;border-bottom:1px solid #CFCBC0;margin-top:22px;padding:14px 0;display:grid;grid-template-columns:repeat(4,auto);gap:14px 30px;font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:12.5px">
     <div><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.13em;color:#9A958B">Language</div><div style="margin-top:3px;color:#37342D">C++</div></div>
@@ -58,8 +58,8 @@ img,svg,video{max-width:100%}
 
   <section id="search" style="margin-top:44px">
     <h2 style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:0.15em;color:#746F67;font-weight:400;display:flex;align-items:baseline;gap:12px"><span style="font-family:system-ui,sans-serif;font-size:19px;font-weight:650;color:#1B1B17;opacity:0.22;font-variant-numeric:tabular-nums">01</span>The search</h2>
-    <p style="margin-top:18px;color:#2C2A24">The search began in Macaulay2, but time and memory limited the candidate ranges it could reach. I wrote a compact C++ engine for the same candidate families and checks, then cross-validated its output case by case against the BoijSoederberg package. The larger search found a counterexample pattern that was proved rigorously and became one of <a href="https://arxiv.org/abs/2512.24320">the preprint's</a> three main theorems.</p>
-    <p style="margin-top:14px;color:#2C2A24">The engine supported both sides of that result. Early searches found counterexamples following Pell's equation, an infinite family later proved by number theory. Under a fixed size bound, the search found exactly four cases; the proof checks more than a dozen cases by hand. The useful result was not speed by itself: the larger search changed the range of mathematics the project could inspect.</p>
+    <p style="margin-top:18px;color:#2C2A24">A proposed rule in Boij–Söderberg theory can fail on structures so rare that only an exhaustive search finds them, and Macaulay2, the standard tool, could not reach the candidate ranges that mattered within the same time and memory limits. I hand-wrote a C++ engine for that search and cross-validated its output against Macaulay2’s BoijSoederberg package; on matched searches it runs about 70–115× faster. The larger search found a counterexample pattern that became one of <a href="https://arxiv.org/abs/2512.24320">the preprint’s</a> three main theorems; its proof was established separately.</p>
+    <p style="margin-top:14px;color:#2C2A24">Early searches found counterexamples following Pell’s equation, an infinite family later proved by number theory. Under a fixed size bound, the search found exactly four cases; the proof checks more than a dozen cases by hand.</p>
     <a href="media/boij-m2.png"><img src="media/boij-m2.png" alt="A Macaulay2 session using the BoijSoederberg package: degree sequences, one pure Betti table, and Betti numbers reaching into the millions" width="1067" height="1508" style="display:block;max-width:100%;height:auto;margin-top:18px;border:1px solid #E2DFD7;border-radius:2px"></a>
     <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;color:#746F67;margin-top:6px">The objects in Macaulay2: degree sequences, one pure Betti table, and Betti numbers already in the millions by three-digit degrees.</div>
   </section>
@@ -104,7 +104,7 @@ img,svg,video{max-width:100%}
 
   <section id="build" style="margin-top:52px">
     <h2 style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:0.15em;color:#746F67;font-weight:400;display:flex;align-items:baseline;gap:12px"><span style="font-family:system-ui,sans-serif;font-size:19px;font-weight:650;color:#1B1B17;opacity:0.22;font-variant-numeric:tabular-nums">04</span>How it's built</h2>
-    <p style="margin-top:18px;color:#2C2A24">The core represents the mathematical structures and runs the calculations, with a recursive enumeration algorithm generating the structures inside it. A performance layer runs the computations and checks them against the conjectures, working within the hardware limits and the difficulty of large-integer arithmetic on a 64-bit processor. The recursive generator works in resumable slices, able to pick up from any point in the space — which is what let the search reach as far as it did.</p>
+    <p style="margin-top:18px;color:#2C2A24">The core represents the algebraic structures, enumerates candidate degree sequences, and checks the conjectures. Enumeration runs in resumable slices; the arithmetic checks avoid unnecessary large intermediate products on a 64-bit processor.</p>
     <p style="margin-top:14px;color:#2C2A24">A snippet from the middle of one routine — notes-to-self included:</p>
     <pre style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:12px;line-height:1.55;color:#1B1B17;background:#FAF9F6;border:1px solid #E2DFD7;border-radius:2px;padding:14px 16px;margin-top:14px;overflow-x:auto">	//at this point all the fractions are reduced as much as possible, so L will be the lcm of all of them
 	//question is, if we have (a*b) and (c*d), is lcm((a*b),(c*d)) the same as lcm(lcm(a,c),lcm(b,d))?
@@ -149,7 +149,7 @@ img,svg,video{max-width:100%}
 
   <section id="ownership" style="margin-top:52px">
     <h2 style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:0.15em;color:#746F67;font-weight:400;display:flex;align-items:baseline;gap:12px"><span style="font-family:system-ui,sans-serif;font-size:19px;font-weight:650;color:#1B1B17;opacity:0.22;font-variant-numeric:tabular-nums">05</span>Ownership</h2>
-    <p style="margin-top:18px;color:#2C2A24">The core is a ~1,200-line C++ engine I wrote by hand in 2024 and cross-validated case-by-case against Macaulay2's own BoijSoederberg package. Its exhaustive search surfaced the counterexamples used in one of the paper's three main theorems.</p>
+    <p style="margin-top:18px;color:#2C2A24">I hand-wrote the ~1,200-line C++ core in 2024 and cross-validated it against Macaulay2. Coding agents later added supporting documentation and test and benchmark harnesses. The engine surfaced counterexamples for the preprint; it did not establish the proofs.</p>
     <p style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:12.5px;margin-top:26px;padding-top:16px;border-top:1px solid #E2DFD7"><a href="index.html#boij">← Back to the portfolio</a></p>
   </section>
 </main>

@@ -1,0 +1,65 @@
+ORC LIVE CAPTURE V2 - FIRST-LOOK REVIEW
+
+Run: run-0001. Plan version: 1. Current state: awaiting_decision.
+ONE real Helmsman invocation completed; ZERO Worker invocations.
+No Proceed, integration or source apply-back has been approved or performed.
+
+Actual model: gpt-6-astra; configured effort medium.
+Recorded invocation elapsed time: 13.1 seconds.
+Reported usage: 12,934 input tokens; 341 output tokens; 13,275 total tokens.
+Reported cached input, cache-write input and reasoning output tokens: 0.
+Monetary charge and remaining subscription allowance: unknown.
+Subscription route only; no API fallback was used.
+
+FIRST-LOOK PLAN v1
+
+Interpretation: Prepare a small modernization proposal for the disposable
+imported samplemod repository while preserving existing test behavior. Deliver
+reviewed changes, README updates, retained checks, and a Candidate for operator
+review; leave original source untouched.
+
+Moves:
+- Wait for explicit operator approval before any execution.
+- Confirm supplied artifacts and divide file ownership before concurrent dispatch.
+- Assign Sonnet dependency/test workflow and packaging; assign Sol
+  lint/deprecation cleanup and README.
+- Have both Workers save checkpoints and retain meaningful offline test scripts
+  and results against their exact final files.
+- Review proposals for compatibility and behavior preservation; route repairs
+  through the same Workers within remaining time.
+- Present unintegrated proposals and a Candidate with failures, untested
+  behavior, and elapsed-time limitations.
+
+Worker use: After approval, dispatch exactly two direct tool-enabled Workers
+concurrently: Claude Sonnet 5.5 for test/dependency workflow and packaging, and
+GPT-6.1 Sol for disjoint lint/deprecation cleanup and README files.
+
+Assumptions:
+- Repository files must be supplied as sandbox artifacts because no source
+  repository is mounted.
+- Any overlapping file ownership must be resolved before edits.
+- Only the installed offline toolchain is available; no credentials, installs,
+  downloads, paid APIs, fallback models, or extra workers.
+- The fifteen-minute target includes review and repairs; 600-second invocation
+  limits may leave insufficient time, which will be disclosed.
+- Build-test-repair is optional workflow guidance; integration and source
+  apply-back require separate operator review and approval.
+
+OPERATOR REVIEW NOTE
+The first assumption needs clarification: the disposable repository is already
+imported into Orc's managed Workbench. The original source is intentionally not
+agent-mounted. Before Proceed, consider correcting the plan to use that existing
+managed Workbench and Worker private copies rather than expecting manual artifact
+supply. No correction model call has been made without your approval.
+
+CAPTURE STATUS
+Genuine TUI staging and paused-review frames were recorded. Delivered PNGs are
+visually inspected original terminal renders, without content editing.
+Raw casts remain in private capture staging pending complete frame-by-frame
+privacy review. No claim of every-frame review is made yet.
+No live Worker-tour video exists yet because execution awaits your decision.
+The harmless calibration is separate and is not Orc evidence.
+
+DECISION NEEDED
+Review plan v1 and its workspace assumption. Choose whether to request the
+clarification/revised first look or approve Proceed. Codex has not chosen for you.
