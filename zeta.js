@@ -1,22 +1,5 @@
 'use strict';
 // Media starts only after the visitor explicitly presses Play. No autoplay or loops.
-const button = document.getElementById('load-film');
-const full = document.getElementById('full-film');
-const status = document.getElementById('film-status');
-button.addEventListener('click', () => {
-  full.src = 'media/films/every-eye-v3.mp4';
-  full.hidden = false;
-  button.hidden = true;
-  full.focus();
-  full.load();
-  status.hidden = false;
-  status.textContent = 'Film loaded. Press Play to begin; audio is controlled by the player.';
-});
-full.addEventListener('error', () => {
-  status.hidden = false;
-  status.textContent = 'The film could not be loaded. The stills and short excerpts remain available.';
-});
-
 for (const play of document.querySelectorAll('[data-video]')) {
   play.hidden = false;
   play.addEventListener('click', () => {

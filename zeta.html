@@ -6,8 +6,8 @@
 <meta name="description" content="Partial-sum Spiral: an interactive lab and a set of films that make the hidden geometry of the Riemann zeta function visible, computed precisely out to hundreds of billions of terms.">
 <title>Partial-sum Spiral · Harrison Wolf</title>
 <link rel="icon" href="media/favicon.svg">
-<link rel="stylesheet" href="zeta.css?v=c3">
-<script src="zeta.js?v=c3" defer></script>
+<link rel="stylesheet" href="zeta.css?v=c4">
+<script src="zeta.js?v=c4" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -64,86 +64,48 @@
 </section>
 
 <section id="watch" aria-labelledby="watch-title">
-<div class="eyebrow">The flagship film</div>
-<h2 id="watch-title">Every Eye v3 <span class="duration">/ 1:34</span></h2>
-<p>One journey along a single path: from an eye so dense it looks solid, down to the individual steps that make it, and on to the chaotic middle where the pattern breaks apart. Watch the 16-second excerpt below, or the complete 94-second film.</p>
-<figure class="hero">
-<div class="media-preview"><img id="eye-poster" src="media/zeta-eye.jpg" alt="Blue and gold arms curl into an eye made from dense partial-sum paths" width="1600" height="900" fetchpriority="high"><button class="play-excerpt" data-video="eye-excerpt" data-poster="eye-poster" type="button" hidden>Play silent excerpt · 0:16</button><video hidden id="eye-excerpt" controls playsinline preload="none" poster="media/zeta-eye.jpg" width="1280" height="720" aria-label="Every Eye v3: sixteen-second silent excerpt" aria-describedby="eye-description"><source src="media/zeta-eye-excerpt.mp4" type="video/mp4"><p>Your browser cannot play this video. The still and description below show the same structure.</p></video></div><noscript><p><a href="media/zeta-eye-excerpt.mp4">Play the silent 16-second excerpt</a></p></noscript>
-<figcaption id="eye-description"><strong>Every Eye v3.</strong> Each eye is thousands of tiny steps piled together. As the film moves outward, they thin out until you can see every single one. Silent excerpt, 0:42–0:58. <a href="#full-film">Complete film ↓</a></figcaption>
-</figure>
-<div class="local-note" id="film-status" role="status" hidden></div>
-<button id="load-film" type="button">Load complete film with original audio</button>
-<video id="full-film" controls playsinline preload="none" poster="media/zeta-eye.jpg" width="1920" height="1080" aria-label="Every Eye v3, complete film with original audio" aria-describedby="full-description" hidden></video>
-<p id="full-description" class="small">On-screen labels are part of the picture. <a href="media/zeta-every-eye-description.txt">Read a text description of the film</a>.</p>
+<div class="eyebrow">Films</div>
+<h2 id="watch-title">Follow the path.</h2>
+<p>Three of the films, each one computed frame by frame from the exact sum.</p>
+<figure class="film-main"><video controls playsinline preload="none" poster="media/zeta-eye.jpg" width="1920" height="1080" aria-label="Every Eye v3, 1 minute 34 seconds, with original audio" src="media/films/every-eye-v3.mp4"></video><figcaption><strong>Every Eye</strong> · 1:34 · From an eye so dense it looks solid, down to its single steps, and on to the middle where the pattern breaks apart. <a href="media/zeta-every-eye-description.txt">Text description</a>.</figcaption></figure>
+<div class="pair">
+<figure><video controls playsinline preload="none" poster="media/zeta-depth.jpg" aria-label="The Eye in Depth II, 1 minute 12 seconds" src="media/films/eye-in-depth-ii.mp4"></video><figcaption><strong>The Eye in Depth II</strong> · 1:12 · The same eye in 3-D, where tens of thousands of strings fuse into sheets.</figcaption></figure>
+<figure><video controls playsinline preload="none" poster="media/zeta-mirror.jpg" aria-label="The Mirror, 1 minute 35 seconds" src="media/films/mirror.mp4"></video><figcaption><strong>The Mirror</strong> · 1:35 · The middle of the path, where it folds onto itself and curls become coils.</figcaption></figure>
+</div>
 </section>
 <section class="intro" aria-labelledby="idea">
-<div><div class="eyebrow">Why it exists</div><h2 id="idea">Most pictures of zeta stop where it gets interesting.</h2></div>
-<div><p>The Riemann zeta function is built from an infinite sum. Draw that sum one term at a time, each term a short arrow laid end to end, and an unremarkable walk turns into spirals, symmetries and small structures nested inside larger ones. Animations of this exist, but they show the first few hundred steps at small heights, where an ordinary calculator copes.</p><p>Go higher and the picture quietly breaks. Each step’s direction depends on a number so large that ordinary computer arithmetic keeps only a few of the digits that matter. The spirals still look like spirals; they’re just the wrong ones, and nothing on screen warns you. Partial-sum Spiral keeps every step exact out to heights of a trillion and paths of 200 billion steps. It is two things: an interactive lab where you drag a point and watch the sum respond, and a set of films that fly through structures the small-height pictures never reach. I set the mathematical and visual direction and built all of it with coding agents.</p></div>
-</section>
-<section aria-labelledby="rule">
-<div class="eyebrow">The mathematical idea</div>
-<h2 id="rule">Length from σ. Direction from t.</h2>
-<div class="formula" role="math" aria-label="S sub N of s equals the sum, from n equals one to N, of n to the minus sigma times e to the minus i t log n">S<sub>N</sub>(s) = ∑<sub>n=1</sub><sup>N</sup> n<sup>−σ</sup> e<sup>−it log n</sup>, &nbsp;s = σ + it</div>
-<p>Every number s has two parts. The first, σ, sets how long each step is; steps shrink slowly as n grows. The second, t, sets which way each step points. Because the turn from one step to the next changes only gradually, long runs of steps line up and spiral together, then cancel and fall apart. Those runs are the curls and eyes in the films.</p>
-<p>On the critical line, σ = ½, where the Riemann hypothesis lives, this plain sum never actually settles on ζ(s); it wanders forever. So the app keeps two things apart: the finite path you are looking at, and the true value of ζ computed independently. Alternating η sums, Euler–Maclaurin corrections and the functional equation show how other formulas reach the value the path can’t. The pictures are a way of seeing the problem, not a proof of anything about it.</p>
+<div><div class="eyebrow">Why it’s hard</div><h2 id="idea">Most pictures of zeta stop where it gets interesting.</h2></div>
+<div><div class="formula" role="math" aria-label="S sub N of s equals the sum, from n equals one to N, of n to the minus sigma times e to the minus i t log n">S<sub>N</sub>(s) = ∑<sub>n=1</sub><sup>N</sup> n<sup>−σ</sup> e<sup>−it log n</sup>, &nbsp;s = σ + it</div><p>Each term of the sum is a step: σ sets its length, t its direction. Laid end to end, the steps draw these spirals. Most pictures stop at small heights, because higher up ordinary computer arithmetic keeps too few digits of each step’s direction. The spirals still look like spirals; they’re just the wrong ones, and nothing warns you. Partial-sum Spiral keeps every step exact, out to a height of a trillion and a path of 200 billion steps. I set the mathematical and visual direction and built it with coding agents.</p></div>
 </section>
 <section aria-labelledby="lab">
-<div class="eyebrow">What you can do in the lab</div>
+<div class="eyebrow">The lab</div>
 <h2 id="lab">Drag a point. Watch the sum respond.</h2>
-<p class="section-lead">The interactive app runs in a browser. Pick a point s, and the path redraws itself as you move.</p>
 <ul class="can-do">
-<li><strong>Watch analytic continuation happen.</strong> At the first zero, the plain sum spirals outward forever, while an alternating version of the same series closes in on the true value: zero.</li>
-<li><strong>See 1 + 2 + 3 + … go to infinity</strong> while the marker for the true value sits calmly at −1/12, and add the correction terms that bend the runaway path back onto it.</li>
-<li><strong>Paint the whole function.</strong> Domain colouring shows every value at once; zeros appear where all the colours meet.</li>
-<li><strong>Draw a loop and count the zeros inside it,</strong> read straight off how many times the image winds around the origin.</li>
-<li><strong>Lift the path into 3-D,</strong> where the final spiral becomes a helix and each regime stacks into its own coil.</li>
-<li><strong>Swap the series.</strong> Try Dirichlet L-functions, the Möbius and Liouville functions, power series, or a formula of your own.</li>
-<li><strong>Push it to 300 million terms,</strong> with a camera that follows the structure the path is circling instead of the raw tip.</li>
+<li><strong>Watch analytic continuation happen.</strong> At the first zero the plain sum spirals outward forever, while an alternating version closes in on the true value: zero.</li>
+<li><strong>See 1 + 2 + 3 + … run to infinity</strong> while the true value sits at −1/12, then add the correction terms that bend the path back onto it.</li>
+<li><strong>Paint the whole function</strong> with domain colouring, and count the zeros inside any loop you draw.</li>
+<li><strong>Go further:</strong> lift the path into 3-D, swap in L-functions or your own series, or push to 300 million terms.</li>
 </ul>
 <figure class="lab-shot"><img src="media/zeta-lab-app.webp" alt="The Partial-sum Spiral app: a domain-coloured map of zeta on the left with a point on the critical line, and on the right the partial-sum path spiralling around its true value" width="1600" height="1000" loading="lazy"><figcaption>The lab at the first zero, s = ½ + 14.1347i: domain colouring on the left, the partial-sum path on the right, the true value of ζ marked by the ring.</figcaption></figure>
 <p><a class="launch" href="lab/index.html">Open the lab <span aria-hidden="true">↗</span></a> <span class="small">Runs entirely in your browser, with nothing to install. Designed for a desktop or tablet screen.</span></p>
 </section>
-<div class="pair">
-<figure><div class="media-preview"><img id="depth-poster" src="media/zeta-depth.jpg" alt="Coloured partial-sum paths crowd into layered sheets in a spatial view" width="1200" height="675" loading="lazy" decoding="async"><button class="play-excerpt" data-video="depth-excerpt" data-poster="depth-poster" type="button" hidden>Play silent excerpt · 0:12</button><video hidden id="depth-excerpt" controls playsinline preload="none" poster="media/zeta-depth.jpg" width="960" height="540" aria-label="The Eye in Depth II: twelve-second silent excerpt" aria-describedby="depth-description"><source src="media/zeta-depth-excerpt.mp4" type="video/mp4"></video></div><noscript><p><a href="media/zeta-depth-excerpt.mp4">Play the silent 12-second excerpt</a></p></noscript><figcaption id="depth-description"><strong>The Eye in Depth II.</strong> The same eye seen in depth. Tens of thousands of paths crowd together until they merge into sheets. Silent excerpt, 0:28–0:40. <span class="image-note">Still: 0:34.</span> <a href="#depth-film">Watch the complete 1:12 film</a>.</figcaption></figure>
-<figure><img src="media/zeta-mirror.jpg" alt="Gold, green, and red curls arranged around a diagonal axis, lifted into coils" width="1200" height="675" loading="lazy" decoding="async"><figcaption><strong>The Mirror.</strong> Lift the path off the page, with height marking how far along it each step is, and flat curls become coils. Still: 0:41. <a href="#mirror-film">Watch the complete 1:35 film</a>.</figcaption></figure>
-</div>
-
-<section aria-labelledby="supporting-films"><div class="eyebrow">Other views of the same mathematics</div><h2 id="supporting-films">From sheets to symmetry.</h2>
-<div class="pair"><div id="depth-film"><h3>The Eye in Depth II <span class="duration">/ 1:12</span></h3><p>Rise through the eye as its paths stack into sheets.</p><video controls playsinline preload="none" poster="media/zeta-depth.jpg" aria-label="The Eye in Depth II, complete film" src="media/films/eye-in-depth-ii.mp4"></video></div><div id="mirror-film"><h3>The Mirror <span class="duration">/ 1:35</span></h3><p>A path that mirrors itself around its middle, then folds into coils.</p><video controls playsinline preload="none" poster="media/zeta-mirror.jpg" aria-label="The Mirror, complete film" src="media/films/mirror.mp4"></video></div></div></section>
-<section aria-labelledby="shape-storyboard"><div class="eyebrow">Visual explanation / storyboard</div><h2 id="shape-storyboard">The Shape of Zeta v6</h2><p>A longer film in progress that explains, step by step, how the arithmetic produces the shapes. Shown here as a storyboard.</p><figure><a href="media/zeta-shape-v6-storyboard.png"><img src="media/zeta-shape-v6-storyboard.png" alt="Contact sheet of The Shape of Zeta v6 storyboard, showing the sequence of mathematical views and explanatory frames" loading="lazy" decoding="async"></a><figcaption>Storyboard preview only. Open the contact sheet at full size to read the sequence.</figcaption></figure></section>
-
-<section aria-labelledby="engineering">
-<div class="eyebrow">What I built</div>
-<h2 id="engineering">Keep the small turns when the numbers get large.</h2>
-<p>Each step’s direction is the angle t × log n, and only what’s left over after the whole turns matters. At t = 10<sup>12</sup> that product is in the trillions, and ordinary 64-bit arithmetic keeps only a few digits of the leftover part that actually draws the picture. Get it wrong and the spirals still look like spirals; they’re just the wrong ones. Keeping that fraction exact is the core engineering problem.</p>
-<p>The interactive app uses double-double phase arithmetic, error-compensated running totals and a multi-resolution store of the path, computed in parallel in the browser with Web Workers. It also offers domain colouring, winding-number readouts, general Dirichlet series and a 3-D lift. The film pipeline adds high-precision phase anchors, level-of-detail drawing so it never has to draw every term in every frame, compiled render loops, resumable render chunks, and separate picture and annotation layers.</p>
-<figure class="higher-study"><video controls playsinline preload="none" poster="media/zeta-higher-storyboard.png" src="media/films/higher.mp4" aria-label="Higher, complete retained film" aria-describedby="higher-description"></video><figcaption id="higher-description"><strong>Higher.</strong> How far up can you look? This study climbs to heights near 10<sup>22</sup>, ten sextillion, by computing only a short window of the path rather than everything before it. It is an implementation study, not a precision certificate: this export may use an approximate model in places. <a href="media/zeta-higher-storyboard.png">Open the contact sheet</a>.</figcaption></figure>
+<section aria-labelledby="evidence">
+<div class="eyebrow">For technical readers</div>
+<h2 id="evidence">Exact by construction.</h2>
+<p>Each step’s direction is the angle t·log n, and only the fraction left over after whole turns matters. At t = 10<sup>12</sup> that product runs into the trillions, so the app carries it in double-double precision with exact reduction, error-compensated sums and a multi-resolution path store computed in Web Workers. The films add high-precision phase anchors, level-of-detail drawing and separate picture and annotation layers. Results are checked against high-precision references.</p>
 <div class="scales" role="region" aria-label="Scale and evidence" tabindex="0"><table>
 <caption>Three different scales of computation</caption>
 <thead><tr><th scope="col">System</th><th scope="col">Scale</th><th scope="col">What that means</th></tr></thead>
 <tbody>
 <tr><th scope="row">Interactive app</th><td>Up to 3 × 10<sup>8</sup> terms in the interface</td><td>Explore paths of up to 300 million terms live in a browser. The screen draws a budgeted summary of the path, not every term.</td></tr>
 <tr><th scope="row">Full-path film data</th><td>t = 10<sup>12</sup><br>N = 2 × 10<sup>11</sup></td><td>A C program walks all 200 billion steps and keeps an adaptive summary; the renderer picks the detail each frame needs.</td></tr>
-<tr><th scope="row">Higher window studies</th><td>t near 10<sup>22</sup></td><td>Look at a 4,000-step window around term ~39.9 billion directly, without summing the billions of steps before it.</td></tr>
 </tbody></table></div>
-</section>
-
-<section aria-labelledby="evidence">
-<div class="eyebrow">For technical readers</div>
-<h2 id="evidence">Exact by construction.</h2>
-<p>A picture is only worth studying if every line in it is where the mathematics says it should be. So the arithmetic that sets each step’s direction is never done in plain floating point: it is carried in double-double precision and reduced exactly, and the results are checked against high-precision references. The details below record what was measured, against what, and where the checks stop.</p>
 <details><summary>Numerical verification and performance evidence</summary>
 <p><strong>Interactive app.</strong> The app ships with 88 embedded test cases. On a fresh run, the largest partial-sum error (relative to max(1, |reference|)) was 3.62 × 10<sup>−13</sup>; the zeta reference agreed with embedded mpmath values to 2.49 × 10<sup>−12</sup>. One case misses the self-test’s strict 10<sup>−12</sup> threshold by a hair (1.008 × 10<sup>−12</sup>), so the self-test currently reports <code>pass: false</code>. The October 16 design note records 137 checks against 30-digit mpmath through t = 10<sup>13</sup> and a 171-million-terms-per-second run on 20 processes with numba; that Python backend and suite weren’t recovered for this review, so those figures are historical.</p>
 <p><strong>Higher.</strong> The implementation uses 200-bit fixed-point logarithms generated at 75 decimal digits, integer phase reduction, then float64 phases and complex128 coordinates. The recorded comparison to 90-digit mpmath samples eight offsets at each of eight heights through 10<sup>22</sup>, with maximum reported discrepancy 1.1 × 10<sup>−16</sup> turns. Full-sum gap comparisons in that report stop at 10<sup>12</sup>.</p>
 <p>A fresh bounded check compared six local steps at each nominal height 10<sup>13</sup> and 10<sup>22</sup> with 90-digit phase calculations. Maximum step differences relative to the pivot step were 9.82 × 10<sup>−16</sup> and 9.11 × 10<sup>−16</sup>. This checks sampled local steps, not full sums or zeta values at those heights.</p>
 <p>The recorded 3.4–4.6 ms timings refer to a 4,000-term local data calculation. Film drawing and encoding are separate costs. No current end-to-end throughput benchmark is claimed here.</p>
-</details>
-<details><summary>Source map and media provenance</summary>
-<p>Film source reviewed at <code>on-the-line</code> commit <code>d7fd5c32569e4193281f50d3649435a898ad1d62</code>: <code>data/spiral.c</code>, <code>m2.py</code>, <code>higher/facts.py</code>, <code>higher/facts-notes.md</code>, <code>higher/render.py</code>, and <code>LAYERS.md</code>. The delivered interactive snapshot is <code>Apps &amp; images/complex_spiral.html</code>; its October 16 design note is a historical record, not a current source-release manifest.</p>
-<p>The pictures and excerpts here come directly from the retained local film copies: <em>Every Eye v3</em>, <em>The Eye in Depth II</em>, and <em>The Mirror</em>. Excerpts are scaled, re-encoded, and silent; no generated imagery has been added. Exact source hashes, time ranges, and transformation commands are retained in the local preparation record. A historical source commit and dirty patch linking each original export to its render were not available.</p>
-<p><em>Higher</em> is discussed as an implementation study rather than used as flagship media: its renderer can fall back to a stationary-phase model, and the exact data mode of the retained export has not been established. <em>The Shape of Zeta v6</em> is represented here only by its storyboard contact sheet. Stylized Wonder films are excluded from engine-output evidence.</p>
-</details>
-<details><summary>Mathematical context and prior work</summary>
+</details><details><summary>Mathematical context and prior work</summary>
 <p>Partial-sum paths, curlicues, and their relation to the zeta function have a long mathematical history. This project’s contribution is its combination of precise computation, interactive views, camera and scale choices, and films that expose the structure. It makes no claim to have invented partial-sum spirals or proved a new result about zeros.</p>
 <p>An earlier geometric treatment: <a href="https://arxiv.org/abs/1310.6396">Nickel, <em>Geometry of the Riemann Zeta Function</em> (2013)</a>. Definitions and analytic continuation: <a href="https://dlmf.nist.gov/25.2">NIST Digital Library of Mathematical Functions, definitions and analytic continuation of ζ</a>.</p>
 </details>
