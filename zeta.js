@@ -31,14 +31,14 @@ for (const play of document.querySelectorAll('[data-video]')) {
   });
 }
 
-// Scroll-driven hero: the page's scroll position chooses frames from Rising, The Eye in Depth II and Coils.
+// Scroll-driven hero: the page's scroll position chooses frames from the film Rising, then a sequence rendered for this page from the exact sum at t = 10^9.
 // Frames are still images, so nothing plays by itself; reduced-motion visitors get one still.
 (() => {
   const rise = document.getElementById('rise');
   const canvas = document.getElementById('rise-canvas');
   if (!rise || !canvas || !canvas.getContext) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const N = 394, PRIMER = 0.14, ctx = canvas.getContext('2d', {alpha: false});
+  const N = 554, PRIMER = 0.11, ctx = canvas.getContext('2d', {alpha: false});
   const lo = new Array(N), hi = new Array(N);
   const beats = [...rise.querySelectorAll('.rise-beat')];
   const bar = rise.querySelector('.rise-progress span');
@@ -99,7 +99,7 @@ for (const play of document.querySelectorAll('[data-video]')) {
     const p = Math.min(1, Math.max(0, -r.top / span));
     const f = Math.max(0, (p - PRIMER) / (1 - PRIMER));
     pos = f * (N - 1);
-    alpha = p < PRIMER ? 0.35 + 0.65 * Math.min(1, Math.max(0, (p - 0.105) / (PRIMER - 0.105))) : 1;
+    alpha = p < PRIMER ? 0.35 + 0.65 * Math.min(1, Math.max(0, (p - 0.082) / (PRIMER - 0.082))) : 1;
     plan(); draw();
     if (bar) bar.style.width = (p * 100).toFixed(1) + '%';
     for (const b of beats) {
