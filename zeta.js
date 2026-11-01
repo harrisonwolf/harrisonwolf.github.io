@@ -72,7 +72,8 @@ for (const play of document.querySelectorAll('[data-video]')) {
     // The frames are 1920 px wide, so a larger backing canvas would only cost time, not add detail.
     const r = Math.min(devicePixelRatio || 1, 2, 1920 / Math.max(1, canvas.clientWidth));
     canvas.width = Math.round(canvas.clientWidth * r); canvas.height = Math.round(canvas.clientHeight * r);
-    hd = canvas.width > 1100; drawnKey = ''; plan(); draw();
+    // Sharp frames whenever the small set would be blown up noticeably (wide screens, and tall phone screens too).
+    hd = Math.max(canvas.width / 1024, canvas.height / 437) > 1.25; drawnKey = ''; plan(); draw();
   };
   const FR = beats.filter(b => b.dataset.f0);
   let ticking = false;
