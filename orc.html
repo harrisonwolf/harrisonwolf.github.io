@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Orc: one terminal cockpit for running any AI model (GPT, Claude, Gemini, Grok, DeepSeek, open-weight and more) side by side on the same task, with the operator in control of everything.">
   <title>Orc — Any AI. One cockpit. Your rules.</title>
-  <link rel="stylesheet" href="orc.css?v=c7">
+  <link rel="stylesheet" href="orc.css?v=c8">
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -28,7 +28,7 @@
     <section aria-labelledby="walkthrough">
       <div class="section-heading"><div><div class="eyebrow">See the interface</div><h2 id="walkthrough">A tour of the cockpit.</h2></div><span class="duration">62 seconds · silent</span></div>
       <p id="video-description">A tour of the real cockpit during a live run, then the Workbench afterwards: the Workers on two providers, their activity, the proposals and the checks.</p>
-      <div class="vwrap" data-cues="tour"><video controls preload="none" playsinline poster="media/orc/v2/orc-tour-poster.png" aria-label="Orc cockpit tour during a live run" aria-describedby="video-description replay-note"><source src="media/orc/v2/orc-tour.mp4" type="video/mp4">Your browser cannot play this video. <a href="media/orc/v2/orc-tour.mp4">Download the 62-second tour</a>.</video></div>
+      <div class="vwrap" data-cues="tour"><video controls controlslist="nofullscreen" preload="none" playsinline poster="media/orc/v2/orc-tour-poster.png" aria-label="Orc cockpit tour during a live run" aria-describedby="video-description replay-note"><source src="media/orc/v2/orc-tour.mp4" type="video/mp4">Your browser cannot play this video. <a href="media/orc/v2/orc-tour.mp4">Download the 62-second tour</a>.</video></div>
       <p class="small">No audio. The four views below walk through the same screens in text. <a href="media/orc/v2/orc-tour.mp4">Open video directly</a>.</p>
       <aside class="capture-note" id="replay-note"><strong>About this recording</strong><p>A real run, recorded live. GPT-6 Astra coordinated; Claude Sonnet 5.5 and GPT-6.1 Sol worked in parallel, each in its own private copy, on two providers through existing subscriptions. The task: modernise a stale public Python repository (samplemod), imported as an isolated copy. From launch to close took 2 minutes 51 seconds, including the pause to review the plan. Every change was reviewed before it landed, the project’s original tests passed unchanged inside the sandbox, and the reviewed files were then applied back to the copy of the repository.</p></aside>
     </section>
@@ -55,7 +55,7 @@
         <article><h3>Traceable to the source.</h3><p>Every file, contribution and decision stays attributable to exactly what created it: the Worker, the model and its settings, the invocation, and the content fingerprint of the bytes.</p><figure><a class="image-link" href="media/orc/v3/int-07-attribution.png" aria-label="Open full-size screenshot"><img loading="lazy" src="media/orc/v3/int-07-attribution.png" width="1920" height="1080" alt="A retained file traced to its Worker, Claude Sonnet 5.5 medium, invocation, settings and SHA-256"></a><figcaption>One delivered file, traced to the Worker and model that wrote it.</figcaption></figure></article>
       </div>
       <div class="section-heading" style="margin-top:44px"><div><h3 style="margin:0">Watch it in action</h3></div><span class="duration">83 seconds · silent</span></div>
-      <div class="vwrap" data-cues="interactive"><video controls preload="none" playsinline poster="media/orc/v3/orc-interactive-poster.png" aria-label="Orc interactive tour: conversation, steering, watchdogs, continuation"><source src="media/orc/v3/orc-interactive-web.mp4" type="video/mp4">Your browser cannot play this video. <a href="media/orc/v3/orc-interactive-web.mp4">Download the 83-second tour</a>.</video></div>
+      <div class="vwrap" data-cues="interactive"><video controls controlslist="nofullscreen" preload="none" playsinline poster="media/orc/v3/orc-interactive-poster.png" aria-label="Orc interactive tour: conversation, steering, watchdogs, continuation"><source src="media/orc/v3/orc-interactive-web.mp4" type="video/mp4">Your browser cannot play this video. <a href="media/orc/v3/orc-interactive-web.mp4">Download the 83-second tour</a>.</video></div>
       <p class="small">A real project: the conversation proposes a run, a mid-run message adds a Worker, the watchdog reports and answers questions, and a closed run is continued as a new one.</p>
     </section>
 
@@ -68,6 +68,6 @@
     </section>
     <footer><a href="index.html#flagship">← Back to selected work</a><span>Orc · Working prototype · Private source</span></footer>
   </main>
-  <script src="orc.js?v=c7" defer></script>
+  <script src="orc.js?v=c8" defer></script>
 </body>
 </html>

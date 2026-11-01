@@ -38,37 +38,44 @@ const CUES = {
 for (const wrap of document.querySelectorAll('[data-cues]')) {
   const cues = CUES[wrap.dataset.cues], video = wrap.querySelector('video');
   if (!cues || !video) continue;
-  const layer = document.createElement('div'); layer.className = 'cue-layer'; layer.setAttribute('aria-hidden', 'true');
-  layer.innerHTML = '<span class="cue-key"></span><div class="cue-box"><strong class="cue-title"></strong><span class="cue-text"></span><span class="cue-next"></span></div>';
-  wrap.appendChild(layer);
-  const key = layer.querySelector('.cue-key'), title = layer.querySelector('.cue-title'), text = layer.querySelector('.cue-text'), next = layer.querySelector('.cue-next');
-  const toggle = document.createElement('button'); toggle.type = 'button'; toggle.className = 'cue-toggle'; toggle.textContent = 'Captions: on';
-  toggle.addEventListener('click', () => { const off = wrap.classList.toggle('cues-off'); toggle.textContent = off ? 'Captions: off' : 'Captions: on'; });
-  wrap.after(toggle);
-  // Same cues as a text track, shown only in native fullscreen where the overlay can't follow.
+  // The caption bar sits under the picture, never on it.
+  const bar = document.createElement('div'); bar.className = 'cue-bar'; bar.setAttribute('aria-live', 'off');
+  bar.innerHTML = '<span class="cue-key">⌨</span><div class="cue-body"><strong class="cue-title">Press play.</strong><span class="cue-text"> Captions here explain each screen and the key that opens it.</span><span class="cue-next"></span></div>';
+  wrap.appendChild(bar);
+  const key = bar.querySelector('.cue-key'), title = bar.querySelector('.cue-title'), text = bar.querySelector('.cue-text'), next = bar.querySelector('.cue-next');
+  // Controls under the player: captions on/off, and fullscreen that keeps the caption bar.
+  const row = document.createElement('div'); row.className = 'cue-controls';
+  const toggle = document.createElement('button'); toggle.type = 'button'; toggle.textContent = 'Captions: on';
+  toggle.addEventListener('click', () => { const off = wrap.classList.toggle('cues-off'); toggle.textContent = off ? 'Captions: off' : 'Captions: on'; syncTrack(); });
+  const fs = document.createElement('button'); fs.type = 'button'; fs.textContent = 'Fullscreen ⛶';
+  row.append(toggle, fs); wrap.after(row);
+  // Fullscreen the whole player (video + bar). Where that isn't supported (iPhone), fall back to native video fullscreen with captions as a text track.
   const track = video.addTextTrack('captions', 'English', 'en');
-  for (const [a, b, k, t, x] of cues) track.addCue(new VTTCue(a, b, `[${k}] ${t}: ${x}`));
-  track.mode = 'hidden';
-  document.addEventListener('fullscreenchange', () => { track.mode = document.fullscreenElement === video && !wrap.classList.contains('cues-off') ? 'showing' : 'hidden'; });
-  let current = -1;
+  for (const [s, e, k, t, x] of cues) track.addCue(new VTTCue(s, e, `[${k}] ${t}: ${x}`));
+  const nativeFs = () => document.fullscreenElement === video || video.webkitDisplayingFullscreen;
+  const syncTrack = () => { track.mode = nativeFs() && !wrap.classList.contains('cues-off') ? 'showing' : 'hidden'; };
+  syncTrack();
+  const goFull = () => {
+    if (document.fullscreenElement === wrap) return document.exitFullscreen();
+    if (wrap.requestFullscreen) wrap.requestFullscreen().catch(() => video.webkitEnterFullscreen && video.webkitEnterFullscreen());
+    else if (video.webkitEnterFullscreen) video.webkitEnterFullscreen();
+  };
+  fs.addEventListener('click', goFull);
+  video.addEventListener('dblclick', e => { e.preventDefault(); goFull(); });
+  document.addEventListener('fullscreenchange', () => { fs.textContent = document.fullscreenElement === wrap ? 'Exit fullscreen' : 'Fullscreen ⛶'; syncTrack(); });
+  video.addEventListener('webkitbeginfullscreen', syncTrack); video.addEventListener('webkitendfullscreen', syncTrack);
+  let current = -2;
   const update = () => {
     const t = video.currentTime, i = cues.findIndex(c => t >= c[0] && t < c[1]);
-    if (i !== current) {
-      current = i; layer.classList.toggle('on', i >= 0);
-      if (i >= 0) {
-        const [, , k, ti, x] = cues[i];
-        key.textContent = '⌨ ' + k; title.textContent = ti; text.textContent = ' ' + x;
-        key.classList.remove('pop'); void key.offsetWidth; key.classList.add('pop');
-      }
+    if (i !== current && i >= 0) {
+      current = i;
+      const [, , k, ti, x] = cues[i];
+      key.textContent = '⌨ ' + k; title.textContent = ti + '.'; text.textContent = ' ' + x;
+      key.classList.remove('pop'); void key.offsetWidth; key.classList.add('pop');
     }
-    if (i >= 0) {
-      const n = cues[i + 1], soon = n && cues[i][1] - t < 1.6;
-      next.textContent = soon ? 'Next: ' + n[3] + ' →' : '';
-    }
+    if (i >= 0) { const n = cues[i + 1]; next.textContent = n && cues[i][1] - t < 1.6 ? 'Next: ' + n[3] + ' →' : ''; }
   };
-  video.addEventListener('play', () => wrap.classList.add('started'), {once: true});
-  video.addEventListener('timeupdate', update); video.addEventListener('seeked', update); video.addEventListener('play', update);
-  // timeupdate fires ~4×/s; a frame loop keeps the key badge in step while playing.
+  video.addEventListener('timeupdate', update); video.addEventListener('seeked', update);
   const tick = () => { update(); if (!video.paused && !video.ended) requestAnimationFrame(tick); };
   video.addEventListener('play', () => requestAnimationFrame(tick));
 }
