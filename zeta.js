@@ -80,9 +80,9 @@ for (const play of document.querySelectorAll('[data-video]')) {
   }
   function plan() {
     const k = Math.round(pos);
-    for (let d = -12; d <= 40; d++) request(lo, 'zeta-rise', k + d, Math.abs(d) * (d < 0 ? 2 : 1));
-    for (let i = 0; i < N; i += 16) request(lo, 'zeta-rise', i, 60 + Math.abs(i - k) / 4);
-    if (hd) for (let d = -3; d <= 10; d++) request(hi, 'zeta-rise-hd', k + d, 8 + Math.abs(d) * 3);
+    for (let d = -12; d <= 40; d++) request(lo, 'zeta-frames', k + d, Math.abs(d) * (d < 0 ? 2 : 1));
+    for (let i = 0; i < N; i += 16) request(lo, 'zeta-frames', i, 60 + Math.abs(i - k) / 4);
+    if (hd) for (let d = -3; d <= 10; d++) request(hi, 'zeta-frames-hd', k + d, 8 + Math.abs(d) * 3);
     pump();
   }
   const size = () => {
