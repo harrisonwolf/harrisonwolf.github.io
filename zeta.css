@@ -109,3 +109,20 @@ h3{font-size:19px;line-height:1.4;margin:0 0 12px}#watch{margin-top:36px}.higher
 .site-foot{max-width:1080px;margin:0 auto;padding:36px 40px;display:flex;justify-content:space-between;font-size:13px;color:var(--muted);border-top:1px solid var(--line)}
 @media(max-width:900px){.band.dark .gallery{grid-template-columns:1fr 1fr}.features{grid-template-columns:1fr 1fr}.why-grid{grid-template-columns:1fr}.films .pair{grid-template-columns:1fr}}
 @media(max-width:640px){#main .band{padding:72px 0}.statement{padding:84px 20px 64px}.sec-head,.device,.features,.band.dark .gallery,.films .pair,.why-grid,.card{padding-left:20px;padding-right:20px}.band.dark .gallery{grid-template-columns:1fr}.features{grid-template-columns:1fr}.statement .stats{grid-template-columns:1fr 1fr}.card{margin-left:20px;margin-right:20px;padding:20px}.site-foot{padding:28px 20px;flex-direction:column;gap:8px}}
+
+/* lab tour */
+.device-shot{position:relative}
+.callout{position:absolute;max-width:30ch;background:rgba(255,255,255,.96);color:var(--ink);border:1px solid rgba(0,0,0,.08);border-radius:12px;padding:11px 14px;font-size:13.5px;line-height:1.4;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.callout strong{display:block;margin-bottom:2px}
+.cl-left{left:3%;top:52%}.cl-right{right:3%;top:52%}
+.tour{max-width:1080px;margin:80px auto 0;padding:0 40px}
+.tour-head{padding:0;margin-bottom:40px}.tour-head h3{font-size:clamp(26px,3vw,36px);letter-spacing:-.025em;margin:0 0 10px}
+.tour-row{display:grid;grid-template-columns:1.25fr 1fr;gap:36px;align-items:center;padding:34px 0;border-top:1px solid var(--line)}
+.tour-row:nth-child(odd){grid-template-columns:1fr 1.25fr}.tour-row:nth-child(odd)>img,.tour-row:nth-child(odd)>.tour-pair{order:2}
+.tour-row img{width:100%;height:auto;border-radius:14px;display:block;background:#0b0e12;border:1px solid rgba(0,0,0,.08)}
+.tour-pair{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.tour-k{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--green);letter-spacing:.12em;margin-bottom:8px}
+.tour-row h4{font-size:clamp(20px,2vw,25px);letter-spacing:-.02em;line-height:1.2;margin:0 0 10px}
+.tour-row p{font-size:15.5px;line-height:1.6;color:#3d3a33;margin:0}
+@media(max-width:860px){.tour-row,.tour-row:nth-child(odd){grid-template-columns:1fr}.tour-row:nth-child(odd)>img,.tour-row:nth-child(odd)>.tour-pair{order:0}.callout{position:static;max-width:none;margin-top:10px;box-shadow:none}.device-shot{display:flex;flex-direction:column}}
+@media(max-width:640px){.tour{padding:0 20px;margin-top:56px}}

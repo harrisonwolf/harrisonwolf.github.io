@@ -6,8 +6,8 @@
 <meta name="description" content="Partial-sum Spiral: an interactive lab and a set of films that make the hidden geometry of the Riemann zeta function visible, computed precisely out to hundreds of billions of terms.">
 <title>Partial-sum Spiral · Harrison Wolf</title>
 <link rel="icon" href="media/favicon.svg">
-<link rel="stylesheet" href="zeta.css?v=d2">
-<script src="zeta.js?v=d2" defer></script>
+<link rel="stylesheet" href="zeta.css?v=d3">
+<script src="zeta.js?v=d3" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -72,14 +72,18 @@
 </section>
 
 <section class="band light lab" aria-labelledby="lab">
-<div class="sec-head reveal"><div class="eyebrow">The lab</div><h2 id="lab">Drag a point. Watch the sum respond.</h2><p>An interactive laboratory that runs entirely in your browser.</p></div>
-<figure class="device reveal"><img src="media/zeta-lab-app.webp" alt="The Partial-sum Spiral app: a domain-coloured map of zeta on the left with a point on the critical line, and on the right the partial-sum path spiralling around its true value" width="1600" height="1000" loading="lazy"><figcaption>At the first zero, s = ½ + 14.1347i: domain colouring on the left, the partial-sum path on the right, the true value of ζ marked by the ring.</figcaption></figure>
-<ul class="features">
-<li class="reveal"><strong>Watch analytic continuation happen.</strong>At the first zero the plain sum spirals outward forever, while an alternating version closes in on the true value: zero.</li>
-<li class="reveal"><strong>See 1 + 2 + 3 + … run to infinity</strong>while the true value sits at −1/12, then add the correction terms that bend the path back onto it.</li>
-<li class="reveal"><strong>Paint the whole function</strong>with domain colouring, and count the zeros inside any loop you draw.</li>
-<li class="reveal"><strong>Go further.</strong>Lift the path into 3-D, swap in L-functions or your own series, or push to 300 million terms.</li>
-</ul>
+<div class="sec-head reveal"><div class="eyebrow">The lab</div><h2 id="lab">Drag a point. Watch the sum respond.</h2><p>The lab is the interactive half of the project: a laboratory for the zeta function that runs entirely in your browser. You choose a point; it draws what the sum does there, exactly.</p></div>
+<figure class="device reveal"><div class="device-shot"><img src="media/zeta-lab-app.webp" alt="The Partial-sum Spiral app: a domain-coloured map of zeta on the left with a point on the critical line, and on the right the partial-sum path spiralling around its true value" width="1600" height="1000" loading="lazy"><span class="callout cl-left"><strong>Left: the domain.</strong> Every point is a value of s; the colour is ζ(s) there. Click or drag to choose one.</span><span class="callout cl-right"><strong>Right: the sum.</strong> Each term is a step, laid end to end. The ring marks the true value of ζ(s).</span></div><figcaption>Shown at the first zero of zeta, s = ½ + 14.1347i. The path circles the ring without ever landing on it.</figcaption></figure>
+
+<div class="tour">
+<div class="sec-head reveal tour-head"><h3>Six things to try</h3><p>Each picture below is the lab’s own output pane, captured as you would see it.</p></div>
+<article class="tour-row reveal"><img src="media/zeta-lab/converge.webp" alt="A short path of steps curling into a tight spiral that lands on a ring" width="1400" height="1080" loading="lazy"><div><div class="tour-k">01</div><h4>Pick a point. Watch the sum land.</h4><p>At s = 2 − i the steps shrink quickly and the path spirals straight in on ζ(s), the ring. This is what convergence looks like.</p></div></article>
+<article class="tour-row reveal"><div class="tour-pair"><img src="media/zeta-lab/zero-dirichlet.webp" alt="Concentric spirals winding outward forever around a small ring" width="1400" height="1080" loading="lazy"><img src="media/zeta-lab/zero-eta.webp" alt="A path that quickly collapses into a tight knot on a ring" width="1400" height="1080" loading="lazy"></div><div><div class="tour-k">02</div><h4>At a zero, the plain sum never lands.</h4><p>Move to the first zero, s = ½ + 14.1347i. The ordinary series (left) spirals outward forever, even though ζ is exactly zero there. Switch to the alternating series (right) and the same point folds into a knot on the ring. That difference is analytic continuation, made visible.</p></div></article>
+<article class="tour-row reveal"><img src="media/zeta-lab/em-tail.webp" alt="A divergent arc of steps with a dashed green correction jumping back to the ring" width="1400" height="1080" loading="lazy"><div><div class="tour-k">03</div><h4>A divergent series, brought home.</h4><p>At s = −1.5 + 3i the steps grow instead of shrinking and the path runs off toward 10<sup>5</sup>. Turn on the Euler–Maclaurin tail and a correction (dashed) carries it straight back to ζ(s). The same trick is why 1 + 2 + 3 + … can be said to equal −1/12.</p></div></article>
+<article class="tour-row reveal"><img src="media/zeta-lab/turn-pi.webp" alt="Hundreds of long blue and orange segments crossing through one centre like a star" width="1400" height="1080" loading="lazy"><div><div class="tour-k">04</div><h4>Where every step is a half turn.</h4><p>At height t = 1399.31 with N = t/π, each step turns exactly half a turn from the last, so the path keeps passing through one centre. Hundreds of steps stack into a star. The same geometry, at a trillion, is the eye in the films.</p></div></article>
+<article class="tour-row reveal"><img src="media/zeta-lab/domain.webp" alt="A domain-coloured map of the zeta function: red to the right, rainbow bands fanning out to the left, with a marked point on the critical line" width="1400" height="1028" loading="lazy"><div><div class="tour-k">05</div><h4>The whole function, painted.</h4><p>The domain pane colours every value of ζ at once: hue is the argument, lightness the size. Zeros are the points where all the colours meet; the bands on the left are the trivial zeros. Twelve colourings are built in, from phase portraits to conformal grids.</p></div></article>
+<article class="tour-row reveal"><img src="media/zeta-lab/curlicues.webp" alt="A long straight run of steps ending in a small cluster of curls" width="1400" height="1080" loading="lazy"><div><div class="tour-k">06</div><h4>Go anywhere.</h4><p>At Im s = −924.5 and five thousand terms the path ends in curlicues. Swap in a Dirichlet L-function, the Möbius or Liouville series, a power series, or a formula of your own; lift the path into 3-D; push to 300 million terms with a camera that follows the structure.</p></div></article>
+</div>
 <p class="cta reveal"><a class="launch" href="lab/index.html">Open the lab <span aria-hidden="true">↗</span></a><span class="small">Nothing to install. Designed for a desktop or tablet screen.</span></p>
 </section>
 
