@@ -1,102 +1,63 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Video generation studio — Harrison Wolf</title>
-<link rel="icon" href="media/favicon.svg">
-<style>
-body{margin:0;background:#F5F4F1;color:#1B1B17;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased}
-h1,h2,h3,p,ul{margin:0}
-a{color:#3C5A49;text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
-a:hover{color:#294032}
-a:focus-visible{outline:2px solid #3C5A49;outline-offset:2px}
-section[id],div[id]{scroll-margin-top:24px}
-img,svg,video{max-width:100%}
-#side-rail{visibility:hidden}
-@media (max-width:1279px){#side-rail{display:none}}
-@media (max-width:640px){
-  .g2{grid-template-columns:1fr !important}
-  .g4{grid-template-columns:1fr 1fr !important}
-}
-@media print{
-  #side-rail{display:none}
-  a{text-decoration:none}
-}
-</style>
-<style>.fx1:hover{color:#3C5A49 !important}
-.fx2:hover{color:#3C5A49 !important}
-.fx3:hover{color:#3C5A49 !important}
-.fx4:hover{color:#3C5A49 !important}
-.fx5:hover{text-decoration:underline !important}</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A terminal video-generation studio that runs two open-weight models on one 8 GB laptop GPU, with seam and drift telemetry and a blind A/B harness so changes can be measured instead of eyeballed.">
+  <title>Video generation studio — two models, one 8 GB GPU</title>
+  <link rel="icon" href="media/favicon.svg">
+  <link rel="stylesheet" href="project.css?v=1">
+  <style>
+    .pair{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:1240px;margin:56px auto 0;padding:0 40px}
+    .pair video{aspect-ratio:560/382}
+    .pair.dev video{aspect-ratio:1120/764}
+    @media(max-width:700px){.pair{grid-template-columns:1fr;padding:0 20px}}
+  </style>
 </head>
 <body>
-<nav aria-label="Contents" id="side-rail" style="position:fixed;top:50%;left:24px;transform:translateY(-50%);z-index:20;opacity:0;pointer-events:none;transition:opacity 0.35s ease;display:flex;flex-direction:column;gap:9px;font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:12px;max-width:180px">
-  <a class="fx1" href="#studio" style="text-decoration:none;color:#1B1B17;display:flex;align-items:baseline;gap:9px"><span style="opacity:0.32;font-variant-numeric:tabular-nums">01</span>The studio</a>
-  <a class="fx2" href="#output" style="text-decoration:none;color:#1B1B17;display:flex;align-items:baseline;gap:9px"><span style="opacity:0.32;font-variant-numeric:tabular-nums">02</span>Output</a>
-  <a class="fx3" href="#progress" style="text-decoration:none;color:#1B1B17;display:flex;align-items:baseline;gap:9px"><span style="opacity:0.32;font-variant-numeric:tabular-nums">03</span>Two weeks</a>
-  <a class="fx4" href="index.html#ltx" style="text-decoration:none;color:#746F67;display:flex;align-items:baseline;gap:9px;margin-top:2px;padding-top:9px;border-top:1px solid #E2DFD7"><span style="opacity:0.32">←</span>Portfolio</a>
-</nav>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="mast"><a href="index.html#ltx">← Back to portfolio</a><span>Selected work / Video generation studio</span></header>
+  <main id="main">
+    <section class="hero-band">
+      <div class="eyebrow">Generative video · Python · hardware-constrained</div>
+      <h1>Two models, one 8 GB GPU, and a way to measure what improved.</h1>
+      <p class="lead">Open-weight video models want far more GPU memory than a laptop has, and chaining short shots into a sequence makes colour and style drift from one to the next. Judging either by eye is unreliable. This studio fits two models on an 8 GB card and records seam and drift telemetry for every run, so a pipeline change can be compared instead of guessed at.</p>
+      <div class="project-meta"><span>Core in ~2 weeks</span><span>Two open-weight backends</span><span>One 8 GB laptop GPU</span><span><a href="https://github.com/harrisonwolf/ltx-studio">Repo ↗</a></span></div>
+      <figure class="media reveal"><img src="media/ltx-newrun.png" alt="NEW RUN screen: backend schematic on a fast-to-nicer axis, contextual info panel, and readout meters predicting VRAM, quality, drift, and render time" fetchpriority="high"><figcaption>Setting up a run: the backend schematic (fast → nicer), a contextual INFO panel, and the READOUT meters that estimate VRAM, quality, drift and render time before anything starts.</figcaption></figure>
+    </section>
 
-<main id="top" style="max-width:712px;margin:0 auto;padding:44px 26px 104px">
-  <a class="fx5" href="index.html#ltx" style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:12.5px;text-decoration:none;color:#3C5A49">← Harrison Wolf</a>
+    <section class="band dark">
+      <div class="sec-head reveal"><div class="eyebrow">What I built</div><h2>The orchestration, the UI and the measurement layer.</h2><p>The generation models were trained by others. Everything around them is mine: one terminal UI where two open-weight backends share the card, a resident 4-bit Qwen3-VL model that translates shot descriptions into generation settings, and an archive of every run’s settings and telemetry for comparison.</p></div>
+      <ul class="proofs">
+        <li class="reveal"><strong>Fits the card.</strong><span>Two backends resident on 8 GB through quantization and offloading, with a VRAM estimate shown before each render.</span></li>
+        <li class="reveal"><strong>Drift control.</strong><span>AdaIN latent anchoring between shots, plus a custom colour-matching pass.</span></li>
+        <li class="reveal"><strong>Seam and drift telemetry.</strong><span>Every run records how well consecutive shots join and how far colour and style wander.</span></li>
+        <li class="reveal"><strong>Blind A/B harness.</strong><span>Pipeline changes are compared without knowing which clip came from which, so the measurement isn’t steered by the eye.</span></li>
+      </ul>
+    </section>
 
-  <h1 style="font-size:30px;line-height:1.1;font-weight:700;letter-spacing:-0.015em;margin-top:26px">Video generation studio</h1>
-  <p style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:13px;color:#746F67;margin-top:9px">Two open-weight video models sharing one 8&nbsp;GB laptop GPU, with measurement to show what actually improves the output.</p>
+    <section class="band light">
+      <div class="sec-head reveal"><div class="eyebrow">Output</div><h2>Two clips from the studio.</h2><p>Generated on the same 8 GB card. Left: a bioluminescent forest at night, 35 mm. Right: fireflies over a glowing stream, 64 fps after interpolation.</p></div>
+      <div class="pair">
+        <figure class="media reveal"><video controls playsinline preload="none" poster="media/ltx-forest-poster.jpg" aria-label="Generated clip: bioluminescent forest at night, glowing moths over a stream lit from within"><source src="media/ltx-forest.mp4" type="video/mp4"></video></figure>
+        <figure class="media reveal"><video controls playsinline preload="none" poster="media/ltx-fireflies-poster.jpg" aria-label="Generated clip: fireflies drifting over a glowing forest stream"><source src="media/ltx-fireflies.mp4" type="video/mp4"></video></figure>
+      </div>
+      <figure class="media reveal wrap" style="margin-top:56px"><img src="media/ltx-live.png" alt="LIVE view mid-render: last-frame preview of a bioluminescent forest, phase timings, and job controls" loading="lazy"><figcaption>The LIVE tab mid-render: last-frame preview, phase timings and job controls.</figcaption></figure>
+    </section>
 
-  <div class="g4" style="border-top:1px solid #CFCBC0;border-bottom:1px solid #CFCBC0;margin-top:22px;padding:14px 0;display:grid;grid-template-columns:repeat(4,auto);gap:14px 30px;font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:12.5px">
-    <div><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.13em;color:#9A958B">Language</div><div style="margin-top:3px;color:#37342D">Python</div></div>
-    <div><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.13em;color:#9A958B">Core</div><div style="margin-top:3px;color:#37342D">~2 weeks</div></div>
-    <div><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.13em;color:#9A958B">Models</div><div style="margin-top:3px;color:#37342D">Two open-weight</div></div>
-    <div><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.13em;color:#9A958B">Budget</div><div style="margin-top:3px;color:#3C5A49">One 8&nbsp;GB GPU</div></div>
-    <div style="grid-column:1/-1;display:flex;gap:20px;border-top:1px solid #E2DFD7;padding-top:12px"><a href="https://github.com/harrisonwolf/ltx-studio">repo</a></div>
-  </div>
-
-  <section id="studio" style="margin-top:44px">
-    <h2 style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:0.15em;color:#746F67;font-weight:400;display:flex;align-items:baseline;gap:12px"><span style="font-family:system-ui,sans-serif;font-size:19px;font-weight:650;color:#1B1B17;opacity:0.22;font-variant-numeric:tabular-nums">01</span>The studio</h2>
-    <p style="margin-top:18px;color:#2C2A24">Generating video on a laptop means fitting the models into 8&nbsp;GB of GPU memory, and chaining short shots into a sequence makes colour and style drift from one shot to the next. Judging either by eye is unreliable. I built the studio around exactly those constraints, using models trained by others: one terminal UI where two open-weight video backends share the card, a resident 4-bit Qwen3-VL model translates shot descriptions into generation settings, and every run archives its settings and telemetry for comparison. Before a render starts, the readout estimates VRAM use, quality, drift and render time. The core took about two weeks.</p>
-    <a href="https://github.com/harrisonwolf/ltx-studio#what-it-looks-like"><img src="media/ltx-newrun.png" alt="NEW RUN screen: backend schematic on a fast-to-nicer axis, contextual info panel, and readout meters predicting VRAM, quality, drift, and render time" width="1400" height="697" style="display:block;max-width:100%;height:auto;margin-top:18px;border:1px solid #E2DFD7;border-radius:2px"></a>
-    <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;color:#746F67;margin-top:6px">Setting up a run: the backend schematic (fast → nicer), a contextual INFO panel, and the READOUT meters.</div>
-    <a href="https://github.com/harrisonwolf/ltx-studio#what-it-looks-like"><img src="media/ltx-live.png" alt="LIVE view mid-render: last-frame preview of a bioluminescent forest, phase timings, and job controls" width="1400" height="808" style="display:block;max-width:100%;height:auto;margin-top:16px;border:1px solid #E2DFD7;border-radius:2px"></a>
-    <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;color:#746F67;margin-top:6px">The LIVE tab mid-render. More screenshots and sample clips in the repo README.</div>
-  </section>
-
-  <section id="output" style="margin-top:52px">
-    <h2 style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:0.15em;color:#746F67;font-weight:400;display:flex;align-items:baseline;gap:12px"><span style="font-family:system-ui,sans-serif;font-size:19px;font-weight:650;color:#1B1B17;opacity:0.22;font-variant-numeric:tabular-nums">02</span>Output</h2>
-    <p style="margin-top:18px;color:#2C2A24">The measurement layer records seam and drift telemetry and includes a blind A/B harness, so pipeline changes can be compared without relying only on the appearance of a generated clip. Drift control between shots uses cited AdaIN latent anchoring plus a custom color-matching pass.</p>
-    <div class="g2" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px">
-      <video controls playsinline preload="none" poster="media/ltx-forest-poster.jpg" width="560" height="382" aria-label="Generated clip: bioluminescent forest at night, glowing moths over a stream lit from within" style="display:block;width:100%;height:auto;border:1px solid #E2DFD7;border-radius:2px"><source src="media/ltx-forest.mp4" type="video/mp4"></video>
-      <video controls playsinline preload="none" poster="media/ltx-fireflies-poster.jpg" width="560" height="382" aria-label="Generated clip: fireflies drifting over a glowing forest stream" style="display:block;width:100%;height:auto;border:1px solid #E2DFD7;border-radius:2px"><source src="media/ltx-fireflies.mp4" type="video/mp4"></video>
-    </div>
-    <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;color:#746F67;margin-top:6px">Stills from two generated clips. Left: bioluminescent forest at night, 35&nbsp;mm. Right: fireflies over a glowing stream, 64&nbsp;fps after interpolation. Moving versions in the <a href="https://github.com/harrisonwolf/ltx-studio">repo</a>.</div>
-  </section>
-
-  <section id="progress" style="margin-top:52px">
-    <h2 style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:0.15em;color:#746F67;font-weight:400;display:flex;align-items:baseline;gap:12px"><span style="font-family:system-ui,sans-serif;font-size:19px;font-weight:650;color:#1B1B17;opacity:0.22;font-variant-numeric:tabular-nums">03</span>Two points in development</h2>
-    <div class="g2" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px">
-      <video controls playsinline preload="none" poster="media/ltx-day-one.png" width="1120" height="764" aria-label="Day one: a blurry, motion-smeared dog wading in the surf" style="display:block;width:100%;height:auto;border:1px solid #E2DFD7;border-radius:2px"><source src="media/ltx-day-one.mp4" type="video/mp4"></video>
-      <video controls playsinline preload="none" poster="media/ltx-day-fourteen.png" width="1120" height="764" aria-label="Day fourteen: a golden-hour corgi in profile on the beach, backlit by the sunset" style="display:block;width:100%;height:auto;border:1px solid #E2DFD7;border-radius:2px"><source src="media/ltx-day-fourteen.mp4" type="video/mp4"></video>
-    </div>
-    <div style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:11.5px;color:#746F67;margin-top:6px">The first clip the project produced (June 22, LTX smoke test) beside a day-fourteen run of the same dog-on-a-beach prompt (July 6, Wan backend), on the same 8&nbsp;GB card. This shows the project's trajectory, not a controlled comparison: the backend changed between runs.</div>
-    <p style="margin-top:18px;color:#2C2A24">The studio grew out of an earlier AnimateDiff pipeline adapted to the same 8&nbsp;GB card. I directed coding-agent implementation of its attention backport, LCM scheduler, and LoRA merge. The later clips use newer open-weight models.</p>
-    <p style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:12.5px;margin-top:26px;padding-top:16px;border-top:1px solid #E2DFD7">Full detail — architecture, the marker protocol, running it — in the README: <a href="https://github.com/harrisonwolf/ltx-studio">github.com/harrisonwolf/ltx-studio</a></p>
-    <p style="font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;font-size:12.5px;margin-top:14px"><a href="index.html#ltx">← Back to the portfolio</a></p>
-  </section>
-</main>
-
-<script>
-(function(){
-  var rail=document.getElementById('side-rail');
-  if(!rail)return;
-  function show(on){
-    rail.style.visibility=on?'visible':'hidden';
-    rail.style.opacity=on?'1':'0';
-    rail.style.pointerEvents=on?'auto':'none';
-  }
-  function tick(){show(window.scrollY>420);}
-  addEventListener('scroll',tick,{passive:true});
-  tick();
-})();
-</script>
+    <section class="band grey">
+      <div class="sec-head reveal"><div class="eyebrow">Two weeks apart</div><h2>Day one and day fourteen, same prompt.</h2><p>The first clip the project produced (June 22, a smoke test) beside a day-fourteen run of the same dog-on-a-beach prompt (July 6), on the same card. This shows the project’s trajectory, not a controlled comparison: the backend changed between runs.</p></div>
+      <div class="pair dev">
+        <figure class="media reveal"><video controls playsinline preload="none" poster="media/ltx-day-one.png" aria-label="Day one: a blurry, motion-smeared dog wading in the surf"><source src="media/ltx-day-one.mp4" type="video/mp4"></video><figcaption>Day one.</figcaption></figure>
+        <figure class="media reveal"><video controls playsinline preload="none" poster="media/ltx-day-fourteen.png" aria-label="Day fourteen: a golden-hour corgi in profile on the beach, backlit by the sunset"><source src="media/ltx-day-fourteen.mp4" type="video/mp4"></video><figcaption>Day fourteen.</figcaption></figure>
+      </div>
+      <div class="card reveal">
+        <details><summary>Architecture, the marker protocol, running it</summary><p>Full detail in the README: <a href="https://github.com/harrisonwolf/ltx-studio">github.com/harrisonwolf/ltx-studio</a>. More screenshots and sample clips are in the repo.</p></details>
+        <details><summary>Ownership</summary><p>I built the orchestration, terminal UI and measurement layer, including the seam and drift telemetry and the blind A/B harness. The video and vision-language models were trained by others. The studio grew out of an earlier AnimateDiff pipeline adapted to the same card, where I directed coding-agent implementation of its attention backport, LCM scheduler and LoRA merge.</p></details>
+      </div>
+    </section>
+    <footer class="foot"><a href="index.html#ltx">← Back to the portfolio</a><a class="next" href="planar.html"><small>Next</small>Geometry engine →</a></footer>
+  </main>
+  <script src="project.js?v=1" defer></script>
 </body>
 </html>
