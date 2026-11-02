@@ -25,7 +25,7 @@ for (const play of document.querySelectorAll('[data-video]')) {
   const canvas = document.getElementById('rise-canvas');
   if (!rise || !canvas || !canvas.getContext || !window.createImageBitmap) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const N = 1612, PRIMER = 0.08, TAU = 0.14;           // TAU: seconds to close ~63% of the gap to the scroll target
+  const N = 2155, PRIMER = 0.08, TAU = 0.14;           // TAU: seconds to close ~63% of the gap to the scroll target
   const ctx = canvas.getContext('2d', {alpha: false});
   const beats = [...rise.querySelectorAll('.rise-beat')];
   const bar = rise.querySelector('.rise-progress span');
@@ -33,8 +33,8 @@ for (const play of document.querySelectorAll('[data-video]')) {
 
   // Two tiers: small frames give instant coverage everywhere; sharp frames replace them around the position.
   const tiers = [
-    {dir: 'zeta-all-sm', blobs: new Array(N), bmps: new Array(N), pending: new Set(), fetching: new Set()},
-    {dir: 'zeta-all-hd', blobs: new Array(N), bmps: new Array(N), pending: new Set(), fetching: new Set()},
+    {dir: 'zeta-seq2-sm', blobs: new Array(N), bmps: new Array(N), pending: new Set(), fetching: new Set()},
+    {dir: 'zeta-seq2-hd', blobs: new Array(N), bmps: new Array(N), pending: new Set(), fetching: new Set()},
   ];
   let useHd = false;
   const url = (t, i) => `media/${t.dir}/g${String(i + 1).padStart(4, '0')}.webp`;

@@ -6,8 +6,8 @@
 <meta name="description" content="Partial-sum Spiral: an interactive lab and a set of films that make the hidden geometry of the Riemann zeta function visible, computed precisely out to hundreds of billions of terms.">
 <title>Partial-sum Spiral · Harrison Wolf</title>
 <link rel="icon" href="media/favicon.svg">
-<link rel="stylesheet" href="zeta.css?v=d5">
-<script src="zeta.js?v=d5" defer></script>
+<link rel="stylesheet" href="zeta.css?v=e1">
+<script src="zeta.js?v=e1" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -16,29 +16,29 @@
 <section class="rise static" id="rise" aria-labelledby="rise-title">
 <div class="rise-stage">
 <canvas id="rise-canvas" aria-hidden="true"></canvas>
-<img class="rise-fallback" src="media/zeta-all-sm/g0630.webp" alt="A rainbow eye of partial-sum steps, coloured by step number mod 100, with a lattice pattern at its centre" width="1024" height="437">
+<img class="rise-fallback" src="media/zeta-seq2-sm/g1173.webp" alt="A rainbow eye of partial-sum steps, coloured by step number mod 100, with a lattice pattern at its centre" width="1024" height="437">
 <div class="rise-copy">
 <div class="rise-beat" data-from="0.000" data-to="0.017"><div class="eyebrow">Partial-sum Spiral · Complex analysis · Mathematical films</div><h1 id="rise-title">The shape of a sum.</h1><p class="rise-hint">Scroll to climb <span aria-hidden="true">↓</span></p></div>
 <div class="rise-beat" data-from="0.021" data-to="0.039"><p>The Riemann zeta function sits at the centre of the most famous unsolved problem in mathematics. Proving where its zeros lie is one of the seven Millennium Prize Problems, with a million-dollar reward.</p></div>
 <div class="rise-beat" data-from="0.042" data-to="0.060"><p>Its zeros govern how the prime numbers are spread out. And the statistics of their spacing match the energy levels of heavy atomic nuclei, as if they were the notes of some undiscovered quantum system.</p></div>
 <div class="rise-beat" data-from="0.063" data-to="0.081"><p>The function is built from a sum: take a step, turn slightly, take a smaller step, forever. Lay the steps end to end and they draw a path. This is that path, computed exactly, as we climb.</p></div>
-<div class="rise-beat" data-f0="0" data-f1="70"><p>Fix one input in the complex plane: s = ½ + 188.5i. Zeta at that point is an infinite sum, and we are going to add it up one term at a time.</p></div>
-<div class="rise-beat" data-f0="78" data-f1="150"><p>Each term is a step. Lay them end to end and the running total draws a path. A few dozen steps in, it already curls.</p></div>
-<div class="rise-beat" data-f0="156" data-f1="260"><p>Keep adding. The path winds round and round the true value of zeta, but never settles on it: for this s the series doesn’t converge, so the spiral slowly widens forever.</p></div>
-<div class="rise-beat" data-f0="268" data-f1="330"><p>Tens of thousands of terms later it is still going. Adding more terms at one point tells us nothing new.</p></div>
-<div class="rise-beat" data-f0="340" data-f1="470"><p>So instead of adding terms, let’s move the point. We head back to a small curl near the start of the path: this is an eye, where each step doubles back on the last.</p></div>
-<div class="rise-beat" data-f0="478" data-f1="540"><p>Now watch what the sum does as s climbs the critical line.</p></div>
-<div class="rise-beat" data-f0="544" data-f1="564"><p>Low down, each turn of an eye takes only a few steps: loose lines.</p></div>
-<div class="rise-beat" data-f0="567" data-f1="578"><p>Climb, and a few dozen steps per turn weave a double spiral.</p></div>
-<div class="rise-beat" data-f0="581" data-f1="591"><p>Hundreds per turn, and rims appear, one for each turn of the arms.</p></div>
-<div class="rise-beat" data-f0="594" data-f1="616"><p>Thousands fuse into a solid eye. Every frame is summed exactly.</p></div>
-<div class="rise-beat" data-f0="620" data-f1="641"><p>Colour each step by its number mod 100, and a hidden lattice condenses at the centre.</p></div>
-<div class="rise-beat" data-f0="664" data-f1="757"><p>Now lift each step by how far along the path it lies. The flat eye turns out to be the shadow of an hourglass: every line just touches a double cone.</p></div>
-<div class="rise-beat" data-f0="766" data-f1="863"><p>Climb to a height of one trillion. Now 376,126 steps make each turn, and the eye sits near step 106 billion.</p></div>
-<div class="rise-beat" data-f0="879" data-f1="1024"><p>Pull out of the eye, across ten orders of magnitude. Its centre lands exactly where the Riemann–Siegel formula predicts, to within 2×10<sup>−8</sup>.</p></div>
-<div class="rise-beat" data-f0="1042" data-f1="1195"><p>Fly down the walk, past curl after curl, each one smaller, toward the middle.</p></div>
-<div class="rise-beat" data-f0="1230" data-f1="1354"><p>At step 398,942 the walk’s two halves meet in one great curl: the only place where a step and its mirror image coincide.</p></div>
-<div class="rise-beat" data-f0="1377" data-f1="1611"><p>Pull back: all 200 billion steps, lifted into space. The first half wanders like a random walk; the second climbs a staircase of curls, each the mirror of a step in the first.</p><p class="rise-credit">Rendered for this page from the exact sum, continuing from the film <em>Rising</em>.</p></div>
+<div class="rise-beat" data-f0="0" data-f1="90"><p>Fix one input in the complex plane: s = ½ + 60πi. Zeta there is an infinite sum. We add it up one term at a time, and each term is a step.</p></div>
+<div class="rise-beat" data-f0="100" data-f1="210"><p>A few dozen steps in, the path curls. Keep adding and it winds tighter and tighter, but for this s the series never settles: adding more terms changes nothing. So we stop at sixty.</p></div>
+<div class="rise-beat" data-f0="220" data-f1="370"><p>Instead, move the input up the critical line. Each step points along −t·ln n, so raising t turns every step at once, the far ones fastest. The whole path unfurls and curls again.</p></div>
+<div class="rise-beat" data-f0="385" data-f1="760"><p>Close in on the last knot, where each step turns a full circle. As t rises, the knot is pulled down the path toward the tip, and the eye, where each step doubles back on the last, slides from step 20 to step 27.</p></div>
+<div class="rise-beat" data-f0="780" data-f1="930"><p>Pull back. At t = 81π the sum is a different shape, from the same sixty terms. A new eye has opened.</p></div>
+<div class="rise-beat" data-f0="940" data-f1="1080"><p>Keep only the steps around the eye and come in close. Now watch what the sum does as s climbs the critical line.</p></div>
+<div class="rise-beat" data-f0="1087" data-f1="1107"><p>Low down, each turn of an eye takes only a few steps: loose lines.</p></div>
+<div class="rise-beat" data-f0="1110" data-f1="1121"><p>Climb, and a few dozen steps per turn weave a double spiral.</p></div>
+<div class="rise-beat" data-f0="1124" data-f1="1134"><p>Hundreds per turn, and rims appear, one for each turn of the arms.</p></div>
+<div class="rise-beat" data-f0="1137" data-f1="1159"><p>Thousands fuse into a solid eye. Every frame is summed exactly.</p></div>
+<div class="rise-beat" data-f0="1163" data-f1="1184"><p>Colour each step by its number mod 100, and a hidden lattice condenses at the centre.</p></div>
+<div class="rise-beat" data-f0="1207" data-f1="1300"><p>Now lift each step by how far along the path it lies. The flat eye turns out to be the shadow of an hourglass: every line just touches a double cone.</p></div>
+<div class="rise-beat" data-f0="1309" data-f1="1406"><p>Climb to a height of one trillion. Now 376,126 steps make each turn, and the eye sits near step 106 billion.</p></div>
+<div class="rise-beat" data-f0="1422" data-f1="1567"><p>Pull out of the eye, across ten orders of magnitude. Its centre lands exactly where the Riemann–Siegel formula predicts, to within 2×10<sup>−8</sup>.</p></div>
+<div class="rise-beat" data-f0="1585" data-f1="1738"><p>Fly down the walk, past curl after curl, each one smaller, toward the middle.</p></div>
+<div class="rise-beat" data-f0="1773" data-f1="1897"><p>At step 398,942 the walk’s two halves meet in one great curl: the only place where a step and its mirror image coincide.</p></div>
+<div class="rise-beat" data-f0="1920" data-f1="2154"><p>Pull back: all 200 billion steps, lifted into space. The first half wanders like a random walk; the second climbs a staircase of curls, each the mirror of a step in the first.</p><p class="rise-credit">Rendered for this page from the exact sum, continuing from the film <em>Rising</em>.</p></div>
 </div>
 <nav class="rise-skip" aria-label="Skip the introduction"><a href="#main">Skip introduction ↓</a><a href="#watch">Watch the films</a><a href="lab/index.html">Open the lab ↗</a></nav>
 <div class="rise-progress" aria-hidden="true"><span></span></div>
@@ -116,6 +116,7 @@
 <tbody>
 <tr><th scope="row">Interactive app</th><td>Up to 3 × 10<sup>8</sup> terms in the interface</td><td>Explore paths of up to 300 million terms live in a browser. The screen draws a budgeted summary of the path, not every term.</td></tr>
 <tr><th scope="row">Full-path film data</th><td>t = 10<sup>12</sup><br>N = 2 × 10<sup>11</sup></td><td>A C program walks all 200 billion steps and keeps an adaptive summary; the renderer picks the detail each frame needs.</td></tr>
+<tr><th scope="row">Higher window studies</th><td>t near 10<sup>22</sup></td><td>Look at a 4,000-step window around term ~39.9 billion directly, without summing the billions of steps before it. Phases from 200-bit fixed-point logarithms, checked against 90-digit mpmath.</td></tr>
 </tbody></table></div></div>
 <div class="card reveal"><details><summary>Numerical verification and performance evidence</summary>
 <p><strong>Interactive app.</strong> The app ships with 88 embedded test cases. On a fresh run, the largest partial-sum error (relative to max(1, |reference|)) was 3.62 × 10<sup>−13</sup>; the zeta reference agreed with embedded mpmath values to 2.49 × 10<sup>−12</sup>. One case misses the self-test’s strict 10<sup>−12</sup> threshold by a hair (1.008 × 10<sup>−12</sup>), so the self-test currently reports <code>pass: false</code>. The October 16 design note records 137 checks against 30-digit mpmath through t = 10<sup>13</sup> and a 171-million-terms-per-second run on 20 processes with numba; that Python backend and suite weren’t recovered for this review, so those figures are historical.</p>
