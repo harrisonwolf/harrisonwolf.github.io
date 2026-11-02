@@ -6,8 +6,8 @@
 <meta name="description" content="Partial-sum Spiral: an interactive lab and a set of films that make the hidden geometry of the Riemann zeta function visible, computed precisely out to hundreds of billions of terms.">
 <title>Partial-sum Spiral · Harrison Wolf</title>
 <link rel="icon" href="media/favicon.svg">
-<link rel="stylesheet" href="zeta.css?v=d3">
-<script src="zeta.js?v=d3" defer></script>
+<link rel="stylesheet" href="zeta.css?v=d4">
+<script src="zeta.js?v=d4" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -16,23 +16,29 @@
 <section class="rise static" id="rise" aria-labelledby="rise-title">
 <div class="rise-stage">
 <canvas id="rise-canvas" aria-hidden="true"></canvas>
-<img class="rise-fallback" src="media/zeta-seq-sm/f0090.webp" alt="A rainbow eye of partial-sum steps, coloured by step number mod 100, with a lattice pattern at its centre" width="1024" height="437">
+<img class="rise-fallback" src="media/zeta-all-sm/g0630.webp" alt="A rainbow eye of partial-sum steps, coloured by step number mod 100, with a lattice pattern at its centre" width="1024" height="437">
 <div class="rise-copy">
-<div class="rise-beat" data-from="0.000" data-to="0.024"><div class="eyebrow">Partial-sum Spiral · Complex analysis · Mathematical films</div><h1 id="rise-title">The shape of a sum.</h1><p class="rise-hint">Scroll to climb <span aria-hidden="true">↓</span></p></div>
-<div class="rise-beat" data-from="0.029" data-to="0.053"><p>The Riemann zeta function sits at the centre of the most famous unsolved problem in mathematics. Proving where its zeros lie is one of the seven Millennium Prize Problems, with a million-dollar reward.</p></div>
-<div class="rise-beat" data-from="0.058" data-to="0.082"><p>Its zeros govern how the prime numbers are spread out. And the statistics of their spacing match the energy levels of heavy atomic nuclei, as if they were the notes of some undiscovered quantum system.</p></div>
-<div class="rise-beat" data-from="0.087" data-to="0.112"><p>The function is built from a sum: take a step, turn slightly, take a smaller step, forever. Lay the steps end to end and they draw a path. This is that path, computed exactly, as we climb.</p></div>
-<div class="rise-beat" data-f0="4" data-f1="24"><p>Low down, each turn of an eye takes only a few steps: loose lines.</p></div>
-<div class="rise-beat" data-f0="27" data-f1="38"><p>Climb, and a few dozen steps per turn weave a double spiral.</p></div>
-<div class="rise-beat" data-f0="41" data-f1="51"><p>Hundreds per turn, and rims appear, one for each turn of the arms.</p></div>
-<div class="rise-beat" data-f0="54" data-f1="76"><p>Thousands fuse into a solid eye. Every frame is summed exactly.</p></div>
-<div class="rise-beat" data-f0="80" data-f1="101"><p>Colour each step by its number mod 100, and a hidden lattice condenses at the centre.</p></div>
-<div class="rise-beat" data-f0="124" data-f1="217"><p>Now lift each step by how far along the path it lies. The flat eye turns out to be the shadow of an hourglass: every line just touches a double cone.</p></div>
-<div class="rise-beat" data-f0="226" data-f1="323"><p>Climb to a height of one trillion. Now 376,126 steps make each turn, and the eye sits near step 106 billion.</p></div>
-<div class="rise-beat" data-f0="339" data-f1="484"><p>Pull out of the eye, across ten orders of magnitude. Its centre lands exactly where the Riemann–Siegel formula predicts, to within 2×10<sup>−8</sup>.</p></div>
-<div class="rise-beat" data-f0="502" data-f1="655"><p>Fly down the walk, past curl after curl, each one smaller, toward the middle.</p></div>
-<div class="rise-beat" data-f0="690" data-f1="814"><p>At step 398,942 the walk’s two halves meet in one great curl: the only place where a step and its mirror image coincide.</p></div>
-<div class="rise-beat" data-f0="837" data-f1="1071"><p>Pull back: all 200 billion steps, lifted into space. The first half wanders like a random walk; the second climbs a staircase of curls, each the mirror of a step in the first.</p><p class="rise-credit">Rendered for this page from the exact sum, continuing from the film <em>Rising</em>.</p></div>
+<div class="rise-beat" data-from="0.000" data-to="0.017"><div class="eyebrow">Partial-sum Spiral · Complex analysis · Mathematical films</div><h1 id="rise-title">The shape of a sum.</h1><p class="rise-hint">Scroll to climb <span aria-hidden="true">↓</span></p></div>
+<div class="rise-beat" data-from="0.021" data-to="0.039"><p>The Riemann zeta function sits at the centre of the most famous unsolved problem in mathematics. Proving where its zeros lie is one of the seven Millennium Prize Problems, with a million-dollar reward.</p></div>
+<div class="rise-beat" data-from="0.042" data-to="0.060"><p>Its zeros govern how the prime numbers are spread out. And the statistics of their spacing match the energy levels of heavy atomic nuclei, as if they were the notes of some undiscovered quantum system.</p></div>
+<div class="rise-beat" data-from="0.063" data-to="0.081"><p>The function is built from a sum: take a step, turn slightly, take a smaller step, forever. Lay the steps end to end and they draw a path. This is that path, computed exactly, as we climb.</p></div>
+<div class="rise-beat" data-f0="0" data-f1="70"><p>Fix one input in the complex plane: s = ½ + 188.5i. Zeta at that point is an infinite sum, and we are going to add it up one term at a time.</p></div>
+<div class="rise-beat" data-f0="78" data-f1="150"><p>Each term is a step. Lay them end to end and the running total draws a path. A few dozen steps in, it already curls.</p></div>
+<div class="rise-beat" data-f0="156" data-f1="260"><p>Keep adding. The path winds round and round the true value of zeta, but never settles on it: for this s the series doesn’t converge, so the spiral slowly widens forever.</p></div>
+<div class="rise-beat" data-f0="268" data-f1="330"><p>Tens of thousands of terms later it is still going. Adding more terms at one point tells us nothing new.</p></div>
+<div class="rise-beat" data-f0="340" data-f1="470"><p>So instead of adding terms, let’s move the point. We head back to a small curl near the start of the path: this is an eye, where each step doubles back on the last.</p></div>
+<div class="rise-beat" data-f0="478" data-f1="540"><p>Now watch what the sum does as s climbs the critical line.</p></div>
+<div class="rise-beat" data-f0="544" data-f1="564"><p>Low down, each turn of an eye takes only a few steps: loose lines.</p></div>
+<div class="rise-beat" data-f0="567" data-f1="578"><p>Climb, and a few dozen steps per turn weave a double spiral.</p></div>
+<div class="rise-beat" data-f0="581" data-f1="591"><p>Hundreds per turn, and rims appear, one for each turn of the arms.</p></div>
+<div class="rise-beat" data-f0="594" data-f1="616"><p>Thousands fuse into a solid eye. Every frame is summed exactly.</p></div>
+<div class="rise-beat" data-f0="620" data-f1="641"><p>Colour each step by its number mod 100, and a hidden lattice condenses at the centre.</p></div>
+<div class="rise-beat" data-f0="664" data-f1="757"><p>Now lift each step by how far along the path it lies. The flat eye turns out to be the shadow of an hourglass: every line just touches a double cone.</p></div>
+<div class="rise-beat" data-f0="766" data-f1="863"><p>Climb to a height of one trillion. Now 376,126 steps make each turn, and the eye sits near step 106 billion.</p></div>
+<div class="rise-beat" data-f0="879" data-f1="1024"><p>Pull out of the eye, across ten orders of magnitude. Its centre lands exactly where the Riemann–Siegel formula predicts, to within 2×10<sup>−8</sup>.</p></div>
+<div class="rise-beat" data-f0="1042" data-f1="1195"><p>Fly down the walk, past curl after curl, each one smaller, toward the middle.</p></div>
+<div class="rise-beat" data-f0="1230" data-f1="1354"><p>At step 398,942 the walk’s two halves meet in one great curl: the only place where a step and its mirror image coincide.</p></div>
+<div class="rise-beat" data-f0="1377" data-f1="1611"><p>Pull back: all 200 billion steps, lifted into space. The first half wanders like a random walk; the second climbs a staircase of curls, each the mirror of a step in the first.</p><p class="rise-credit">Rendered for this page from the exact sum, continuing from the film <em>Rising</em>.</p></div>
 </div>
 <nav class="rise-skip" aria-label="Skip the introduction"><a href="#main">Skip introduction ↓</a><a href="#watch">Watch the films</a><a href="lab/index.html">Open the lab ↗</a></nav>
 <div class="rise-progress" aria-hidden="true"><span></span></div>
