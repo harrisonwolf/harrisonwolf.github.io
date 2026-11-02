@@ -155,3 +155,17 @@ for (const play of document.querySelectorAll('[data-video]')) {
   const io = new IntersectionObserver(es => { for (const e of es) if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }, {rootMargin: '0px 0px -8% 0px', threshold: 0.08});
   els.forEach(e => io.observe(e));
 })();
+
+
+// Image viewers: step left/right, no wrap-around.
+for (const v of document.querySelectorAll('[data-viewer]')) {
+  const track = v.querySelector('.viewer-track'), slides = [...track.children];
+  const prev = v.querySelector('.vprev'), next = v.querySelector('.vnext'), count = v.querySelector('.vcount');
+  const index = () => Math.round(track.scrollLeft / track.clientWidth);
+  const go = i => { i = Math.max(0, Math.min(slides.length - 1, i)); track.scrollTo({left: i * track.clientWidth, behavior: 'smooth'}); };
+  const sync = () => { const i = index(); count.textContent = `${i + 1} / ${slides.length}`; prev.disabled = i === 0; next.disabled = i === slides.length - 1; };
+  prev.addEventListener('click', () => go(index() - 1)); next.addEventListener('click', () => go(index() + 1));
+  track.addEventListener('scroll', () => requestAnimationFrame(sync), {passive: true});
+  v.addEventListener('keydown', e => { if (e.key === 'ArrowLeft') { go(index() - 1); e.preventDefault(); } if (e.key === 'ArrowRight') { go(index() + 1); e.preventDefault(); } });
+  v.tabIndex = 0; sync();
+}
