@@ -6,8 +6,8 @@
 <meta name="description" content="Partial-sum Spiral: an interactive lab and a set of films that make the hidden geometry of the Riemann zeta function visible, computed precisely out to hundreds of billions of terms.">
 <title>Partial-sum Spiral · Harrison Wolf</title>
 <link rel="icon" href="media/favicon.svg">
-<link rel="stylesheet" href="zeta.css?v=d1">
-<script src="zeta.js?v=d1" defer></script>
+<link rel="stylesheet" href="zeta.css?v=d2">
+<script src="zeta.js?v=d2" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -39,67 +39,60 @@
 </div>
 </section>
 <main id="main">
-<p class="lead">Take one step, turn slightly, take a smaller step. Repeat a few hundred billion times. Behind the most famous unsolved problem in mathematics is a path that draws eyes, coils and mirror images. Partial-sum Spiral lets you explore it live and follow it in film, exactly, at scales no ordinary calculation can reach.</p>
-<ul class="stats" aria-label="Project scale">
-<li><strong>200 billion</strong><span>steps in a single path, every one exact</span></li>
-<li><strong>10<sup>12</sup> → 10<sup>22</sup></strong><span>heights on the critical line, from a trillion to ten sextillion</span></li>
-<li><strong>300 million</strong><span>terms you can explore live in a browser</span></li>
-<li><strong>100 films</strong><span>over three hours, all computed from the same sum</span></li>
+<section class="statement" aria-label="Overview">
+<p class="reveal statement-line">Take one step, turn slightly, take a smaller step.<br>Repeat a few hundred billion times.</p>
+<p class="reveal statement-sub">Behind the most famous unsolved problem in mathematics is a path that draws eyes, coils and mirror images. Partial-sum Spiral lets you explore it live and follow it in film, exactly, at scales no ordinary calculation can reach.</p>
+<ul class="stats reveal" aria-label="Project scale">
+<li><strong>200 billion</strong><span>steps in one path, every one exact</span></li>
+<li><strong>10<sup>12</sup> → 10<sup>22</sup></strong><span>heights on the critical line</span></li>
+<li><strong>300 million</strong><span>terms live in your browser</span></li>
+<li><strong>100 films</strong><span>over three hours, from one sum</span></li>
 </ul>
-<section class="gallery-band" aria-labelledby="gallery-title">
-<div class="eyebrow">The film library</div>
-<h2 id="gallery-title">One sum. A hundred films.</h2>
-<p class="gallery-lead">The same arithmetic, followed into 3-D, down microscopes and up to heights of 10<sup>20</sup>. A few frames from the library:</p>
-<div class="gallery">
-<figure><img src="media/zeta-gallery/riemann-surface.webp" alt="A glowing catenoid of teal and violet paths flaring into a wide disc" width="960" height="440" loading="lazy"><figcaption><strong>The Riemann Surface.</strong> The first eye wrapped onto a catenoid, bent into a helicoid, then laid flat again.</figcaption></figure>
-<figure><img src="media/zeta-gallery/helix.webp" alt="Gold and pale-blue ribbons crossing in a seven-pointed star" width="960" height="440" loading="lazy"><figcaption><strong>The Helix.</strong> A microscope zoom from ×1 to ×1,000,000 into the eye’s two strands.</figcaption></figure>
-<figure><img src="media/zeta-gallery/climb-ii.webp" alt="Glowing coloured orbs linked by curling threads" width="960" height="440" loading="lazy"><figcaption><strong>The Climb II.</strong> The middle of the path at heights from 10<sup>12</sup> up to 10<sup>20</sup>.</figcaption></figure>
-<figure><img src="media/zeta-gallery/minimal.webp" alt="A teal and magenta surface folding around a dark hole" width="960" height="440" loading="lazy"><figcaption><strong>Minimal.</strong> The first eye carried onto Enneper’s and Scherk’s minimal surfaces.</figcaption></figure>
-<figure><img src="media/zeta-gallery/inside-the-eye.webp" alt="Dense violet and orange lines crossing diagonally" width="960" height="440" loading="lazy"><figcaption><strong>Inside the Eye.</strong> A fly-through of all 80 billion steps of one eye, drawn exactly.</figcaption></figure>
-<figure><img src="media/zeta-gallery/depth-ii.webp" alt="Rainbow sheets of paths layered like a landscape in 3-D" width="960" height="440" loading="lazy"><figcaption><strong>The Eye in Depth II.</strong> The first eye in 3-D at height one trillion, where the strings fuse into sheets.</figcaption></figure>
-<figure><img src="media/zeta-gallery/half-turn.webp" alt="Pale blue clouds of steps scattered like a nebula" width="960" height="440" loading="lazy"><figcaption><strong>The Half-Turn.</strong> The 200-billion-step spiral lifted into 3-D.</figcaption></figure>
-<figure><img src="media/zeta-gallery/middle-of-path.webp" alt="Thousands of small gold curls scattered like dust" width="960" height="440" loading="lazy"><figcaption><strong>The Middle of the Path.</strong> Rosettes and spiral-galaxy chains where the two halves meet.</figcaption></figure>
-<figure><img src="media/zeta-gallery/every-eye.webp" alt="Coloured lines strung like string art around a dark eye" width="960" height="440" loading="lazy"><figcaption><strong>Every Eye.</strong> Every eye at height one trillion holds the same double-spiral nucleus.</figcaption></figure>
+</section>
+
+<section class="band dark" id="library" aria-labelledby="gallery-title">
+<div class="sec-head reveal"><div class="eyebrow">The film library</div><h2 id="gallery-title">One sum. A hundred films.</h2><p>The same arithmetic, followed into 3-D, down microscopes and up to heights of 10<sup>20</sup>.</p></div>
+<div class="gallery"><figure class="tile reveal"><img src="media/zeta-gallery/riemann-surface.webp" alt="A glowing catenoid of teal and violet paths flaring into a wide disc" width="960" height="440" loading="lazy"><figcaption><strong>The Riemann Surface.</strong><span>The first eye wrapped onto a catenoid, bent into a helicoid, then laid flat again.</span></figcaption></figure><figure class="tile reveal"><img src="media/zeta-gallery/helix.webp" alt="Gold and pale-blue ribbons crossing in a seven-pointed star" width="960" height="440" loading="lazy"><figcaption><strong>The Helix.</strong><span>A microscope zoom from ×1 to ×1,000,000 into the eye’s two strands.</span></figcaption></figure><figure class="tile reveal"><img src="media/zeta-gallery/climb-ii.webp" alt="Glowing coloured orbs linked by curling threads" width="960" height="440" loading="lazy"><figcaption><strong>The Climb II.</strong><span>The middle of the path at heights from 10<sup>12</sup> up to 10<sup>20</sup>.</span></figcaption></figure><figure class="tile reveal"><img src="media/zeta-gallery/minimal.webp" alt="A teal and magenta surface folding around a dark hole" width="960" height="440" loading="lazy"><figcaption><strong>Minimal.</strong><span>The first eye carried onto Enneper’s and Scherk’s minimal surfaces.</span></figcaption></figure><figure class="tile reveal"><img src="media/zeta-gallery/inside-the-eye.webp" alt="Dense violet and orange lines crossing diagonally" width="960" height="440" loading="lazy"><figcaption><strong>Inside the Eye.</strong><span>A fly-through of all 80 billion steps of one eye, drawn exactly.</span></figcaption></figure><figure class="tile reveal"><img src="media/zeta-gallery/depth-ii.webp" alt="Rainbow sheets of paths layered like a landscape in 3-D" width="960" height="440" loading="lazy"><figcaption><strong>The Eye in Depth II.</strong><span>The first eye in 3-D at height one trillion, where the strings fuse into sheets.</span></figcaption></figure><figure class="tile reveal"><img src="media/zeta-gallery/half-turn.webp" alt="Pale blue clouds of steps scattered like a nebula" width="960" height="440" loading="lazy"><figcaption><strong>The Half-Turn.</strong><span>The 200-billion-step spiral lifted into 3-D.</span></figcaption></figure><figure class="tile reveal"><img src="media/zeta-gallery/middle-of-path.webp" alt="Thousands of small gold curls scattered like dust" width="960" height="440" loading="lazy"><figcaption><strong>The Middle of the Path.</strong><span>Rosettes and spiral-galaxy chains where the two halves meet.</span></figcaption></figure><figure class="tile reveal"><img src="media/zeta-gallery/every-eye.webp" alt="Coloured lines strung like string art around a dark eye" width="960" height="440" loading="lazy"><figcaption><strong>Every Eye.</strong><span>Every eye at height one trillion holds the same double-spiral nucleus.</span></figcaption></figure></div>
+</section>
+
+<section class="band dark films" id="watch" aria-labelledby="watch-title">
+<div class="sec-head reveal"><div class="eyebrow">Films</div><h2 id="watch-title">Follow the path.</h2><p>Two of the films, each one computed frame by frame from the exact sum.</p></div>
+<div class="pair">
+<figure class="reveal"><div class="player"><video controls playsinline preload="none" poster="media/zeta-depth.jpg" aria-label="The Eye in Depth II, 1 minute 12 seconds" src="media/films/eye-in-depth-ii.mp4"></video></div><figcaption><strong>The Eye in Depth II</strong><span>1:12 · The same eye in 3-D, where tens of thousands of strings fuse into sheets.</span></figcaption></figure>
+<figure class="reveal"><div class="player"><video controls playsinline preload="none" poster="media/zeta-mirror.jpg" aria-label="The Mirror, 1 minute 35 seconds" src="media/films/mirror.mp4"></video></div><figcaption><strong>The Mirror</strong><span>1:35 · The middle of the path, where it folds onto itself and curls become coils.</span></figcaption></figure>
 </div>
 </section>
 
-<section id="watch" aria-labelledby="watch-title">
-<div class="eyebrow">Films</div>
-<h2 id="watch-title">Follow the path.</h2>
-<p>Two of the films, each one computed frame by frame from the exact sum.</p>
-<div class="pair">
-<figure><video controls playsinline preload="none" poster="media/zeta-depth.jpg" aria-label="The Eye in Depth II, 1 minute 12 seconds" src="media/films/eye-in-depth-ii.mp4"></video><figcaption><strong>The Eye in Depth II</strong> · 1:12 · The same eye in 3-D, where tens of thousands of strings fuse into sheets.</figcaption></figure>
-<figure><video controls playsinline preload="none" poster="media/zeta-mirror.jpg" aria-label="The Mirror, 1 minute 35 seconds" src="media/films/mirror.mp4"></video><figcaption><strong>The Mirror</strong> · 1:35 · The middle of the path, where it folds onto itself and curls become coils.</figcaption></figure>
+<section class="band light why" aria-labelledby="idea">
+<div class="sec-head reveal"><div class="eyebrow">Why it’s hard</div><h2 id="idea">Most pictures of zeta stop where it gets interesting.</h2></div>
+<div class="why-grid">
+<div class="formula-card reveal"><div class="formula" role="math" aria-label="S sub N of s equals the sum, from n equals one to N, of n to the minus sigma times e to the minus i t log n">S<sub>N</sub>(s) = ∑<sub>n=1</sub><sup>N</sup> n<sup>−σ</sup> e<sup>−it log n</sup>, &nbsp;s = σ + it</div><p>Each term of the sum is a step: σ sets its length, t its direction. Laid end to end, the steps draw these spirals.</p></div>
+<div class="reveal why-copy"><p>Most pictures stop at small heights, because higher up ordinary computer arithmetic keeps too few digits of each step’s direction. The spirals still look like spirals; they’re just the wrong ones, and nothing warns you.</p><p>Partial-sum Spiral keeps every step exact, out to a height of a trillion and a path of 200 billion steps. I set the mathematical and visual direction and built it with coding agents.</p></div>
 </div>
 </section>
-<section class="intro" aria-labelledby="idea">
-<div><div class="eyebrow">Why it’s hard</div><h2 id="idea">Most pictures of zeta stop where it gets interesting.</h2></div>
-<div><div class="formula" role="math" aria-label="S sub N of s equals the sum, from n equals one to N, of n to the minus sigma times e to the minus i t log n">S<sub>N</sub>(s) = ∑<sub>n=1</sub><sup>N</sup> n<sup>−σ</sup> e<sup>−it log n</sup>, &nbsp;s = σ + it</div><p>Each term of the sum is a step: σ sets its length, t its direction. Laid end to end, the steps draw these spirals. Most pictures stop at small heights, because higher up ordinary computer arithmetic keeps too few digits of each step’s direction. The spirals still look like spirals; they’re just the wrong ones, and nothing warns you. Partial-sum Spiral keeps every step exact, out to a height of a trillion and a path of 200 billion steps. I set the mathematical and visual direction and built it with coding agents.</p></div>
-</section>
-<section aria-labelledby="lab">
-<div class="eyebrow">The lab</div>
-<h2 id="lab">Drag a point. Watch the sum respond.</h2>
-<ul class="can-do">
-<li><strong>Watch analytic continuation happen.</strong> At the first zero the plain sum spirals outward forever, while an alternating version closes in on the true value: zero.</li>
-<li><strong>See 1 + 2 + 3 + … run to infinity</strong> while the true value sits at −1/12, then add the correction terms that bend the path back onto it.</li>
-<li><strong>Paint the whole function</strong> with domain colouring, and count the zeros inside any loop you draw.</li>
-<li><strong>Go further:</strong> lift the path into 3-D, swap in L-functions or your own series, or push to 300 million terms.</li>
+
+<section class="band light lab" aria-labelledby="lab">
+<div class="sec-head reveal"><div class="eyebrow">The lab</div><h2 id="lab">Drag a point. Watch the sum respond.</h2><p>An interactive laboratory that runs entirely in your browser.</p></div>
+<figure class="device reveal"><img src="media/zeta-lab-app.webp" alt="The Partial-sum Spiral app: a domain-coloured map of zeta on the left with a point on the critical line, and on the right the partial-sum path spiralling around its true value" width="1600" height="1000" loading="lazy"><figcaption>At the first zero, s = ½ + 14.1347i: domain colouring on the left, the partial-sum path on the right, the true value of ζ marked by the ring.</figcaption></figure>
+<ul class="features">
+<li class="reveal"><strong>Watch analytic continuation happen.</strong>At the first zero the plain sum spirals outward forever, while an alternating version closes in on the true value: zero.</li>
+<li class="reveal"><strong>See 1 + 2 + 3 + … run to infinity</strong>while the true value sits at −1/12, then add the correction terms that bend the path back onto it.</li>
+<li class="reveal"><strong>Paint the whole function</strong>with domain colouring, and count the zeros inside any loop you draw.</li>
+<li class="reveal"><strong>Go further.</strong>Lift the path into 3-D, swap in L-functions or your own series, or push to 300 million terms.</li>
 </ul>
-<figure class="lab-shot"><img src="media/zeta-lab-app.webp" alt="The Partial-sum Spiral app: a domain-coloured map of zeta on the left with a point on the critical line, and on the right the partial-sum path spiralling around its true value" width="1600" height="1000" loading="lazy"><figcaption>The lab at the first zero, s = ½ + 14.1347i: domain colouring on the left, the partial-sum path on the right, the true value of ζ marked by the ring.</figcaption></figure>
-<p><a class="launch" href="lab/index.html">Open the lab <span aria-hidden="true">↗</span></a> <span class="small">Runs entirely in your browser, with nothing to install. Designed for a desktop or tablet screen.</span></p>
+<p class="cta reveal"><a class="launch" href="lab/index.html">Open the lab <span aria-hidden="true">↗</span></a><span class="small">Nothing to install. Designed for a desktop or tablet screen.</span></p>
 </section>
-<section aria-labelledby="evidence">
-<div class="eyebrow">For technical readers</div>
-<h2 id="evidence">Exact by construction.</h2>
-<p>Each step’s direction is the angle t·log n, and only the fraction left over after whole turns matters. At t = 10<sup>12</sup> that product runs into the trillions, so the app carries it in double-double precision with exact reduction, error-compensated sums and a multi-resolution path store computed in Web Workers. The films add high-precision phase anchors, level-of-detail drawing and separate picture and annotation layers. Results are checked against high-precision references.</p>
-<div class="scales" role="region" aria-label="Scale and evidence" tabindex="0"><table>
+
+<section class="band grey tech" aria-labelledby="evidence">
+<div class="sec-head reveal"><div class="eyebrow">For technical readers</div><h2 id="evidence">Exact by construction.</h2><p>Each step’s direction is the angle t·log n, and only the fraction left over after whole turns matters. At t = 10<sup>12</sup> that product runs into the trillions, so the app carries it in double-double precision with exact reduction, error-compensated sums and a multi-resolution path store computed in Web Workers. The films add high-precision phase anchors, level-of-detail drawing and separate picture and annotation layers. Results are checked against high-precision references.</p></div>
+<div class="card reveal"><div class="scales" role="region" aria-label="Scale and evidence" tabindex="0"><table>
 <caption>Three different scales of computation</caption>
 <thead><tr><th scope="col">System</th><th scope="col">Scale</th><th scope="col">What that means</th></tr></thead>
 <tbody>
 <tr><th scope="row">Interactive app</th><td>Up to 3 × 10<sup>8</sup> terms in the interface</td><td>Explore paths of up to 300 million terms live in a browser. The screen draws a budgeted summary of the path, not every term.</td></tr>
 <tr><th scope="row">Full-path film data</th><td>t = 10<sup>12</sup><br>N = 2 × 10<sup>11</sup></td><td>A C program walks all 200 billion steps and keeps an adaptive summary; the renderer picks the detail each frame needs.</td></tr>
-</tbody></table></div>
-<details><summary>Numerical verification and performance evidence</summary>
+</tbody></table></div></div>
+<div class="card reveal"><details><summary>Numerical verification and performance evidence</summary>
 <p><strong>Interactive app.</strong> The app ships with 88 embedded test cases. On a fresh run, the largest partial-sum error (relative to max(1, |reference|)) was 3.62 × 10<sup>−13</sup>; the zeta reference agreed with embedded mpmath values to 2.49 × 10<sup>−12</sup>. One case misses the self-test’s strict 10<sup>−12</sup> threshold by a hair (1.008 × 10<sup>−12</sup>), so the self-test currently reports <code>pass: false</code>. The October 16 design note records 137 checks against 30-digit mpmath through t = 10<sup>13</sup> and a 171-million-terms-per-second run on 20 processes with numba; that Python backend and suite weren’t recovered for this review, so those figures are historical.</p>
 <p><strong>Higher.</strong> The implementation uses 200-bit fixed-point logarithms generated at 75 decimal digits, integer phase reduction, then float64 phases and complex128 coordinates. The recorded comparison to 90-digit mpmath samples eight offsets at each of eight heights through 10<sup>22</sup>, with maximum reported discrepancy 1.1 × 10<sup>−16</sup> turns. Full-sum gap comparisons in that report stop at 10<sup>12</sup>.</p>
 <p>A fresh bounded check compared six local steps at each nominal height 10<sup>13</sup> and 10<sup>22</sup> with 90-digit phase calculations. Maximum step differences relative to the pivot step were 9.82 × 10<sup>−16</sup> and 9.11 × 10<sup>−16</sup>. This checks sampled local steps, not full sums or zeta values at those heights.</p>
@@ -107,9 +100,10 @@
 </details><details><summary>Mathematical context and prior work</summary>
 <p>Partial-sum paths, curlicues, and their relation to the zeta function have a long mathematical history. This project’s contribution is its combination of precise computation, interactive views, camera and scale choices, and films that expose the structure. It makes no claim to have invented partial-sum spirals or proved a new result about zeros.</p>
 <p>An earlier geometric treatment: <a href="https://arxiv.org/abs/1310.6396">Nickel, <em>Geometry of the Riemann Zeta Function</em> (2013)</a>. Definitions and analytic continuation: <a href="https://dlmf.nist.gov/25.2">NIST Digital Library of Mathematical Functions, definitions and analytic continuation of ζ</a>.</p>
-</details>
+</details></div>
 </section>
-<footer>Harrison Wolf · Partial-sum Spiral <a href="index.html">Back to portfolio ↑</a></footer>
+</main>
+<footer class="site-foot"><span>Harrison Wolf · Partial-sum Spiral</span><a href="index.html">Back to portfolio ↑</a></footer>
 </main>
 </body>
 </html>
