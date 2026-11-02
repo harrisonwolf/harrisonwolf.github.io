@@ -18,6 +18,7 @@ html,body{overflow-x:clip}
 #main .hero-band{max-width:1240px;margin:0 auto;padding:72px 40px 110px}
 .hero-band h1{font-size:clamp(44px,6.4vw,88px);line-height:1;letter-spacing:-.04em;font-weight:650;margin:0 0 24px;max-width:14ch}
 .hero-band .lead{font-size:clamp(18px,1.7vw,23px);line-height:1.45;color:#3d3a33;max-width:52ch;margin:0 0 14px}
+.hero-band .lead.sub{font-size:clamp(15.5px,1.25vw,18px);color:var(--muted);max-width:60ch}
 .hero-band .models{font-size:14px;color:var(--muted);letter-spacing:.01em;margin:0 0 22px}
 .hero-band .project-meta{margin:0 0 48px}
 figure.hero{margin:0}

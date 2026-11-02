@@ -21,7 +21,7 @@
 <div class="rise-beat" data-from="0.000" data-to="0.017"><div class="eyebrow">Partial-sum Spiral · Complex analysis · Mathematical films</div><h1 id="rise-title">The shape of a sum.</h1><p class="rise-hint">Scroll to climb <span aria-hidden="true">↓</span></p></div>
 <div class="rise-beat" data-from="0.021" data-to="0.039"><p>The Riemann zeta function sits at the centre of the most famous unsolved problem in mathematics. Proving where its zeros lie is one of the seven Millennium Prize Problems, with a million-dollar reward.</p></div>
 <div class="rise-beat" data-from="0.042" data-to="0.060"><p>Its zeros govern how the prime numbers are spread out. And the statistics of their spacing match the energy levels of heavy atomic nuclei, as if they were the notes of some undiscovered quantum system.</p></div>
-<div class="rise-beat" data-from="0.063" data-to="0.081"><p>The function is built from a sum: take a step, turn slightly, take a smaller step, forever. Lay the steps end to end and they draw a path. This is that path, computed exactly, as we climb.</p></div>
+<div class="rise-beat" data-from="0.063" data-to="0.081"><p>The function is built from a sum: take a step, turn slightly, take a smaller step, forever. Lay the steps end to end and they draw a path. This is that path, computed step by step, as we climb.</p></div>
 <div class="rise-beat" data-f0="0" data-f1="90"><p>Fix one input in the complex plane: s = ½ + 60πi. Zeta there is an infinite sum. We add it up one term at a time, and each term is a step.</p></div>
 <div class="rise-beat" data-f0="100" data-f1="210"><p>A few dozen steps in, the path curls. Keep adding and it winds tighter and tighter, but for this s the series never settles: adding more terms changes nothing. So we stop at sixty.</p></div>
 <div class="rise-beat" data-f0="220" data-f1="370"><p>Instead, move the input up the critical line. Each step points along −t·ln n, so raising t turns every step at once, the far ones fastest. The whole path unfurls and curls again.</p></div>
@@ -31,7 +31,7 @@
 <div class="rise-beat" data-f0="1087" data-f1="1107"><p>Low down, each turn of an eye takes only a few steps: loose lines.</p></div>
 <div class="rise-beat" data-f0="1110" data-f1="1121"><p>Climb, and a few dozen steps per turn weave a double spiral.</p></div>
 <div class="rise-beat" data-f0="1124" data-f1="1134"><p>Hundreds per turn, and rims appear, one for each turn of the arms.</p></div>
-<div class="rise-beat" data-f0="1137" data-f1="1159"><p>Thousands fuse into a solid eye. Every frame is drawn from the exact phases, not an approximation.</p></div>
+<div class="rise-beat" data-f0="1137" data-f1="1159"><p>Thousands fuse into a solid eye. Every frame is computed from the sum itself, not sketched.</p></div>
 <div class="rise-beat" data-f0="1163" data-f1="1184"><p>Colour each step by its number mod 100, and a hidden lattice condenses at the centre.</p></div>
 <div class="rise-beat" data-f0="1207" data-f1="1300"><p>Now lift each step by how far along the path it lies. The flat eye turns out to be the shadow of an hourglass: every line just touches a double cone.</p></div>
 <div class="rise-beat" data-f0="1309" data-f1="1406"><p>Climb to a height of one trillion. Now 376,126 steps make each turn, and the eye sits near step 106 billion.</p></div>
@@ -47,9 +47,9 @@
 <main id="main">
 <section class="statement" aria-label="Overview">
 <p class="reveal statement-line">Take one step, turn slightly, take a smaller step.<br>Repeat a few hundred billion times.</p>
-<p class="reveal statement-sub">Behind the most famous unsolved problem in mathematics is a path that draws eyes, coils and mirror images. Partial-sum Spiral lets you explore it live and follow it in film, with every step’s direction computed exactly, at heights no ordinary calculation can reach.</p>
+<p class="reveal statement-sub">Add the terms of a complex series one at a time and their partial sums trace a path. In the series behind the Riemann zeta function, that path can open into eyes, wind into coils, and fold back on itself. Explore it in the browser, or follow the films from the shape of a whole eye down to the individual steps that draw it.</p>
 <ul class="stats reveal" aria-label="Project scale">
-<li><strong>200 billion</strong><span>steps walked in one path, each phase reduced exactly</span></li>
+<li><strong>200 billion</strong><span>steps traced in one path</span></li>
 <li><strong>10<sup>12</sup> → 10<sup>22</sup></strong><span>heights on the critical line</span></li>
 <li><strong>300 million</strong><span>terms live in your browser</span></li>
 <li><strong>100 films</strong><span>over three hours, from one sum</span></li>
@@ -62,7 +62,7 @@
 </section>
 
 <section class="band dark films" id="watch" aria-labelledby="watch-title">
-<div class="sec-head reveal"><div class="eyebrow">Films</div><h2 id="watch-title">Follow the path.</h2><p>Two of the films, each one computed frame by frame from the exactly reduced phases.</p></div>
+<div class="sec-head reveal"><div class="eyebrow">Films</div><h2 id="watch-title">Follow the path.</h2><p>Two of the films, each one computed frame by frame from the sum.</p></div>
 <div class="pair">
 <figure class="reveal"><div class="player"><video controls playsinline preload="none" poster="media/zeta-depth.jpg" aria-label="The Eye in Depth II, 1 minute 12 seconds" src="media/films/eye-in-depth-ii.mp4"></video></div><figcaption><strong>The Eye in Depth II</strong><span>1:12 · The same eye in 3-D, where tens of thousands of strings fuse into sheets.</span></figcaption></figure>
 <figure class="reveal"><div class="player"><video controls playsinline preload="none" poster="media/zeta-mirror.jpg" aria-label="The Mirror, 1 minute 35 seconds" src="media/films/mirror.mp4"></video></div><figcaption><strong>The Mirror</strong><span>1:35 · The middle of the path, where it folds onto itself and curls become coils.</span></figcaption></figure>
@@ -109,7 +109,7 @@
 </section>
 
 <section class="band grey tech" aria-labelledby="evidence">
-<div class="sec-head reveal"><div class="eyebrow">For technical readers</div><h2 id="evidence">Exact by construction.</h2><p>Each step’s direction is the angle t·log n, and only the fraction left over after whole turns matters. At t = 10<sup>12</sup> that product runs into the trillions, so the app carries it in double-double precision with exact reduction, error-compensated sums and a multi-resolution path store computed in Web Workers. The films add high-precision phase anchors, level-of-detail drawing and separate picture and annotation layers. What “exact” means here: each step’s direction is reduced exactly, the sums are carried in compensated double-double arithmetic, and the results are checked against 30- and 90-digit mpmath references rather than assumed. In the app’s 88 embedded cases the partial sums agree to 3.6 × 10<sup>−13</sup>; the film’s phase anchors agree to 1.1 × 10<sup>−16</sup> turns through t = 10<sup>22</sup>, with full-sum comparisons through t = 10<sup>12</sup>. Those are observed errors on the checked cases, not a proved bound, and one app case sits just over its own 10<sup>−12</sup> self-test threshold; the details are below.</p></div>
+<div class="sec-head reveal"><div class="eyebrow">For technical readers</div><h2 id="evidence">How accurately can we place a step?</h2><p>Each step’s direction is the angle t·log n, and only the fraction left over after whole turns matters. At t = 10<sup>12</sup> that product runs into the trillions, so the app carries it in double-double precision with exact reduction, error-compensated sums and a multi-resolution path store computed in Web Workers. The films add high-precision phase anchors, level-of-detail drawing and separate picture and annotation layers. The method: each step’s direction is reduced in double-double precision, the sums are carried with compensated arithmetic, and the results are checked against 30- and 90-digit mpmath references rather than assumed. In the app’s 88 embedded cases the partial sums agree to 3.6 × 10<sup>−13</sup>; the film’s phase anchors agree to 1.1 × 10<sup>−16</sup> turns through t = 10<sup>22</sup>, with full-sum comparisons through t = 10<sup>12</sup>. Those are observed errors on the checked cases, not a proved bound, and one app case sits just over its own 10<sup>−12</sup> self-test threshold; the details are below.</p></div>
 <div class="card reveal"><div class="scales" role="region" aria-label="Scale and evidence" tabindex="0"><table>
 <caption>Three different scales of computation</caption>
 <thead><tr><th scope="col">System</th><th scope="col">Scale</th><th scope="col">What that means</th></tr></thead>
